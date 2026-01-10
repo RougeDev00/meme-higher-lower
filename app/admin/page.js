@@ -183,6 +183,43 @@ export default function AdminPage() {
                     >
                         Back to Home
                     </button>
+                    <button
+                        onClick={async () => {
+                            if (confirm('⚠️ DANGER: Are you sure you want to DELETE ALL USERS?')) {
+                                if (confirm('This action CANNOT be undone. Confirm delete all?')) {
+                                    try {
+                                        const res = await fetch('/api/admin/data', {
+                                            method: 'DELETE',
+                                            headers: { 'Content-Type': 'application/json' },
+                                            body: JSON.stringify({ deleteAll: true })
+                                        });
+                                        const json = await res.json();
+                                        if (json.success) {
+                                            alert('All users deleted successfully.');
+                                            fetchData();
+                                        } else {
+                                            alert('Failed to delete all users.');
+                                        }
+                                    } catch (err) {
+                                        console.error('Delete all error:', err);
+                                        alert('Error executing delete all.');
+                                    }
+                                }
+                            }
+                        }}
+                        style={{
+                            padding: '10px 20px',
+                            borderRadius: '5px',
+                            border: '1px solid #ff4444',
+                            backgroundColor: 'rgba(255, 68, 68, 0.1)',
+                            color: '#ff4444',
+                            fontWeight: 'bold',
+                            cursor: 'pointer',
+                            marginLeft: '10px'
+                        }}
+                    >
+                        🗑️ Delete All Users
+                    </button>
                 </div>
             </div>
 

@@ -15,7 +15,25 @@ export async function GET() {
 
 export async function DELETE(request) {
     try {
-        const { walletAddress } = await request.json();
+        const body = await request.json();
+
+        // Handle "Delete All" request
+        if (body.deleteAll === true) {
+            const { deleteAllScores } = await import('@/lib/storage');
+            const success = await deleteAllScores();
+
+            if (success) {
+                return NextResponse.json({ success: true, message: 'All users deleted' });
+            } else {
+                return NextResponse.json(
+                    { error: 'Failed to delete all users' },
+                    { status: 500 }
+                );
+            }
+        }
+
+        // Handle Single Delete
+        const { walletAddress } = body;
         if (!walletAddress) {
             return NextResponse.json(
                 { error: 'Wallet address required' },
