@@ -1,0 +1,40 @@
+
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Testing
+coverage/
+
+# Next.js
+.next/
+out/
+
+# Production
+build/
+
+# Misc
+.DS_Store
+*.pem
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Local env files
+.env*.local
+
+# Vercel
+.vercel
+
+# Setup
+*.sql
+
+# Large Data Files (Not for Deployment)
+data/raydium_mainnet.json
+data/raydium_pump_raw.json
+data/coingecko_mass_scraped.json
+data/*.json
+!data/coins.json

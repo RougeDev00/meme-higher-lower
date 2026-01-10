@@ -1,0 +1,978 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Space+Mono:wght@700&display=swap');
+
+:root {
+  --primary-purple: #9945FF;
+  --primary-green: #14F195;
+  --dark-bg: #0a0a0a;
+  --card-bg: rgba(20, 20, 20, 0.9);
+  --text-white: #ffffff;
+  --text-muted: #888888;
+  --success-green: #22c55e;
+  --error-red: #ef4444;
+  --gold: #FFD700;
+  --pump-orange: #FF6B35;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--dark-bg);
+  color: var(--text-white);
+  cursor: url('/cursor.png') 24 24, auto;
+}
+
+/* Ensure interactive elements also show a pointer version (or same cursor if preferred, but usually pointer is needed) 
+   For now, overriding pointer to also show the pill but maybe with a slight change? 
+   Let's keep standard pointer behavior or force the pill? 
+   User said "far diventare il cursore", implying global replacement.
+   I'll force it for buttons too to be consistent with the "meme" vibe.
+*/
+button,
+a,
+.pointer {
+  cursor: url('/cursor.png') 24 24, pointer;
+}
+
+/* ===== HOME PAGE ===== */
+.username-screen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.home-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/home-bg.gif');
+  background-size: cover;
+  background-position: center;
+  /* Scale up slightly to prevent edge loose pixels/flashing */
+  transform: scale(1.05);
+  /* Reduced effects: removed blur to prevent edge artifacts */
+  filter: brightness(0.4);
+  z-index: 0;
+}
+
+.home-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pump-logo {
+  width: 150px;
+  height: 150px;
+  margin-bottom: -1rem;
+  animation: float 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 20px rgba(255, 107, 53, 0.5));
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.game-title-image {
+  height: 120px;
+  width: auto;
+  margin-bottom: 0.5rem;
+  filter: drop-shadow(0 0 20px rgba(255, 107, 53, 0.3));
+}
+
+.game-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  margin-top: 1rem;
+  margin-bottom: 2.5rem;
+  text-align: center;
+  max-width: 480px;
+  line-height: 1.6;
+}
+
+.highlight-solana {
+  color: #FFFFFF;
+  font-weight: 700;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+.highlight-green {
+  color: #8CDDAB;
+  /* Softer green like the logo */
+  font-weight: 700;
+}
+
+.highlight-orange {
+  color: #8CDDAB;
+  /* Using same soft green */
+  font-weight: 700;
+  text-transform: uppercase;
+  text-shadow: 0 0 15px rgba(140, 221, 171, 0.4);
+}
+
+.username-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+  max-width: 380px;
+  padding: 0 2rem;
+}
+
+.username-input {
+  padding: 1rem 1.5rem;
+  font-size: 1.1rem;
+  border: 2px solid rgba(255, 107, 53, 0.3);
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.5);
+  color: var(--text-white);
+  outline: none;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.username-input:focus {
+  border-color: var(--pump-orange);
+  box-shadow: 0 0 20px rgba(255, 107, 53, 0.3);
+}
+
+.username-input::placeholder {
+  color: var(--text-muted);
+}
+
+.start-button-image-container {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.start-button-image {
+  height: 110px;
+  width: auto;
+  filter: drop-shadow(0 4px 15px rgba(140, 221, 171, 0.4));
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: float-subtle 4s ease-in-out infinite;
+}
+
+@keyframes float-subtle {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+.start-button-image-container:hover:not(:disabled) .start-button-image {
+  transform: scale(1.05) translateY(-2px);
+  filter: drop-shadow(0 8px 25px rgba(140, 221, 171, 0.6)) brightness(1.1);
+  animation-play-state: paused;
+}
+
+.start-button-image-container:active:not(:disabled) .start-button-image {
+  transform: scale(0.95) translateY(0);
+}
+
+.start-button-image-container:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: grayscale(1);
+}
+
+/* Leaderboard Preview */
+.leaderboard-preview {
+  margin-top: 2.5rem;
+  padding: 1.5rem 2rem;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  min-width: 320px;
+  backdrop-filter: blur(10px);
+}
+
+.leaderboard-title {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.leaderboard-entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.leaderboard-entry:last-child {
+  border-bottom: none;
+}
+
+.leaderboard-rank {
+  font-weight: 700;
+  width: 30px;
+  color: var(--pump-orange);
+}
+
+.leaderboard-rank.gold {
+  color: #FFD700;
+}
+
+.leaderboard-rank.silver {
+  color: #C0C0C0;
+}
+
+.leaderboard-rank.bronze {
+  color: #CD7F32;
+}
+
+.leaderboard-name {
+  flex: 1;
+  margin-left: 1rem;
+}
+
+.leaderboard-score {
+  font-weight: 700;
+  color: var(--primary-green);
+}
+
+/* ===== GAME SCREEN ===== */
+.game-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.coin-side {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.coin-side:hover {
+  filter: brightness(1.1);
+}
+
+.coin-side:hover .coin-info-container {
+  transform: scale(1.02);
+}
+
+.coin-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.3) blur(3px);
+  z-index: 0;
+}
+
+.coin-info-container {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  transition: transform 0.3s ease;
+}
+
+.coin-logo-large {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6);
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  background: linear-gradient(135deg, #333, #555);
+}
+
+.coin-ticker {
+  padding: 0.5rem 1.25rem;
+  background: var(--text-white);
+  color: #000;
+  font-size: 1.4rem;
+  font-weight: 900;
+  border-radius: 4px;
+  letter-spacing: 1px;
+}
+
+.coin-name {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+}
+
+.coin-launchpad {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.8rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.coin-launchpad::before {
+  content: '🚀';
+  font-size: 0.7rem;
+}
+
+/* Central Pill Container (replaces VS Divider) */
+.pill-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  /* Larger size as requested */
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  pointer-events: none;
+  transition: transform 0.3s ease;
+
+  /* Circular Frame Styles */
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #fff;
+  border: 4px solid #fff;
+  /* Default white border */
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+  transition: border-color 0.3s ease;
+}
+
+/* Continuous Border Effect */
+.pill-container.left-correct {
+  border-left-color: transparent !important;
+  /* Open towards the left (winning) side */
+  border-top-color: var(--pump-green) !important;
+  border-bottom-color: var(--pump-green) !important;
+  border-right-color: var(--pump-green) !important;
+  /* Wrap around the right */
+  border-width: 6px !important;
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.pill-container.right-correct {
+  border-right-color: transparent !important;
+  /* Open towards the right (winning) side */
+  border-top-color: var(--pump-green) !important;
+  border-bottom-color: var(--pump-green) !important;
+  border-left-color: var(--pump-green) !important;
+  /* Wrap around the left */
+  border-width: 6px !important;
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.pill-container.left-wrong {
+  border-left-color: transparent !important;
+  border-top-color: var(--pump-red) !important;
+  border-bottom-color: var(--pump-red) !important;
+  border-right-color: var(--pump-red) !important;
+  border-width: 6px !important;
+  animation: shake 0.5s cubic-bezier(.36, .07, .19, .97) both;
+}
+
+.pill-container.right-wrong {
+  border-right-color: transparent !important;
+  border-top-color: var(--pump-red) !important;
+  border-bottom-color: var(--pump-red) !important;
+  border-left-color: var(--pump-red) !important;
+  border-width: 6px !important;
+  animation: shake 0.5s cubic-bezier(.36, .07, .19, .97) both;
+}
+
+.pill-image {
+  width: 90%;
+  /* A bit smaller */
+  height: 90%;
+  margin-top: 5px;
+  /* Slight nudge down */
+  border-radius: 50%;
+  object-fit: contain;
+  transition: opacity 0.2s ease;
+  animation: float-subtle 3s ease-in-out infinite;
+  /* Reuse our subtle float animation */
+  opacity: 1;
+  z-index: 20;
+}
+
+.pill-image-broken {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120%;
+  height: 120%;
+  object-fit: contain;
+  opacity: 0;
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  pointer-events: none;
+  z-index: 2;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+}
+
+.pill-image-broken.visible {
+  opacity: 1;
+  transform: translate(-50%, -35%) rotate(-5deg);
+  /* Slide down + slight rotation for effect */
+}
+
+.pill-image.hidden {
+  opacity: 0;
+  transform: scale(0.8);
+  animation: none !important;
+  /* Stop bouncing so it can hide cleanly */
+}
+
+.pill-score {
+  position: absolute;
+  top: 50%;
+  left: 49%;
+  transform: translate(-50%, -50%);
+  font-size: 4rem;
+  font-weight: 900;
+  color: #22c55e;
+  /* Explicit green color (Tailwind green-500) just in case */
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.3s ease;
+  pointer-events: none;
+  z-index: 5;
+  /* Score is top layer */
+}
+
+.pill-score.visible {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+/* Victory Animation: Bounce up and down */
+@keyframes bounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+.pill-container.correct .pill-image {
+  animation: bounce 0.6s ease-in-out 3;
+  /* Bounce 3 times */
+}
+
+/* Override old VS specific styling if needed */
+.pill-container.correct {
+  transform: translate(-50%, -50%) scale(1.1);
+  /* Subtle grow */
+}
+
+/* Selected State (White Outline when clicked, before reveal) */
+.coin-side.selected {
+  z-index: 5;
+}
+
+.coin-side.selected::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 4px solid #ffffff;
+  pointer-events: none;
+  z-index: 5;
+  box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+/* Result States - Only applied to the selected coin via logical combination */
+.coin-side.correct.selected::after {
+  border-color: var(--success-green);
+  box-shadow: inset 0 0 30px rgba(34, 197, 94, 0.2);
+}
+
+.coin-side.correct.selected {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.3) 0%, rgba(34, 197, 94, 0.1) 100%);
+}
+
+.coin-side.wrong.selected::after {
+  border-color: var(--error-red);
+  box-shadow: inset 0 0 30px rgba(239, 68, 68, 0.2);
+}
+
+.coin-side.wrong.selected {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.3) 0%, rgba(239, 68, 68, 0.1) 100%);
+}
+
+/* Ensure no border for unselected items, even if they have 'correct' class (if implied) */
+.coin-side:not(.selected)::after {
+  display: none;
+}
+
+/* Higher/Lower Buttons Overlay */
+.action-buttons {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 10;
+  width: 100%;
+  max-width: 200px;
+}
+
+.score-display {
+  position: absolute;
+  top: 1.5rem;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.coin-marketcap {
+  font-size: 2rem;
+  font-weight: 900;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.5px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.score-display.high-score {
+  left: 1.5rem;
+}
+
+.score-display.current-score {
+  right: 1.5rem;
+}
+
+.score-label {
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.score-value {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-white);
+}
+
+/* Score Popup Animation */
+.score-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 12rem;
+  font-weight: 900;
+  color: var(--success-green);
+  z-index: 100;
+  text-shadow: 0 0 80px rgba(34, 197, 94, 0.8);
+  animation: scorePopup 1.2s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes scorePopup {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.3);
+  }
+
+  40% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1) translateY(-30px);
+  }
+}
+
+/* Game Over Screen */
+.game-over-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  animation: slideDownOverlay 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes slideDownOverlay {
+  from {
+    transform: translateY(-100%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+.game-over-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.5);
+}
+
+.game-over-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 2.5rem 3rem;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  cursor: grab;
+  /* Visual cue it's draggable */
+  user-select: none;
+  /* Prevent text selection while dragging */
+}
+
+.game-over-content:active {
+  cursor: grabbing;
+}
+
+.drag-hint {
+  position: absolute;
+  top: 0.8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  pointer-events: none;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.game-over-title {
+  font-size: 1.3rem;
+  /* Reverted size */
+  color: #ffffff;
+  /* Use white to make it pop without size */
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 800;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 0.5rem;
+}
+
+.game-over-score {
+  font-size: 5rem;
+  font-weight: 900;
+  color: var(--text-white);
+}
+
+.game-over-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+  /* Better spacing */
+  width: 100%;
+}
+
+/* Game Over Image Buttons */
+.game-over-btn-image-container {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  justify-content: center;
+}
+
+.game-over-btn-image-container img {
+  height: 100px;
+  /* Adjusted size for game over screen */
+  width: auto;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
+  transition: all 0.3s ease;
+}
+
+.game-over-btn-image-container:hover img {
+  transform: scale(1.15) translateY(-5px);
+  filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.5)) brightness(1.15);
+}
+
+.game-over-btn-image-container:active img {
+  transform: scale(0.95);
+}
+
+/* Game Timer */
+.timer-container {
+  position: absolute;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  pointer-events: none;
+}
+
+.timer-value {
+  font-family: 'Space Mono', monospace;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-white);
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  font-variant-numeric: tabular-nums;
+  transition: color 0.3s ease;
+}
+
+.timer-value.danger {
+  color: var(--error-red);
+  animation: pulse-red 0.5s ease-in-out infinite alternate;
+  text-shadow: 0 0 15px rgba(239, 68, 68, 0.6);
+}
+
+@keyframes pulse-red {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  to {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+/* Leaderboard Toggle */
+.leaderboard-toggle {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  top: auto;
+  left: auto;
+  transform: none;
+  z-index: 20;
+}
+
+.toggle-button {
+  padding: 0.8rem 1.8rem;
+  background: rgba(15, 15, 15, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-muted);
+  border-radius: 12px;
+  cursor: pointer;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.toggle-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-white);
+  border-color: var(--text-white);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.toggle-button:active {
+  transform: translateY(0);
+}
+
+/* Leaderboard Modal */
+.leaderboard-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(20, 20, 20, 0.95);
+  padding: 2rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 300;
+  min-width: 350px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(20px);
+}
+
+.leaderboard-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 299;
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.modal-close:hover {
+  color: var(--text-white);
+}
+
+/* Coin Animation States */
+.coin-side {
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;
+}
+
+.coin-side.slide-up {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.coin-side.slide-in {
+  animation: slideIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Logo Fallback */
+.coin-logo-placeholder {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  font-weight: 900;
+  color: #fff;
+  background: linear-gradient(135deg, #444, #666);
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6);
+  text-transform: uppercase;
+}
+
+/* Disabled state during animation */
+.coin-side.disabled {
+  pointer-events: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .game-container {
+    flex-direction: column;
+  }
+
+  .coin-logo-large {
+    width: 100px;
+    height: 100px;
+  }
+
+  .vs-divider {
+    width: 50px;
+    height: 50px;
+    font-size: 1rem;
+  }
+
+  .game-title {
+    font-size: 3.5rem;
+  }
+
+  .score-popup {
+    font-size: 8rem;
+  }
+
+  .coin-marketcap {
+    font-size: 1.4rem;
+  }
+}
