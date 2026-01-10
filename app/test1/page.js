@@ -95,7 +95,7 @@ export default function SpeedModePage() {
     const router = useRouter();
     const [username, setUsername] = useState('');
     const [userId, setUserId] = useState('');
-    const [currentScore, setCurrentScore] = useState(0);
+    const [currentScore, setCurrentScore] = useState(9);
     const [highScore, setHighScore] = useState(0);
     const [leftCoin, setLeftCoin] = useState(null);
     const [rightCoin, setRightCoin] = useState(null);
