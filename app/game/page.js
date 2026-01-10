@@ -119,6 +119,11 @@ export default function GamePage() {
     const [timeLeft, setTimeLeft] = useState(10000); // 10 seconds in ms
     const [gameOverImage, setGameOverImage] = useState('/crying-kid.gif');
 
+    // Speed Mode States
+    const [showSpeedModeOverlay, setShowSpeedModeOverlay] = useState(false);
+    const [isSpeedMode, setIsSpeedMode] = useState(false);
+    const [isPaused, setIsPaused] = useState(false);
+
     // Dragging State
     const [dragPosition, setDragPosition] = useState({ x: 0, y: 0 });
     const [isDragging, setIsDragging] = useState(false);
@@ -225,7 +230,7 @@ export default function GamePage() {
 
     // Timer Logic
     useEffect(() => {
-        if (gameOver || isAnimating || timeLeft <= 0 || showLeaderboard) return;
+        if (gameOver || isAnimating || timeLeft <= 0 || showLeaderboard || isPaused || showSpeedModeOverlay) return;
 
         const interval = setInterval(() => {
             setTimeLeft(prev => {
@@ -255,7 +260,7 @@ export default function GamePage() {
         }, 10);
 
         return () => clearInterval(interval);
-    }, [gameOver, isAnimating, showLeaderboard, currentScore, username, userId]);
+    }, [gameOver, isAnimating, showLeaderboard, currentScore, username, userId, isPaused, showSpeedModeOverlay]);
 
     // Format time as SS:MS 
     const formatTime = (ms) => {
@@ -307,7 +312,7 @@ export default function GamePage() {
 
 
     const handleCoinClick = async (clickedSide) => {
-        if (!leftCoin || !rightCoin || isAnimating || gameOver) return;
+        if (!leftCoin || !rightCoin || isAnimating || gameOver || isPaused) return;
 
         setIsAnimating(true);
         setSelectedSide(clickedSide);
@@ -357,6 +362,29 @@ export default function GamePage() {
                 setHighScore(newScore);
             }
 
+            // SPEED MODE TRIGGER
+            if (newScore === 10) {
+                setTimeout(() => {
+                    setIsPaused(true);
+                    setShowSpeedModeOverlay(true);
+                    setIsSpeedMode(true);
+                    // Use confetti for extra flair
+                    confetti({
+                        particleCount: 150,
+                        spread: 70,
+                        origin: { y: 0.6 },
+                        colors: ['#FFD700', '#FF6B35', '#ffffff']
+                    });
+
+                    setTimeout(() => {
+                        setShowSpeedModeOverlay(false);
+                        setIsPaused(false);
+                    }, 4000);
+                }, 2000); // Wait a bit after score popup appears
+
+                await new Promise(resolve => setTimeout(resolve, 6000)); // 2000 delay + 4000 duration
+            }
+
             // Transition to next round after animation
             // Score stays visible longer now (2.5s)
             // Wait 1000ms (bounce) + 2500ms (viewing score) = 3500ms total
@@ -367,7 +395,7 @@ export default function GamePage() {
                 setSelectedSide(null);
 
                 // Reset timer for next round
-                setTimeLeft(10000);
+                setTimeLeft(newScore >= 10 ? 5000 : 10000);
 
                 // The winning coin stays, loser is replaced
                 // But winning coin can only stay for max 2 turns
@@ -440,7 +468,7 @@ export default function GamePage() {
                 // Clear entering animation class
                 setTimeout(() => setEnteringSide(null), 500);
 
-            }, 3500);
+            }, newScore === 10 ? 500 : 3500);
         } else {
             // Wrong guess - game over
             setResultState({
@@ -485,6 +513,8 @@ export default function GamePage() {
         setLeftCoinTurns(0);
         setRightCoinTurns(0);
         setTimeLeft(10000);
+        setIsSpeedMode(false); // Reset speed mode
+        setShowSpeedModeOverlay(false);
     };
 
     const goHome = () => {
@@ -516,7 +546,7 @@ export default function GamePage() {
 
                 {/* Game Timer */}
                 <div className="timer-container">
-                    <div className={`timer-value ${timeLeft < 3000 ? 'danger' : ''}`}>
+                    <div className={`timer-value ${timeLeft < 3000 ? 'danger' : ''} ${isSpeedMode ? 'speed-active' : ''}`}>
                         {formatTime(timeLeft)}
                     </div>
                 </div>
@@ -646,6 +676,24 @@ export default function GamePage() {
                     </div>
                 </div>
             </div>
+
+            {/* Speed Mode Overlay */}
+            {showSpeedModeOverlay && (
+                <div className="speed-mode-overlay">
+                    <div className="speed-mode-content">
+                        <img
+                            src="/speed-mode-character.png"
+                            alt="Speed Mode"
+                            className="speed-mode-logo"
+                        />
+                        <div className="speed-mode-text">
+                            CONGRATULATIONS!<br />
+                            SPEED MODE ACTIVATED!<br />
+                            TIMER REDUCED TO 5 SECONDS!
+                        </div>
+                    </div>
+                </div>
+            )}
 
 
 

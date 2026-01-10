@@ -840,15 +840,21 @@ a,
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  gap: 3rem;
+  /* Increased gap to prevent overlap */
   text-align: center;
+  position: relative;
+  z-index: 301;
 }
 
 .speed-mode-logo {
-  width: 180px;
+  width: 200px;
+  /* Slightly larger as requested */
   height: auto;
   animation: rotateLogo 4s linear infinite;
   filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.5));
+  margin-bottom: 1rem;
+  /* Extra safety margin */
 }
 
 .speed-mode-text {
