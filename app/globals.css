@@ -628,9 +628,7 @@ a,
 }
 
 .score-display.high-score {
-  left: 2rem;
-  top: 6rem;
-  /* Moved down to avoid CA label overlap */
+  left: 1.5rem;
   right: auto;
   align-items: flex-start;
 }
