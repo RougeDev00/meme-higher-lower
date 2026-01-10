@@ -92,8 +92,8 @@ export default function Home() {
         />
 
         <img
-          src="/title-logo-v2.png"
-          alt="PUMP?"
+          src="/logo-pump-or-dump.png"
+          alt="PUMP or DUMP?"
           className="game-title-image"
         />
         <p className="game-subtitle">
