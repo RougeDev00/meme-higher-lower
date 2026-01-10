@@ -785,6 +785,13 @@ export default function GamePage() {
                 )
             }
 
+            {/* CA Label on Game Over */}
+            {gameOver && (
+                <div className="ca-label">
+                    CA: <span>Coming Soon..</span>
+                </div>
+            )}
+
             {gameOver && <CursorTrail />}
         </>
     );
