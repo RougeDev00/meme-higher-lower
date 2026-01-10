@@ -36,28 +36,16 @@ export default function Home() {
     if (username.trim()) {
       localStorage.setItem('meme-game-username', username.trim());
 
-      // Determine unique ID: Wallet Address OR verify/create a persistent anonymous ID
       let finalId = walletAddress.trim();
 
-      if (!finalId) {
-        // Check if we already have an anon ID
-        const existingAnon = localStorage.getItem('meme-game-anon-id');
-        if (existingAnon) {
-          finalId = existingAnon;
-        } else {
-          // Generate new Anon ID
-          finalId = 'anon-' + crypto.randomUUID();
-          localStorage.setItem('meme-game-anon-id', finalId);
-        }
-      } else {
-        // If user provided a wallet, clear any old anon ID to avoid confusion, 
-        // OR keep it? Better to use the wallet as the primary ID now.
-        // We just save the wallet.
+      if (finalId) {
+        // User provided wallet - they can save score
         localStorage.setItem('meme-game-wallet', finalId);
+        localStorage.setItem('meme-game-active-id', finalId);
+      } else {
+        // No wallet - GUEST mode - no score saving
+        localStorage.setItem('meme-game-active-id', 'GUEST');
       }
-
-      // Save the active UserID for this session
-      localStorage.setItem('meme-game-active-id', finalId);
 
       router.push('/game');
     }
@@ -114,7 +102,7 @@ export default function Home() {
           <input
             type="text"
             className="username-input wallet-input"
-            placeholder="Solana Wallet Address (Optional)"
+            placeholder="Insert Wallet to join Leaderboard"
             value={walletAddress}
             onChange={(e) => setWalletAddress(e.target.value)}
             style={{ marginTop: '10px', fontSize: '0.9rem', width: '100%', maxWidth: '300px' }}

@@ -200,7 +200,7 @@ export default function GamePage() {
         setUserId(savedUserId);
 
         // Get user's high score
-        if (savedUserId) {
+        if (savedUserId && savedUserId !== 'GUEST') {
             fetch(`/api/leaderboard?walletAddress=${savedUserId}`)
                 .then(res => res.json())
                 .then(data => setHighScore(data.highScore || 0))
@@ -238,7 +238,7 @@ export default function GamePage() {
                     // Submit score logic duplicate... ideally should be a function but for now inline or trigger existing logic
                     // We'll just set gameOver true and let the effect handle it or trigger a specific timeout state
                     // Actually, we need to register the score.
-                    if (userId) {
+                    if (userId && userId !== 'GUEST') {
                         fetch('/api/leaderboard', {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
@@ -449,7 +449,7 @@ export default function GamePage() {
             });
 
             // Submit score
-            if (userId) {
+            if (userId && userId !== 'GUEST') {
                 await fetch('/api/leaderboard', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
