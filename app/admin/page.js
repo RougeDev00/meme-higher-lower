@@ -183,43 +183,6 @@ export default function AdminPage() {
                     >
                         Back to Home
                     </button>
-                    <button
-                        onClick={async () => {
-                            if (confirm('⚠️ DANGER: Are you sure you want to DELETE ALL USERS?')) {
-                                if (confirm('This action CANNOT be undone. Confirm delete all?')) {
-                                    try {
-                                        const res = await fetch('/api/admin/data', {
-                                            method: 'DELETE',
-                                            headers: { 'Content-Type': 'application/json' },
-                                            body: JSON.stringify({ deleteAll: true })
-                                        });
-                                        const json = await res.json();
-                                        if (json.success) {
-                                            alert('All users deleted successfully.');
-                                            fetchData();
-                                        } else {
-                                            alert('Failed to delete all users.');
-                                        }
-                                    } catch (err) {
-                                        console.error('Delete all error:', err);
-                                        alert('Error executing delete all.');
-                                    }
-                                }
-                            }
-                        }}
-                        style={{
-                            padding: '10px 20px',
-                            borderRadius: '5px',
-                            border: '1px solid #ff4444',
-                            backgroundColor: 'rgba(255, 68, 68, 0.1)',
-                            color: '#ff4444',
-                            fontWeight: 'bold',
-                            cursor: 'pointer',
-                            marginLeft: '10px'
-                        }}
-                    >
-                        🗑️ Delete All Users
-                    </button>
                 </div>
             </div>
 
@@ -273,6 +236,53 @@ export default function AdminPage() {
                     )}
                 </div>
             )}
+
+            <div style={{ marginTop: '60px', borderTop: '1px solid #333', paddingTop: '40px' }}>
+                <h2 style={{ color: '#ff4444', marginBottom: '20px' }}>⚠️ Danger Zone</h2>
+                <div style={{ padding: '20px', border: '1px solid rgba(255, 68, 68, 0.3)', borderRadius: '8px', backgroundColor: 'rgba(255, 68, 68, 0.05)' }}>
+                    <p style={{ marginBottom: '15px', color: '#ff8888' }}>
+                        This action will permanently delete ALL user data and scores from the database. This cannot be undone.
+                    </p>
+                    <button
+                        onClick={async () => {
+                            if (confirm('⚠️ DANGER: Are you sure you want to DELETE ALL USERS?')) {
+                                if (confirm('This action CANNOT be undone. Confirm delete all?')) {
+                                    try {
+                                        const res = await fetch('/api/admin/data', {
+                                            method: 'DELETE',
+                                            headers: { 'Content-Type': 'application/json' },
+                                            body: JSON.stringify({ deleteAll: true })
+                                        });
+                                        const json = await res.json();
+                                        if (json.success) {
+                                            alert('All users deleted successfully.');
+                                            fetchData();
+                                        } else {
+                                            alert('Failed to delete all users.');
+                                        }
+                                    } catch (err) {
+                                        console.error('Delete all error:', err);
+                                        alert('Error executing delete all.');
+                                    }
+                                }
+                            }
+                        }}
+                        style={{
+                            padding: '12px 24px',
+                            borderRadius: '5px',
+                            border: 'none',
+                            backgroundColor: '#ff4444',
+                            color: 'white',
+                            fontWeight: 'bold',
+                            cursor: 'pointer',
+                            fontSize: '1rem',
+                            boxShadow: '0 4px 12px rgba(255, 68, 68, 0.3)'
+                        }}
+                    >
+                        🗑️ DELETE ALL DATA
+                    </button>
+                </div>
+            </div>
         </div>
     );
 }
