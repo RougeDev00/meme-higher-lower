@@ -142,7 +142,7 @@ export default function AdminPage() {
             fontFamily: 'Inter, sans-serif'
         }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px' }}>
-                <h1>Admin Dashboard (UPDATED) 🛡️</h1>
+                <h1>Admin Dashboard 🛡️</h1>
                 <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
                     <button
                         onClick={async () => {
