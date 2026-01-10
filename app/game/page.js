@@ -770,6 +770,21 @@ export default function GamePage() {
                     </div>
                 </div>
             )}
+
+            {/* Social Link on Game Over */}
+            {
+                gameOver && (
+                    <a
+                        href="https://x.com/pumpordumpgame"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="social-link-container"
+                    >
+                        <img src="/x-logo.svg" alt="X (Twitter)" className="social-icon" />
+                    </a>
+                )
+            }
+
             {gameOver && <CursorTrail />}
         </>
     );

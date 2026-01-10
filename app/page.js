@@ -142,6 +142,17 @@ export default function Home() {
           )}
         </div>
       </div>
+
+      {/* Social Link */}
+      <a
+        href="https://x.com/pumpordumpgame"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="social-link-container"
+      >
+        <img src="/x-logo.svg" alt="X (Twitter)" className="social-icon" />
+      </a>
+
       <CursorTrail />
     </div>
   );
