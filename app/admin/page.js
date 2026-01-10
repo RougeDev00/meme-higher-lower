@@ -61,6 +61,31 @@ export default function AdminPage() {
         window.URL.revokeObjectURL(url);
     };
 
+    const handleDelete = async (walletAddress, username) => {
+        if (!confirm(`Are you sure you want to delete user "${username}"? This cannot be undone.`)) {
+            return;
+        }
+
+        try {
+            const res = await fetch('/api/admin/data', {
+                method: 'DELETE',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ walletAddress })
+            });
+
+            const json = await res.json();
+            if (json.success) {
+                alert('User deleted successfully');
+                fetchData(); // Refresh list
+            } else {
+                alert('Failed to delete user: ' + (json.error || 'Unknown error'));
+            }
+        } catch (error) {
+            console.error('Delete error:', error);
+            alert('Error deleting user');
+        }
+    };
+
     if (!isAuthenticated) {
         return (
             <div style={{
@@ -173,6 +198,7 @@ export default function AdminPage() {
                                 <th style={{ padding: '15px' }}>Score</th>
                                 <th style={{ padding: '15px' }}>Wallet / ID</th>
                                 <th style={{ padding: '15px' }}>Date</th>
+                                <th style={{ padding: '15px' }}>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -184,6 +210,22 @@ export default function AdminPage() {
                                     <td style={{ padding: '15px', fontFamily: 'monospace', color: '#aaa' }}>{item.wallet_address}</td>
                                     <td style={{ padding: '15px', color: '#666' }}>
                                         {item.created_at ? new Date(item.created_at).toLocaleString() : 'N/A'}
+                                    </td>
+                                    <td style={{ padding: '15px' }}>
+                                        <button
+                                            onClick={() => handleDelete(item.wallet_address, item.username)}
+                                            style={{
+                                                padding: '5px 10px',
+                                                borderRadius: '3px',
+                                                border: '1px solid #ff4444',
+                                                backgroundColor: 'transparent',
+                                                color: '#ff4444',
+                                                cursor: 'pointer',
+                                                fontSize: '0.8rem'
+                                            }}
+                                        >
+                                            Delete
+                                        </button>
                                     </td>
                                 </tr>
                             ))}

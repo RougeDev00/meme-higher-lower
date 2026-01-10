@@ -12,3 +12,33 @@ export async function GET() {
         );
     }
 }
+
+export async function DELETE(request) {
+    try {
+        const { walletAddress } = await request.json();
+        if (!walletAddress) {
+            return NextResponse.json(
+                { error: 'Wallet address required' },
+                { status: 400 }
+            );
+        }
+
+        const { deleteScore } = await import('@/lib/storage');
+        const success = await deleteScore(walletAddress);
+
+        if (success) {
+            return NextResponse.json({ success: true });
+        } else {
+            return NextResponse.json(
+                { error: 'Failed to delete record' },
+                { status: 500 }
+            );
+        }
+
+    } catch (error) {
+        return NextResponse.json(
+            { error: 'Failed to process delete request' },
+            { status: 500 }
+        );
+    }
+}
