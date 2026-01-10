@@ -143,7 +143,7 @@ export default function AdminPage() {
         }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px' }}>
                 <h1>Admin Dashboard 🛡️</h1>
-                <div style={{ display: 'flex', gap: '10px' }}>
+                <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
                     <button
                         onClick={async () => {
                             if (confirm('⚠️ DANGER: Are you sure you want to DELETE ALL USERS?')) {
