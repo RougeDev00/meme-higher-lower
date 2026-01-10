@@ -97,7 +97,7 @@ export default function GamePage() {
     const router = useRouter();
     // const { publicKey, connected } = useWallet(); // Removed
     const [username, setUsername] = useState('');
-    const [walletAddress, setWalletAddress] = useState('');
+    const [userId, setUserId] = useState('');
     const [currentScore, setCurrentScore] = useState(0);
     const [highScore, setHighScore] = useState(0);
     const [leftCoin, setLeftCoin] = useState(null);
@@ -190,20 +190,18 @@ export default function GamePage() {
     // Initialize game
     useEffect(() => {
         const savedUsername = localStorage.getItem('meme-game-username');
-        if (!savedUsername) {
+        const savedUserId = localStorage.getItem('meme-game-active-id'); // Use the robust ID
+
+        if (!savedUsername || !savedUserId) {
             router.push('/');
             return;
         }
         setUsername(savedUsername);
-
-        const savedWallet = localStorage.getItem('meme-game-wallet');
-        if (savedWallet) {
-            setWalletAddress(savedWallet);
-        }
+        setUserId(savedUserId);
 
         // Get user's high score
-        if (savedWallet) {
-            fetch(`/api/leaderboard?walletAddress=${savedWallet}`)
+        if (savedUserId) {
+            fetch(`/api/leaderboard?walletAddress=${savedUserId}`)
                 .then(res => res.json())
                 .then(data => setHighScore(data.highScore || 0))
                 .catch(() => { });
@@ -240,11 +238,11 @@ export default function GamePage() {
                     // Submit score logic duplicate... ideally should be a function but for now inline or trigger existing logic
                     // We'll just set gameOver true and let the effect handle it or trigger a specific timeout state
                     // Actually, we need to register the score.
-                    if (walletAddress) {
+                    if (userId) {
                         fetch('/api/leaderboard', {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({ username, score: currentScore, walletAddress })
+                            body: JSON.stringify({ username, score: currentScore, walletAddress: userId })
                         }).then(() => {
                             fetch('/api/leaderboard').then(res => res.json()).then(data => setLeaderboard(data.leaderboard || []));
                         });
@@ -257,7 +255,7 @@ export default function GamePage() {
         }, 10);
 
         return () => clearInterval(interval);
-    }, [gameOver, isAnimating, showLeaderboard, currentScore, username, walletAddress]);
+    }, [gameOver, isAnimating, showLeaderboard, currentScore, username, userId]);
 
     // Format time as SS:MS 
     const formatTime = (ms) => {
@@ -451,11 +449,11 @@ export default function GamePage() {
             });
 
             // Submit score
-            if (walletAddress) {
+            if (userId) {
                 await fetch('/api/leaderboard', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ username, score: currentScore, walletAddress })
+                    body: JSON.stringify({ username, score: currentScore, walletAddress: userId })
                 });
             }
 

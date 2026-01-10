@@ -1,0 +1,199 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+
+export default function AdminPage() {
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [password, setPassword] = useState('');
+    const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const router = useRouter();
+
+    const handleLogin = (e) => {
+        e.preventDefault();
+        // Simple client-side check. In production, use real auth.
+        if (password === 'admin123') {
+            setIsAuthenticated(true);
+            fetchData();
+        } else {
+            alert('Invalid password');
+        }
+    };
+
+    const fetchData = async () => {
+        setLoading(true);
+        try {
+            const res = await fetch('/api/admin/data');
+            const json = await res.json();
+            setData(json.data || []);
+        } catch (error) {
+            console.error('Failed to fetch data', error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const downloadCSV = () => {
+        if (!data.length) return;
+
+        const headers = ['Wallet Address', 'Username', 'Score', 'Created At'];
+        const rows = data.map(item => [
+            item.wallet_address,
+            item.username,
+            item.score,
+            item.created_at
+        ]);
+
+        const csvContent = [
+            headers.join(','),
+            ...rows.map(row => row.join(','))
+        ].join('\n');
+
+        const blob = new Blob([csvContent], { type: 'text/csv' });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `meme-game-leaderboard-${new Date().toISOString().split('T')[0]}.csv`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+    };
+
+    if (!isAuthenticated) {
+        return (
+            <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: '100vh',
+                backgroundColor: '#1a1a2e',
+                color: 'white',
+                fontFamily: 'Inter, sans-serif'
+            }}>
+                <h1 style={{ marginBottom: '20px' }}>Admin Login</h1>
+                <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                    <input
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        placeholder="Enter Password"
+                        style={{
+                            padding: '10px',
+                            borderRadius: '5px',
+                            border: '1px solid #333',
+                            backgroundColor: '#16213e',
+                            color: 'white'
+                        }}
+                    />
+                    <button
+                        type="submit"
+                        style={{
+                            padding: '10px',
+                            borderRadius: '5px',
+                            border: 'none',
+                            backgroundColor: '#00ff88',
+                            color: '#000',
+                            cursor: 'pointer',
+                            fontWeight: 'bold'
+                        }}
+                    >
+                        Login
+                    </button>
+                </form>
+            </div>
+        );
+    }
+
+    return (
+        <div style={{
+            minHeight: '100vh',
+            backgroundColor: '#1a1a2e',
+            color: 'white',
+            padding: '40px',
+            fontFamily: 'Inter, sans-serif'
+        }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px' }}>
+                <h1>Admin Dashboard 🛡️</h1>
+                <div style={{ display: 'flex', gap: '10px' }}>
+                    <button
+                        onClick={fetchData}
+                        style={{
+                            padding: '10px 20px',
+                            borderRadius: '5px',
+                            border: '1px solid #333',
+                            backgroundColor: '#16213e',
+                            color: 'white',
+                            cursor: 'pointer'
+                        }}
+                    >
+                        Refresh
+                    </button>
+                    <button
+                        onClick={downloadCSV}
+                        style={{
+                            padding: '10px 20px',
+                            borderRadius: '5px',
+                            border: 'none',
+                            backgroundColor: '#00ff88',
+                            color: 'black',
+                            fontWeight: 'bold',
+                            cursor: 'pointer'
+                        }}
+                    >
+                        Export CSV
+                    </button>
+                    <button
+                        onClick={() => router.push('/')}
+                        style={{
+                            padding: '10px 20px',
+                            borderRadius: '5px',
+                            border: '1px solid #333',
+                            backgroundColor: 'transparent',
+                            color: '#888',
+                            cursor: 'pointer'
+                        }}
+                    >
+                        Back to Home
+                    </button>
+                </div>
+            </div>
+
+            {loading ? (
+                <p>Loading data...</p>
+            ) : (
+                <div style={{ overflowX: 'auto' }}>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
+                        <thead>
+                            <tr style={{ borderBottom: '1px solid #333', color: '#888' }}>
+                                <th style={{ padding: '15px' }}>Rank</th>
+                                <th style={{ padding: '15px' }}>Username</th>
+                                <th style={{ padding: '15px' }}>Score</th>
+                                <th style={{ padding: '15px' }}>Wallet / ID</th>
+                                <th style={{ padding: '15px' }}>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {data.map((item, index) => (
+                                <tr key={item.id || index} style={{ borderBottom: '1px solid #233', backgroundColor: index % 2 === 0 ? 'transparent' : 'rgba(255,255,255,0.02)' }}>
+                                    <td style={{ padding: '15px' }}>#{index + 1}</td>
+                                    <td style={{ padding: '15px', fontWeight: 'bold' }}>{item.username}</td>
+                                    <td style={{ padding: '15px', color: '#00ff88' }}>{item.score}</td>
+                                    <td style={{ padding: '15px', fontFamily: 'monospace', color: '#aaa' }}>{item.wallet_address}</td>
+                                    <td style={{ padding: '15px', color: '#666' }}>
+                                        {item.created_at ? new Date(item.created_at).toLocaleString() : 'N/A'}
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                    {data.length === 0 && (
+                        <p style={{ textAlign: 'center', padding: '40px', color: '#666' }}>No records found.</p>
+                    )}
+                </div>
+            )}
+        </div>
+    );
+}
