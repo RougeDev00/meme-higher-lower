@@ -518,7 +518,12 @@ export default function GamePage() {
     };
 
     const handleShare = () => {
-        const text = `This is my best score on @pumpordumpgame, try to beat me! 🚀 ${currentScore} pumpordumpgame.fun`;
+        const text = `🔥 I just scored ${currentScore} on @pumpordumpgame!
+
+Can you beat my record? 🚀
+
+Play now 👇
+pumpordumpgame.fun`;
         const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
         window.open(url, '_blank');
     };
