@@ -181,6 +181,38 @@ a,
   animation: float-subtle 4s ease-in-out infinite;
 }
 
+/* Social Link */
+.social-link-container {
+  position: fixed;
+  bottom: 2rem;
+  left: 2rem;
+  z-index: 9999;
+  /* Max z-index */
+  transition: transform 0.3s ease;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 8px;
+  border-radius: 50%;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-link-container:hover {
+  transform: scale(1.1) rotate(5deg);
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.social-icon {
+  width: 24px;
+  height: 24px;
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
+  opacity: 1;
+  /* Force opacity */
+}
+
 @keyframes float-subtle {
 
   0%,
