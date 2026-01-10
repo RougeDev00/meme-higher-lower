@@ -42,48 +42,6 @@
     "volumeUsd": 7401772.58
   },
   {
-    "id": "cbbtc",
-    "name": "Coinbase Wrapped BTC",
-    "symbol": "cbBTC",
-    "address": "cbbtcf3aa214zXHbiAZQwf4122FBYbraNdFqgw4iMij",
-    "marketCap": 6869523660,
-    "logo": "https://ipfs.io/ipfs/QmZ7L8yd5j36oXXydUiYFiFsRHbi3EdgC4RuFwvM7dcqge",
-    "color": "#FFE66D",
-    "platform": "Orca",
-    "priceUsd": 90399.63,
-    "liquidity": 12641643.33,
-    "rank": 4,
-    "volumeUsd": 8774299.75
-  },
-  {
-    "id": "jitosol",
-    "name": "Jito Staked SOL",
-    "symbol": "JitoSOL",
-    "address": "J1toso1uCk3RLmjorhTtrVwY9HJ7X8V9yYac6Y7kGCPn",
-    "marketCap": 2273048106,
-    "logo": "https://storage.googleapis.com/token-metadata/JitoSOL-256.png",
-    "color": "#FCBAD3",
-    "platform": "Orca",
-    "priceUsd": 170.38,
-    "liquidity": 13690779.29,
-    "rank": 5,
-    "volumeUsd": 3690609.71
-  },
-  {
-    "id": "jlp",
-    "name": "Jupiter Perps LP",
-    "symbol": "JLP",
-    "address": "27G8MtK7VtTcCHkpASjSDdkWWYfoqT6ggEuKidVJidD4",
-    "marketCap": 1823458722,
-    "logo": "https://static.jup.ag/jlp/icon.png",
-    "color": "#9945FF",
-    "platform": "Meteora",
-    "priceUsd": 4.73,
-    "liquidity": 4346576.35,
-    "rank": 6,
-    "volumeUsd": 2658182.25
-  },
-  {
     "id": "pump",
     "name": "Pump",
     "symbol": "PUMP",
@@ -96,20 +54,6 @@
     "liquidity": 14836236.63,
     "rank": 7,
     "volumeUsd": 5833723.88
-  },
-  {
-    "id": "trump",
-    "name": "OFFICIAL TRUMP",
-    "symbol": "TRUMP",
-    "address": "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN",
-    "marketCap": 1089024021,
-    "logo": "https://cdn.dexscreener.com/cms/images/85a2613c51c8ded8e51b1b3910487ab66691cb60fecec7d0905481a603bba899?width=800&height=800&quality=90",
-    "color": "#FCBAD3",
-    "platform": "Meteora",
-    "priceUsd": 5.45,
-    "liquidity": 155899724.49,
-    "rank": 8,
-    "volumeUsd": 38231735.23
   },
   {
     "id": "miaimushz",
@@ -138,34 +82,6 @@
     "liquidity": 0,
     "rank": 10,
     "volumeUsd": 11055756.77
-  },
-  {
-    "id": "pengu",
-    "name": "Pudgy Penguins",
-    "symbol": "PENGU",
-    "address": "2zMMhcVQEXDtdE6vsFS7S7D5oUodfJHE8vd1gnBouauv",
-    "marketCap": 751211601,
-    "logo": "https://cdn.dexscreener.com/cms/images/9d5188f603b49ab02f7a75e5d2c2959ec2947c98181501fb11688672e9394efd?width=800&height=800&quality=90",
-    "color": "#4ECDC4",
-    "platform": "Meteora",
-    "priceUsd": 0.01196,
-    "liquidity": 5026177.1,
-    "rank": 11,
-    "volumeUsd": 4602469.85
-  },
-  {
-    "id": "jupsol",
-    "name": "Jupiter Staked SOL",
-    "symbol": "JupSOL",
-    "address": "jupSoLaHXQiZZTSfEWMTRRgpnyFm8f6sZdosWBjx93v",
-    "marketCap": 658153534,
-    "logo": "https://cdn.dexscreener.com/cms/images/9ea89e9663c619b16a45ca4efe0823c9e6be4a6b7466e4d4e29eb74441aceacd?width=800&height=800&quality=90",
-    "color": "#95E1D3",
-    "platform": "Meteora",
-    "priceUsd": 158.048,
-    "liquidity": 1254143.27,
-    "rank": 12,
-    "volumeUsd": 336715.88
   },
   {
     "id": "fzhekhon",
@@ -306,34 +222,6 @@
     "liquidity": 0,
     "rank": 22,
     "volumeUsd": 17728069.36
-  },
-  {
-    "id": "usd1",
-    "name": "World Liberty Financial USD",
-    "symbol": "USD1",
-    "address": "USD1ttGY1N17NEEHLmELoaybftRBUSErhqYiQzvEmuB",
-    "marketCap": 157918214,
-    "logo": "https://raw.githubusercontent.com/worldliberty/usd1-metadata/refs/heads/main/logo.png",
-    "color": "#95E1D3",
-    "platform": "Raydium",
-    "priceUsd": 0.9994,
-    "liquidity": 14429706.05,
-    "rank": 23,
-    "volumeUsd": 8567728.95
-  },
-  {
-    "id": "pyusd",
-    "name": "PayPal USD",
-    "symbol": "PYUSD",
-    "address": "2b1kV6DkPAnxd5ixfnxCpjxmKwqjjaYmCZfHsFu24GXo",
-    "marketCap": 154354016,
-    "logo": "https://cdn.dexscreener.com/cms/images/18c0909847ba95456825e52ac221aa5623aed21e757948fb3ea6ad8241b7cfb0?width=800&height=800&quality=90",
-    "color": "#95E1D3",
-    "platform": "Orca",
-    "priceUsd": 1.000068,
-    "liquidity": 30658742.97,
-    "rank": 24,
-    "volumeUsd": 9360745.92
   },
   {
     "id": "bhetoken",
@@ -686,20 +574,6 @@
     "rank": 49
   },
   {
-    "id": "avici",
-    "name": "Avici",
-    "symbol": "AVICI",
-    "address": "BANKJmvhT8tiJRsBSS1n2HryMBPvT5Ze4HU95DUAmeta",
-    "marketCap": 45708584,
-    "logo": "https://cdn.dexscreener.com/cms/images/c4ba034e91f254cf25913e9d44080722b5f9f40957d5b14bca0836b4961c278d?width=800&height=800&quality=90",
-    "color": "#FFE66D",
-    "platform": "Meteora",
-    "priceUsd": 3.6,
-    "liquidity": 1719359.15,
-    "rank": 50,
-    "volumeUsd": 2222968.97
-  },
-  {
     "id": "khetoken",
     "name": "Ovary Coin",
     "symbol": "kheToken",
@@ -894,34 +768,6 @@
     "liquidity": 879159.01,
     "volumeUsd": 1137267.27,
     "rank": 64
-  },
-  {
-    "id": "fogo",
-    "name": "LAYer3 Raw fogo_layer1",
-    "symbol": "FOGo",
-    "address": "J1sBSzCey19RmVKaSHkTy4ZXfS8F131onEvLfHLBZs2Y",
-    "marketCap": 28424030,
-    "logo": "https://ipfs.io/ipfs/bafkreidx4kxu4lthhnn2cbv3c2i52knowmf4qpyqxn4t7u2wqvqz2imk6m",
-    "color": "#14F195",
-    "platform": "Meteora",
-    "priceUsd": 0.02842,
-    "liquidity": 1.78,
-    "rank": 65,
-    "volumeUsd": 112.64
-  },
-  {
-    "id": "usdg",
-    "name": "Global Dollar",
-    "symbol": "USDG",
-    "address": "2u1tszSeqZ3qBWF3uNGPFc8TzMk2tdiwknnRMWGWjGWH",
-    "marketCap": 27001804,
-    "logo": "https://424565.fs1.hubspotusercontent-na1.net/hubfs/424565/GDN-USDG-Token-512x512.png",
-    "color": "#AA96DA",
-    "platform": "Orca",
-    "priceUsd": 1.000022,
-    "liquidity": 16590445.99,
-    "rank": 66,
-    "volumeUsd": 7663066.07
   },
   {
     "id": "",
@@ -1638,20 +1484,6 @@
     "rank": 117
   },
   {
-    "id": "xion",
-    "name": "burnt_xion",
-    "symbol": "XION",
-    "address": "CrcZHcnHKKcgnubWb9WxAq5trFgVbG87btjzr5ZSYQzu",
-    "marketCap": 3338869,
-    "logo": "https://ipfs.io/ipfs/bafkreibtnizb6t2ybalbygrqisfizahqu63t4xeaexvvtqy7gbtxyql6tm",
-    "color": "#FCBAD3",
-    "platform": "Meteora",
-    "priceUsd": 0.003338,
-    "liquidity": 73051.02,
-    "rank": 118,
-    "volumeUsd": 14003276.47
-  },
-  {
     "id": "zauth",
     "name": "zauthx402",
     "symbol": "ZAUTH",
@@ -1750,20 +1582,6 @@
     "rank": 125
   },
   {
-    "id": "starknet",
-    "name": "Starknet",
-    "symbol": "Starknet",
-    "address": "Fwcn55QdtSqYMVvC3vtyf5KxNA1v89d1j19LALLz7hiD",
-    "marketCap": 2947950,
-    "logo": "https://ipfs.io/ipfs/bafkreib5g7a6ufzpo5ebeosetgzoy5geduwcgmch7vighsbasth3wty77q",
-    "color": "#FCBAD3",
-    "platform": "Meteora",
-    "priceUsd": 0.002947,
-    "liquidity": 34750.16,
-    "rank": 126,
-    "volumeUsd": 6385612.1
-  },
-  {
     "id": "aztec",
     "name": "Aztec Network",
     "symbol": "AZTEC",
@@ -1860,20 +1678,6 @@
     "liquidity": 463602.31,
     "volumeUsd": 93732.15,
     "rank": 133
-  },
-  {
-    "id": "beastcoin",
-    "name": "MrBeast Coin",
-    "symbol": "Beast Coin",
-    "address": "mxAuFnBnWvw9BNuPXT6np2fDxRBxTRcAUTBe3oRPDQ4",
-    "marketCap": 2479151,
-    "logo": "https://ipfs.io/ipfs/bafkreifezlkt5or3bzkw3lsk2m6566e6bn6yeorfdbvfpz3seb5t5u26ly",
-    "color": "#9945FF",
-    "platform": "Meteora",
-    "priceUsd": 0.002479,
-    "liquidity": 58827.01,
-    "rank": 134,
-    "volumeUsd": 14175586.14
   },
   {
     "id": "polyfacts",
@@ -2226,20 +2030,6 @@
     "rank": 159
   },
   {
-    "id": "geom",
-    "name": "GeoMine",
-    "symbol": "GEOM",
-    "address": "3SBA5mJAq8HBovCQW5NUQT7n6eEtzgW7SKMkNZv7oFqE",
-    "marketCap": 1771967,
-    "logo": "https://pbs.twimg.com/profile_images/2004826121754345472/AGEy8U1Y_400x400.jpg",
-    "color": "#F38181",
-    "platform": "Raydium",
-    "priceUsd": 0.001822,
-    "liquidity": 193749.23,
-    "rank": 160,
-    "volumeUsd": 6902615.09
-  },
-  {
     "id": "groyper",
     "name": "Groyper",
     "symbol": "Groyper",
@@ -2478,20 +2268,6 @@
     "rank": 177
   },
   {
-    "id": "up",
-    "name": "Unitas",
-    "symbol": "UP",
-    "address": "HyxJKr4ZFHjkyH4nTSYoAJSwSCcG6ZdUsK2nLAqEtHwe",
-    "marketCap": 1431317,
-    "logo": "https://ipfs.io/ipfs/QmY79uCgGtnZzEW6HefKU5qLwG4CSJ7iDV7Fo1V5CAi6yn",
-    "color": "#95E1D3",
-    "platform": "Meteora",
-    "priceUsd": 0.001515,
-    "liquidity": 18.44,
-    "rank": 178,
-    "volumeUsd": 3.5
-  },
-  {
     "id": "pizza",
     "name": "PIZZA",
     "symbol": "PIZZA",
@@ -2504,20 +2280,6 @@
     "liquidity": 186650.6,
     "volumeUsd": 10.76,
     "rank": 179
-  },
-  {
-    "id": "spacex",
-    "name": "SpaceX AI COiN TOKEN",
-    "symbol": "Space X",
-    "address": "4Zo4fHVBCkXCDL12vrKH53BsCEkLEngugYcNgpzV6fPP",
-    "marketCap": 1373779,
-    "logo": "https://ipfs.io/ipfs/bafkreibc5vi2mbyeom4pegig6wkpocttgrpgz2xy4y7bugp6vrtxa5thdm",
-    "color": "#9945FF",
-    "platform": "Meteora",
-    "priceUsd": 0.001373,
-    "liquidity": 150213.04,
-    "rank": 180,
-    "volumeUsd": 24065706.67
   },
   {
     "id": "labubu",
@@ -2560,20 +2322,6 @@
     "liquidity": 205767.26,
     "volumeUsd": 15011.3,
     "rank": 183
-  },
-  {
-    "id": "pikainu",
-    "name": "PikaInu Coin",
-    "symbol": "PikaInu",
-    "address": "HhLwBb24D1NmsAmpumZRQP5XeWkhNCKe3jR3nXGRrGig",
-    "marketCap": 1308941,
-    "logo": "https://ipfs.io/ipfs/bafkreiasduunkpasc6jlmovkqyub7xoehcmds6ukqqemlbrymtqgpnmfqy",
-    "color": "#AA96DA",
-    "platform": "Meteora",
-    "priceUsd": 0.001308,
-    "liquidity": 38282.94,
-    "rank": 184,
-    "volumeUsd": 6584318.68
   },
   {
     "id": "dark",
@@ -2688,20 +2436,6 @@
     "rank": 192
   },
   {
-    "id": "rain",
-    "name": "Rain",
-    "symbol": "RAIN",
-    "address": "CmGYTeKXtTuNBRqHC9a94CMoSdgE9trKuU9hmu2bj8cR",
-    "marketCap": 1060062,
-    "logo": "https://ipfs.io/ipfs/bafkreibplyp6t3sl5glnmgvoq5b6lh4hkxsrvqe7dwolujgwbnnvlwz7ku",
-    "color": "#FCBAD3",
-    "platform": "Meteora",
-    "priceUsd": 0.00106,
-    "liquidity": 67183.47,
-    "rank": 193,
-    "volumeUsd": 14163976.89
-  },
-  {
     "id": "boxabl",
     "name": "BOXABL",
     "symbol": "BOXABL",
@@ -2742,20 +2476,6 @@
     "liquidity": 592952.19,
     "volumeUsd": 12294.35,
     "rank": 196
-  },
-  {
-    "id": "solflare",
-    "name": "solflare",
-    "symbol": "Solflare",
-    "address": "Ci6TWD44SJhRNLfX7QsaVmZ4WKmsixP7ZXLzNzLuQvyn",
-    "marketCap": 1048948,
-    "logo": "https://ipfs.io/ipfs/bafkreibl57tyrobmyslpr4mhtpqugkugzlhscrfzkz2mddjgderfyujypy",
-    "color": "#FF6B6B",
-    "platform": "Meteora",
-    "priceUsd": 0.001048,
-    "liquidity": 102710.64,
-    "rank": 197,
-    "volumeUsd": 19481336.46
   },
   {
     "id": "dgn",
@@ -2856,20 +2576,6 @@
     "rank": 204
   },
   {
-    "id": "duvewhale",
-    "name": "The Duve Whale",
-    "symbol": "DuveWhale",
-    "address": "3Pxf4Jssnu4bGcJnpeVcLhNDwmFY1QHicPtRvYSCAmSL",
-    "marketCap": 984590,
-    "logo": "https://ipfs.io/ipfs/QmUBpoKC75XrGwi5TzCzBAfbu4o1o2ctEhNkevHkWkGQ7e",
-    "color": "#4ECDC4",
-    "platform": "Meteora",
-    "priceUsd": 0.0009845,
-    "liquidity": 11.72,
-    "rank": 205,
-    "volumeUsd": 49.13
-  },
-  {
     "id": "gork",
     "name": "New XAI gork",
     "symbol": "gork",
@@ -2938,48 +2644,6 @@
     "liquidity": 114135.11,
     "volumeUsd": 235779.49,
     "rank": 210
-  },
-  {
-    "id": "gemini3ai",
-    "name": "GeminiApp",
-    "symbol": "Gemini3AI",
-    "address": "FN5Q55phpDQPLzkgmq3AqkMSaeKeVFwYyAJuHzbQqcRz",
-    "marketCap": 960693,
-    "logo": "https://ipfs.io/ipfs/bafkreic7vtmnzy6odplmnbythfn2zvgwxtvkjgxxgt2o6kmrhqmsdrrjse",
-    "color": "#F38181",
-    "platform": "Meteora",
-    "priceUsd": 0.0009606,
-    "liquidity": 90996.83,
-    "rank": 211,
-    "volumeUsd": 17898958.74
-  },
-  {
-    "id": "spacexai",
-    "name": "SpaceX AI COiN TOKEN",
-    "symbol": "SpaceX AI",
-    "address": "H5mCkaTUWJ7iDFo85BshL6sGXEomfUrurTwuu513yoMQ",
-    "marketCap": 946629,
-    "logo": "https://ipfs.io/ipfs/bafkreibc5vi2mbyeom4pegig6wkpocttgrpgz2xy4y7bugp6vrtxa5thdm",
-    "color": "#9945FF",
-    "platform": "Meteora",
-    "priceUsd": 0.0009466,
-    "liquidity": 89578.02,
-    "rank": 212,
-    "volumeUsd": 17512626.48
-  },
-  {
-    "id": "deepai",
-    "name": "DeepNode AI",
-    "symbol": "Deep AI",
-    "address": "7u8vRNwKSWFwM9w5gPWaMrhEn3aCS1mhdd4SB2HgexUY",
-    "marketCap": 893948,
-    "logo": "https://ipfs.io/ipfs/bafkreidbmrbholtzufo3jrmuubf66xpcydu2vmjmjehk4k3dw45qq5awly",
-    "color": "#FCBAD3",
-    "platform": "Meteora",
-    "priceUsd": 0.0008939,
-    "liquidity": 86542.3,
-    "rank": 213,
-    "volumeUsd": 11248000.74
   },
   {
     "id": "fapcoin",
@@ -3066,34 +2730,6 @@
     "rank": 219
   },
   {
-    "id": "spacexi",
-    "name": "SpaceX AI COiN TOKEN",
-    "symbol": "SpaceXi",
-    "address": "AbX5fAT1zCNRSokofPwhTw7oBM3anvm1PNYtSw7zYo2V",
-    "marketCap": 847296,
-    "logo": "https://ipfs.io/ipfs/bafkreibc5vi2mbyeom4pegig6wkpocttgrpgz2xy4y7bugp6vrtxa5thdm",
-    "color": "#4ECDC4",
-    "platform": "Meteora",
-    "priceUsd": 0.0008472,
-    "liquidity": 81139.38,
-    "rank": 220,
-    "volumeUsd": 18083381.98
-  },
-  {
-    "id": "intel",
-    "name": "INTEL",
-    "symbol": "INTEL",
-    "address": "8FHgv4cU2k4fVwxdaew2fefkpwnDavrTDzxSrjHGpcK6",
-    "marketCap": 838368,
-    "logo": "https://ipfs.io/ipfs/bafkreifvdrd6mjkqxkmtpotf4mjtem4xjygqep4ln4vgdfqpmhbwf2dtma",
-    "color": "#9945FF",
-    "platform": "Meteora",
-    "priceUsd": 0.0008383,
-    "liquidity": 70494.51,
-    "rank": 221,
-    "volumeUsd": 8102812.15
-  },
-  {
     "id": "md",
     "name": "Market Dominance",
     "symbol": "MD",
@@ -3106,20 +2742,6 @@
     "liquidity": 159755.51,
     "volumeUsd": 10191.34,
     "rank": 222
-  },
-  {
-    "id": "grok5ai",
-    "name": "grok",
-    "symbol": "Grok5AI",
-    "address": "EWdzbFxjbJXLBWBgF4JVyEJauDHGsu9LvkkEB8Nm3rXA",
-    "marketCap": 820236,
-    "logo": "https://ipfs.io/ipfs/bafkreie23cbmgtwrpsiurvwtfvhvaoszr3s6tx647zmjsyzuvause3fieq",
-    "color": "#FFE66D",
-    "platform": "Meteora",
-    "priceUsd": 0.0008069,
-    "liquidity": 70125.9,
-    "rank": 223,
-    "volumeUsd": 14881218.52
   },
   {
     "id": "rys",
@@ -3148,20 +2770,6 @@
     "liquidity": 334401.44,
     "volumeUsd": 10179.29,
     "rank": 225
-  },
-  {
-    "id": "base",
-    "name": "Unknown",
-    "symbol": "UNKNOWN",
-    "address": "Gp6piGCDCw3gfjwheo5vvoa24PKaATtNA3AWf1LF2fEY",
-    "marketCap": 813471,
-    "logo": "https://ipfs.io/ipfs/bafkreiggz5srh65jpqrbslils375fptumccvsal2jra6x5cfpnssestqoa",
-    "color": "#4ECDC4",
-    "platform": "Meteora",
-    "priceUsd": 0.0008134,
-    "liquidity": 52176.82,
-    "rank": 226,
-    "volumeUsd": 10569490.6
   },
   {
     "id": "trench",
@@ -3360,20 +2968,6 @@
     "rank": 240
   },
   {
-    "id": "tesla",
-    "name": "Unknown",
-    "symbol": "UNKNOWN",
-    "address": "Ag7tWwF4nZwdZN2xPQrwrkroDdH4HtnTduEBGdEPaRYS",
-    "marketCap": 718749,
-    "logo": "https://ipfs.io/ipfs/bafkreiay6dq3mpeqnc425uf53xkvnlrzjwksgvilhliphkfpf5rrelanaq",
-    "color": "#95E1D3",
-    "platform": "Meteora",
-    "priceUsd": 0.0007187,
-    "liquidity": 48626.35,
-    "rank": 241,
-    "volumeUsd": 6515349.71
-  },
-  {
     "id": "shitcoin",
     "name": "just a shitcoin",
     "symbol": "shitcoin",
@@ -3542,20 +3136,6 @@
     "rank": 253
   },
   {
-    "id": "tslax",
-    "name": "Tesla xStock",
-    "symbol": "TSLAx",
-    "address": "2XmAan9TbijcFzwpnUeWs8vLhvvnxa4ajhtdMPU95JJh",
-    "marketCap": 655502,
-    "logo": "https://ipfs.io/ipfs/bafkreif5phy6ryozkbyfzs43ns4cnfromydynuotvhjw2si4lkvjynhory",
-    "color": "#FCBAD3",
-    "platform": "Meteora",
-    "priceUsd": 0.0006555,
-    "liquidity": 69756.87,
-    "rank": 254,
-    "volumeUsd": 14909305.83
-  },
-  {
     "id": "ram",
     "name": "ramcoin",
     "symbol": "RAM",
@@ -3654,20 +3234,6 @@
     "rank": 261
   },
   {
-    "id": "daylight",
-    "name": "Unknown",
-    "symbol": "UNKNOWN",
-    "address": "21K6BxpehXsvZkBtpyMwMxHtbopiizwiMVMsMYGknGbh",
-    "marketCap": 594101,
-    "logo": "https://ipfs.io/ipfs/bafkreidxfggtfpgkvaw3ieawm6hk4lu4omj37qzexvarfnjyfqt5tlueu4",
-    "color": "#F38181",
-    "platform": "Meteora",
-    "priceUsd": 0.0005941,
-    "liquidity": 78683.66,
-    "rank": 262,
-    "volumeUsd": 8037482.56
-  },
-  {
     "id": "aka",
     "name": "She Rises",
     "symbol": "AKA",
@@ -3752,20 +3318,6 @@
     "rank": 268
   },
   {
-    "id": "silver",
-    "name": "Silver Token",
-    "symbol": "Silver",
-    "address": "Fw6pJYMj31AsdpZ7mty4npcxsGRDQziZKmi7Uw5Fj3oX",
-    "marketCap": 582333,
-    "logo": "https://ipfs.io/ipfs/bafkreifamqnpsifl2dzw3vpmpyj2rzqxpzbz74rgrqfu622w7bnhgom6wy",
-    "color": "#AA96DA",
-    "platform": "Meteora",
-    "priceUsd": 0.0005823,
-    "liquidity": 102625.66,
-    "rank": 269,
-    "volumeUsd": 20984209.35
-  },
-  {
     "id": "pill",
     "name": "life changing pill",
     "symbol": "PILL",
@@ -3778,20 +3330,6 @@
     "liquidity": 180326.74,
     "volumeUsd": 94.62,
     "rank": 270
-  },
-  {
-    "id": "",
-    "name": "爱你老己",
-    "symbol": "老己",
-    "address": "pZeKHTXaFTy9s3Wf2ofRu5VrxvsGTHSzmfgTVY8LkFM",
-    "marketCap": 561488,
-    "logo": "https://ipfs.io/ipfs/bafkreig54n3r3o5457adbiyi7w765c2x4r3mjovokzjk5irvpzhili7oym",
-    "color": "#FCBAD3",
-    "platform": "Meteora",
-    "priceUsd": 0.0005614,
-    "liquidity": 32733.81,
-    "rank": 271,
-    "volumeUsd": 8141391.81
   },
   {
     "id": "val",
@@ -3948,20 +3486,6 @@
     "rank": 282
   },
   {
-    "id": "ry",
-    "name": "reya_xyz",
-    "symbol": "Ry",
-    "address": "DX9bojqMySzMXJHJbNLERJkeUbMmgnVqryEngc4XJs4g",
-    "marketCap": 517638,
-    "logo": "https://ipfs.io/ipfs/bafkreibc3usgoqchodp5diulgbzb46zrchcu5gyzn4zx3p6ht275vkmtvq",
-    "color": "#4ECDC4",
-    "platform": "Meteora",
-    "priceUsd": 0.0005176,
-    "liquidity": 126485.06,
-    "rank": 283,
-    "volumeUsd": 27093987.16
-  },
-  {
     "id": "pino",
     "name": "PINO",
     "symbol": "PINO",
@@ -4016,20 +3540,6 @@
     "liquidity": 142877.24,
     "rank": 287,
     "volumeUsd": 134815285.96
-  },
-  {
-    "id": "ballsack",
-    "name": "ballsack",
-    "symbol": "ballsack",
-    "address": "AdMRXh2dMy5WRBSovfTW88wn6n6xajyZaqTcNWK1wF8Q",
-    "marketCap": 501364,
-    "logo": "https://ipfs.io/ipfs/bafybeie5zjm7r7bw6axzvneviak2balnnzqgbfupblu6yv2rzac7jorq74",
-    "color": "#14F195",
-    "platform": "Meteora",
-    "priceUsd": 0.0005013,
-    "liquidity": 33971.19,
-    "rank": 288,
-    "volumeUsd": 7009727.71
   },
   {
     "id": "buttcoin",
@@ -4170,20 +3680,6 @@
     "liquidity": 0,
     "rank": 298,
     "volumeUsd": 9854515.39
-  },
-  {
-    "id": "75314",
-    "name": "75314b9c23e3ee03e79af1d0666746bc",
-    "symbol": "75314",
-    "address": "foAPJQ4VUxi9udJLjpURSPv9dkJeEpjG7FjVLRVPuh9",
-    "marketCap": 449684,
-    "logo": "https://ipfs.io/ipfs/bafkreieiou7odangk4gwvaj3fjd5hkatpwibg4xrwtshumelcwjotqyksy",
-    "color": "#9945FF",
-    "platform": "Meteora",
-    "priceUsd": 0.0004496,
-    "liquidity": 67421.04,
-    "rank": 299,
-    "volumeUsd": 9905607.71
   },
   {
     "id": "limbo",
@@ -4438,20 +3934,6 @@
     "rank": 317
   },
   {
-    "id": "",
-    "name": "爸爸",
-    "symbol": "爸爸",
-    "address": "rfv3LSLmXVQ6jV5Pmq6sRYWawrVAsbYRUxr4FhaKsU5",
-    "marketCap": 373504,
-    "logo": "https://ipfs.io/ipfs/bafkreiap4r3uepyh6qevgkadv37lq3razjypcqhdruimju6xztzxippgoq",
-    "color": "#9945FF",
-    "platform": "Meteora",
-    "priceUsd": 0.0003735,
-    "liquidity": 38827.77,
-    "rank": 318,
-    "volumeUsd": 8332331.87
-  },
-  {
     "id": "kind",
     "name": "KindnessCoin",
     "symbol": "KIND",
@@ -4578,20 +4060,6 @@
     "rank": 327
   },
   {
-    "id": "baaron",
-    "name": "BAARON PEP",
-    "symbol": "BAARON",
-    "address": "GiUhiyw8Sg3GvwHSA4YeQNcpxkETudpqGELFq12pZnyj",
-    "marketCap": 355705,
-    "logo": "https://ipfs.io/ipfs/bafkreiczeuxf73cijwiim4su532tfneprzb6ax5gt7pgczunfxtxc3jyme",
-    "color": "#95E1D3",
-    "platform": "Meteora",
-    "priceUsd": 0.0003557,
-    "liquidity": 256649.11,
-    "rank": 328,
-    "volumeUsd": 32890915.15
-  },
-  {
     "id": "bis",
     "name": "Solana Horse",
     "symbol": "SOLBISCUIT",
@@ -4646,20 +4114,6 @@
     "liquidity": 108121.88,
     "volumeUsd": 3411.35,
     "rank": 332
-  },
-  {
-    "id": "spx",
-    "name": "SPX6900",
-    "symbol": "SPX",
-    "address": "HKLXsvGpvGKRYckNzNeQueCQgqD7x8981ENMXZhJu7sx",
-    "marketCap": 342772,
-    "logo": "https://ipfs.io/ipfs/bafkreie5xaqyjuw4jzerlx4r5z3kesv6mq3522y2ooaxtzjemcchfc3vti",
-    "color": "#14F195",
-    "platform": "Meteora",
-    "priceUsd": 0.0003427,
-    "liquidity": 48273.04,
-    "rank": 333,
-    "volumeUsd": 7080543.92
   },
   {
     "id": "expert",
@@ -4844,20 +4298,6 @@
     "rank": 346
   },
   {
-    "id": "tyle",
-    "name": "tyle",
-    "symbol": "TYLE",
-    "address": "EAfi4YReJoqYXcQAoib8emNkTu7aDTNKmjxYuPo8zsDv",
-    "marketCap": 315162,
-    "logo": "https://ipfs.io/ipfs/bafkreidvtawbel7lsbfpfi3stjtss7luapp3dsqhxb6wslxaho6vowkbbi",
-    "color": "#FCBAD3",
-    "platform": "Meteora",
-    "priceUsd": 0.0003151,
-    "liquidity": 54476.34,
-    "rank": 347,
-    "volumeUsd": 6294591.78
-  },
-  {
     "id": "fight",
     "name": "FIGHT",
     "symbol": "FIGHT",
@@ -4886,20 +4326,6 @@
     "rank": 349
   },
   {
-    "id": "anus",
-    "name": "anus",
-    "symbol": "anus",
-    "address": "EZbhQ1DYhuWYEwMsAD4UMfepXBHF9vcinXYA1nFP75nz",
-    "marketCap": 308734,
-    "logo": "https://ipfs.io/ipfs/bafkreicdx2tuvnnaw7atpho5kfp6celpzqxu22svfh5a2r7fe7dnu6i6oq",
-    "color": "#A8D8EA",
-    "platform": "Meteora",
-    "priceUsd": 0.0003087,
-    "liquidity": 31197.7,
-    "rank": 350,
-    "volumeUsd": 6924827.77
-  },
-  {
     "id": "gm",
     "name": "good morning",
     "symbol": "gm",
@@ -4912,20 +4338,6 @@
     "liquidity": 61927.46,
     "volumeUsd": 43530.26,
     "rank": 351
-  },
-  {
-    "id": "grape",
-    "name": "GrapeSolana🍇",
-    "symbol": "GRAPE",
-    "address": "4HRXU8jHXJyQSqMG8dB8nsRQgsMRvWxuay73s7nwZEv1",
-    "marketCap": 305654,
-    "logo": "https://ipfs.io/ipfs/bafkreictrnbb63wtvxalx6pv5bqrvuwpkn6atjzixbkybf2d35d3hrcuu4",
-    "color": "#AA96DA",
-    "platform": "Meteora",
-    "priceUsd": 0.0003056,
-    "liquidity": 89021.64,
-    "rank": 352,
-    "volumeUsd": 4983226.93
   },
   {
     "id": "scanai",
@@ -5110,20 +4522,6 @@
     "rank": 365
   },
   {
-    "id": "67coincle",
-    "name": "The Official 67 coincle",
-    "symbol": "67coincle",
-    "address": "51rBCmfTWWNjisx5iErPJUSmKJUwUNQ19e3yPvvCdBxX",
-    "marketCap": 289733,
-    "logo": "https://ipfs.io/ipfs/bafkreicvfg23k6o6st7nctsljsuxmzjnjtmpq35yo66mf4lwqtkmty5y64",
-    "color": "#9945FF",
-    "platform": "Meteora",
-    "priceUsd": 0.0002897,
-    "liquidity": 58438.21,
-    "rank": 366,
-    "volumeUsd": 7615226.95
-  },
-  {
     "id": "uro",
     "name": "Urolithin A",
     "symbol": "$URO",
@@ -5164,34 +4562,6 @@
     "liquidity": 61662.64,
     "volumeUsd": 61584.59,
     "rank": 369
-  },
-  {
-    "id": "",
-    "name": "招财猫$🌟",
-    "symbol": "招财猫.",
-    "address": "DnsLpQsFAqPH2roMwJaL1jhP1wJhM4K8gXZQWA16GxQ6",
-    "marketCap": 283861,
-    "logo": "https://ipfs.io/ipfs/bafybeifjrndybzzoombczfpsigt3ebn7jlkaklhslc2fgznrs77pcug26m",
-    "color": "#F38181",
-    "platform": "Meteora",
-    "priceUsd": 0.0002838,
-    "liquidity": 25064.05,
-    "rank": 370,
-    "volumeUsd": 6743818.96
-  },
-  {
-    "id": "mamo",
-    "name": "Unknown",
-    "symbol": "UNKNOWN",
-    "address": "5unSjTm74417YgsuTAym9TJv23VeUzNwTPmrV5KZaNMQ",
-    "marketCap": 283664,
-    "logo": "https://ipfs.io/ipfs/bafybeibog3tlrz7sijfupjisid2um4j7rgkga6ym5xnkfp6eovs25r4gw4",
-    "color": "#FFE66D",
-    "platform": "Meteora",
-    "priceUsd": 0.0002836,
-    "liquidity": 36332.01,
-    "rank": 371,
-    "volumeUsd": 7435288.67
   },
   {
     "id": "vcc",
@@ -5390,20 +4760,6 @@
     "rank": 385
   },
   {
-    "id": "google",
-    "name": "GoogleAI",
-    "symbol": "Google",
-    "address": "4MVppcqiYtKzDMfFi1h7yjQMsMfFZdk7vnGEevLuJcUG",
-    "marketCap": 248356,
-    "logo": "https://ipfs.io/ipfs/bafkreif3wtvqbiqnzmzkcuev46wa6ixis362ytq5id6444hxs4hfuootra",
-    "color": "#14F195",
-    "platform": "Meteora",
-    "priceUsd": 0.0002483,
-    "liquidity": 89903.41,
-    "rank": 386,
-    "volumeUsd": 11860041.48
-  },
-  {
     "id": "oil",
     "name": "Digital Oil Memecoin",
     "symbol": "Oil",
@@ -5416,20 +4772,6 @@
     "liquidity": 139880.07,
     "volumeUsd": 71308.69,
     "rank": 387
-  },
-  {
-    "id": "fnc",
-    "name": "24/7 Fish News by Claude",
-    "symbol": "FNC",
-    "address": "2Z2g7VYRKiyvjv9d7GBZvHNX5a466MnnES4tAZaTsQyV",
-    "marketCap": 247390,
-    "logo": "https://ipfs.io/ipfs/bafkreieba24qnsbjvgmzajhbkpidmngsbsltjylza5chkazdj4aqjrljs4",
-    "color": "#95E1D3",
-    "platform": "Meteora",
-    "priceUsd": 0.0002473,
-    "liquidity": 58501.33,
-    "rank": 388,
-    "volumeUsd": 8312381.75
   },
   {
     "id": "adzilla",
@@ -5486,20 +4828,6 @@
     "liquidity": 132286.74,
     "volumeUsd": 1054.17,
     "rank": 392
-  },
-  {
-    "id": "21",
-    "name": "2131KOBUSHIDE",
-    "symbol": "21",
-    "address": "8vab7ZUeUteeodrBecQP6y96kWFnFTUs5VGUG8uuEuoy",
-    "marketCap": 243331,
-    "logo": "https://ipfs.io/ipfs/bafkreianjeys3ksi6kptzxezg2lzyfvnmkdfnw2lpgp6dbbjypz2dvleym",
-    "color": "#A8D8EA",
-    "platform": "Meteora",
-    "priceUsd": 0.0002433,
-    "liquidity": 45789.33,
-    "rank": 393,
-    "volumeUsd": 5081690.32
   },
   {
     "id": "duna",
@@ -5570,34 +4898,6 @@
     "liquidity": 114432.36,
     "volumeUsd": 5411.13,
     "rank": 398
-  },
-  {
-    "id": "knedlik",
-    "name": "The Alpha Deer",
-    "symbol": "Knedlik",
-    "address": "4j3vd7teEnhvJTsZSxbq6TVEgjjBUC8nuWo1C7tUVQh6",
-    "marketCap": 234647,
-    "logo": "https://ipfs.io/ipfs/bafybeiepiamp66y2pyucg25yag5o4m6qjv6axn5xmf2u6b3xgcraiuuww4",
-    "color": "#9945FF",
-    "platform": "Meteora",
-    "priceUsd": 0.0002346,
-    "liquidity": 30000.19,
-    "rank": 399,
-    "volumeUsd": 10625736.62
-  },
-  {
-    "id": "moo",
-    "name": "Moobulls",
-    "symbol": "MOO",
-    "address": "2mCYjEntWN2NAW8T6bn1KnQh2Dma5UhAXjDoWEXetowC",
-    "marketCap": 234604,
-    "logo": "https://ipfs.io/ipfs/bafybeib7ccw73bqqzswy3pdszwyrjs4bydvxu5eoxa7x7257hosjyf34jm",
-    "color": "#95E1D3",
-    "platform": "Meteora",
-    "priceUsd": 0.0002346,
-    "liquidity": 50407.25,
-    "rank": 400,
-    "volumeUsd": 7549079.36
   },
   {
     "id": "rocky",
@@ -5682,20 +4982,6 @@
     "liquidity": 62822.73,
     "volumeUsd": 18471.3,
     "rank": 406
-  },
-  {
-    "id": "poly",
-    "name": "Polymarket coin",
-    "symbol": "POLY",
-    "address": "9dzVa4C4BHX2Mdc7C3FnjmXeUMdgSNxxsGU3kpnkhrAi",
-    "marketCap": 228911,
-    "logo": "https://ipfs.io/ipfs/bafkreibpvkibgzvbcfszojardrtqstub5hwk45nf2ybvawxkmyqb6sm7dy",
-    "color": "#FFE66D",
-    "platform": "Meteora",
-    "priceUsd": 0.0002289,
-    "liquidity": 12783.96,
-    "rank": 407,
-    "volumeUsd": 10226113.87
   },
   {
     "id": "muskit",
@@ -5936,34 +5222,6 @@
     "rank": 424
   },
   {
-    "id": "hashke",
-    "name": "HashKeyExchange",
-    "symbol": "HashKe𓂀",
-    "address": "FW1Z4r1gkcyZaMj4Pwbpj5kf2HLaE4qqbeKfjP88Wz6H",
-    "marketCap": 210445,
-    "logo": "https://ipfs.io/ipfs/bafkreidakofz4awwlrdqbjkum3amgybfx5a42ifsjngk3ozvtx2oz5afam",
-    "color": "#FCBAD3",
-    "platform": "Meteora",
-    "priceUsd": 0.0002104,
-    "liquidity": 69854.39,
-    "rank": 425,
-    "volumeUsd": 9646557.91
-  },
-  {
-    "id": "normiecoin",
-    "name": "normie coin",
-    "symbol": "normiecoin",
-    "address": "AMw9qr8mzwWCzpiaEDrhqHWLj3X3gibvQPk7dYjpTfFL",
-    "marketCap": 204943,
-    "logo": "https://ipfs.io/ipfs/bafkreidamt736lecnane2zkrcamifssk7d2uoxp2yikeqc5jkgeckzlexq",
-    "color": "#AA96DA",
-    "platform": "Meteora",
-    "priceUsd": 0.0002049,
-    "liquidity": 45295.62,
-    "rank": 426,
-    "volumeUsd": 9509879.52
-  },
-  {
     "id": "wtf",
     "name": "Meme Games WTF",
     "symbol": "WTF",
@@ -5990,20 +5248,6 @@
     "liquidity": 0,
     "rank": 428,
     "volumeUsd": 8141639.06
-  },
-  {
-    "id": "yajucoin",
-    "name": "淫夢 1145141919810",
-    "symbol": "YAJUCoin",
-    "address": "HBmcLKCLUDNV8t2YM6gknUEPU9kjwxzQC4bo4X6XXQnE",
-    "marketCap": 200798,
-    "logo": "https://ipfs.io/ipfs/bafkreiezdvevp7br3kfzcvl6rsgv3rkmd7kptz2pp4vfqhx5c4mbru427y",
-    "color": "#FFE66D",
-    "platform": "Meteora",
-    "priceUsd": 0.0002007,
-    "liquidity": 37957.49,
-    "rank": 429,
-    "volumeUsd": 8658752.91
   },
   {
     "id": "dollo",
@@ -6046,20 +5290,6 @@
     "liquidity": 66106.85,
     "volumeUsd": 27075.95,
     "rank": 432
-  },
-  {
-    "id": "moonpay",
-    "name": "MoonPayOfficialToken",
-    "symbol": "MoonPay",
-    "address": "6p6EdQaJYR8YoxqgtuZ82YWecKXCJfuNCbcHaeHbQqp9",
-    "marketCap": 197381,
-    "logo": "https://ipfs.io/ipfs/bafkreigz67dtjrkplilm6brmfe6p7mygjch327nwtegs4hnqubrbj7c5pa",
-    "color": "#14F195",
-    "platform": "Meteora",
-    "priceUsd": 0.0001973,
-    "liquidity": 89270.08,
-    "rank": 433,
-    "volumeUsd": 17699137.16
   },
   {
     "id": "dpcore",
@@ -6160,34 +5390,6 @@
     "rank": 440
   },
   {
-    "id": "mono",
-    "name": "monoOS",
-    "symbol": "MONO",
-    "address": "8tizehiVFrF4RxJVAQKo94CwCBiR9GqWBhJBNhSrPiGG",
-    "marketCap": 192164,
-    "logo": "https://ipfs.io/ipfs/bafkreihe367q4vackk2fljzfejkyooxnweqx3b4qr3hscgrxc6tnsk7y5u",
-    "color": "#4ECDC4",
-    "platform": "Meteora",
-    "priceUsd": 0.0001921,
-    "liquidity": 36117.38,
-    "rank": 441,
-    "volumeUsd": 7984768.48
-  },
-  {
-    "id": "yellowfin",
-    "name": "The Yellowfin Tuna",
-    "symbol": "Yellowfin",
-    "address": "W3WkdjEhgAQZa6mR2iqEG5WM8ZttPXptSnfe6CJbnkm",
-    "marketCap": 190869,
-    "logo": "https://ipfs.io/ipfs/bafkreihfnrcdj5hnzyauremzmorv47pztctjfinvhuvv55z4tqvmlgtwkm",
-    "color": "#95E1D3",
-    "platform": "Meteora",
-    "priceUsd": 0.0001908,
-    "liquidity": 47687.97,
-    "rank": 442,
-    "volumeUsd": 10217022.97
-  },
-  {
     "id": "moss",
     "name": "MOSS",
     "symbol": "MOSS",
@@ -6258,20 +5460,6 @@
     "rank": 447
   },
   {
-    "id": "griffinai",
-    "name": "Griffin_AI",
-    "symbol": "GriffinAI",
-    "address": "CPTe2raSb8n1iz8khbdf8EiNz9GwSYJdRzVty5asqeiy",
-    "marketCap": 185282,
-    "logo": "https://ipfs.io/ipfs/bafkreibhnomuvbtqald2ecci7yebbbmjhhkr26bi5sjh7jkpwm6hf5d6gi",
-    "color": "#14F195",
-    "platform": "Meteora",
-    "priceUsd": 0.0001852,
-    "liquidity": 55741.78,
-    "rank": 448,
-    "volumeUsd": 12887575.48
-  },
-  {
     "id": "peanut",
     "name": "#1 TikTok Squirrel",
     "symbol": "Peanut",
@@ -6340,20 +5528,6 @@
     "liquidity": 65222.55,
     "volumeUsd": 25300.78,
     "rank": 453
-  },
-  {
-    "id": "plankton",
-    "name": "Black Plankton",
-    "symbol": "PLANKTON",
-    "address": "6v81i8KjhBgLhpkjtQU7oqxrZsQSb5zfcS4oEG7RRTNm",
-    "marketCap": 176809,
-    "logo": "https://ipfs.io/ipfs/QmPDBXsoCGyhjimy9tGVeSroCsRiN3YvP3tZNUenw9MULB",
-    "color": "#A8D8EA",
-    "platform": "Meteora",
-    "priceUsd": 0.0001768,
-    "liquidity": 1.8,
-    "rank": 454,
-    "volumeUsd": 0.07
   },
   {
     "id": "mindshare",
@@ -6594,20 +5768,6 @@
     "rank": 471
   },
   {
-    "id": "kaiken",
-    "name": "kaikeninusol",
-    "symbol": "Kaiken",
-    "address": "BQbTxNNc9UaGmPGDXmA8mi7ygm9c9CBaA95kfMfVoG9u",
-    "marketCap": 159434,
-    "logo": "https://ipfs.io/ipfs/bafkreia26grumvycmnldqpznirfsw2nizfpsufzdbnqpj3hthpasltssla",
-    "color": "#14F195",
-    "platform": "Meteora",
-    "priceUsd": 0.0001594,
-    "liquidity": 27579.41,
-    "rank": 472,
-    "volumeUsd": 7753092.01
-  },
-  {
     "id": "vibecodoor",
     "name": "The Vibecodoor",
     "symbol": "Vibecodoor",
@@ -6634,20 +5794,6 @@
     "liquidity": 107735.08,
     "volumeUsd": 26.6,
     "rank": 474
-  },
-  {
-    "id": "nvdia",
-    "name": "NVDIA    Ai    COiN   TOKEN",
-    "symbol": "NVDIA",
-    "address": "5PYxPCEnimU6eJmASHba3PjS63AWeNnicd3yhiSjoHBQ",
-    "marketCap": 157157,
-    "logo": "https://ipfs.io/ipfs/QmQRgm1UWAoG8UmGGqZ4sRezR46UH4XaBE8kRy6SSgJUN3",
-    "color": "#9945FF",
-    "platform": "Meteora",
-    "priceUsd": 0.0001571,
-    "liquidity": 0.19,
-    "rank": 475,
-    "volumeUsd": 0.57
   },
   {
     "id": "dank",
@@ -7070,20 +6216,6 @@
     "rank": 505
   },
   {
-    "id": "giza",
-    "name": "Giza Tech",
-    "symbol": "GIZA𓂀",
-    "address": "9y6KkSLeySnw2iBC3sjgUD2ApqSX4iVsSiuPkaiX4VST",
-    "marketCap": 134498,
-    "logo": "https://ipfs.io/ipfs/bafkreig3est767qdqmth6fib7jyub6xhhjopplox45u2coh5m26e2gq7uu",
-    "color": "#14F195",
-    "platform": "Meteora",
-    "priceUsd": 0.0001344,
-    "liquidity": 36524.03,
-    "rank": 506,
-    "volumeUsd": 6910511.83
-  },
-  {
     "id": "benis",
     "name": "Benis",
     "symbol": "Benis",
@@ -7208,34 +6340,6 @@
     "liquidity": 80202.41,
     "volumeUsd": 1,
     "rank": 515
-  },
-  {
-    "id": "pin",
-    "name": "🦄 PinLinkAi",
-    "symbol": "PIN 🦄",
-    "address": "J9VzUZGvCX46yTDqXTggzM1EXosDiYnz48FsoiFWEfXD",
-    "marketCap": 130652,
-    "logo": "https://ipfs.io/ipfs/bafkreifimovt3vtvibru324sdrnpbzzfyofmmb4gzukttznjo454b25hdy",
-    "color": "#AA96DA",
-    "platform": "Meteora",
-    "priceUsd": 0.0001306,
-    "liquidity": 34256.59,
-    "rank": 516,
-    "volumeUsd": 7308876.19
-  },
-  {
-    "id": "kizuna",
-    "name": "KIZUNA",
-    "symbol": "KIZUNA",
-    "address": "2dEJAW1ptBT6MC2aLtauBQRGHiFf2gHhDMxkgxgULuan",
-    "marketCap": 130058,
-    "logo": "https://ipfs.io/ipfs/QmUJUcnEWt1fXNG9TrXwTixAvfivYWgERHeVPhpnpxXjT6",
-    "color": "#9945FF",
-    "platform": "Meteora",
-    "priceUsd": 0.00013,
-    "liquidity": 0.1,
-    "rank": 517,
-    "volumeUsd": 0.03
   },
   {
     "id": "ai4",
@@ -7532,20 +6636,6 @@
     "rank": 538
   },
   {
-    "id": "",
-    "name": "孙子",
-    "symbol": "孙子",
-    "address": "CMuo9a35AAGNgGhbAGwDMQQE9PAveQ3WFyMS9t6nwDYw",
-    "marketCap": 117708,
-    "logo": "https://ipfs.io/ipfs/bafkreialogcnbtlm7xwmqh5k6pscq5y64monemcjxoljfhomnog2fejf3u",
-    "color": "#14F195",
-    "platform": "Meteora",
-    "priceUsd": 0.0001177,
-    "liquidity": 21782.47,
-    "rank": 539,
-    "volumeUsd": 7453674.48
-  },
-  {
     "id": "ttg",
     "name": "Taitiko",
     "symbol": "TTG",
@@ -7558,34 +6648,6 @@
     "liquidity": 45158.68,
     "volumeUsd": 1245.42,
     "rank": 540
-  },
-  {
-    "id": "greenwhale",
-    "name": "greenwhaletoken",
-    "symbol": "GREENWHALE",
-    "address": "9QtwXfTfMCaNfMuNEbeVXHayVwuFUACZ1Tuy2awJZiMV",
-    "marketCap": 115391,
-    "logo": "https://ipfs.io/ipfs/bafkreifu64ohcbt4ovfrogtmnyhmzdxjqmbsqx2hl5nugtaou2wj62uqr4",
-    "color": "#9945FF",
-    "platform": "Meteora",
-    "priceUsd": 0.0001153,
-    "liquidity": 41789.93,
-    "rank": 541,
-    "volumeUsd": 237354.05
-  },
-  {
-    "id": "bitgetzh",
-    "name": "Bitget zh",
-    "symbol": "Bitget zh",
-    "address": "6sH55CEAFd9HbcbXACtGtfzTi9HbqqD3gzTkZ23DFoTS",
-    "marketCap": 115203,
-    "logo": "https://ipfs.io/ipfs/bafkreia2h7k3nvfhdbfjpoasfbcdtewshq7ub2mv27f5jcmnzzocjqnmqi",
-    "color": "#A8D8EA",
-    "platform": "Meteora",
-    "priceUsd": 0.0001152,
-    "liquidity": 41156.42,
-    "rank": 542,
-    "volumeUsd": 10606800.39
   },
   {
     "id": "maduro",
@@ -7616,48 +6678,6 @@
     "rank": 544
   },
   {
-    "id": "millions",
-    "name": "millions",
-    "symbol": "millions",
-    "address": "3tWKcjRSreymrT2hfZgAqaS6ojNuXPwXx7G93WSXfzae",
-    "marketCap": 108633,
-    "logo": "https://ipfs.io/ipfs/bafkreieunujwwzayf2vvdp7heszhijiyls4ehue3sjshcmy7gasoelxxvq",
-    "color": "#95E1D3",
-    "platform": "Meteora",
-    "priceUsd": 0.0001086,
-    "liquidity": 18448.53,
-    "rank": 545,
-    "volumeUsd": 10901202.28
-  },
-  {
-    "id": "hacker",
-    "name": "capital killer",
-    "symbol": "Hacker",
-    "address": "7f7rHdyv5PeJpzqXBWbmUXfoRsHzNXaNin1YEXsZfXRG",
-    "marketCap": 108261,
-    "logo": "https://ipfs.io/ipfs/Qma4j7PmPU6utF8r9axM56JKmctd1FoY6PawzCSYbZFjGS",
-    "color": "#F38181",
-    "platform": "Meteora",
-    "priceUsd": 0.0001082,
-    "liquidity": 0.05,
-    "rank": 546,
-    "volumeUsd": 0.01
-  },
-  {
-    "id": "trumpv2",
-    "name": "OFFICIAL TRUMPV2",
-    "symbol": "TRUMP V2",
-    "address": "FUaFGUbQFKvskoQmDkWuDuCynVBzPKimyDvxM52Ut9cM",
-    "marketCap": 107498,
-    "logo": "https://ipfs.io/ipfs/bafkreibomsbzvj4lcvete4lv2ov6iprjydba2lkz5kjryvha2sbtxwt7au",
-    "color": "#9945FF",
-    "platform": "Meteora",
-    "priceUsd": 0.0001074,
-    "liquidity": 28524.32,
-    "rank": 547,
-    "volumeUsd": 7682408.13
-  },
-  {
     "id": "murad",
     "name": "Murad 💹🧲 ",
     "symbol": "Murad ",
@@ -7670,34 +6690,6 @@
     "liquidity": 65803.43,
     "volumeUsd": 196.81,
     "rank": 548
-  },
-  {
-    "id": "aic",
-    "name": "AI Companions",
-    "symbol": "AIC",
-    "address": "2e8hPZ4hS7DSNvTvPmHxvDFx864xWZRZkSwRDzraGc8V",
-    "marketCap": 105221,
-    "logo": "https://ipfs.io/ipfs/bafkreiatw3npjo5fingmrdiebvsfx6arwwtkjnfx7mg6safvgqbjio44d4",
-    "color": "#95E1D3",
-    "platform": "Meteora",
-    "priceUsd": 0.0001052,
-    "liquidity": 31664.83,
-    "rank": 549,
-    "volumeUsd": 8631539.38
-  },
-  {
-    "id": "cash",
-    "name": "CASH",
-    "symbol": "CASH",
-    "address": "CASHx9KJUStyftLFWGvEVf59SGeG9sh5FfcnZMVPCASH",
-    "marketCap": 104483,
-    "logo": "https://token-metadata.bridge.xyz/images/cash.png",
-    "color": "#AA96DA",
-    "platform": "Orca",
-    "priceUsd": 0.9998,
-    "liquidity": 23293304.71,
-    "rank": 550,
-    "volumeUsd": 2581212.28
   },
   {
     "id": "goatis",
@@ -7728,19 +6720,6 @@
     "rank": 552
   },
   {
-    "id": "venezuela",
-    "name": "Venezuela Coin",
-    "symbol": "VENEZUELA",
-    "address": "DGBZLetGTyybs2RyeY8TJgjD5hRXLyQVLb2ec5AB2x6t",
-    "marketCap": 101479,
-    "logo": "https://ipfs.io/ipfs/Qmb6jJN8NaW8eEQR7dx4D1emZhPFGadpE9NtPCgNKssimi",
-    "color": "#14F195",
-    "platform": "Meteora",
-    "priceUsd": 0.0001014,
-    "liquidity": 0.09,
-    "rank": 553
-  },
-  {
     "id": "lemon",
     "name": "Dog Stolen From Tesla ",
     "symbol": "Lemon",
@@ -7753,20 +6732,6 @@
     "liquidity": 59058.42,
     "volumeUsd": 300.53,
     "rank": 554
-  },
-  {
-    "id": "sr7",
-    "name": "#CR7",
-    "symbol": "sR7",
-    "address": "e2mJiDGrBqVpvUATPSLBDSo8hVnCLaW8wPyHjjqdXZv",
-    "marketCap": 96386,
-    "logo": "https://ipfs.io/ipfs/bafkreif6rf2a36u4fa2uebjnmf2lpgw36pytctsi7zlxw7hqkhu5cv33y4",
-    "color": "#FF6B6B",
-    "platform": "Meteora",
-    "priceUsd": 0.00009638,
-    "liquidity": 21317.63,
-    "rank": 555,
-    "volumeUsd": 8529389.54
   },
   {
     "id": "remus",
@@ -7809,20 +6774,6 @@
     "liquidity": 118430.89,
     "volumeUsd": 495.09,
     "rank": 558
-  },
-  {
-    "id": "horse",
-    "name": "A HORSE",
-    "symbol": "HORSE",
-    "address": "HgABtWWo4sdrFyGTRpp6uC9Nv5C9HzWr3cWSvrhbZ8yt",
-    "marketCap": 91162,
-    "logo": "https://ipfs.io/ipfs/QmZ3CALAkbvXHTcJeMVvuYbCcNht6rVmoq6th9T86vViwp",
-    "color": "#95E1D3",
-    "platform": "Meteora",
-    "priceUsd": 0.00009116,
-    "liquidity": 0.1,
-    "rank": 559,
-    "volumeUsd": 0.01
   },
   {
     "id": "stockcoin",
@@ -7921,19 +6872,6 @@
     "liquidity": 40382.06,
     "volumeUsd": 2211.05,
     "rank": 566
-  },
-  {
-    "id": "creatoor",
-    "name": "Creatoor",
-    "symbol": "CREATOOR",
-    "address": "Ah6hDBSvZQnr1nugN9jVBVAJFLDiMDbQ99eMiSVASqBi",
-    "marketCap": 70470,
-    "logo": "https://ipfs.io/ipfs/QmQTgCtG6TUQ73qF8tHSm88m4PS8DBQysPBDn5zpeEgXva",
-    "color": "#14F195",
-    "platform": "Meteora",
-    "priceUsd": 0.00007047,
-    "liquidity": 0.07,
-    "rank": 567
   },
   {
     "id": "bro",
@@ -8146,20 +7084,6 @@
     "rank": 582
   },
   {
-    "id": "jpmcoin",
-    "name": "jpmCOIN .sol",
-    "symbol": "JPMCOIN",
-    "address": "ESdCh9B3srNTUEmwnMp4encLXxjD8uovtGjy8AxMfKcn",
-    "marketCap": 43954,
-    "logo": "https://ipfs.io/ipfs/bafkreieivkfbhl6t622dfwxg2b6vmd66m3gfgstu4bcayfxxtvhje264om",
-    "color": "#FCBAD3",
-    "platform": "Meteora",
-    "priceUsd": 0.00004395,
-    "liquidity": 7890.2,
-    "rank": 583,
-    "volumeUsd": 22153784.93
-  },
-  {
     "id": "1-1",
     "name": "The One Percent",
     "symbol": "1%",
@@ -8214,20 +7138,6 @@
     "liquidity": 18149.48,
     "volumeUsd": 74.06,
     "rank": 587
-  },
-  {
-    "id": "moonwhale",
-    "name": "moonwhale",
-    "symbol": "moonwhale",
-    "address": "B8cZb2i2sQJiuVH8NGUFGzfiTqU4DRvgacA52WiWvddp",
-    "marketCap": 36063,
-    "logo": "https://ipfs.io/ipfs/bafkreihpj2kewhunzbnvsl7nossfda35ltvqtdht6e5vhnjfxdc4sxxiku",
-    "color": "#9945FF",
-    "platform": "Meteora",
-    "priceUsd": 0.00003606,
-    "liquidity": 4206.97,
-    "rank": 588,
-    "volumeUsd": 9543399.6
   },
   {
     "id": "lux",
@@ -8370,34 +7280,6 @@
     "volumeUsd": 18081455.4
   },
   {
-    "id": "abstract",
-    "name": "AbstractChain",
-    "symbol": "Abstract",
-    "address": "DtVu33hhfmGNsi2BEcU1VLVh5BEi92acYzRp9Ug7A26X",
-    "marketCap": 28488,
-    "logo": "https://ipfs.io/ipfs/bafkreifgixjliwxurde3r2ozjpm6k6lpqxyk3zjzdu6xltzvtbpcu4prwe",
-    "color": "#FCBAD3",
-    "platform": "Meteora",
-    "priceUsd": 0.00002848,
-    "liquidity": 2122.11,
-    "rank": 599,
-    "volumeUsd": 8886460.48
-  },
-  {
-    "id": "arbitrum",
-    "name": "arbitrum",
-    "symbol": "Arbitrum",
-    "address": "4cCE7MzdBqzAMxAx4qM5gJAc3HrpSggYaP5HXPDUTg1j",
-    "marketCap": 27864,
-    "logo": "https://ipfs.io/ipfs/bafkreibcz3lmmnge6arg5qbooqwle7kfxyqzxtxxt3si4iuihu6i7aqsvu",
-    "color": "#FCBAD3",
-    "platform": "Meteora",
-    "priceUsd": 0.00002786,
-    "liquidity": 594.56,
-    "rank": 600,
-    "volumeUsd": 12431248.8
-  },
-  {
     "id": "a1lon9",
     "name": "alon-",
     "symbol": "a1lon9",
@@ -8524,20 +7406,6 @@
     "rank": 609
   },
   {
-    "id": "kalshi",
-    "name": "kalshi_ai_coin DRIVe L1",
-    "symbol": "KALSHI",
-    "address": "2LBLSWeQWnBSDXBPzW1f8h4rTJjpXmXzaDnytKMe2ind",
-    "marketCap": 20452,
-    "logo": "https://ipfs.io/ipfs/bafkreicvvg24xzmb2meuiqjekxzklthfzdiknakunxoa3qjigb5drdfheq",
-    "color": "#FF6B6B",
-    "platform": "Meteora",
-    "priceUsd": 0.00002045,
-    "liquidity": 1.47,
-    "rank": 610,
-    "volumeUsd": 47.45
-  },
-  {
     "id": "hooters",
     "name": "Hooter's CTO",
     "symbol": "HOOTERS",
@@ -8578,20 +7446,6 @@
     "liquidity": 20846.88,
     "volumeUsd": 3.95,
     "rank": 613
-  },
-  {
-    "id": "zama",
-    "name": "BRIdge zama_fhe FLASH",
-    "symbol": "ZAMa",
-    "address": "HTW9tkToEBQ3UPV8Wd3UEtitozLVr3vzVa1946qecfn8",
-    "marketCap": 18814,
-    "logo": "https://ipfs.io/ipfs/bafkreiffum4lalv76yhi6pvxod74ym37d5jmeweomkpr4iq3jw4laumjna",
-    "color": "#A8D8EA",
-    "platform": "Meteora",
-    "priceUsd": 0.00001881,
-    "liquidity": 1.69,
-    "rank": 614,
-    "volumeUsd": 9.57
   },
   {
     "id": "ovary",
@@ -9028,20 +7882,6 @@
     "rank": 645
   },
   {
-    "id": "zec",
-    "name": "Zcash",
-    "symbol": "ZEC",
-    "address": "A7bdiYdS5GjqGFtxf17ppRHtDKPkkRqbKtR27dxvQXaS",
-    "marketCap": 9869,
-    "logo": "https://arweave.net/QSYqnmB7NYlB7n1R6rz935Y07dlRK0tIuKe2mof5Sho",
-    "color": "#F38181",
-    "platform": "Raydium",
-    "priceUsd": 399.6,
-    "liquidity": 1664813.62,
-    "rank": 646,
-    "volumeUsd": 28357.23
-  },
-  {
     "id": "teslaai",
     "name": "Tesla AI CION",
     "symbol": "Tesla AI",
@@ -9084,20 +7924,6 @@
     "rank": 649
   },
   {
-    "id": "inx",
-    "name": "TURBo L1 infinex_wallet_coin",
-    "symbol": "Inx",
-    "address": "38QddqXYtkeVDa2UJVU8LW9Lankc76CU3Evjot53P3yu",
-    "marketCap": 6510,
-    "logo": "https://ipfs.io/ipfs/bafkreibycowewlwfendxk54ngptbxn6jnqy2yxbcxjhoxlpu3l7lka7rbe",
-    "color": "#4ECDC4",
-    "platform": "Meteora",
-    "priceUsd": 0.000006466,
-    "liquidity": 2.42,
-    "rank": 650,
-    "volumeUsd": 37.51
-  },
-  {
     "id": "dml",
     "name": "Dear Maduro Letter",
     "symbol": "DML",
@@ -9110,20 +7936,6 @@
     "liquidity": 8413.89,
     "rank": 651,
     "volumeUsd": 6810070.51
-  },
-  {
-    "id": "gr0k",
-    "name": "Grok Ai COiN TOKEN",
-    "symbol": "GR0K",
-    "address": "31AQzn3P2HBqWTPsdjazvKqXKwEQCaLG4KuKaNqwP9tb",
-    "marketCap": 783,
-    "logo": "https://ipfs.io/ipfs/Qmf5Hs7Zht17KiARnJG2PD3DSD4SQyQN7Hc9s3WGh3REVA",
-    "color": "#F38181",
-    "platform": "Raydium",
-    "priceUsd": 7.833e-7,
-    "liquidity": 51.79,
-    "rank": 652,
-    "volumeUsd": 6412661.61
   },
   {
     "id": "smug",
@@ -9140,48 +7952,6 @@
     "volumeUsd": 16819882.22
   },
   {
-    "id": "rngr",
-    "name": "ranger_finance_coin FLOW VAULT",
-    "symbol": "Rngr",
-    "address": "6HwwPRc4GVLLpWC2iKYG4cRhTi1dZK4xGZmfhhwvUPtY",
-    "marketCap": 94,
-    "logo": "https://ipfs.io/ipfs/bafkreigs5y5rtpsqrrk5pxtrzujt6lgvuprciecugfdqg56vb3mbecy6fi",
-    "color": "#A8D8EA",
-    "platform": "Meteora",
-    "priceUsd": 9.408e-8,
-    "liquidity": 1.64,
-    "rank": 654,
-    "volumeUsd": 37.53
-  },
-  {
-    "id": "geminiai",
-    "name": "Gemini  AI COIN TOKEN",
-    "symbol": "Gemini Ai",
-    "address": "UF37mcKrsQz7T9tqSnJQrK7TsjA5S2P9CPbnxXvSGAa",
-    "marketCap": 39,
-    "logo": "https://ipfs.io/ipfs/Qmf6777Ph6MMDHG9DtM4dACAELUZXbHkALtyohRL2BjKhb",
-    "color": "#A8D8EA",
-    "platform": "Raydium",
-    "priceUsd": 3.907e-8,
-    "liquidity": 96.12,
-    "rank": 655,
-    "volumeUsd": 12167488.33
-  },
-  {
-    "id": "googolai",
-    "name": "Google AI Coi",
-    "symbol": "Googol  AI",
-    "address": "Ar2bezYH2BEaRA9UCo6izZKrTPbob8wW8wfo1cEwCvP9",
-    "marketCap": 37,
-    "logo": "https://ipfs.io/ipfs/QmV4vDQSjDT2nBTU7FmBB52sod39tijFuBFqhJRHf9dF5g",
-    "color": "#AA96DA",
-    "platform": "Raydium",
-    "priceUsd": 3.726e-8,
-    "liquidity": 135.22,
-    "rank": 656,
-    "volumeUsd": 17104451.36
-  },
-  {
     "id": "vergo",
     "name": "Vergo Cash",
     "symbol": "Vergo",
@@ -9194,84 +7964,6 @@
     "liquidity": 0,
     "rank": 657,
     "volumeUsd": 6699171.8
-  },
-  {
-    "id": "sctmsol",
-    "name": "Sanctum Staked SOL",
-    "symbol": "sctmSOL",
-    "address": "sctmAy9zFfZznZUWxEMgGtF6PHZ3gwoiCGcfwRua1AZ",
-    "marketCap": 0,
-    "logo": "https://solana-validator-website-italo-casas.vercel.app/sanctum.png",
-    "color": "#4ECDC4",
-    "platform": "BONK.fun",
-    "priceUsd": 145.68642857049292,
-    "liquidity": 22432431.97134858,
-    "rank": 658
-  },
-  {
-    "id": "lmeow",
-    "name": "LMEOW",
-    "symbol": "LMEOW",
-    "address": "4AFLV4uXhvWjhxLMhPR9BSTQSdy4VUKNiio6c1Yzc4h3",
-    "marketCap": 0,
-    "logo": "https://ipfs.io/ipfs/QmZdfEPj4FyHcZajSqra49JVNHvHR4tWHddDphK56R54hs",
-    "color": "#FCBAD3",
-    "platform": "BONK.fun",
-    "priceUsd": 0.00007608634406564759,
-    "liquidity": 8.077169970477691e-7,
-    "rank": 659
-  },
-  {
-    "id": "3cx",
-    "name": "3CX",
-    "symbol": "3CX",
-    "address": "FaSYoE1Z7kUpW7n6gqx4N9kSMH7FGeL2hiLfsoQcWzni",
-    "marketCap": 0,
-    "logo": "https://ipfs.io/ipfs/bafkreihigrnm6ivkidoeb3jdhiqih4q3fhmun57366ssuxwijrgoygkwmi",
-    "color": "#F38181",
-    "platform": "BONK.fun",
-    "priceUsd": 0.0004842655745891296,
-    "liquidity": 0.0014209563038370015,
-    "rank": 660
-  },
-  {
-    "id": "brain",
-    "name": "Brainsol",
-    "symbol": "BRAIN",
-    "address": "CLjFdfzRZQRNk9kSXiGdZuw4VNZ2pXBgKY7WbJC72KYf",
-    "marketCap": 0,
-    "logo": "https://ipfs.io/ipfs/QmborXLKU2wPePUsKwJccyf2fjGxxMPQ4cKeTLGn3ph1LX",
-    "color": "#FFE66D",
-    "platform": "BONK.fun",
-    "priceUsd": 0.0000696380198735295,
-    "liquidity": 0.000004343771658653423,
-    "rank": 661
-  },
-  {
-    "id": "rockstar",
-    "name": "Rockstar Games",
-    "symbol": "Rockstar",
-    "address": "8QB42DfQSopiThBcAaiVeEPB65kNrfafEDs4Eu62nhSv",
-    "marketCap": 0,
-    "logo": "https://ipfs.io/ipfs/bafkreibdn7clnxfyqcalyv3njmy3dqtel4zdm77gaatuzsrd74lrnhvzqy",
-    "color": "#A8D8EA",
-    "platform": "BONK.fun",
-    "priceUsd": 0.0023957703162874756,
-    "liquidity": 0.0014850269358021395,
-    "rank": 662
-  },
-  {
-    "id": "pybobo",
-    "name": "Capybobo",
-    "symbol": "PYBOBO",
-    "address": "D6xWgRCSHoMEB5fqPwk3p6Stxirn5ytm2WwboSTTx4oE",
-    "marketCap": 0,
-    "logo": "https://capybobo.io/images/pybobo.png",
-    "color": "#AA96DA",
-    "platform": "BONK.fun",
-    "priceUsd": 0.000828977235629972,
-    "liquidity": 1221896.527092427,
-    "rank": 663
   },
   {
     "id": "tslaai",
