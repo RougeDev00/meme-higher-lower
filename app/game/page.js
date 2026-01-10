@@ -517,6 +517,12 @@ export default function GamePage() {
         setShowSpeedModeOverlay(false);
     };
 
+    const handleShare = () => {
+        const text = `This is my best score on @pumpordumpgame, try to beat me! 🚀 ${currentScore} pumpordumpgame.fun`;
+        const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
+        window.open(url, '_blank');
+    };
+
     const goHome = () => {
         router.push('/');
     };
@@ -756,7 +762,10 @@ export default function GamePage() {
                                 <img src="/btn-play-again.png" alt="Play Again" />
                             </button>
 
-                            <button className="game-over-btn-image-container">
+                            <button
+                                className="game-over-btn-image-container"
+                                onClick={handleShare}
+                            >
                                 <img src="/btn-share.png" alt="Share Score" />
                             </button>
 
