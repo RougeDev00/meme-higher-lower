@@ -628,7 +628,11 @@ a,
 }
 
 .score-display.high-score {
-  left: 1.5rem;
+  left: 2rem;
+  top: 6rem;
+  /* Moved down to avoid CA label overlap */
+  right: auto;
+  align-items: flex-start;
 }
 
 .score-display.current-score {
