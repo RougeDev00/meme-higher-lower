@@ -101,32 +101,20 @@ export async function POST(request) {
                 }
             }
 
-            // Prepare coin data for client
-            // The WINNING coin (the one that stays) should have marketCap visible
-            const sanitizeCoinWithMarketCap = (coin) => ({
+            // Prepare coin data for client - include marketCap for the staying coin
+            const sanitizeCoin = (coin, includeMarketCap = false) => ({
                 id: coin.id,
                 name: coin.name,
                 symbol: coin.symbol,
                 logo: coin.logo,
                 color: coin.color,
                 platform: coin.platform,
-                marketCap: coin.marketCap
-            });
-
-            const sanitizeCoin = (coin) => ({
-                id: coin.id,
-                name: coin.name,
-                symbol: coin.symbol,
-                logo: coin.logo,
-                color: coin.color,
-                platform: coin.platform
+                ...(includeMarketCap ? { marketCap: coin.marketCap } : {})
             });
 
             // Determine which side the winner stays on
-            // If winnerTurns >= MAX, winner leaves (new coin replaces winner's position)
-            // Otherwise winner stays in their current position
             const winnerStaysOnSide = winnerTurns >= MAX_WINNER_TURNS
-                ? (guess === 'left' ? 'right' : 'left')  // Loser stays
+                ? (guess === 'left' ? 'right' : 'left')  // Winner leaves, loser stays
                 : guess;  // Winner stays
 
             return NextResponse.json({
@@ -136,12 +124,8 @@ export async function POST(request) {
                 leftMarketCap: leftMC,
                 rightMarketCap: rightMC,
                 winnerSide: winnerStaysOnSide,
-                nextLeftCoin: winnerStaysOnSide === 'left'
-                    ? sanitizeCoinWithMarketCap(session.currentLeft)
-                    : sanitizeCoin(session.currentLeft),
-                nextRightCoin: winnerStaysOnSide === 'right'
-                    ? sanitizeCoinWithMarketCap(session.currentRight)
-                    : sanitizeCoin(session.currentRight)
+                nextLeftCoin: sanitizeCoin(session.currentLeft, winnerStaysOnSide === 'left'),
+                nextRightCoin: sanitizeCoin(session.currentRight, winnerStaysOnSide === 'right')
             });
 
         } else {
