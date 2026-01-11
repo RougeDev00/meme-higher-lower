@@ -1183,36 +1183,6 @@ select,
   pointer-events: none;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .game-container {
-    flex-direction: column;
-  }
-
-  .coin-logo-large {
-    width: 100px;
-    height: 100px;
-  }
-
-  .vs-divider {
-    width: 50px;
-    height: 50px;
-    font-size: 1rem;
-  }
-
-  .game-title {
-    font-size: 3.5rem;
-  }
-
-  .score-popup {
-    font-size: 8rem;
-  }
-
-  .coin-marketcap {
-    font-size: 1.4rem;
-  }
-}
-
 /* Info Button */
 .info-button {
   margin-top: 1.5rem;
@@ -1236,179 +1206,439 @@ select,
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
+
 /* =========================================
-   MOBILE RESPONSIVENESS (Added by AI)
+   MOBILE RESPONSIVENESS - COMPREHENSIVE
    ========================================= */
 
 @media (max-width: 768px) {
-  /* ===== HOME SCREEN ADAPTATIONS ===== */
-  .username-screen {
-    justify-content: flex-start; /* Start from top to avoid cutting off on small screens */
-    padding-top: 10vh;
-    padding-bottom: 2rem;
-    overflow-y: auto; /* Allow scrolling if content is too tall */
+
+  /* ----- GLOBAL MOBILE RESETS ----- */
+  html,
+  body {
+    overflow-x: hidden;
   }
 
-  /* Adjust Logo Sizes */
+  /* ----- HOME SCREEN ----- */
+  .username-screen {
+    justify-content: flex-start;
+    padding: 2rem 1rem;
+    padding-top: 5vh;
+    overflow-y: auto;
+    min-height: 100vh;
+    height: auto;
+  }
+
+  .home-content {
+    width: 100%;
+    padding: 0 1rem;
+  }
+
   .pump-logo {
-    width: 90px;
-    height: 90px;
-    margin-bottom: -0.5rem;
+    width: 80px;
+    height: 80px;
+    margin-bottom: 0;
   }
 
   .game-title-image {
-    height: 70px; /* Smaller title */
-    margin-bottom: 0.2rem;
+    height: 60px;
+    margin-bottom: 0.25rem;
   }
 
   .game-subtitle {
-    font-size: 0.9rem;
-    line-height: 1.4;
-    padding: 0 1.5rem;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    padding: 0 0.5rem;
+    margin-top: 0.5rem;
     margin-bottom: 1.5rem;
+    max-width: 100%;
   }
 
-  /* Form Container */
   .username-form {
-    max-width: 90%;
-    padding: 0 1rem;
-    gap: 1rem;
-  }
-
-  .username-input, .start-button-image {
     width: 100%;
-  }
-  
-  .start-button-image {
-    height: 90px; /* Specific height for button image */
-  }
-
-  /* Leaderboard Preview */
-  .leaderboard-preview {
-    width: 90%;
-    min-width: unset; /* Remove fixed min-width */
-    margin-top: 1.5rem;
-    padding: 1rem;
-  }
-  
-  /* Social Link & CA Label Repositioning */
-  .social-link-container {
-    bottom: 1rem;
-    left: 1rem;
-    padding: 6px;
-  }
-  
-  .social-icon {
-    width: 20px;
-    height: 20px;
-  }
-  
-  .ca-label {
-    top: 1rem;
-    left: 1rem;
-    font-size: 0.7rem;
+    max-width: 100%;
+    padding: 0;
+    gap: 0.75rem;
+    align-items: center;
   }
 
-  /* ===== GAME SCREEN ADAPTATIONS ===== */
-  .game-container {
-    flex-direction: column; /* Stack vertically */
-  }
-
-  /* Coin Sides - Stacked 50/50 */
-  .coin-side {
+  .username-input {
     width: 100%;
-    height: 50%;
-    border-right: none; /* Remove vertical divider if any (default was flex logic) */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Horizontal separator */
+    max-width: 100% !important;
+    font-size: 1rem;
+    padding: 0.85rem 1rem;
   }
-  
-  .coin-side:last-of-type {
-    border-bottom: none;
+
+  .early-access-label {
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    margin-bottom: 0.25rem;
   }
-  
-  .coin-info-container {
-    transform: scale(0.9); /* Slightly scale down everything */
-    gap: 0.5rem;
-  }
-  
-  .coin-logo-large {
-    width: 100px;
-    height: 100px;
-  }
-  
-  .coin-coin-ticker {
-    font-size: 1.2rem;
-    padding: 0.3rem 1rem;
-  }
-  
-  .coin-marketcap {
-    font-size: 1.5rem;
-    padding: 0.3rem 0.8rem;
+
+  .start-button-image-container {
     margin-top: 0.5rem;
   }
 
-  /* PILL CONTAINER (VS / Score) */
-  .pill-container {
-    width: 80px;
-    height: 80px;
-    /* Center it absolutely over the split */
-    /* top/left 50% is already set in main CSS, just resizing */
+  .start-button-image {
+    height: 75px;
+    width: auto;
   }
-  
+
+  .info-button {
+    margin-top: 0.75rem;
+    padding: 6px 18px;
+    font-size: 0.7rem;
+  }
+
+  .leaderboard-preview {
+    width: 100%;
+    min-width: unset;
+    margin-top: 1.25rem;
+    padding: 1rem;
+  }
+
+  .leaderboard-title {
+    font-size: 0.8rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .leaderboard-entry {
+    padding: 0.5rem 0;
+    font-size: 0.9rem;
+  }
+
+  .social-link-container {
+    bottom: 0.75rem;
+    left: 0.75rem;
+    padding: 5px;
+  }
+
+  .social-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .ca-label {
+    top: 0.75rem;
+    left: 0.75rem;
+    font-size: 0.65rem;
+  }
+
+  .version-label {
+    font-size: 0.65rem !important;
+    bottom: 5px !important;
+    right: 5px !important;
+  }
+
+  /* ----- GAME SCREEN ----- */
+  .game-container {
+    flex-direction: column;
+    height: 100vh;
+    height: 100dvh;
+    /* Dynamic viewport height for mobile browsers */
+  }
+
+  .coin-side {
+    width: 100%;
+    height: 50%;
+    flex: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .coin-side:last-of-type {
+    border-bottom: none;
+  }
+
+  .coin-info-container {
+    transform: none;
+    gap: 0.35rem;
+    padding: 0.5rem;
+  }
+
+  .coin-logo-wrapper {
+    width: 70px !important;
+    height: 70px !important;
+    margin-bottom: 0.25rem !important;
+  }
+
+  .coin-logo-large {
+    width: 70px;
+    height: 70px;
+  }
+
+  .coin-logo-placeholder {
+    width: 70px;
+    height: 70px;
+    font-size: 2rem;
+  }
+
+  .coin-ticker {
+    font-size: 1rem;
+    padding: 0.3rem 0.75rem;
+    min-width: 80px;
+    max-width: 200px;
+  }
+
+  .coin-name {
+    font-size: 0.8rem;
+    height: 2em;
+    max-width: 200px;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+  }
+
+  .coin-launchpad {
+    font-size: 0.6rem;
+    padding: 0.2rem 0.5rem;
+  }
+
+  .coin-marketcap {
+    font-size: 1.2rem;
+    padding: 0.25rem 0.6rem;
+    margin-top: 0.35rem;
+    border-radius: 8px;
+  }
+
+  /* ----- PILL (VS/SCORE) ----- */
+  .pill-container {
+    width: 60px;
+    height: 60px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  }
+
   .pill-image {
     margin-top: 2px;
   }
-  
+
   .pill-score {
-    font-size: 2.5rem;
+    font-size: 1.8rem;
   }
 
-  /* Adjust Embracing Border for Vertical Layout */
-  /* We need to change the "embracing" effect direction */
+  /* ----- SELECTED STATE (MOBILE) ----- */
   .coin-side.selected::before {
-    display: none; /* Hide complex embracing shape on mobile for simplicity, or adjust rotation */
+    display: none;
   }
-  
-  /* OVERLAYS */
-  .game-over-content {
-    width: 90%;
-    padding: 2rem 1rem;
+
+  .coin-side.selected::after {
+    border-width: 3px;
   }
-  
-  .game-over-title {
+
+  /* ----- SCORE DISPLAYS ----- */
+  .score-display {
+    top: 0.5rem;
+  }
+
+  .score-display.high-score {
+    left: 0.5rem;
+  }
+
+  .score-display.current-score {
+    right: 0.5rem;
+  }
+
+  .score-label {
+    font-size: 0.55rem;
+  }
+
+  .score-value {
+    font-size: 1rem;
+  }
+
+  /* ----- TIMER ----- */
+  .timer-container {
+    top: 3rem;
+  }
+
+  .timer-value {
     font-size: 1.5rem;
   }
-  
-  .game-over-score {
-    font-size: 4rem;
+
+  /* ----- IN-GAME LABEL ----- */
+  .in-game-label {
+    top: calc(50% - 70px);
+    font-size: 0.65rem;
+    letter-spacing: 1px;
   }
-  
-  .score-display {
-    top: 1rem; /* Move up slightly */
-  }
-  
-  .score-display.high-score {
-    left: 1rem;
-  }
-  
-  .score-display.current-score {
-    right: 1rem;
-  }
-  
-  .timer-container {
-    top: 5rem; /* Ensure timer doesn't overlap with score/top elements */
-  }
-  
+
+  /* ----- LEADERBOARD TOGGLE ----- */
   .leaderboard-toggle {
-    top: 4rem;
-    right: 1rem;
+    bottom: 0.75rem;
+    right: 0.75rem;
+    top: auto;
+  }
+
+  .toggle-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.7rem;
+  }
+
+  /* ----- LEADERBOARD MODAL ----- */
+  .leaderboard-modal {
+    width: 90%;
+    min-width: unset;
+    padding: 1.5rem 1rem;
+  }
+
+  /* ----- GAME OVER SCREEN ----- */
+  .game-over-overlay {
+    padding: 1rem;
+  }
+
+  .game-over-content {
+    width: 95%;
+    max-width: 320px;
+    padding: 1.5rem 1rem;
+    gap: 0.75rem;
+  }
+
+  .drag-hint {
+    font-size: 0.7rem;
+  }
+
+  .game-over-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .game-over-score {
+    font-size: 3.5rem;
+  }
+
+  .game-over-buttons {
+    gap: 0.5rem;
+    margin-top: 0.25rem;
+  }
+
+  .game-over-btn-image-container img {
+    height: 70px;
+  }
+
+  /* ----- SPEED MODE OVERLAY ----- */
+  .speed-mode-content {
+    gap: 1.5rem;
+    padding: 1rem;
+  }
+
+  .speed-mode-logo {
+    width: 120px;
+    margin-bottom: 0.5rem;
+  }
+
+  .speed-mode-text {
+    font-size: 1.25rem;
+    max-width: 90%;
+  }
+
+  /* ----- INFO MODAL ----- */
+  .info-modal {
+    width: 90%;
+    max-height: 80vh;
+  }
+
+  /* ----- SCORE POPUP ----- */
+  .score-popup {
+    font-size: 6rem;
   }
 }
 
-/* Extra Small Screens (iPhone SE etc) */
+/* ----- EXTRA SMALL SCREENS (iPhone SE, etc) ----- */
 @media (max-width: 380px) {
-  .pump-logo { width: 70px; height: 70px; }
-  .game-title-image { height: 50px; }
-  .username-input { font-size: 1rem; padding: 0.8rem; }
-  .coin-info-container { transform: scale(0.8); }
+  .username-screen {
+    padding-top: 3vh;
+  }
+
+  .pump-logo {
+    width: 60px;
+    height: 60px;
+  }
+
+  .game-title-image {
+    height: 45px;
+  }
+
+  .game-subtitle {
+    font-size: 0.75rem;
+  }
+
+  .username-input {
+    font-size: 0.9rem;
+    padding: 0.7rem 0.9rem;
+  }
+
+  .start-button-image {
+    height: 60px;
+  }
+
+  .coin-logo-wrapper {
+    width: 55px !important;
+    height: 55px !important;
+  }
+
+  .coin-logo-large,
+  .coin-logo-placeholder {
+    width: 55px;
+    height: 55px;
+  }
+
+  .coin-ticker {
+    font-size: 0.85rem;
+    padding: 0.25rem 0.6rem;
+  }
+
+  .coin-marketcap {
+    font-size: 1rem;
+  }
+
+  .pill-container {
+    width: 50px;
+    height: 50px;
+  }
+
+  .pill-score {
+    font-size: 1.5rem;
+  }
+
+  .game-over-score {
+    font-size: 2.5rem;
+  }
+
+  .game-over-btn-image-container img {
+    height: 55px;
+  }
+}
+
+/* ----- LANDSCAPE MODE ON MOBILE ----- */
+@media (max-width: 768px) and (orientation: landscape) {
+  .game-container {
+    flex-direction: row;
+  }
+
+  .coin-side {
+    width: 50%;
+    height: 100%;
+    border-bottom: none;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .coin-side:last-of-type {
+    border-right: none;
+  }
+
+  .pill-container {
+    width: 50px;
+    height: 50px;
+  }
+
+  .coin-info-container {
+    transform: scale(0.85);
+  }
+
+  .timer-container {
+    top: 0.5rem;
+  }
+
+  .in-game-label {
+    top: calc(50% - 50px);
+    font-size: 0.55rem;
+  }
 }
