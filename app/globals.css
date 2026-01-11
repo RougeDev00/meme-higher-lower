@@ -688,6 +688,8 @@ select,
 
 .score-display.current-score {
   right: 1.5rem;
+  align-items: flex-end;
+  text-align: right;
 }
 
 .score-label {
