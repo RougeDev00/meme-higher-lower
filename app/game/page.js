@@ -618,7 +618,7 @@ export default function GamePage({ onGoHome }) {
                         <button
                             className="info-button"
                             onClick={() => setShowInfo(true)}
-                            style={{ position: 'absolute', top: '20px', right: '20px', marginTop: 0 }}
+                            style={{ position: 'absolute', top: '2rem', right: '2rem', marginTop: 0, zIndex: 300 }}
                         >
                             INFO
                         </button>
