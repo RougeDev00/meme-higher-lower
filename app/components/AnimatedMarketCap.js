@@ -42,11 +42,9 @@ export default function AnimatedMarketCap({ value, show }) {
         };
     }, [show, value]);
 
-    if (!show) return null;
-
     return (
-        <div className="coin-marketcap">
-            {formatMarketCap(displayValue)}
+        <div className="coin-marketcap" style={{ visibility: show ? 'visible' : 'hidden' }}>
+            {formatMarketCap(show ? displayValue : value)}
         </div>
     );
 }
