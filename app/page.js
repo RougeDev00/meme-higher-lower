@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { PublicKey } from '@solana/web3.js';
 import CursorTrail from './components/CursorTrail';
 import GamePage from './game/page';
 import InfoModal from './components/InfoModal';
@@ -10,6 +11,7 @@ import { GAME_CONFIG } from '@/lib/gameConfig';
 export default function Home() {
   const [username, setUsername] = useState('');
   const [walletAddress, setWalletAddress] = useState('');
+  const [walletError, setWalletError] = useState('');
   const [leaderboard, setLeaderboard] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showInfo, setShowInfo] = useState(false);
@@ -38,25 +40,59 @@ export default function Home() {
     }
   }, []);
 
-  const handleStart = () => {
-    if (username.trim()) {
-      localStorage.setItem('meme-game-username', username.trim());
-
-      let finalId = walletAddress.trim();
-
-      if (finalId) {
-        // User provided wallet - they can save score
-        localStorage.setItem('meme-game-wallet', finalId);
-        localStorage.setItem('meme-game-active-id', finalId);
-      } else {
-        // No wallet - GUEST mode - no score saving
-        localStorage.setItem('meme-game-active-id', 'GUEST');
-      }
-
-      setIsPlaying(true);
-      setTimeout(() => setIsTransitioned(true), 850); // Slightly longer than 0.8s animation
+  const validateWallet = (address) => {
+    if (!address) return true;
+    try {
+      new PublicKey(address);
+      return true;
+    } catch (e) {
+      return false;
     }
   };
+
+  const handleStart = async () => {
+    if (username.trim()) {
+      const finalId = walletAddress.trim();
+
+      if (finalId && !validateWallet(finalId)) {
+        setWalletError('Invalid Wallet Address');
+        return;
+      }
+
+      if (finalId) {
+        // Check for conflict
+        try {
+          const res = await fetch(`/api/user/check?walletAddress=${finalId}`);
+          const data = await res.json();
+          if (data.exists && data.username !== username.trim()) {
+            setWalletError('Wallet already taken');
+            return;
+          }
+        } catch (e) {
+          console.error('Error checking user:', e);
+        }
+      }
+
+      // Proceed if no conflict
+      proceedToStart(username.trim(), finalId);
+    }
+  };
+
+  const proceedToStart = (finalUsername, finalWallet) => {
+    localStorage.setItem('meme-game-username', finalUsername);
+
+    if (finalWallet) {
+      localStorage.setItem('meme-game-wallet', finalWallet);
+      localStorage.setItem('meme-game-active-id', finalWallet);
+    } else {
+      localStorage.setItem('meme-game-active-id', 'GUEST');
+    }
+
+    setIsPlaying(true);
+    setTimeout(() => setIsTransitioned(true), 850);
+  };
+
+
 
   const handleGoHome = () => {
     setIsPlaying(false);
@@ -116,9 +152,17 @@ export default function Home() {
             className="username-input wallet-input"
             placeholder="Insert Wallet to join Leaderboard"
             value={walletAddress}
-            onChange={(e) => setWalletAddress(e.target.value)}
-            style={{ marginTop: '10px', fontSize: '0.9rem', width: '100%', maxWidth: '300px' }}
+            onChange={(e) => {
+              setWalletAddress(e.target.value);
+              setWalletError('');
+            }}
+            style={{ marginTop: '10px', fontSize: '0.9rem', width: '100%', maxWidth: '300px', borderColor: walletError ? '#ef4444' : '' }}
           />
+          {walletError && (
+            <div style={{ color: '#ef4444', fontSize: '0.8rem', marginTop: '5px', fontWeight: 'bold' }}>
+              {walletError}
+            </div>
+          )}
 
           <div className="early-access-label">EARLY ACCESS - DEMO VERSION</div>
 
@@ -152,14 +196,7 @@ export default function Home() {
                   {entry.username}
                   {entry.wallet_address && (
                     <span
-                      style={{ fontSize: '0.8rem', color: '#888', marginLeft: '0.5rem', fontWeight: 400, opacity: 0.7, cursor: 'pointer', textDecoration: 'underline dotted' }}
-                      title="Click to copy full address"
-                      onClick={(e) => {
-                        navigator.clipboard.writeText(entry.wallet_address);
-                        const originalText = e.target.innerText;
-                        e.target.innerText = 'Copied!';
-                        setTimeout(() => { e.target.innerText = originalText; }, 1000);
-                      }}
+                      style={{ fontSize: '0.8rem', color: '#888', marginLeft: '0.5rem', fontWeight: 400, opacity: 0.5 }}
                     >
                       {entry.wallet_address.slice(0, 4)}...{entry.wallet_address.slice(-4)}
                     </span>
@@ -213,6 +250,8 @@ export default function Home() {
           </div>
         </div>
       )}
+
+
     </div>
   );
 }
