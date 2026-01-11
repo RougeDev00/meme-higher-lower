@@ -18,8 +18,6 @@ export default function Home() {
   const [showInfo, setShowInfo] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isTransitioned, setIsTransitioned] = useState(false);
-  const [existingUsername, setExistingUsername] = useState('');
-  const [showUsernamePrompt, setShowUsernamePrompt] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -108,13 +106,9 @@ export default function Home() {
         const res = await fetch(`/api/user/check?walletAddress=${address}`);
         const data = await res.json();
         if (data.exists && data.username) {
-          // Wallet has an existing username - show prompt to keep or change
-          setExistingUsername(data.username);
-          setWalletAddress(address);
-          localStorage.setItem('meme-game-wallet', address);
-          setShowUsernamePrompt(true);
-          setIsWalletConnecting(false);
-          return;
+          // Wallet has an existing username - auto-fill it
+          setUsername(data.username);
+          localStorage.setItem('meme-game-username', data.username);
         }
       } catch (e) {
         console.error('Error checking user:', e);
@@ -148,20 +142,6 @@ export default function Home() {
     } catch (e) {
       console.error('Error disconnecting:', e);
     }
-  };
-
-  // Handle keeping existing username
-  const handleKeepUsername = () => {
-    setUsername(existingUsername);
-    localStorage.setItem('meme-game-username', existingUsername);
-    setShowUsernamePrompt(false);
-    setExistingUsername('');
-  };
-
-  // Handle changing username (just close modal, user will type new one)
-  const handleChangeUsername = () => {
-    setShowUsernamePrompt(false);
-    setExistingUsername('');
   };
 
   return (
@@ -309,29 +289,6 @@ export default function Home() {
 
       {/* Info Modal */}
       {showInfo && <InfoModal onClose={() => setShowInfo(false)} />}
-
-      {/* Username Prompt Modal */}
-      {showUsernamePrompt && (
-        <>
-          <div className="leaderboard-modal-backdrop" onClick={handleChangeUsername} />
-          <div className="username-prompt-modal">
-            <h3>👋 Welcome back!</h3>
-            <p>This wallet is linked to username:</p>
-            <div className="existing-username-display">{existingUsername}</div>
-            <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginTop: '0.5rem' }}>
-              Do you want to keep this username or change it?
-            </p>
-            <div className="username-prompt-buttons">
-              <button className="prompt-btn prompt-btn-primary" onClick={handleKeepUsername}>
-                Keep "{existingUsername}"
-              </button>
-              <button className="prompt-btn prompt-btn-secondary" onClick={handleChangeUsername}>
-                Change Username
-              </button>
-            </div>
-          </div>
-        </>
-      )}
 
       <CursorTrail />
 
