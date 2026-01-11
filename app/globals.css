@@ -432,6 +432,7 @@ a,
   border-width: 6px !important;
   transform: translate(-50%, -50%) scale(1.1);
   background-color: var(--success-green) !important;
+  border: 6px solid var(--success-green) !important;
 }
 
 .pill-container.right-correct {
@@ -448,6 +449,7 @@ a,
   border-width: 6px !important;
   animation: shake 0.5s cubic-bezier(.36, .07, .19, .97) both;
   background-color: var(--error-red) !important;
+  border: 6px solid var(--error-red) !important;
 }
 
 .pill-container.right-wrong {
@@ -505,13 +507,12 @@ a,
   transform: translate(-50%, -50%);
   font-size: 4rem;
   font-weight: 900;
-  color: #22c55e;
-  /* Explicit green color (Tailwind green-500) just in case */
+  color: #ffffff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
   opacity: 0;
   transition: opacity 0.2s ease, transform 0.3s ease;
   pointer-events: none;
-  z-index: 5;
-  /* Score is top layer */
+  z-index: 25;
 }
 
 .pill-score.visible {
