@@ -425,41 +425,23 @@ select,
 }
 
 /* Continuous Border Effect */
+/* Continuous Border Effect */
 .pill-container.left-correct,
 .pill-container.right-correct {
-  /* Ensure border colors override completely without transparency artifacts */
-  border-left-color: transparent !important;
-  border-top-color: var(--pump-green) !important;
-  border-bottom-color: var(--pump-green) !important;
-  border-right-color: var(--pump-green) !important;
-
+  /* Solid green border on all sides to eliminate white artifacts */
+  border-color: var(--pump-green) !important;
   border-width: 6px !important;
   transform: translate(-50%, -50%) scale(1.1);
   background-color: var(--success-green) !important;
-  /* Redundant border declaration removed to let individual sides work */
-}
-
-.pill-container.right-correct {
-  border-right-color: transparent !important;
-  border-left-color: var(--pump-green) !important;
 }
 
 .pill-container.left-wrong,
 .pill-container.right-wrong {
-  border-left-color: transparent !important;
-  border-top-color: var(--pump-red) !important;
-  border-bottom-color: var(--pump-red) !important;
-  border-right-color: var(--pump-red) !important;
-
+  /* Solid red border on all sides */
+  border-color: var(--pump-red) !important;
   border-width: 6px !important;
   animation: shake 0.5s cubic-bezier(.36, .07, .19, .97) both;
   background-color: var(--error-red) !important;
-  /* Redundant border removed */
-}
-
-.pill-container.right-wrong {
-  border-right-color: transparent !important;
-  border-left-color: var(--pump-red) !important;
 }
 
 .pill-image {
