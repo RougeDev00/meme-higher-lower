@@ -308,6 +308,8 @@ select,
   display: flex;
   position: relative;
   overflow: hidden;
+  background: var(--dark-bg);
+  /* Ensure opaque background to cover home screen */
 }
 
 .game-container.slide-enter {

@@ -12,6 +12,7 @@ export default function Home() {
   const [leaderboard, setLeaderboard] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isTransitioned, setIsTransitioned] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -51,7 +52,13 @@ export default function Home() {
       }
 
       setIsPlaying(true);
+      setTimeout(() => setIsTransitioned(true), 850); // Slightly longer than 0.8s animation
     }
+  };
+
+  const handleGoHome = () => {
+    setIsPlaying(false);
+    setIsTransitioned(false);
   };
 
   const handleKeyPress = (e) => {
@@ -164,11 +171,20 @@ export default function Home() {
         {GAME_CONFIG.GAME_VERSION}
       </div>
 
+      {/* Hide home content after game is fully loaded to prevent interaction/rendering underneath */}
+      <style jsx global>{`
+        .home-content, .home-background, .social-link-container, .ca-label {
+          display: ${isTransitioned ? 'none' : 'flex'};
+        }
+      `}</style>
+
       <CursorTrail />
 
       {isPlaying && (
         <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', zIndex: 100 }}>
-          <GamePage onGoHome={() => setIsPlaying(false)} />
+          <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', zIndex: 100 }}>
+            <GamePage onGoHome={handleGoHome} />
+          </div>
         </div>
       )}
     </div>
