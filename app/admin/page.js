@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { getAdminData, deleteAdminUser, deleteAllAdminUsers } from './actions';
 
 export default function AdminPage() {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -83,8 +84,7 @@ export default function AdminPage() {
     const fetchData = async () => {
         setLoading(true);
         try {
-            const res = await fetch('/api/admin/data');
-            const json = await res.json();
+            const json = await getAdminData();
             setData(json.data || []);
         } catch (error) {
             console.error('Failed to fetch data', error);
@@ -126,13 +126,7 @@ export default function AdminPage() {
         }
 
         try {
-            const res = await fetch('/api/admin/data', {
-                method: 'DELETE',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ walletAddress })
-            });
-
-            const json = await res.json();
+            const json = await deleteAdminUser(walletAddress);
             if (json.success) {
                 alert('User deleted successfully');
                 fetchData(); // Refresh list
@@ -209,12 +203,7 @@ export default function AdminPage() {
                             if (confirm('⚠️ DANGER: Are you sure you want to DELETE ALL USERS?')) {
                                 if (confirm('This action CANNOT be undone. Confirm delete all?')) {
                                     try {
-                                        const res = await fetch('/api/admin/data', {
-                                            method: 'DELETE',
-                                            headers: { 'Content-Type': 'application/json' },
-                                            body: JSON.stringify({ deleteAll: true })
-                                        });
-                                        const json = await res.json();
+                                        const json = await deleteAllAdminUsers();
                                         if (json.success) {
                                             alert('All users deleted successfully.');
                                             fetchData();
@@ -345,12 +334,7 @@ export default function AdminPage() {
                             if (confirm('⚠️ DANGER: Are you sure you want to DELETE ALL USERS?')) {
                                 if (confirm('This action CANNOT be undone. Confirm delete all?')) {
                                     try {
-                                        const res = await fetch('/api/admin/data', {
-                                            method: 'DELETE',
-                                            headers: { 'Content-Type': 'application/json' },
-                                            body: JSON.stringify({ deleteAll: true })
-                                        });
-                                        const json = await res.json();
+                                        const json = await deleteAllAdminUsers();
                                         if (json.success) {
                                             alert('All users deleted successfully.');
                                             fetchData();
