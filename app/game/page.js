@@ -514,27 +514,48 @@ export default function GamePage() {
                 </>
             )}
 
-            {/* Game Over Modal */}
+            {/* Game Over */}
             {gameOver && (
                 <div className="game-over-overlay">
-                    <div className="game-over-content">
-                        <img src={gameOverImage} alt="Game Over" className="game-over-image" />
-                        <h2 className="game-over-title">GAME OVER</h2>
-                        <p className="game-over-score">{currentScore}</p>
-
+                    <div
+                        className="game-over-background"
+                        style={{ backgroundImage: `url(${gameOverImage})` }}
+                    />
+                    <div
+                        className="game-over-content"
+                        onMouseDown={handleMouseDown}
+                        style={{
+                            transform: `translate(${dragPosition.x}px, ${dragPosition.y}px)`,
+                            cursor: isDragging ? 'grabbing' : 'grab'
+                        }}
+                    >
+                        <div className="drag-hint">
+                            <span>✢ Drag to move</span>
+                        </div>
+                        <div className="game-over-title">You scored</div>
+                        <div className="game-over-score">{currentScore}</div>
                         <div className="game-over-buttons">
-                            <button className="game-over-btn-image-container" onClick={restartGame}>
+                            <button
+                                className="game-over-btn-image-container"
+                                onClick={restartGame}
+                            >
                                 <img src="/btn-play-again.png" alt="Play Again" />
                             </button>
 
-                            <button className="game-over-btn-image-container" onClick={() => {
-                                const text = `🔥 I just scored ${currentScore} on @pumpordumpgame!\n\nCan you beat my record? 🚀\n\nPlay now 👇\npumpordumpgame.fun`;
-                                window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`, '_blank');
-                            }}>
+                            <button
+                                className="game-over-btn-image-container"
+                                onClick={() => {
+                                    const text = `🔥 I just scored ${currentScore} on @pumpordumpgame!\n\nCan you beat my record? 🚀\n\nPlay now 👇\npumpordumpgame.fun`;
+                                    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`, '_blank');
+                                }}
+                            >
                                 <img src="/btn-share.png" alt="Share Score" />
                             </button>
 
-                            <button className="game-over-btn-image-container" onClick={() => router.push('/')}>
+                            <button
+                                className="game-over-btn-image-container"
+                                onClick={() => router.push('/')}
+                            >
                                 <img src="/btn-home.png" alt="Home" />
                             </button>
                         </div>
