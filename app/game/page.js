@@ -298,6 +298,38 @@ export default function GamePage() {
         return cleanup;
     }, [gameOver, isAnimating, showLeaderboard, isPaused, showSpeedModeOverlay, userId, username, currentScore]);
 
+    // Handle visibility change - CRITICAL for catching time when returning to tab
+    useEffect(() => {
+        const handleVisibilityChange = () => {
+            if (document.visibilityState === 'visible' && timerEndTimeRef.current !== null) {
+                const now = Date.now();
+                const remaining = timerEndTimeRef.current - now;
+
+                if (remaining <= 0) {
+                    timerEndTimeRef.current = null;
+                    setTimeLeft(0);
+                    setGameOver(true);
+                    setResultState({ left: 'wrong', right: 'wrong' });
+
+                    if (userId && userId !== 'GUEST') {
+                        fetch('/api/leaderboard', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ username, score: currentScore, walletAddress: userId })
+                        }).then(() => {
+                            fetch('/api/leaderboard').then(res => res.json()).then(data => setLeaderboard(data.leaderboard || []));
+                        });
+                    }
+                } else {
+                    setTimeLeft(remaining);
+                }
+            }
+        };
+
+        document.addEventListener('visibilitychange', handleVisibilityChange);
+        return () => document.removeEventListener('visibilitychange', handleVisibilityChange);
+    }, [userId, username, currentScore]);
+
     // Reset timer end time when a new round starts (timeLeft resets to 10000)
     useEffect(() => {
         if (timeLeft >= 9900 && !gameOver && !isAnimating) {
