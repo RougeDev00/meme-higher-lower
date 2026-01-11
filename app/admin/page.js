@@ -10,14 +10,73 @@ export default function AdminPage() {
     const [loading, setLoading] = useState(false);
     const router = useRouter();
 
+    const [lockoutTime, setLockoutTime] = useState(null);
+    const [timeLeft, setTimeLeft] = useState(0);
+
+    useEffect(() => {
+        const storedLockout = localStorage.getItem('admin_lockout_until');
+        if (storedLockout) {
+            const lockoutUntil = parseInt(storedLockout);
+            if (Date.now() < lockoutUntil) {
+                setLockoutTime(lockoutUntil);
+            } else {
+                localStorage.removeItem('admin_lockout_until');
+                localStorage.removeItem('admin_failed_attempts');
+            }
+        }
+    }, []);
+
+    useEffect(() => {
+        if (!lockoutTime) return;
+
+        const interval = setInterval(() => {
+            const remaining = Math.ceil((lockoutTime - Date.now()) / 1000);
+            if (remaining <= 0) {
+                setLockoutTime(null);
+                setTimeLeft(0);
+                localStorage.removeItem('admin_lockout_until');
+                localStorage.removeItem('admin_failed_attempts');
+            } else {
+                setTimeLeft(remaining);
+            }
+        }, 1000);
+
+        return () => clearInterval(interval);
+    }, [lockoutTime]);
+
     const handleLogin = (e) => {
         e.preventDefault();
+
+        if (lockoutTime) return;
+
         // Simple client-side check. In production, use real auth.
         if (password === 'JodyMerda10.') {
             setIsAuthenticated(true);
             fetchData();
+            // Reset attempts on success
+            localStorage.removeItem('admin_failed_attempts');
+            localStorage.removeItem('admin_lockout_until');
         } else {
-            alert('Invalid password');
+            // Increment failed attempts
+            const currentFailed = parseInt(localStorage.getItem('admin_failed_attempts') || '0') + 1;
+            localStorage.setItem('admin_failed_attempts', currentFailed.toString());
+
+            let newLockoutTime = null;
+            if (currentFailed >= 3) {
+                if (currentFailed === 3) {
+                    newLockoutTime = Date.now() + 60 * 1000; // 1 minute
+                } else if (currentFailed === 4) {
+                    newLockoutTime = Date.now() + 5 * 60 * 1000; // 5 minutes
+                } else {
+                    newLockoutTime = Date.now() + 10 * 60 * 1000; // 10 minutes
+                }
+
+                localStorage.setItem('admin_lockout_until', newLockoutTime.toString());
+                setLockoutTime(newLockoutTime);
+                alert(`Too many failed attempts. Locked out for ${Math.ceil((newLockoutTime - Date.now()) / 1000 / 60)} minutes.`);
+            } else {
+                alert(`Invalid password. ${3 - currentFailed} attempts remaining before lockout.`);
+            }
         }
     };
 
@@ -115,20 +174,21 @@ export default function AdminPage() {
                     />
                     <button
                         type="submit"
+                        disabled={!!lockoutTime}
                         style={{
                             padding: '10px',
                             borderRadius: '5px',
                             border: 'none',
-                            backgroundColor: '#00ff88',
-                            color: '#000',
-                            cursor: 'pointer',
+                            backgroundColor: lockoutTime ? '#666' : '#00ff88',
+                            color: lockoutTime ? '#ccc' : '#000',
+                            cursor: lockoutTime ? 'not-allowed' : 'pointer',
                             fontWeight: 'bold'
                         }}
                     >
-                        Login
+                        {lockoutTime ? `Locked (${Math.floor(timeLeft / 60)}:${(timeLeft % 60).toString().padStart(2, '0')})` : 'Login'}
                     </button>
                 </form>
-            </div>
+            </div >
         );
     }
 
