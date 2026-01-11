@@ -206,29 +206,29 @@ export default function Home() {
       {showInfo && (
         <>
           <div className="leaderboard-modal-backdrop" onClick={() => setShowInfo(false)} />
-          <div className="leaderboard-modal" style={{ maxWidth: '600px', width: '90%', textAlign: 'left', lineHeight: '1.6', fontSize: '0.9rem' }}>
+          <div className="leaderboard-modal" style={{ maxWidth: '600px', width: '90%', textAlign: 'left', lineHeight: '1.4', fontSize: '0.82rem', padding: '1.5rem' }}>
             <button className="modal-close" onClick={() => setShowInfo(false)}>✕</button>
-            <h3 style={{ marginBottom: '1rem', textAlign: 'center', fontSize: '1.5rem' }}>Welcome to PUMP or DUMP? 🚀</h3>
-            <div style={{ maxHeight: '70vh', overflowY: 'auto', paddingRight: '10px' }}>
-              <p style={{ marginBottom: '1rem' }}>Inspired by the classic Higher-Lower mechanic, adapted for the <strong>pump.fun</strong> ecosystem.</p>
+            <h3 style={{ marginBottom: '0.8rem', textAlign: 'center', fontSize: '1.3rem', marginTop: '0' }}>Welcome to PUMP or DUMP? 🚀</h3>
+            <div>
+              <p style={{ marginBottom: '0.8rem' }}>Inspired by the classic Higher-Lower mechanic, adapted for the <strong>pump.fun</strong> ecosystem.</p>
 
-              <h4 style={{ color: '#fff', marginBottom: '0.5rem' }}>🎮 Gameplay & Leaderboard</h4>
-              <p style={{ marginBottom: '1rem', color: '#ccc' }}>Enter a username to start playing immediately. However, to track your progress and climb the ranks, <strong>wallet insertion is required</strong>. Your wallet address serves as your secure login, ensuring a verified leaderboard. Returning players can improve their stored scores simply by reconnecting the same wallet.</p>
+              <h4 style={{ color: '#fff', marginBottom: '0.2rem', fontSize: '0.9rem' }}>🎮 Gameplay & Leaderboard</h4>
+              <p style={{ marginBottom: '0.8rem', color: '#ccc' }}>Enter a username to start playing immediately. However, to track your progress and climb the ranks, <strong>wallet insertion is required</strong>. Your wallet address serves as your secure login, ensuring a verified leaderboard. Returning players can improve their stored scores simply by reconnecting the same wallet.</p>
 
-              <h4 style={{ color: '#fff', marginBottom: '0.5rem' }}>💸 Hourly Rewards</h4>
-              <p style={{ marginBottom: '1rem', color: '#ccc' }}>We believe in rewarding skill. Every hour, the <strong>top 3 players</strong> on the leaderboard receive <strong>2% of the creator fees</strong> generated on pump.fun. Winners are subsequently moved to the "Rewarded Users" section, keeping the competition fresh every round.</p>
+              <h4 style={{ color: '#fff', marginBottom: '0.2rem', fontSize: '0.9rem' }}>💸 Hourly Rewards</h4>
+              <p style={{ marginBottom: '0.8rem', color: '#ccc' }}>We believe in rewarding skill. Every hour, the <strong>top 3 players</strong> on the leaderboard receive <strong>2% of the creator fees</strong> generated on pump.fun. Winners are subsequently moved to the "Rewarded Users" section, keeping the competition fresh every round.</p>
 
-              <h4 style={{ color: '#fff', marginBottom: '0.5rem' }}>📊 Powered by Dexscreener API</h4>
-              <p style={{ marginBottom: '1rem', color: '#ccc' }}>We prioritize accuracy. All coin data and Market Caps are fetched directly from the <strong>Dexscreener API</strong> and updated hourly in real-time.</p>
+              <h4 style={{ color: '#fff', marginBottom: '0.2rem', fontSize: '0.9rem' }}>📊 Powered by Dexscreener API</h4>
+              <p style={{ marginBottom: '0.8rem', color: '#ccc' }}>We prioritize accuracy. All coin data and Market Caps are fetched directly from the <strong>Dexscreener API</strong> and updated hourly in real-time.</p>
 
-              <h4 style={{ color: '#fff', marginBottom: '0.5rem' }}>🚀 Our Mission</h4>
-              <p style={{ marginBottom: '1rem', color: '#ccc' }}>PUMP or DUMP was born to last. In a chaotic market, we are building a project that is unique, engaging, and genuinely fun to use.</p>
+              <h4 style={{ color: '#fff', marginBottom: '0.2rem', fontSize: '0.9rem' }}>🚀 Our Mission</h4>
+              <p style={{ marginBottom: '0.8rem', color: '#ccc' }}>PUMP or DUMP was born to last. In a chaotic market, we are building a project that is unique, engaging, and genuinely fun to use.</p>
 
-              <h4 style={{ color: '#fff', marginBottom: '0.5rem' }}>🪙 Token Launch</h4>
-              <p style={{ marginBottom: '1rem', color: '#ccc' }}>The official project token is launching soon on <strong>pump.fun</strong>. <br /><br />
+              <h4 style={{ color: '#fff', marginBottom: '0.2rem', fontSize: '0.9rem' }}>🪙 Token Launch</h4>
+              <p style={{ marginBottom: '0.8rem', color: '#ccc' }}>The official project token is launching soon on <strong>pump.fun</strong>. <br />
                 <em style={{ color: '#ff4444' }}>Note: The Contract Address (CA) will only be communicated via our official channels. Please beware of imitations; we hold no responsibility for tokens launched outside our control.</em></p>
 
-              <p style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '1.2rem', marginTop: '1.5rem' }}>Good luck! 🍀</p>
+              <p style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '1.1rem', marginTop: '1rem' }}>Good game! 🍀</p>
             </div>
           </div>
         </>
