@@ -637,14 +637,6 @@ pumpordumpgame.fun`;
                     </div>
                 </div>
 
-                {/* Embracing Border Overlay */}
-                <div className={`embrace-border 
-                    ${resultState.left === 'correct' ? 'left-correct' : ''} 
-                    ${resultState.right === 'correct' ? 'right-correct' : ''}
-                    ${resultState.left === 'wrong' ? 'left-wrong' : ''} 
-                    ${resultState.right === 'wrong' ? 'right-wrong' : ''}
-                `} />
-
                 {/* Central Pill */}
                 <div className={`pill-container 
                     ${resultState.left === 'correct' ? 'left-correct' : ''} 
