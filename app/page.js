@@ -141,7 +141,14 @@ export default function Home() {
                 <span className={`leaderboard-rank ${getRankClass(index)}`}>
                   #{index + 1}
                 </span>
-                <span className="leaderboard-name">{entry.username}</span>
+                <span className="leaderboard-name">
+                  {entry.username}
+                  {entry.wallet_address && (
+                    <span style={{ fontSize: '0.8rem', color: '#888', marginLeft: '0.5rem', fontWeight: 400, opacity: 0.7 }}>
+                      {entry.wallet_address.slice(0, 4)}...{entry.wallet_address.slice(-4)}
+                    </span>
+                  )}
+                </span>
                 <span className="leaderboard-score">{entry.score}</span>
               </div>
             ))

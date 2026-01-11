@@ -529,7 +529,14 @@ export default function GamePage({ onGoHome }) {
                             {leaderboard.map((entry, index) => (
                                 <div key={index} className="leaderboard-item">
                                     <span className="rank">#{index + 1}</span>
-                                    <span className="username">{entry.username}</span>
+                                    <span className="username">
+                                        {entry.username}
+                                        {entry.wallet_address && (
+                                            <span style={{ fontSize: '0.75rem', color: '#666', marginLeft: '0.5rem', fontWeight: 300 }}>
+                                                {entry.wallet_address.slice(0, 4)}...{entry.wallet_address.slice(-4)}
+                                            </span>
+                                        )}
+                                    </span>
                                     <span className="score">{entry.score}</span>
                                 </div>
                             ))}
