@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { gameSessions } from '../start/route';
 import { submitScore } from '@/lib/storage';
 
-const MAX_WINNER_TURNS = 2;
+const MAX_WINNER_TURNS = 1;
 
 export async function POST(request) {
     try {
@@ -112,8 +112,10 @@ export async function POST(request) {
                 ...(includeMarketCap ? { marketCap: coin.marketCap } : {})
             });
 
-            // Determine which side the winner stays on
-            const winnerStaysOnSide = winnerTurns >= MAX_WINNER_TURNS
+            // Determine which side has the coin that STAYS (and should show marketCap)
+            // If winner has won MAX_WINNER_TURNS times, winner leaves and loser stays
+            // Otherwise winner stays
+            const stayingSide = winnerTurns >= MAX_WINNER_TURNS
                 ? (guess === 'left' ? 'right' : 'left')  // Winner leaves, loser stays
                 : guess;  // Winner stays
 
@@ -123,9 +125,9 @@ export async function POST(request) {
                 gameOver: false,
                 leftMarketCap: leftMC,
                 rightMarketCap: rightMC,
-                winnerSide: winnerStaysOnSide,
-                nextLeftCoin: sanitizeCoin(session.currentLeft, winnerStaysOnSide === 'left'),
-                nextRightCoin: sanitizeCoin(session.currentRight, winnerStaysOnSide === 'right')
+                stayingSide: stayingSide,
+                nextLeftCoin: sanitizeCoin(session.currentLeft, stayingSide === 'left'),
+                nextRightCoin: sanitizeCoin(session.currentRight, stayingSide === 'right')
             });
 
         } else {

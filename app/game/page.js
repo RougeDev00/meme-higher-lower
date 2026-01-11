@@ -352,9 +352,9 @@ export default function GamePage({ onGoHome }) {
                     setLeftCoinTurns(0);
                     setRightCoinTurns(0);
                     setEnteringSide(clickedSide === 'left' ? 'right' : 'left');
-                    // Show marketCap for the winning coin's side
-                    setShowLeftValue(data.winnerSide === 'left');
-                    setShowRightValue(data.winnerSide === 'right');
+                    // Show marketCap for the staying coin's side
+                    setShowLeftValue(data.stayingSide === 'left');
+                    setShowRightValue(data.stayingSide === 'right');
 
                     setExitingSide(null);
                     setIsAnimating(false);
