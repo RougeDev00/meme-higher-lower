@@ -423,44 +423,36 @@ a,
 }
 
 /* Continuous Border Effect */
-.pill-container.left-correct {
+.pill-container.left-correct,
+.pill-container.right-correct {
   border-left-color: transparent !important;
-  /* Open towards the left (winning) side */
   border-top-color: var(--pump-green) !important;
   border-bottom-color: var(--pump-green) !important;
   border-right-color: var(--pump-green) !important;
-  /* Wrap around the right */
   border-width: 6px !important;
   transform: translate(-50%, -50%) scale(1.1);
+  background-color: var(--success-green) !important;
 }
 
 .pill-container.right-correct {
   border-right-color: transparent !important;
-  /* Open towards the right (winning) side */
-  border-top-color: var(--pump-green) !important;
-  border-bottom-color: var(--pump-green) !important;
   border-left-color: var(--pump-green) !important;
-  /* Wrap around the left */
-  border-width: 6px !important;
-  transform: translate(-50%, -50%) scale(1.1);
 }
 
-.pill-container.left-wrong {
+.pill-container.left-wrong,
+.pill-container.right-wrong {
   border-left-color: transparent !important;
   border-top-color: var(--pump-red) !important;
   border-bottom-color: var(--pump-red) !important;
   border-right-color: var(--pump-red) !important;
   border-width: 6px !important;
   animation: shake 0.5s cubic-bezier(.36, .07, .19, .97) both;
+  background-color: var(--error-red) !important;
 }
 
 .pill-container.right-wrong {
   border-right-color: transparent !important;
-  border-top-color: var(--pump-red) !important;
-  border-bottom-color: var(--pump-red) !important;
   border-left-color: var(--pump-red) !important;
-  border-width: 6px !important;
-  animation: shake 0.5s cubic-bezier(.36, .07, .19, .97) both;
 }
 
 .pill-image {
