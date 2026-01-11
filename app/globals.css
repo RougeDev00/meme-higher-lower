@@ -738,6 +738,16 @@ select,
   backdrop-filter: blur(10px);
 }
 
+@keyframes slideDownOverlay {
+  from {
+    transform: translateY(-100%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
 .game-over-background {
   position: absolute;
   top: 0;
