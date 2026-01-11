@@ -17,6 +17,19 @@ export async function GET(request) {
 export async function POST(request) {
     try {
         const { username, score, walletAddress } = await request.json();
+        const signature = request.headers.get('x-score-signature');
+
+        // Simple obfuscation check (matches client logic)
+        // In production this should be robust server-side validation or signed by a wallet
+        const expectedSignature = btoa(`${score}-${walletAddress}-MEME_SECRET`);
+
+        if (!signature || signature !== expectedSignature) {
+            console.warn(`Invalid score signature for user ${walletAddress}`);
+            return NextResponse.json(
+                { error: 'Invalid score signature' },
+                { status: 403 }
+            );
+        }
 
         if (!walletAddress || typeof score !== 'number') {
             return NextResponse.json(

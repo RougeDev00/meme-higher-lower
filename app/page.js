@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import CursorTrail from './components/CursorTrail';
+import { GAME_CONFIG } from '@/lib/gameConfig';
 
 export default function Home() {
   const [username, setUsername] = useState('');
@@ -155,6 +156,10 @@ export default function Home() {
 
       <div className="ca-label">
         CA: <span>Coming Soon..</span>
+      </div>
+
+      <div className="version-label" style={{ position: 'absolute', bottom: '10px', right: '10px', fontSize: '0.8rem', opacity: 0.7, color: 'rgba(255,255,255,0.5)', pointerEvents: 'none' }}>
+        {GAME_CONFIG.GAME_VERSION}
       </div>
 
       <CursorTrail />
