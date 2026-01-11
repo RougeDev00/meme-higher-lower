@@ -14,43 +14,11 @@ export async function GET(request) {
     return NextResponse.json({ leaderboard });
 }
 
-export async function POST(request) {
-    try {
-        const { username, score, walletAddress } = await request.json();
-        const signature = request.headers.get('x-score-signature');
-
-        // Simple obfuscation check (matches client logic)
-        // In production this should be robust server-side validation or signed by a wallet
-        const expectedSignature = btoa(`${score}-${walletAddress}-MEME_SECRET`);
-
-        if (!signature || signature !== expectedSignature) {
-            console.warn(`Invalid score signature for user ${walletAddress}`);
-            return NextResponse.json(
-                { error: 'Invalid score signature' },
-                { status: 403 }
-            );
-        }
-
-        if (!walletAddress || typeof score !== 'number') {
-            return NextResponse.json(
-                { error: 'Invalid wallet address or score' },
-                { status: 400 }
-            );
-        }
-
-        const leaderboard = await submitScore(username, score, walletAddress);
-        const highScore = await getUserHighScore(walletAddress);
-
-        return NextResponse.json({
-            success: true,
-            leaderboard,
-            highScore
-        });
-    } catch (error) {
-        console.error('API Error:', error);
-        return NextResponse.json(
-            { error: 'Failed to submit score' },
-            { status: 500 }
-        );
-    }
+export async function POST() {
+    // Direct score submissions are disabled for security
+    // All scores must be submitted via /api/game/guess or /api/game/timeout
+    return NextResponse.json(
+        { error: 'Direct score submission is disabled. Play the game to submit scores.' },
+        { status: 403 }
+    );
 }
