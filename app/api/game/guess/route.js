@@ -101,7 +101,8 @@ export async function POST(request) {
                 }
             }
 
-            // Prepare coin data for client (left has marketCap for display, right doesn't for security)
+            // Prepare coin data for client
+            // The WINNING coin (the one that stays) should have marketCap visible
             const sanitizeCoinWithMarketCap = (coin) => ({
                 id: coin.id,
                 name: coin.name,
@@ -121,14 +122,26 @@ export async function POST(request) {
                 platform: coin.platform
             });
 
+            // Determine which side the winner stays on
+            // If winnerTurns >= MAX, winner leaves (new coin replaces winner's position)
+            // Otherwise winner stays in their current position
+            const winnerStaysOnSide = winnerTurns >= MAX_WINNER_TURNS
+                ? (guess === 'left' ? 'right' : 'left')  // Loser stays
+                : guess;  // Winner stays
+
             return NextResponse.json({
                 correct: true,
                 score: session.score,
                 gameOver: false,
                 leftMarketCap: leftMC,
                 rightMarketCap: rightMC,
-                nextLeftCoin: sanitizeCoinWithMarketCap(session.currentLeft),
-                nextRightCoin: sanitizeCoin(session.currentRight)
+                winnerSide: winnerStaysOnSide,
+                nextLeftCoin: winnerStaysOnSide === 'left'
+                    ? sanitizeCoinWithMarketCap(session.currentLeft)
+                    : sanitizeCoin(session.currentLeft),
+                nextRightCoin: winnerStaysOnSide === 'right'
+                    ? sanitizeCoinWithMarketCap(session.currentRight)
+                    : sanitizeCoin(session.currentRight)
             });
 
         } else {

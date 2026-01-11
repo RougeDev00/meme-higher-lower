@@ -352,9 +352,9 @@ export default function GamePage({ onGoHome }) {
                     setLeftCoinTurns(0);
                     setRightCoinTurns(0);
                     setEnteringSide(clickedSide === 'left' ? 'right' : 'left');
-                    // Left coin always has marketCap from server, right never does
-                    setShowLeftValue(true);
-                    setShowRightValue(false);
+                    // Show marketCap for the winning coin's side
+                    setShowLeftValue(data.winnerSide === 'left');
+                    setShowRightValue(data.winnerSide === 'right');
 
                     setExitingSide(null);
                     setIsAnimating(false);
