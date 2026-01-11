@@ -27,19 +27,19 @@ body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   background: var(--dark-bg);
   color: var(--text-white);
-  cursor: url('/cursor.png') 24 24, auto;
+  cursor: url('/cursor.png') 24 24, auto !important;
 }
 
-/* Ensure interactive elements also show a pointer version (or same cursor if preferred, but usually pointer is needed) 
-   For now, overriding pointer to also show the pill but maybe with a slight change? 
-   Let's keep standard pointer behavior or force the pill? 
-   User said "far diventare il cursore", implying global replacement.
-   I'll force it for buttons too to be consistent with the "meme" vibe.
-*/
+/* Force custom cursor on ALL interactive elements */
+*,
 button,
 a,
-.pointer {
-  cursor: url('/cursor.png') 24 24, pointer;
+input,
+select,
+.pointer,
+[role="button"],
+[onclick] {
+  cursor: url('/cursor.png') 24 24, auto !important;
 }
 
 /* ===== HOME PAGE ===== */
