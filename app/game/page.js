@@ -106,7 +106,7 @@ export default function GamePage({ onGoHome }) {
         try {
             if (typeof window !== 'undefined') {
                 GAME_OVER_IMAGES.forEach((src) => {
-                    const img = new Image();
+                    const img = document.createElement('img');
                     img.src = src;
                 });
             }
