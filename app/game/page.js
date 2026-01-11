@@ -91,10 +91,26 @@ export default function GamePage() {
         };
     }, [isDragging, handleMouseMove, handleMouseUp]);
 
+    const GAME_OVER_IMAGES = [
+        '/crying-kid.gif',
+        '/sad-hamster.gif',
+        '/sad-meme-3.gif',
+        '/sad-meme-4.gif',
+        '/sad-meme-5.gif',
+        '/sad-meme-6.gif'
+    ];
+
+    // Preload Images on Mount
+    useEffect(() => {
+        GAME_OVER_IMAGES.forEach((src) => {
+            const img = new Image();
+            img.src = src;
+        });
+    }, []);
+
     useEffect(() => {
         if (gameOver) {
-            const images = ['/crying-kid.gif', '/sad-hamster.gif', '/sad-meme-3.gif', '/sad-meme-4.gif', '/sad-meme-5.gif', '/sad-meme-6.gif'];
-            setGameOverImage(images[Math.floor(Math.random() * images.length)]);
+            setGameOverImage(GAME_OVER_IMAGES[Math.floor(Math.random() * GAME_OVER_IMAGES.length)]);
             setDragPosition({ x: 0, y: 0 });
         }
     }, [gameOver]);
