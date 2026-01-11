@@ -209,7 +209,7 @@ export default function Home() {
               <p style={{ marginBottom: '0.8rem' }}>Inspired by the classic Higher-Lower mechanic, adapted for the <strong>pump.fun</strong> ecosystem.</p>
 
               <h4 style={{ color: '#fff', marginBottom: '0.2rem', fontSize: '0.9rem' }}>🎮 Gameplay & Leaderboard</h4>
-              <p style={{ marginBottom: '0.8rem', color: '#ccc' }}>Enter a username to start playing immediately. However, to track your progress and climb the ranks, <strong>wallet insertion is required</strong>. Only verified wallets will be inserted into the database and have their score stored. Your wallet address serves as your secure login, ensuring a verified leaderboard. Returning players can improve their stored scores simply by reconnecting the same wallet.</p>
+              <p style={{ marginBottom: '0.8rem', color: '#ccc' }}>Enter a username to start playing immediately. However, to track your progress and climb the ranks, <strong>wallet insertion is required</strong>. Only verified wallets will be inserted into the database and have their score stored. Your wallet address serves as your secure login, ensuring a verified leaderboard. Returning players can improve their stored scores simply by re-entering the same wallet.</p>
 
               <h4 style={{ color: '#fff', marginBottom: '0.2rem', fontSize: '0.9rem' }}>💸 Hourly Rewards</h4>
               <p style={{ marginBottom: '0.8rem', color: '#ccc' }}>We believe in rewarding skill. Every hour, the <strong>top 3 players</strong> on the leaderboard receive <strong>2% of the creator fees</strong> generated on pump.fun. Winners are subsequently moved to the "Rewarded Users" section, keeping the competition fresh every round.</p>
