@@ -280,23 +280,29 @@ export default function GamePage() {
     }, [userId, username, currentScore]);
 
     useEffect(() => {
-        if (gameOver || isAnimating || timeLeft <= 0 || showLeaderboard || isPaused || showSpeedModeOverlay) {
-            timerStartRef.current = null;
+        if (gameOver || showLeaderboard || isPaused || showSpeedModeOverlay) {
             return;
         }
 
-        // Initialize start time
+        // Don't run timer during animation
+        if (isAnimating) {
+            return;
+        }
+
+        // Initialize start time only if not already set
         if (timerStartRef.current === null) {
             timerStartRef.current = Date.now();
             timerRemainingRef.current = timeLeft;
         }
 
-        const interval = setInterval(() => {
+        const updateTimer = () => {
+            if (timerStartRef.current === null) return;
+
             const elapsed = Date.now() - timerStartRef.current;
             const remaining = timerRemainingRef.current - elapsed;
 
             if (remaining <= 0) {
-                clearInterval(interval);
+                timerStartRef.current = null;
                 setTimeLeft(0);
                 setGameOver(true);
                 setResultState({ left: 'wrong', right: 'wrong' });
@@ -313,10 +319,12 @@ export default function GamePage() {
             } else {
                 setTimeLeft(remaining);
             }
-        }, 50);
+        };
+
+        const interval = setInterval(updateTimer, 50);
 
         return () => clearInterval(interval);
-    }, [gameOver, isAnimating, showLeaderboard, currentScore, username, userId, isPaused, showSpeedModeOverlay, timeLeft]);
+    }, [gameOver, isAnimating, showLeaderboard, currentScore, username, userId, isPaused, showSpeedModeOverlay]);
 
     // Format time as SS:MS 
     const formatTime = (ms) => {
