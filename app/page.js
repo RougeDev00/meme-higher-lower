@@ -191,6 +191,7 @@ export default function Home() {
                 <span>{isWalletConnecting ? 'Connecting...' : 'Connect Wallet'}</span>
               </button>
               <p className="wallet-optional-text">Connect wallet to join leaderboard (Optional)</p>
+              <p className="wallet-security-text">🔒 Read-only - We only see your public address</p>
             </div>
           ) : (
             <div className="wallet-connect-wrapper">
