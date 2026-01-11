@@ -122,6 +122,13 @@ export default function GamePage({ onGoHome }) {
         }
     }, [gameOver]);
 
+    const getRankClass = (index) => {
+        if (index === 0) return 'gold';
+        if (index === 1) return 'silver';
+        if (index === 2) return 'bronze';
+        return '';
+    };
+
     // Initialize game
     useEffect(() => {
         const savedUsername = localStorage.getItem('meme-game-username');
@@ -527,13 +534,15 @@ export default function GamePage({ onGoHome }) {
                         <h3 className="leaderboard-title" style={{ marginBottom: '1.5rem', textAlign: 'center' }}>🏆 Top Players</h3>
                         <div className="leaderboard-list">
                             {leaderboard.map((entry, index) => (
-                                <div key={index} className="leaderboard-item">
-                                    <span className="rank">#{index + 1}</span>
-                                    <span className="username">
+                                <div key={index} className="leaderboard-entry">
+                                    <span className={`leaderboard-rank ${getRankClass(index)}`}>
+                                        #{index + 1}
+                                    </span>
+                                    <span className="leaderboard-name">
                                         {entry.username}
                                         {entry.wallet_address && (
                                             <span
-                                                style={{ fontSize: '0.75rem', color: '#666', marginLeft: '0.5rem', fontWeight: 300, cursor: 'pointer', textDecoration: 'underline dotted' }}
+                                                style={{ fontSize: '0.8rem', color: '#888', marginLeft: '0.5rem', fontWeight: 400, opacity: 0.7, cursor: 'pointer', textDecoration: 'underline dotted' }}
                                                 title="Click to copy full address"
                                                 onClick={(e) => {
                                                     navigator.clipboard.writeText(entry.wallet_address);
@@ -546,7 +555,7 @@ export default function GamePage({ onGoHome }) {
                                             </span>
                                         )}
                                     </span>
-                                    <span className="score">{entry.score}</span>
+                                    <span className="leaderboard-score">{entry.score}</span>
                                 </div>
                             ))}
                         </div>
