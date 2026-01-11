@@ -519,23 +519,23 @@ export default function GamePage() {
                 <div className="game-over-overlay">
                     <div className="game-over-modal">
                         <img src={gameOverImage} alt="Game Over" className="game-over-image" />
-                        <h2>GAME OVER</h2>
-                        <p style={{ fontSize: '1.5rem', margin: '1rem 0' }}>Score: {currentScore}</p>
+                        <h2 className="game-over-title">GAME OVER</h2>
+                        <p className="game-over-score">{currentScore}</p>
 
                         <div className="game-over-buttons">
-                            <button className="restart-button" onClick={restartGame}>
-                                <img src="/play_again.png" alt="Play Again" />
+                            <button className="game-over-btn-image-container" onClick={restartGame}>
+                                <img src="/btn-play-again.png" alt="Play Again" />
                             </button>
 
-                            <button className="share-button" onClick={() => {
+                            <button className="game-over-btn-image-container" onClick={() => {
                                 const text = `🔥 I just scored ${currentScore} on @pumpordumpgame!\n\nCan you beat my record? 🚀\n\nPlay now 👇\npumpordumpgame.fun`;
                                 window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`, '_blank');
                             }}>
-                                <img src="/share_score.png" alt="Share Score" />
+                                <img src="/btn-share.png" alt="Share Score" />
                             </button>
 
-                            <button className="home-button" onClick={() => router.push('/')}>
-                                <img src="/home_button.png" alt="Home" />
+                            <button className="game-over-btn-image-container" onClick={() => router.push('/')}>
+                                <img src="/btn-home.png" alt="Home" />
                             </button>
                         </div>
                     </div>
