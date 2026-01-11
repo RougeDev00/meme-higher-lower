@@ -564,11 +564,9 @@ export default function GamePage() {
                         {GAME_CONFIG.GAME_VERSION}
                     </div>
                 </div>
-                </div >
-            )
-}
+            )}
 
-{/* Social Link */ }
+            {/* Social Link */}
             <a
                 href="https://x.com/pumpordumpgame"
                 target="_blank"
