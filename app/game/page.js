@@ -244,39 +244,48 @@ export default function GamePage() {
             });
     }, [router]);
 
-    // Timer Logic
+    // Timer Logic - Uses wall-clock time to prevent cheating when switching tabs
+    const timerStartRef = React.useRef(null);
+    const timerRemainingRef = React.useRef(10000);
+
     useEffect(() => {
-        if (gameOver || isAnimating || timeLeft <= 0 || showLeaderboard || isPaused || showSpeedModeOverlay) return;
+        if (gameOver || isAnimating || timeLeft <= 0 || showLeaderboard || isPaused || showSpeedModeOverlay) {
+            timerStartRef.current = null;
+            return;
+        }
+
+        // Initialize start time
+        if (timerStartRef.current === null) {
+            timerStartRef.current = Date.now();
+            timerRemainingRef.current = timeLeft;
+        }
 
         const interval = setInterval(() => {
-            setTimeLeft(prev => {
-                if (prev <= 10) {
-                    clearInterval(interval);
-                    // Handle timeout game over
-                    setGameOver(true);
-                    setResultState({ left: 'wrong', right: 'wrong' }); // Show both as wrong/time out? or just end
+            const elapsed = Date.now() - timerStartRef.current;
+            const remaining = timerRemainingRef.current - elapsed;
 
-                    // Submit score logic duplicate... ideally should be a function but for now inline or trigger existing logic
-                    // We'll just set gameOver true and let the effect handle it or trigger a specific timeout state
-                    // Actually, we need to register the score.
-                    if (userId && userId !== 'GUEST') {
-                        fetch('/api/leaderboard', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({ username, score: currentScore, walletAddress: userId })
-                        }).then(() => {
-                            fetch('/api/leaderboard').then(res => res.json()).then(data => setLeaderboard(data.leaderboard || []));
-                        });
-                    }
+            if (remaining <= 0) {
+                clearInterval(interval);
+                setTimeLeft(0);
+                setGameOver(true);
+                setResultState({ left: 'wrong', right: 'wrong' });
 
-                    return 0;
+                if (userId && userId !== 'GUEST') {
+                    fetch('/api/leaderboard', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ username, score: currentScore, walletAddress: userId })
+                    }).then(() => {
+                        fetch('/api/leaderboard').then(res => res.json()).then(data => setLeaderboard(data.leaderboard || []));
+                    });
                 }
-                return prev - 10;
-            });
-        }, 10);
+            } else {
+                setTimeLeft(remaining);
+            }
+        }, 50); // Update every 50ms for smooth display
 
         return () => clearInterval(interval);
-    }, [gameOver, isAnimating, showLeaderboard, currentScore, username, userId, isPaused, showSpeedModeOverlay]);
+    }, [gameOver, isAnimating, showLeaderboard, currentScore, username, userId, isPaused, showSpeedModeOverlay, timeLeft]);
 
     // Format time as SS:MS 
     const formatTime = (ms) => {
