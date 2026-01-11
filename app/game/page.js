@@ -563,22 +563,22 @@ export default function GamePage() {
                     <div className="version-label" style={{ position: 'absolute', bottom: '10px', right: '10px', fontSize: '0.8rem', opacity: 0.7, color: 'rgba(255,255,255,0.5)', pointerEvents: 'none' }}>
                         {GAME_CONFIG.GAME_VERSION}
                     </div>
+
+                    {/* Social Link - Only visible in Game Over */}
+                    <a
+                        href="https://x.com/pumpordumpgame"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="social-link-container"
+                    >
+                        <img src="/x-logo.svg" alt="X (Twitter)" className="social-icon" />
+                    </a>
+
+                    <div className="ca-label">
+                        CA: <span>Coming Soon..</span>
+                    </div>
                 </div>
             )}
-
-            {/* Social Link */}
-            <a
-                href="https://x.com/pumpordumpgame"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="social-link-container"
-            >
-                <img src="/x-logo.svg" alt="X (Twitter)" className="social-icon" />
-            </a>
-
-            <div className="ca-label">
-                CA: <span>Coming Soon..</span>
-            </div>
 
             <CursorTrail />
         </>
