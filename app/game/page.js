@@ -248,6 +248,37 @@ export default function GamePage() {
     const timerStartRef = React.useRef(null);
     const timerRemainingRef = React.useRef(10000);
 
+    // Handle visibility change to update timer immediately when returning to tab
+    useEffect(() => {
+        const handleVisibilityChange = () => {
+            if (document.visibilityState === 'visible' && timerStartRef.current !== null) {
+                const elapsed = Date.now() - timerStartRef.current;
+                const remaining = timerRemainingRef.current - elapsed;
+
+                if (remaining <= 0) {
+                    setTimeLeft(0);
+                    setGameOver(true);
+                    setResultState({ left: 'wrong', right: 'wrong' });
+
+                    if (userId && userId !== 'GUEST') {
+                        fetch('/api/leaderboard', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ username, score: currentScore, walletAddress: userId })
+                        }).then(() => {
+                            fetch('/api/leaderboard').then(res => res.json()).then(data => setLeaderboard(data.leaderboard || []));
+                        });
+                    }
+                } else {
+                    setTimeLeft(remaining);
+                }
+            }
+        };
+
+        document.addEventListener('visibilitychange', handleVisibilityChange);
+        return () => document.removeEventListener('visibilitychange', handleVisibilityChange);
+    }, [userId, username, currentScore]);
+
     useEffect(() => {
         if (gameOver || isAnimating || timeLeft <= 0 || showLeaderboard || isPaused || showSpeedModeOverlay) {
             timerStartRef.current = null;
@@ -282,7 +313,7 @@ export default function GamePage() {
             } else {
                 setTimeLeft(remaining);
             }
-        }, 50); // Update every 50ms for smooth display
+        }, 50);
 
         return () => clearInterval(interval);
     }, [gameOver, isAnimating, showLeaderboard, currentScore, username, userId, isPaused, showSpeedModeOverlay, timeLeft]);
