@@ -1,7 +1,26 @@
 import { NextResponse } from 'next/server';
 import { getAllScores } from '@/lib/storage';
 
-export async function GET() {
+// Authentication helper
+function isAuthenticated(request) {
+    const adminSecret = process.env.ADMIN_SECRET;
+    if (!adminSecret) {
+        console.error('ADMIN_SECRET not configured');
+        return false;
+    }
+    const providedSecret = request.headers.get('x-admin-secret');
+    return providedSecret === adminSecret;
+}
+
+export async function GET(request) {
+    // Require auth for admin data access
+    if (!isAuthenticated(request)) {
+        return NextResponse.json(
+            { error: 'Unauthorized' },
+            { status: 401 }
+        );
+    }
+
     try {
         const data = await getAllScores();
         return NextResponse.json({ data });
@@ -14,6 +33,14 @@ export async function GET() {
 }
 
 export async function DELETE(request) {
+    // Require auth for delete operations
+    if (!isAuthenticated(request)) {
+        return NextResponse.json(
+            { error: 'Unauthorized' },
+            { status: 401 }
+        );
+    }
+
     try {
         const body = await request.json();
 

@@ -6,7 +6,7 @@ const INPUT_PATH = path.join(__dirname, '../data/potential_pump_tokens.json');
 const OUTPUT_PATH = path.join(__dirname, '../data/pump_coins_enriched.json');
 const DEXSCREENER_API = 'https://api.dexscreener.com/latest/dex/tokens';
 
-const TARGET_COUNT = 6000; // Try to enrich top X tokens
+const TARGET_COUNT = 10000; // Try to enrich top X tokens
 const BATCH_SIZE = 30; // Max 30 per request
 const DELAY_MS = 300; // Rate limit protection (approx 200 req/min)
 
@@ -99,9 +99,9 @@ async function main() {
     console.log(`Enriched ${enrichedCoins.length} coins.`);
 
     // Filter for quality
-    // MC > 50k, Liquidity > 5k
-    const validCoins = enrichedCoins.filter(c => c.marketCap > 10000 && c.liquidity > 2000);
-    console.log(`Filtered to ${validCoins.length} valid coins (MC > 10k, Liq > 2k).`);
+    // MC > 100k
+    const validCoins = enrichedCoins.filter(c => c.marketCap > 100000);
+    console.log(`Filtered to ${validCoins.length} valid coins (MC > 100k).`);
 
     fs.writeFileSync(OUTPUT_PATH, JSON.stringify(validCoins, null, 2));
     console.log(`Saved to ${OUTPUT_PATH}`);

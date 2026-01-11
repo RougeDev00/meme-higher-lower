@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback, useRef } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import confetti from 'canvas-confetti';
 import CursorTrail from '../components/CursorTrail';
@@ -245,8 +245,8 @@ export default function GamePage() {
     }, [router]);
 
     // Timer Logic - Uses requestAnimationFrame + wall-clock time
-    const timerEndTimeRef = React.useRef(null);
-    const animationFrameRef = React.useRef(null);
+    const timerEndTimeRef = useRef(null);
+    const animationFrameRef = useRef(null);
 
     useEffect(() => {
         // Cleanup function
@@ -383,7 +383,7 @@ export default function GamePage() {
         }
 
         return nextCoin;
-    }, [leftCoin, rightCoin]);
+    }, [leftCoin, rightCoin, coins]);
 
 
     const handleCoinClick = async (clickedSide) => {
@@ -465,7 +465,6 @@ export default function GamePage() {
             // Wait 1000ms (bounce) + 2500ms (viewing score) = 3500ms total
             setTimeout(async () => {
                 setShowScorePopup(false);
-                setResultState({ left: null, right: null });
                 setResultState({ left: null, right: null });
                 setSelectedSide(null);
 
