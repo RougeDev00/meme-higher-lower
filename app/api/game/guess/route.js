@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
-import { gameSessions } from '../start/route';
+import { readFile } from 'fs/promises';
+import path from 'path';
+import { decryptSession, encryptSession, deterministicShuffle, MAX_WINNER_TURNS } from '@/lib/gameState';
 import { submitScore } from '@/lib/storage';
-
-const MAX_WINNER_TURNS = 1;
 
 export async function POST(request) {
     try {
@@ -12,22 +12,42 @@ export async function POST(request) {
             return NextResponse.json({ error: 'Missing sessionId or guess' }, { status: 400 });
         }
 
-        const session = gameSessions.get(sessionId);
-
-        if (!session) {
-            return NextResponse.json({ error: 'Invalid or expired session' }, { status: 404 });
+        let session;
+        try {
+            session = decryptSession(sessionId);
+        } catch (e) {
+            console.error('Session decryption failed:', e);
+            return NextResponse.json({ error: 'Invalid or expired session' }, { status: 404 }); // Keep 404 for client compatibility
         }
 
         if (session.gameOver) {
             return NextResponse.json({ error: 'Game already over' }, { status: 400 });
         }
 
-        // Validate guess
-        const leftMC = Number(session.currentLeft.marketCap);
-        const rightMC = Number(session.currentRight.marketCap);
+        // Load and Filter Coins (Needed to reconstruct state)
+        const filePath = path.join(process.cwd(), 'data', 'coins.json');
+        const fileContents = await readFile(filePath, 'utf8');
+        const allCoins = JSON.parse(fileContents);
+        const validCoins = allCoins.filter(c => c.marketCap >= 15000 && c.symbol && c.name);
 
-        const clickedCoin = guess === 'left' ? session.currentLeft : session.currentRight;
-        const otherCoin = guess === 'left' ? session.currentRight : session.currentLeft;
+        // Reconstruct Game State
+        const shuffled = deterministicShuffle(validCoins, session.seed);
+
+        // Find current coins by ID
+        const currentLeft = shuffled.find(c => c.id === session.currentLeftId);
+        const currentRight = shuffled.find(c => c.id === session.currentRightId);
+
+        if (!currentLeft || !currentRight) {
+            console.error('Coins not found in shuffled list. IDs:', session.currentLeftId, session.currentRightId);
+            return NextResponse.json({ error: 'Game state corruption' }, { status: 500 });
+        }
+
+        // Validate guess
+        const leftMC = Number(currentLeft.marketCap);
+        const rightMC = Number(currentRight.marketCap);
+
+        const clickedCoin = guess === 'left' ? currentLeft : currentRight;
+        const otherCoin = guess === 'left' ? currentRight : currentLeft;
         const isCorrect = Number(clickedCoin.marketCap) >= Number(otherCoin.marketCap);
 
         if (isCorrect) {
@@ -38,41 +58,54 @@ export async function POST(request) {
 
             // Get next coin
             let nextCoin = null;
-            while (session.nextCoinIndex < session.coins.length) {
-                const candidate = session.coins[session.nextCoinIndex];
-                session.nextCoinIndex++;
-                if (!session.usedIndices.has(candidate.id)) {
-                    nextCoin = candidate;
-                    session.usedIndices.add(candidate.id);
-                    break;
+            let nextCoinIndex = session.nextCoinIndex;
+
+            // Reconstruct used indices set? 
+            // We just need to find the next coin from shuffled that is NOT currentLeft or currentRight.
+            // Since shuffled is deterministic, we can just pick shuffled[nextCoinIndex].
+            // But we need to check collision (unlikely given shuffle, but possible if index wraps? No logic before handled it).
+            // Logic before: checked usedIndices.
+            // With deterministic shuffle, index 0, 1 are used. Index 2 is next.
+            // We can just TRUST nextCoinIndex.
+
+            // Check if we ran out
+            if (nextCoinIndex >= shuffled.length) {
+                // Reshuffle logic?
+                // Original logic: "If we ran out of coins, reshuffle" using random-ish filter.
+                // Here, we can just increment seed?
+                // Or wrap around?
+                // Let's wrap around for simplicity, filtering current ones.
+                nextCoinIndex = 0;
+                // Simple wrap: find first coin that is not currentLeft or currentRight
+                while (nextCoinIndex < shuffled.length) {
+                    const candidate = shuffled[nextCoinIndex];
+                    if (candidate.id !== currentLeft.id && candidate.id !== currentRight.id) {
+                        nextCoin = candidate;
+                        session.nextCoinIndex = nextCoinIndex + 1; // Update index to next
+                        break;
+                    }
+                    nextCoinIndex++;
                 }
-            }
-
-            // If we ran out of coins, reshuffle
-            if (!nextCoin) {
-                const validCoins = session.coins.filter(c =>
-                    c.id !== session.currentLeft.id && c.id !== session.currentRight.id
-                );
-                session.coins = validCoins.sort(() => Math.random() - 0.5);
-                session.nextCoinIndex = 1;
-                session.usedIndices = new Set([session.currentLeft.id, session.currentRight.id]);
-                nextCoin = session.coins[0];
-                if (nextCoin) session.usedIndices.add(nextCoin.id);
+            } else {
+                nextCoin = shuffled[nextCoinIndex];
+                session.nextCoinIndex++;
             }
 
             if (!nextCoin) {
-                // Fallback: no more coins, end game
+                // Should not happen unless < 3 coins total
                 session.gameOver = true;
+                const newSessionId = encryptSession(session); // Should we even return a session? Yes, needed for timeout? No, game over.
+                // Submit score logic
                 if (walletAddress && walletAddress !== 'GUEST') {
                     await submitScore(username || 'Anonymous', session.score, walletAddress);
                 }
-                gameSessions.delete(sessionId);
                 return NextResponse.json({
                     correct: true,
                     score: session.score,
                     gameOver: true,
                     leftMarketCap: leftMC,
-                    rightMarketCap: rightMC
+                    rightMarketCap: rightMC,
+                    sessionId: newSessionId
                 });
             }
 
@@ -80,28 +113,52 @@ export async function POST(request) {
             if (winnerTurns >= MAX_WINNER_TURNS) {
                 // Winner leaves, loser stays
                 if (guess === 'left') {
-                    session.currentLeft = nextCoin;
+                    // Winner (Left) leaves. Loser (Right) stays.
+                    // New Right becomes NextCoin? No.
+                    // Left was Winner. Right was Loser.
+                    // Winner leaves -> Left is replaced.
+                    // Loser stays -> Right stays.
+                    session.currentLeftId = nextCoin.id;
+                    // Right stays as is.
                     session.leftTurns = 0;
                     session.rightTurns = 0;
+                    // Wait, if Loser stays, does it keep its turns? Logic says "reset turns for safe measure"?
+                    // Code said: session.rightTurns = 0; 
                 } else {
-                    session.currentRight = nextCoin;
+                    // Winner (Right) leaves. Loser (Left) stays.
+                    session.currentRightId = nextCoin.id;
                     session.rightTurns = 0;
                     session.leftTurns = 0;
                 }
             } else {
                 // Winner stays, loser leaves
                 if (guess === 'left') {
-                    session.currentRight = nextCoin;
+                    // Winner (Left) stays.
+                    // Loser (Right) leaves -> Replace Right.
+                    session.currentRightId = nextCoin.id;
                     session.leftTurns += 1;
                     session.rightTurns = 0;
                 } else {
-                    session.currentLeft = nextCoin;
+                    // Winner (Right) stays.
+                    // Loser (Left) leaves -> Replace Left.
+                    session.currentLeftId = nextCoin.id;
                     session.rightTurns += 1;
                     session.leftTurns = 0;
                 }
             }
 
-            // Prepare coin data for client - include marketCap for the staying coin
+            // Determine staying side for UI
+            const stayingSide = winnerTurns >= MAX_WINNER_TURNS
+                ? (guess === 'left' ? 'right' : 'left')  // Winner (Guess) leaves, other stays
+                : guess;  // Winner stays
+
+            // Prepare next coin data
+            // We need to fetch the full object for the NEW current coins
+            // currentLeft/Right IDs are updated in session state now.
+            // Re-fetch them from shuffled (efficient enough)
+            const nextLeftObj = shuffled.find(c => c.id === session.currentLeftId);
+            const nextRightObj = shuffled.find(c => c.id === session.currentRightId);
+
             const sanitizeCoin = (coin, includeMarketCap = false) => ({
                 id: coin.id,
                 name: coin.name,
@@ -112,22 +169,18 @@ export async function POST(request) {
                 ...(includeMarketCap ? { marketCap: coin.marketCap } : {})
             });
 
-            // Determine which side has the coin that STAYS (and should show marketCap)
-            // If winner has won MAX_WINNER_TURNS times, winner leaves and loser stays
-            // Otherwise winner stays
-            const stayingSide = winnerTurns >= MAX_WINNER_TURNS
-                ? (guess === 'left' ? 'right' : 'left')  // Winner leaves, loser stays
-                : guess;  // Winner stays
+            const newSessionId = encryptSession(session);
 
             return NextResponse.json({
                 correct: true,
                 score: session.score,
                 gameOver: false,
-                leftMarketCap: leftMC,
+                leftMarketCap: leftMC, // Revealed MC of previous round
                 rightMarketCap: rightMC,
                 stayingSide: stayingSide,
-                nextLeftCoin: sanitizeCoin(session.currentLeft, stayingSide === 'left'),
-                nextRightCoin: sanitizeCoin(session.currentRight, stayingSide === 'right')
+                nextLeftCoin: sanitizeCoin(nextLeftObj, stayingSide === 'left'),
+                nextRightCoin: sanitizeCoin(nextRightObj, stayingSide === 'right'),
+                sessionId: newSessionId
             });
 
         } else {
@@ -139,15 +192,15 @@ export async function POST(request) {
                 await submitScore(username || 'Anonymous', session.score, walletAddress);
             }
 
-            // Clean up session
-            gameSessions.delete(sessionId);
+            const newSessionId = encryptSession(session);
 
             return NextResponse.json({
                 correct: false,
                 score: session.score,
                 gameOver: true,
                 leftMarketCap: leftMC,
-                rightMarketCap: rightMC
+                rightMarketCap: rightMC,
+                sessionId: newSessionId
             });
         }
 

@@ -146,7 +146,11 @@ export default function GamePage({ onGoHome }) {
         }
 
         // Start game session on server
-        fetch('/api/game/start', { method: 'POST' })
+        fetch('/api/game/start', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username: savedUsername || username })
+        })
             .then(res => res.json())
             .then(data => {
                 if (data.error) {
@@ -159,6 +163,7 @@ export default function GamePage({ onGoHome }) {
                 setRightCoin(data.rightCoin);
                 setLeftCoinTurns(0);
                 setRightCoinTurns(0);
+                setCurrentScore(data.score || 0);
                 setTimeLeft(GAME_CONFIG.INITIAL_TIME);
                 setIsLoading(false);
             })
@@ -276,6 +281,7 @@ export default function GamePage({ onGoHome }) {
 
         // Call server to validate guess
         try {
+            console.log('Sending guess:', { sessionId, guess: clickedSide });
             const res = await fetch('/api/game/guess', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -287,11 +293,17 @@ export default function GamePage({ onGoHome }) {
                 })
             });
             const data = await res.json();
+            console.log('Guess response:', data);
 
             if (data.error) {
                 console.error('Guess error:', data.error);
                 setIsAnimating(false);
                 return;
+            }
+
+            // Update sessionId (Token) for stateless session
+            if (data.sessionId) {
+                setSessionId(data.sessionId);
             }
 
             // Update coins with revealed market caps for display
@@ -338,10 +350,13 @@ export default function GamePage({ onGoHome }) {
                     setShowScorePopup(false);
                     setResultState({ left: null, right: null });
                     setSelectedSide(null);
+                    timerEndTimeRef.current = null; // Reset timer ref to force recalculation
                     setTimeLeft(newScore >= GAME_CONFIG.SPEED_MODE_THRESHOLD ? GAME_CONFIG.SPEED_MODE_TIME : GAME_CONFIG.INITIAL_TIME);
 
-                    // Animate coin transition
-                    setExitingSide(clickedSide === 'left' ? 'right' : 'left');
+                    // Animate coin transition - the side that is NOT staying is the one that exits/enters
+                    console.log('Staying side:', data.stayingSide);
+                    const exitingSide = data.stayingSide === 'left' ? 'right' : 'left';
+                    setExitingSide(exitingSide);
 
                     await new Promise(resolve => setTimeout(resolve, 500));
 
@@ -351,7 +366,8 @@ export default function GamePage({ onGoHome }) {
 
                     setLeftCoinTurns(0);
                     setRightCoinTurns(0);
-                    setEnteringSide(clickedSide === 'left' ? 'right' : 'left');
+                    setEnteringSide(exitingSide);
+
                     // Show marketCap for the staying coin's side
                     setShowLeftValue(data.stayingSide === 'left');
                     setShowRightValue(data.stayingSide === 'right');
@@ -376,6 +392,7 @@ export default function GamePage({ onGoHome }) {
             }
         } catch (error) {
             console.error('Failed to submit guess:', error);
+            alert('Error: ' + error.message); // Visible alert for debugging
             setIsAnimating(false);
         }
     };
@@ -383,7 +400,11 @@ export default function GamePage({ onGoHome }) {
     const restartGame = async () => {
         setIsLoading(true);
         try {
-            const res = await fetch('/api/game/start', { method: 'POST' });
+            const res = await fetch('/api/game/start', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username })
+            });
             const data = await res.json();
             if (data.error) {
                 console.error('Failed to restart game:', data.error);
@@ -393,7 +414,7 @@ export default function GamePage({ onGoHome }) {
             setSessionId(data.sessionId);
             setLeftCoin(data.leftCoin);
             setRightCoin(data.rightCoin);
-            setCurrentScore(0);
+            setCurrentScore(data.score || 0);
             setShowLeftValue(false);
             setShowRightValue(false);
             setGameOver(false);

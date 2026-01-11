@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { gameSessions } from '../start/route';
+import { decryptSession } from '@/lib/gameState';
 import { submitScore } from '@/lib/storage';
 
 export async function POST(request) {
@@ -10,9 +10,11 @@ export async function POST(request) {
             return NextResponse.json({ error: 'Missing sessionId' }, { status: 400 });
         }
 
-        const session = gameSessions.get(sessionId);
-
-        if (!session) {
+        let session;
+        try {
+            session = decryptSession(sessionId);
+        } catch (e) {
+            console.error('Session decryption failed:', e);
             return NextResponse.json({ error: 'Invalid or expired session' }, { status: 404 });
         }
 
@@ -27,9 +29,6 @@ export async function POST(request) {
         if (walletAddress && walletAddress !== 'GUEST') {
             await submitScore(username || 'Anonymous', session.score, walletAddress);
         }
-
-        // Clean up session
-        gameSessions.delete(sessionId);
 
         return NextResponse.json({
             success: true,

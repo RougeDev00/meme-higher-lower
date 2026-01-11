@@ -2,37 +2,7 @@ import { NextResponse } from 'next/server';
 import { readFile } from 'fs/promises';
 import path from 'path';
 import { randomUUID } from 'crypto';
-
-// In-memory session store (would use Redis in production)
-// Exported so guess route can access it
-export const gameSessions = new Map();
-
-// Session expiry time (10 minutes)
-const SESSION_EXPIRY = 10 * 60 * 1000;
-
-// Cleanup old sessions periodically
-function cleanupSessions() {
-    const now = Date.now();
-    for (const [id, session] of gameSessions.entries()) {
-        if (now - session.createdAt > SESSION_EXPIRY) {
-            gameSessions.delete(id);
-        }
-    }
-}
-
-// Run cleanup every minute
-if (typeof setInterval !== 'undefined') {
-    setInterval(cleanupSessions, 60 * 1000);
-}
-
-function shuffleArray(array) {
-    const shuffled = [...array];
-    for (let i = shuffled.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-    }
-    return shuffled;
-}
+import { encryptSession, deterministicShuffle } from '@/lib/gameState';
 
 export async function POST() {
     try {
@@ -43,46 +13,65 @@ export async function POST() {
 
         // Filter valid coins
         const validCoins = allCoins.filter(c => c.marketCap >= 15000 && c.symbol && c.name);
-        const shuffled = shuffleArray(validCoins);
 
-        // Create session
-        const sessionId = randomUUID();
-        const session = {
-            id: sessionId,
-            createdAt: Date.now(),
+        // Generate seed and shuffle
+        // We use a numeric seed for PRNG derived from random bytes or UUID
+        const seedStr = randomUUID().replace(/-/g, '');
+        const seed = parseInt(seedStr.slice(0, 8), 16);
+
+        const shuffled = deterministicShuffle(validCoins, seed);
+
+        // Initial State
+        const currentLeft = shuffled[0];
+        const currentRight = shuffled[1];
+
+        // Create session state object (minimal data)
+        const sessionState = {
+            seed: seed,
             score: 0,
-            coins: shuffled, // All shuffled coins for this session
-            usedIndices: new Set([0, 1]),
-            currentLeft: shuffled[0],
-            currentRight: shuffled[1],
             nextCoinIndex: 2,
             leftTurns: 0,
             rightTurns: 0,
-            gameOver: false
+            gameOver: false,
+            // We store IDs to verify consistency if needed, but the deterministic shuffle usually suffices.
+            // However, to correctly handle the specific "current" coins in the next request, 
+            // we should store their IDs or just relying on "replaying" the shuffle?
+            // Replaying is safer. But to know who is who:
+            currentLeftId: currentLeft.id,
+            currentRightId: currentRight.id,
+            usedIndices: [0, 1] // Store indices instead of IDs to save space? 
+            // Actually, IDs are strings. Indices are ints. Indices are better if the array is stable.
+            // Re-shuffling the SAME array with SAME seed gives SAME order.
+            // So we just need to track the current index in that array?
+            // Wait, the logic handles "replacements".
+            // Yes, tracking `nextCoinIndex` is enough to know the next new coin.
+            // But we need to know who `currentLeft` and `currentRight` are.
+            // We can store their indices or IDs. IDs are safer against array mutations (unlikely here).
         };
 
-        gameSessions.set(sessionId, session);
+        const sessionId = encryptSession(sessionState);
 
         return NextResponse.json({
             sessionId,
             leftCoin: {
-                id: session.currentLeft.id,
-                name: session.currentLeft.name,
-                symbol: session.currentLeft.symbol,
-                logo: session.currentLeft.logo,
-                color: session.currentLeft.color,
-                platform: session.currentLeft.platform,
-                marketCap: session.currentLeft.marketCap  // Needed for UI display
+                id: currentLeft.id,
+                name: currentLeft.name,
+                symbol: currentLeft.symbol,
+                logo: currentLeft.logo,
+                color: currentLeft.color,
+                platform: currentLeft.platform,
+                marketCap: currentLeft.marketCap
             },
             rightCoin: {
-                id: session.currentRight.id,
-                name: session.currentRight.name,
-                symbol: session.currentRight.symbol,
-                logo: session.currentRight.logo,
-                color: session.currentRight.color,
-                platform: session.currentRight.platform
-                // Note: marketCap is NOT sent to client for security
-            }
+                id: currentRight.id,
+                name: currentRight.name,
+                symbol: currentRight.symbol,
+                logo: currentRight.logo,
+                color: currentRight.color,
+                platform: currentRight.platform
+                // marketCap hidden
+            },
+            score: sessionState.score
         });
     } catch (error) {
         console.error('Failed to start game:', error);
