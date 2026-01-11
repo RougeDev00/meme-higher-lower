@@ -344,7 +344,9 @@ select,
   height: 100%;
   background-size: cover;
   background-position: center;
-  filter: brightness(0.3) blur(3px);
+  /* Relaxed filter - darkening is handled by gradient overlay now */
+  /* filter: brightness(0.3) blur(3px); -> REMOVED/UPDATED */
+  filter: blur(2px);
   z-index: 0;
 }
 

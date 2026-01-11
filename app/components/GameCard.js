@@ -21,7 +21,11 @@ export default function GameCard({ coin, side, resultState, selectedSide, isAnim
             <div
                 className="coin-background"
                 style={{
-                    backgroundColor: coin.color || (side === 'left' ? '#1a1a2e' : '#16213e')
+                    background: `
+                        linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.8)),
+                        radial-gradient(circle at center, ${coin.color || '#444'}40 0%, rgba(0,0,0,0.9) 100%)
+                    `,
+                    backgroundColor: '#111' // Fallback dark base
                 }}
             >
                 {/* Background Image Layer - using simpler img tag or div for background blur effect if needed, keeping simple color/image from original for now. 
@@ -35,7 +39,7 @@ export default function GameCard({ coin, side, resultState, selectedSide, isAnim
                         alt=""
                         fill
                         className="coin-bg-image"
-                        style={{ objectFit: 'cover', opacity: 0.6 }}
+                        style={{ objectFit: 'cover', opacity: 0.4 }}
                         onError={() => setImageError(true)}
                         unoptimized={true} // Allow external images initially to avoid next/image whitelist issues if config missed some
                     />
