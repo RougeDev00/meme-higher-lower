@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import CursorTrail from './components/CursorTrail';
+import GamePage from './game/page';
 import { GAME_CONFIG } from '@/lib/gameConfig';
 
 export default function Home() {
@@ -10,6 +11,7 @@ export default function Home() {
   const [walletAddress, setWalletAddress] = useState('');
   const [leaderboard, setLeaderboard] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -48,7 +50,7 @@ export default function Home() {
         localStorage.setItem('meme-game-active-id', 'GUEST');
       }
 
-      router.push('/game');
+      setIsPlaying(true);
     }
   };
 
@@ -163,6 +165,12 @@ export default function Home() {
       </div>
 
       <CursorTrail />
+
+      {isPlaying && (
+        <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', zIndex: 100 }}>
+          <GamePage onGoHome={() => setIsPlaying(false)} />
+        </div>
+      )}
     </div>
   );
 }
