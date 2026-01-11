@@ -112,20 +112,6 @@
     "rank": 8
   },
   {
-    "id": "marsmi",
-    "name": "MarsMi",
-    "symbol": "MarsMi",
-    "address": "GqXX9MfkURBZ5cFym9HDzqTL7uZkjtCSqLkUSe2xpump",
-    "marketCap": 51854587,
-    "logo": "https://assets.coingecko.com/coins/images/67592/large/MarsMi_200x200.png?1753214052",
-    "color": "hsl(349, 70%, 80%)",
-    "platform": "Pump.fun",
-    "priceUsd": 0.05186,
-    "liquidity": 772395.54,
-    "volumeUsd": 3428.56,
-    "rank": 9
-  },
-  {
     "id": "pythia",
     "name": "PYTHIA",
     "symbol": "PYTHIA",
@@ -137,7 +123,7 @@
     "priceUsd": 0.04923,
     "liquidity": 1975360.23,
     "volumeUsd": 251119.46,
-    "rank": 10
+    "rank": 9
   },
   {
     "id": "airigcomplex",
@@ -151,7 +137,7 @@
     "priceUsd": 0.0437,
     "liquidity": 3319668.03,
     "volumeUsd": 904372.09,
-    "rank": 11
+    "rank": 10
   },
   {
     "id": "amiko",
@@ -165,7 +151,7 @@
     "priceUsd": 0.05541,
     "liquidity": 856456.32,
     "volumeUsd": 248697.79,
-    "rank": 12
+    "rank": 11
   },
   {
     "id": "goat",
@@ -179,7 +165,7 @@
     "priceUsd": 0.03892,
     "liquidity": 2550345.82,
     "volumeUsd": 150365.01,
-    "rank": 13
+    "rank": 12
   },
   {
     "id": "clash",
@@ -193,7 +179,7 @@
     "priceUsd": 0.03653,
     "liquidity": 752885.74,
     "volumeUsd": 254417.52,
-    "rank": 14
+    "rank": 13
   },
   {
     "id": "zerebro-8x5V",
@@ -207,7 +193,7 @@
     "platform": "Pump.fun",
     "color": "#F38181",
     "volumeUsd": 0,
-    "rank": 15
+    "rank": 14
   },
   {
     "id": "vine",
@@ -221,7 +207,7 @@
     "priceUsd": 0.03025,
     "liquidity": 3221191.35,
     "volumeUsd": 398833.14,
-    "rank": 16
+    "rank": 15
   },
   {
     "id": "troll-5UUH",
@@ -235,7 +221,7 @@
     "platform": "Pump.fun",
     "color": "#F38181",
     "volumeUsd": 0,
-    "rank": 17
+    "rank": 16
   },
   {
     "id": "aura-DtR4",
@@ -249,7 +235,7 @@
     "platform": "Pump.fun",
     "color": "#F38181",
     "volumeUsd": 0,
-    "rank": 18
+    "rank": 17
   },
   {
     "id": "wojak",
@@ -263,7 +249,7 @@
     "priceUsd": 0.02726,
     "liquidity": 864200.15,
     "volumeUsd": 1137267.27,
-    "rank": 19
+    "rank": 18
   },
   {
     "id": "act",
@@ -277,7 +263,7 @@
     "priceUsd": 0.02572,
     "liquidity": 2401196.52,
     "volumeUsd": 243597.98,
-    "rank": 20
+    "rank": 19
   },
   {
     "id": "chillguy",
@@ -291,7 +277,7 @@
     "priceUsd": 0.02339,
     "liquidity": 1962323.82,
     "volumeUsd": 299068.38,
-    "rank": 21
+    "rank": 20
   },
   {
     "id": "bullish",
@@ -305,7 +291,7 @@
     "priceUsd": 0.01992,
     "liquidity": 565749.85,
     "volumeUsd": 275778.46,
-    "rank": 22
+    "rank": 21
   },
   {
     "id": "griffain-KENJ",
@@ -319,7 +305,7 @@
     "platform": "Pump.fun",
     "color": "#F38181",
     "volumeUsd": 0,
-    "rank": 23
+    "rank": 22
   },
   {
     "id": "67",
@@ -333,21 +319,7 @@
     "priceUsd": 0.01986,
     "liquidity": 924621.38,
     "volumeUsd": 1178876.23,
-    "rank": 24
-  },
-  {
-    "id": "vankedisi-66bH",
-    "name": "vankedisi",
-    "symbol": "VANKEDISI",
-    "address": "66bHtzcXqmLgkn668EG4ETzHL3RLz5ybdckqvrPppump",
-    "marketCap": 17905155,
-    "liquidity": 522410.04,
-    "priceUsd": 0.02504,
-    "logo": "https://assets.coingecko.com/coins/images/54957/large/vankedisi-logo.jpg?1742837892",
-    "platform": "Pump.fun",
-    "color": "#F38181",
-    "volumeUsd": 0,
-    "rank": 25
+    "rank": 23
   },
   {
     "id": "bert",
@@ -361,7 +333,7 @@
     "priceUsd": 0.01735,
     "liquidity": 1254248.36,
     "volumeUsd": 273524.56,
-    "rank": 26
+    "rank": 24
   },
   {
     "id": "testicle",
@@ -375,7 +347,7 @@
     "priceUsd": 0.01687,
     "liquidity": 677640.91,
     "volumeUsd": 5125747.22,
-    "rank": 27
+    "rank": 25
   },
   {
     "id": "dreams",
@@ -389,7 +361,7 @@
     "priceUsd": 0.01811,
     "liquidity": 901483.44,
     "volumeUsd": 627687.92,
-    "rank": 28
+    "rank": 26
   },
   {
     "id": "unicornfartdust",
@@ -403,7 +375,7 @@
     "priceUsd": 0.01446,
     "liquidity": 1815027.13,
     "volumeUsd": 107050.53,
-    "rank": 29
+    "rank": 27
   },
   {
     "id": "swarms",
@@ -417,7 +389,7 @@
     "priceUsd": 0.01441,
     "liquidity": 1908919.35,
     "volumeUsd": 214399.59,
-    "rank": 30
+    "rank": 28
   },
   {
     "id": "wolf",
@@ -431,7 +403,7 @@
     "priceUsd": 0.01424,
     "liquidity": 390037.44,
     "volumeUsd": 12708.82,
-    "rank": 31
+    "rank": 29
   },
   {
     "id": "fwog",
@@ -445,7 +417,7 @@
     "priceUsd": 0.01442,
     "liquidity": 2767733.12,
     "volumeUsd": 1995845.21,
-    "rank": 32
+    "rank": 30
   },
   {
     "id": "mnsry",
@@ -459,7 +431,7 @@
     "priceUsd": 0.01473,
     "liquidity": 438842.87,
     "volumeUsd": 6127,
-    "rank": 33
+    "rank": 31
   },
   {
     "id": "neet",
@@ -473,7 +445,7 @@
     "priceUsd": 0.01217,
     "liquidity": 1042117.76,
     "volumeUsd": 188796.48,
-    "rank": 34
+    "rank": 32
   },
   {
     "id": "aism",
@@ -487,21 +459,7 @@
     "priceUsd": 0.01195,
     "liquidity": 348366.27,
     "volumeUsd": 3.53,
-    "rank": 35
-  },
-  {
-    "id": "catterminal",
-    "name": "Cat Terminal",
-    "symbol": "CAT",
-    "address": "4HBQm2EhdpUWZkTYxttxNDnsoWi5beRAGWHpjVo8pump",
-    "marketCap": 11502869,
-    "color": "#F38181",
-    "platform": "Pump.fun",
-    "priceUsd": 0.0115,
-    "liquidity": 471493.25,
-    "volumeUsd": 85680.55,
-    "rank": 36,
-    "logo": "https://assets.coingecko.com/coins/images/55898/large/mmexport1747474633598.jpg?1747640807"
+    "rank": 33
   },
   {
     "id": "agenda47",
@@ -515,7 +473,7 @@
     "priceUsd": 0.01079,
     "liquidity": 579159.66,
     "volumeUsd": 20224.45,
-    "rank": 37
+    "rank": 34
   },
   {
     "id": "ava",
@@ -529,7 +487,7 @@
     "priceUsd": 0.01036,
     "liquidity": 1333134.61,
     "volumeUsd": 117926.25,
-    "rank": 38
+    "rank": 35
   },
   {
     "id": "cino",
@@ -543,7 +501,7 @@
     "priceUsd": 0.01508,
     "liquidity": 541719.48,
     "volumeUsd": 7926.82,
-    "rank": 39
+    "rank": 36
   },
   {
     "id": "fartboy",
@@ -557,7 +515,7 @@
     "priceUsd": 0.009723,
     "liquidity": 502646.14,
     "volumeUsd": 84563.12,
-    "rank": 40
+    "rank": 37
   },
   {
     "id": "gback",
@@ -571,7 +529,7 @@
     "priceUsd": 0.009596,
     "liquidity": 319353.12,
     "volumeUsd": 30863.94,
-    "rank": 41
+    "rank": 38
   },
   {
     "id": "jobcoin",
@@ -585,7 +543,7 @@
     "priceUsd": 0.008177,
     "liquidity": 514145.52,
     "volumeUsd": 100.66,
-    "rank": 42
+    "rank": 39
   },
   {
     "id": "opus",
@@ -599,7 +557,7 @@
     "priceUsd": 0.007828,
     "liquidity": 961917.15,
     "volumeUsd": 91046.23,
-    "rank": 43
+    "rank": 40
   },
   {
     "id": "verse",
@@ -613,7 +571,7 @@
     "priceUsd": 0.07723,
     "liquidity": 1045645.68,
     "volumeUsd": 353265.71,
-    "rank": 44
+    "rank": 41
   },
   {
     "id": "fish",
@@ -627,7 +585,7 @@
     "priceUsd": 0.006803,
     "liquidity": 388220.41,
     "volumeUsd": 4985746.95,
-    "rank": 45
+    "rank": 42
   },
   {
     "id": "401jk",
@@ -641,7 +599,7 @@
     "priceUsd": 0.00678,
     "liquidity": 340997.35,
     "volumeUsd": 49878.69,
-    "rank": 46
+    "rank": 43
   },
   {
     "id": "daddytate",
@@ -655,7 +613,7 @@
     "priceUsd": 0.01123,
     "liquidity": 1012168.54,
     "volumeUsd": 19806.7,
-    "rank": 47
+    "rank": 44
   },
   {
     "id": "dji6930",
@@ -669,7 +627,7 @@
     "priceUsd": 0.006207,
     "liquidity": 410124.79,
     "volumeUsd": 56681.34,
-    "rank": 48
+    "rank": 45
   },
   {
     "id": "codec",
@@ -683,7 +641,7 @@
     "priceUsd": 0.008175,
     "liquidity": 552214.27,
     "volumeUsd": 43689.48,
-    "rank": 49
+    "rank": 46
   },
   {
     "id": "kabuto",
@@ -697,7 +655,7 @@
     "priceUsd": 0.00591,
     "liquidity": 424378.4,
     "volumeUsd": 1047146.25,
-    "rank": 50
+    "rank": 47
   },
   {
     "id": "qst",
@@ -711,7 +669,7 @@
     "priceUsd": 0.005742,
     "liquidity": 327839.75,
     "volumeUsd": 30842.33,
-    "rank": 51
+    "rank": 48
   },
   {
     "id": "chillhouse",
@@ -725,7 +683,7 @@
     "priceUsd": 0.005728,
     "liquidity": 843152.8,
     "volumeUsd": 434164.21,
-    "rank": 52
+    "rank": 49
   },
   {
     "id": "moby",
@@ -739,7 +697,7 @@
     "priceUsd": 0.005039,
     "liquidity": 642962.17,
     "volumeUsd": 153912.56,
-    "rank": 53
+    "rank": 50
   },
   {
     "id": "blackwhale",
@@ -753,7 +711,7 @@
     "priceUsd": 0.004956,
     "liquidity": 318842.65,
     "volumeUsd": 4283542.93,
-    "rank": 54
+    "rank": 51
   },
   {
     "id": "mia",
@@ -766,7 +724,7 @@
     "platform": "Pump.fun",
     "priceUsd": 0.004724,
     "liquidity": 268055.67,
-    "rank": 55
+    "rank": 52
   },
   {
     "id": "usduc",
@@ -780,7 +738,7 @@
     "priceUsd": 0.004625,
     "liquidity": 569140.42,
     "volumeUsd": 117198.98,
-    "rank": 56
+    "rank": 53
   },
   {
     "id": "pumpcade-Eg2y",
@@ -794,7 +752,7 @@
     "platform": "Pump.fun",
     "color": "#F38181",
     "volumeUsd": 0,
-    "rank": 57
+    "rank": 54
   },
   {
     "id": "dexter",
@@ -808,7 +766,7 @@
     "priceUsd": 0.004075,
     "liquidity": 300242.21,
     "volumeUsd": 409493.24,
-    "rank": 58
+    "rank": 55
   },
   {
     "id": "monerochan",
@@ -822,7 +780,7 @@
     "priceUsd": 0.003852,
     "liquidity": 301831.08,
     "volumeUsd": 384505.31,
-    "rank": 59
+    "rank": 56
   },
   {
     "id": "sigma",
@@ -836,7 +794,7 @@
     "priceUsd": 0.004209,
     "liquidity": 702301.7,
     "volumeUsd": 24337.27,
-    "rank": 60
+    "rank": 57
   },
   {
     "id": "gor-71Jv",
@@ -850,7 +808,7 @@
     "platform": "Pump.fun",
     "color": "#F38181",
     "volumeUsd": 0,
-    "rank": 61
+    "rank": 58
   },
   {
     "id": "car",
@@ -864,7 +822,7 @@
     "priceUsd": 0.003585,
     "liquidity": 375926.57,
     "volumeUsd": 148.51,
-    "rank": 62
+    "rank": 59
   },
   {
     "id": "sachi",
@@ -878,7 +836,7 @@
     "priceUsd": 0.003592,
     "liquidity": 272677.8,
     "volumeUsd": 153528.34,
-    "rank": 63
+    "rank": 60
   },
   {
     "id": "snowball",
@@ -892,7 +850,7 @@
     "priceUsd": 0.003456,
     "liquidity": 352728.88,
     "volumeUsd": 4136341.38,
-    "rank": 64
+    "rank": 61
   },
   {
     "id": "lc",
@@ -906,21 +864,7 @@
     "priceUsd": 0.003511,
     "liquidity": 346181.35,
     "volumeUsd": 35509.44,
-    "rank": 65
-  },
-  {
-    "id": "allindoge",
-    "name": "all in doge",
-    "symbol": "ALLINDOGE",
-    "address": "HyDKNdnhZNVYQMruBevbNsUWruA9STmAQrS4srXApump",
-    "marketCap": 3272960,
-    "logo": "https://assets.coingecko.com/coins/images/67332/large/20250623-194209.png?1758952588",
-    "color": "hsl(358, 70%, 80%)",
-    "platform": "Pump.fun",
-    "priceUsd": 0.003272,
-    "liquidity": 235469.61,
-    "volumeUsd": 41075.62,
-    "rank": 66
+    "rank": 62
   },
   {
     "id": "mask",
@@ -934,7 +878,7 @@
     "priceUsd": 0.003243,
     "liquidity": 434771.37,
     "volumeUsd": 96889.32,
-    "rank": 67
+    "rank": 63
   },
   {
     "id": "spark",
@@ -948,7 +892,7 @@
     "priceUsd": 0.003227,
     "liquidity": 496945.05,
     "volumeUsd": 919088.82,
-    "rank": 68
+    "rank": 64
   },
   {
     "id": "114514",
@@ -962,7 +906,7 @@
     "priceUsd": 0.0031,
     "liquidity": 262568.03,
     "volumeUsd": 992289.95,
-    "rank": 69
+    "rank": 65
   },
   {
     "id": "v2ex",
@@ -976,7 +920,7 @@
     "priceUsd": 0.003074,
     "liquidity": 309318.41,
     "volumeUsd": 1136.98,
-    "rank": 70
+    "rank": 66
   },
   {
     "id": "pp",
@@ -990,7 +934,7 @@
     "priceUsd": 0.005942,
     "liquidity": 268416.99,
     "volumeUsd": 168995.08,
-    "rank": 71
+    "rank": 67
   },
   {
     "id": "grph",
@@ -1004,7 +948,7 @@
     "priceUsd": 0.002983,
     "liquidity": 456483.02,
     "volumeUsd": 7651.05,
-    "rank": 72
+    "rank": 68
   },
   {
     "id": "metav-HCgv",
@@ -1018,7 +962,7 @@
     "platform": "Pump.fun",
     "color": "#F38181",
     "volumeUsd": 0,
-    "rank": 73
+    "rank": 69
   },
   {
     "id": "lynk-HZG1",
@@ -1032,7 +976,7 @@
     "platform": "Pump.fun",
     "color": "#F38181",
     "volumeUsd": 0,
-    "rank": 74
+    "rank": 70
   },
   {
     "id": "alon-8XtR",
@@ -1046,7 +990,7 @@
     "platform": "Pump.fun",
     "color": "#F38181",
     "volumeUsd": 0,
-    "rank": 75
+    "rank": 71
   },
   {
     "id": "tokabu",
@@ -1060,7 +1004,7 @@
     "priceUsd": 0.002726,
     "liquidity": 387293.21,
     "volumeUsd": 176591.96,
-    "rank": 76
+    "rank": 72
   },
   {
     "id": "zauth",
@@ -1074,7 +1018,7 @@
     "priceUsd": 0.002851,
     "liquidity": 185845.82,
     "volumeUsd": 359242.18,
-    "rank": 77
+    "rank": 73
   },
   {
     "id": "retire",
@@ -1088,7 +1032,7 @@
     "priceUsd": 0.00264,
     "liquidity": 572709.81,
     "volumeUsd": 101334.83,
-    "rank": 78
+    "rank": 74
   },
   {
     "id": "gh",
@@ -1102,7 +1046,7 @@
     "priceUsd": 0.002525,
     "liquidity": 158735.58,
     "volumeUsd": 212.29,
-    "rank": 79
+    "rank": 75
   },
   {
     "id": "chronoeffe",
@@ -1116,7 +1060,7 @@
     "priceUsd": 0.002523,
     "liquidity": 176770.03,
     "volumeUsd": 5327.13,
-    "rank": 80
+    "rank": 76
   },
   {
     "id": "wynn",
@@ -1130,7 +1074,7 @@
     "priceUsd": 0.002507,
     "liquidity": 175824.48,
     "volumeUsd": 388360.82,
-    "rank": 81
+    "rank": 77
   },
   {
     "id": "lmao",
@@ -1144,7 +1088,7 @@
     "priceUsd": 0.002472,
     "liquidity": 240126.32,
     "volumeUsd": 177772.77,
-    "rank": 82
+    "rank": 78
   },
   {
     "id": "mini-2JcX",
@@ -1158,21 +1102,7 @@
     "platform": "Pump.fun",
     "color": "#F38181",
     "volumeUsd": 0,
-    "rank": 83
-  },
-  {
-    "id": "polyfacts",
-    "name": "Polyfactual",
-    "symbol": "POLYFACTS",
-    "address": "FfixAeHevSKBZWoXPTbLk4U4X9piqvzGKvQaFo3cpump",
-    "marketCap": 2439545,
-    "logo": "https://assets.coingecko.com/coins/images/68903/large/gwpvfnw9uxvc8ojohahvy2gp1jzy.?1756921813",
-    "color": "#EE5A24",
-    "platform": "Pump.fun",
-    "priceUsd": 0.002524,
-    "liquidity": 279440.5,
-    "volumeUsd": 107000.32,
-    "rank": 84
+    "rank": 79
   },
   {
     "id": "bitty",
@@ -1186,7 +1116,7 @@
     "priceUsd": 0.002423,
     "liquidity": 291467.12,
     "volumeUsd": 95245.29,
-    "rank": 85
+    "rank": 80
   },
   {
     "id": "agialpha",
@@ -1200,7 +1130,7 @@
     "priceUsd": 0.002402,
     "liquidity": 191146.49,
     "volumeUsd": 88.13,
-    "rank": 86
+    "rank": 81
   },
   {
     "id": "groyper",
@@ -1214,7 +1144,7 @@
     "priceUsd": 0.00238,
     "liquidity": 270394.05,
     "volumeUsd": 34645.59,
-    "rank": 87
+    "rank": 82
   },
   {
     "id": "$michi-5mbK",
@@ -1228,7 +1158,7 @@
     "platform": "Pump.fun",
     "color": "#F38181",
     "volumeUsd": 0,
-    "rank": 88
+    "rank": 83
   },
   {
     "id": "shoggoth",
@@ -1242,7 +1172,7 @@
     "priceUsd": 0.002371,
     "liquidity": 552282.74,
     "volumeUsd": 45118.08,
-    "rank": 89
+    "rank": 84
   },
   {
     "id": "mother-3S8q",
@@ -1256,7 +1186,7 @@
     "platform": "Pump.fun",
     "color": "#F38181",
     "volumeUsd": 0,
-    "rank": 90
+    "rank": 85
   },
   {
     "id": "pvs",
@@ -1270,7 +1200,7 @@
     "priceUsd": 0.002287,
     "liquidity": 443739.4,
     "volumeUsd": 93732.15,
-    "rank": 91
+    "rank": 86
   },
   {
     "id": "pengo",
@@ -1284,7 +1214,7 @@
     "priceUsd": 0.002271,
     "liquidity": 160663.73,
     "volumeUsd": 31066.66,
-    "rank": 92
+    "rank": 87
   },
   {
     "id": "nothing",
@@ -1298,7 +1228,7 @@
     "priceUsd": 0.002266,
     "liquidity": 256403.06,
     "volumeUsd": 282233.71,
-    "rank": 93
+    "rank": 88
   },
   {
     "id": "justbuy1worthofthiscoin",
@@ -1312,7 +1242,7 @@
     "priceUsd": 0.002194,
     "liquidity": 644129.04,
     "volumeUsd": 10165.57,
-    "rank": 94
+    "rank": 89
   },
   {
     "id": "kermit",
@@ -1325,7 +1255,7 @@
     "platform": "Pump.fun",
     "priceUsd": 0.002192,
     "liquidity": 213972.8,
-    "rank": 95
+    "rank": 90
   },
   {
     "id": "beb1m",
@@ -1339,7 +1269,7 @@
     "priceUsd": 0.002184,
     "liquidity": 147856.76,
     "volumeUsd": 6669.66,
-    "rank": 96
+    "rank": 91
   },
   {
     "id": "suede",
@@ -1353,7 +1283,7 @@
     "priceUsd": 0.002173,
     "liquidity": 169034.7,
     "volumeUsd": 3047.81,
-    "rank": 97
+    "rank": 92
   },
   {
     "id": "crypto",
@@ -1367,7 +1297,7 @@
     "priceUsd": 0.002102,
     "liquidity": 202238.07,
     "volumeUsd": 19001.01,
-    "rank": 98
+    "rank": 93
   },
   {
     "id": "brew",
@@ -1381,7 +1311,7 @@
     "priceUsd": 0.002492,
     "liquidity": 232604.66,
     "volumeUsd": 9252.49,
-    "rank": 99
+    "rank": 94
   },
   {
     "id": "san",
@@ -1395,7 +1325,7 @@
     "priceUsd": 0.002171,
     "liquidity": 344899.54,
     "volumeUsd": 51527.4,
-    "rank": 100
+    "rank": 95
   },
   {
     "id": "tasshub",
@@ -1409,7 +1339,7 @@
     "priceUsd": 0.00194,
     "liquidity": 164079.43,
     "volumeUsd": 5170.87,
-    "rank": 101
+    "rank": 96
   },
   {
     "id": "house",
@@ -1423,7 +1353,7 @@
     "priceUsd": 0.001937,
     "liquidity": 532557.27,
     "volumeUsd": 84271.74,
-    "rank": 102
+    "rank": 97
   },
   {
     "id": "pwease",
@@ -1437,7 +1367,7 @@
     "priceUsd": 0.001869,
     "liquidity": 637619.64,
     "volumeUsd": 21716.08,
-    "rank": 103
+    "rank": 98
   },
   {
     "id": "rifts",
@@ -1451,7 +1381,7 @@
     "priceUsd": 0.001878,
     "liquidity": 158496.21,
     "volumeUsd": 59383.16,
-    "rank": 104
+    "rank": 99
   },
   {
     "id": "hehe",
@@ -1465,7 +1395,7 @@
     "priceUsd": 0.002189,
     "liquidity": 296847.8,
     "volumeUsd": 8873,
-    "rank": 105
+    "rank": 100
   },
   {
     "id": "loulou",
@@ -1479,7 +1409,7 @@
     "priceUsd": 0.001805,
     "liquidity": 155559.55,
     "volumeUsd": 4215.14,
-    "rank": 106
+    "rank": 101
   },
   {
     "id": "yzy",
@@ -1493,7 +1423,7 @@
     "priceUsd": 0.001794,
     "liquidity": 374951.43,
     "volumeUsd": 5536.26,
-    "rank": 107
+    "rank": 102
   },
   {
     "id": "nuit",
@@ -1507,7 +1437,7 @@
     "priceUsd": 0.00178,
     "liquidity": 315753.01,
     "volumeUsd": 18364.23,
-    "rank": 108
+    "rank": 103
   },
   {
     "id": "xavier",
@@ -1521,7 +1451,7 @@
     "priceUsd": 0.001779,
     "liquidity": 229332.26,
     "volumeUsd": 38235.98,
-    "rank": 109
+    "rank": 104
   },
   {
     "id": "lhx",
@@ -1535,7 +1465,7 @@
     "priceUsd": 0.00176,
     "liquidity": 131227.94,
     "volumeUsd": 24094.04,
-    "rank": 110
+    "rank": 105
   },
   {
     "id": "bananarepublic",
@@ -1549,7 +1479,7 @@
     "priceUsd": 0.00176,
     "liquidity": 129872.61,
     "volumeUsd": 66.8,
-    "rank": 111
+    "rank": 106
   },
   {
     "id": "elon4afd",
@@ -1563,7 +1493,7 @@
     "priceUsd": 0.00174,
     "liquidity": 202174.96,
     "volumeUsd": 6549.04,
-    "rank": 112
+    "rank": 107
   },
   {
     "id": "waffles-8doS",
@@ -1577,7 +1507,7 @@
     "platform": "Pump.fun",
     "color": "#F38181",
     "volumeUsd": 0,
-    "rank": 113
+    "rank": 108
   },
   {
     "id": "trencher-8ncu",
@@ -1591,7 +1521,7 @@
     "platform": "Pump.fun",
     "color": "#F38181",
     "volumeUsd": 0,
-    "rank": 114
+    "rank": 109
   },
   {
     "id": "cdoge",
@@ -1605,7 +1535,7 @@
     "priceUsd": 0.00159,
     "liquidity": 133437.31,
     "volumeUsd": 2932.61,
-    "rank": 115
+    "rank": 110
   },
   {
     "id": "stoolprisondente",
@@ -1619,7 +1549,7 @@
     "priceUsd": 0.001573,
     "liquidity": 651045.51,
     "volumeUsd": 5060.03,
-    "rank": 116
+    "rank": 111
   },
   {
     "id": "chatoshi",
@@ -1633,7 +1563,7 @@
     "priceUsd": 0.001543,
     "liquidity": 255575.5,
     "volumeUsd": 384.77,
-    "rank": 117
+    "rank": 112
   },
   {
     "id": "singularry",
@@ -1647,7 +1577,7 @@
     "priceUsd": 0.001538,
     "liquidity": 162843.88,
     "volumeUsd": 13.97,
-    "rank": 118
+    "rank": 113
   },
   {
     "id": "fafo-BP8R",
@@ -1661,7 +1591,7 @@
     "platform": "Pump.fun",
     "color": "#F38181",
     "volumeUsd": 0,
-    "rank": 119
+    "rank": 114
   },
   {
     "id": "titcoin",
@@ -1675,7 +1605,7 @@
     "priceUsd": 0.001564,
     "liquidity": 541786.2,
     "volumeUsd": 139590.29,
-    "rank": 120
+    "rank": 115
   },
   {
     "id": "autonome",
@@ -1688,7 +1618,7 @@
     "priceUsd": 0.001484,
     "liquidity": 118939.44,
     "volumeUsd": 7.3,
-    "rank": 121
+    "rank": 116
   },
   {
     "id": "roy-E3oE",
@@ -1702,7 +1632,7 @@
     "platform": "Pump.fun",
     "color": "#F38181",
     "volumeUsd": 0,
-    "rank": 122
+    "rank": 117
   },
   {
     "id": "pfp",
@@ -1716,7 +1646,7 @@
     "priceUsd": 0.001459,
     "liquidity": 208131.7,
     "volumeUsd": 166100.05,
-    "rank": 123
+    "rank": 118
   },
   {
     "id": "avb",
@@ -1730,7 +1660,7 @@
     "priceUsd": 0.001452,
     "liquidity": 460850.41,
     "volumeUsd": 16939.28,
-    "rank": 124
+    "rank": 119
   },
   {
     "id": "miner",
@@ -1744,7 +1674,7 @@
     "priceUsd": 0.001446,
     "liquidity": 177278.7,
     "volumeUsd": 271722.81,
-    "rank": 125
+    "rank": 120
   },
   {
     "id": "yesnoerror",
@@ -1758,7 +1688,7 @@
     "priceUsd": 0.001416,
     "liquidity": 384024.94,
     "volumeUsd": 3412.83,
-    "rank": 126
+    "rank": 121
   },
   {
     "id": "stupid",
@@ -1772,7 +1702,7 @@
     "priceUsd": 0.001406,
     "liquidity": 422500.86,
     "volumeUsd": 15715.34,
-    "rank": 127
+    "rank": 122
   },
   {
     "id": "pizza",
@@ -1786,7 +1716,7 @@
     "priceUsd": 0.001364,
     "liquidity": 184783.18,
     "volumeUsd": 10.76,
-    "rank": 128
+    "rank": 123
   },
   {
     "id": "labubu",
@@ -1800,7 +1730,7 @@
     "priceUsd": 0.001345,
     "liquidity": 510530.31,
     "volumeUsd": 13444.15,
-    "rank": 129
+    "rank": 124
   },
   {
     "id": "bagwork",
@@ -1814,7 +1744,7 @@
     "priceUsd": 0.001324,
     "liquidity": 221450.87,
     "volumeUsd": 131917.81,
-    "rank": 130
+    "rank": 125
   },
   {
     "id": "dark",
@@ -1828,7 +1758,7 @@
     "priceUsd": 0.001323,
     "liquidity": 405622.04,
     "volumeUsd": 18780.19,
-    "rank": 131
+    "rank": 126
   },
   {
     "id": "awr",
@@ -1842,7 +1772,7 @@
     "priceUsd": 0.001351,
     "liquidity": 202854.77,
     "volumeUsd": 15011.3,
-    "rank": 132
+    "rank": 127
   },
   {
     "id": "predict",
@@ -1855,7 +1785,7 @@
     "platform": "Pump.fun",
     "priceUsd": 0.001278,
     "liquidity": 132893.16,
-    "rank": 133
+    "rank": 128
   },
   {
     "id": "buttcoin",
@@ -1868,7 +1798,7 @@
     "platform": "Pump.fun",
     "priceUsd": 0.001253,
     "liquidity": 127170.07,
-    "rank": 134
+    "rank": 129
   },
   {
     "id": "hiveai",
@@ -1882,7 +1812,7 @@
     "priceUsd": 0.001204,
     "liquidity": 477655.76,
     "volumeUsd": 8330.92,
-    "rank": 135
+    "rank": 130
   },
   {
     "id": "snai",
@@ -1896,7 +1826,7 @@
     "priceUsd": 0.001172,
     "liquidity": 106728,
     "volumeUsd": 15858.16,
-    "rank": 136
+    "rank": 131
   },
   {
     "id": "epik-3Bgw",
@@ -1910,7 +1840,7 @@
     "platform": "Pump.fun",
     "color": "#F38181",
     "volumeUsd": 0,
-    "rank": 137
+    "rank": 132
   },
   {
     "id": "rfc",
@@ -1924,7 +1854,7 @@
     "priceUsd": 0.001176,
     "liquidity": 390217.63,
     "volumeUsd": 31173.28,
-    "rank": 138
+    "rank": 133
   },
   {
     "id": "sc-6D7N",
@@ -1938,7 +1868,7 @@
     "platform": "Pump.fun",
     "color": "#F38181",
     "volumeUsd": 0,
-    "rank": 139
+    "rank": 134
   },
   {
     "id": "chippy-Bz7N",
@@ -1952,7 +1882,7 @@
     "platform": "Pump.fun",
     "color": "#F38181",
     "volumeUsd": 0,
-    "rank": 140
+    "rank": 135
   },
   {
     "id": "tommyjingl",
@@ -1966,7 +1896,7 @@
     "priceUsd": 0.001099,
     "liquidity": 105187.99,
     "volumeUsd": 12429.15,
-    "rank": 141
+    "rank": 136
   },
   {
     "id": "ella",
@@ -1980,7 +1910,7 @@
     "priceUsd": 0.001079,
     "liquidity": 103613.78,
     "volumeUsd": 198.99,
-    "rank": 142
+    "rank": 137
   },
   {
     "id": "ace",
@@ -1994,7 +1924,7 @@
     "priceUsd": 0.001073,
     "liquidity": 103991.49,
     "volumeUsd": 67224.57,
-    "rank": 143
+    "rank": 138
   },
   {
     "id": "chud-6yjN",
@@ -2008,7 +1938,7 @@
     "platform": "Pump.fun",
     "color": "#F38181",
     "volumeUsd": 0,
-    "rank": 144
+    "rank": 139
   },
   {
     "id": "scf",
@@ -2022,7 +1952,7 @@
     "priceUsd": 0.001068,
     "liquidity": 385080.94,
     "volumeUsd": 12777,
-    "rank": 145
+    "rank": 140
   },
   {
     "id": "pundle",
@@ -2036,7 +1966,7 @@
     "priceUsd": 0.001064,
     "liquidity": 115997.62,
     "volumeUsd": 3862.88,
-    "rank": 146
+    "rank": 141
   },
   {
     "id": "stkr",
@@ -2050,7 +1980,7 @@
     "priceUsd": 0.001059,
     "liquidity": 121986.97,
     "volumeUsd": 1988.21,
-    "rank": 147
+    "rank": 142
   },
   {
     "id": "billy",
@@ -2064,7 +1994,7 @@
     "priceUsd": 0.001066,
     "liquidity": 594630.28,
     "volumeUsd": 12294.35,
-    "rank": 148
+    "rank": 143
   },
   {
     "id": "dgn",
@@ -2078,7 +2008,7 @@
     "priceUsd": 0.001021,
     "liquidity": 105613.88,
     "volumeUsd": 732.87,
-    "rank": 149
+    "rank": 144
   },
   {
     "id": "fric",
@@ -2092,21 +2022,7 @@
     "priceUsd": 0.00101,
     "liquidity": 306170.42,
     "volumeUsd": 13934.08,
-    "rank": 150
-  },
-  {
-    "id": "synapz",
-    "name": "SYNAPZ",
-    "symbol": "SYNAPZ",
-    "address": "HfJvxwLQeHeiDz8e91RWSwMm3R1pLh1vyjLoSr5gpump",
-    "marketCap": 998281,
-    "logo": "https://assets.coingecko.com/coins/images/70899/large/download_%281%29.png?1764484195",
-    "color": "hsl(247, 70%, 80%)",
-    "platform": "Pump.fun",
-    "priceUsd": 0.001001,
-    "liquidity": 101454.05,
-    "volumeUsd": 15159.16,
-    "rank": 151
+    "rank": 145
   },
   {
     "id": "xbt",
@@ -2120,7 +2036,7 @@
     "priceUsd": 0.0009981,
     "liquidity": 255698.82,
     "volumeUsd": 106543.11,
-    "rank": 152
+    "rank": 146
   },
   {
     "id": "kra",
@@ -2134,7 +2050,7 @@
     "priceUsd": 0.0009757,
     "liquidity": 112066.91,
     "volumeUsd": 182.35,
-    "rank": 153
+    "rank": 147
   },
   {
     "id": "fapcoin",
@@ -2148,7 +2064,7 @@
     "priceUsd": 0.0009829,
     "liquidity": 121923.73,
     "volumeUsd": 11493.75,
-    "rank": 154
+    "rank": 148
   },
   {
     "id": "y2k",
@@ -2162,7 +2078,7 @@
     "priceUsd": 0.0009703,
     "liquidity": 195742.49,
     "volumeUsd": 5423.78,
-    "rank": 155
+    "rank": 149
   },
   {
     "id": "luce",
@@ -2176,7 +2092,7 @@
     "priceUsd": 0.0009642,
     "liquidity": 496411.57,
     "volumeUsd": 4220.79,
-    "rank": 156
+    "rank": 150
   },
   {
     "id": "fred",
@@ -2190,7 +2106,7 @@
     "priceUsd": 0.0009598,
     "liquidity": 498821.49,
     "volumeUsd": 35726.12,
-    "rank": 157
+    "rank": 151
   },
   {
     "id": "🟥🟩-HwPt",
@@ -2204,7 +2120,7 @@
     "platform": "Pump.fun",
     "color": "#F38181",
     "volumeUsd": 0,
-    "rank": 158
+    "rank": 152
   },
   {
     "id": "gork",
@@ -2218,7 +2134,7 @@
     "priceUsd": 0.0009403,
     "liquidity": 338305.94,
     "volumeUsd": 9895.42,
-    "rank": 159
+    "rank": 153
   },
   {
     "id": "tetsuo-8i51",
@@ -2232,7 +2148,7 @@
     "platform": "Pump.fun",
     "color": "#F38181",
     "volumeUsd": 0,
-    "rank": 160
+    "rank": 154
   },
   {
     "id": "boxabl",
@@ -2246,7 +2162,7 @@
     "priceUsd": 0.0009058,
     "liquidity": 116832.63,
     "volumeUsd": 102910.75,
-    "rank": 161
+    "rank": 155
   },
   {
     "id": "ber",
@@ -2260,7 +2176,7 @@
     "priceUsd": 0.0008637,
     "liquidity": 91111.15,
     "volumeUsd": 1081.87,
-    "rank": 162
+    "rank": 156
   },
   {
     "id": "bgg1",
@@ -2274,7 +2190,7 @@
     "priceUsd": 0.0008602,
     "liquidity": 249444.46,
     "volumeUsd": 6129.93,
-    "rank": 163
+    "rank": 157
   },
   {
     "id": "wagmi",
@@ -2288,7 +2204,7 @@
     "priceUsd": 0.0008486,
     "liquidity": 135174.81,
     "volumeUsd": 12578.04,
-    "rank": 164
+    "rank": 158
   },
   {
     "id": "pepecat",
@@ -2302,7 +2218,7 @@
     "priceUsd": 0.0008548,
     "liquidity": 112754.28,
     "volumeUsd": 512.15,
-    "rank": 165
+    "rank": 159
   },
   {
     "id": "wizard",
@@ -2316,7 +2232,7 @@
     "priceUsd": 0.000845,
     "liquidity": 291544.68,
     "volumeUsd": 14179.94,
-    "rank": 166
+    "rank": 160
   },
   {
     "id": "buttholecoin",
@@ -2330,7 +2246,7 @@
     "priceUsd": 0.0008009,
     "liquidity": 333395.15,
     "volumeUsd": 7245.21,
-    "rank": 167
+    "rank": 161
   },
   {
     "id": "trench",
@@ -2344,7 +2260,7 @@
     "priceUsd": 0.0008316,
     "liquidity": 145536.64,
     "volumeUsd": 1427.85,
-    "rank": 168
+    "rank": 162
   },
   {
     "id": "jmoney",
@@ -2358,7 +2274,7 @@
     "priceUsd": 0.0008011,
     "liquidity": 105943.07,
     "volumeUsd": 259,
-    "rank": 169
+    "rank": 163
   },
   {
     "id": "km-FThr",
@@ -2372,7 +2288,7 @@
     "platform": "Pump.fun",
     "color": "#F38181",
     "volumeUsd": 0,
-    "rank": 170
+    "rank": 164
   },
   {
     "id": "brainlet-8NNX",
@@ -2386,7 +2302,7 @@
     "platform": "Pump.fun",
     "color": "#F38181",
     "volumeUsd": 0,
-    "rank": 171
+    "rank": 165
   },
   {
     "id": "rys",
@@ -2400,7 +2316,7 @@
     "priceUsd": 0.0008055,
     "liquidity": 175443.12,
     "volumeUsd": 8336,
-    "rank": 172
+    "rank": 166
   },
   {
     "id": "ghibli",
@@ -2414,7 +2330,7 @@
     "priceUsd": 0.0007688,
     "liquidity": 272599.16,
     "volumeUsd": 9923.48,
-    "rank": 173
+    "rank": 167
   },
   {
     "id": "spinningcat",
@@ -2428,7 +2344,7 @@
     "priceUsd": 0.0007663,
     "liquidity": 233213.18,
     "volumeUsd": 5731.2,
-    "rank": 174
+    "rank": 168
   },
   {
     "id": "assdaq",
@@ -2442,7 +2358,7 @@
     "priceUsd": 0.0007662,
     "liquidity": 196632.91,
     "volumeUsd": 7270.21,
-    "rank": 175
+    "rank": 169
   },
   {
     "id": "jobs-6cNc",
@@ -2456,7 +2372,7 @@
     "platform": "Pump.fun",
     "color": "#F38181",
     "volumeUsd": 0,
-    "rank": 176
+    "rank": 170
   },
   {
     "id": "stonks",
@@ -2470,7 +2386,7 @@
     "priceUsd": 0.0007599,
     "liquidity": 366941.88,
     "volumeUsd": 949.61,
-    "rank": 177
+    "rank": 171
   },
   {
     "id": "shitcoin",
@@ -2484,7 +2400,7 @@
     "priceUsd": 0.0007869,
     "liquidity": 125205.28,
     "volumeUsd": 52191.45,
-    "rank": 178
+    "rank": 172
   },
   {
     "id": "thrt",
@@ -2498,7 +2414,7 @@
     "priceUsd": 0.0007579,
     "liquidity": 104914.8,
     "volumeUsd": 36950.71,
-    "rank": 179
+    "rank": 173
   },
   {
     "id": "maybe",
@@ -2512,7 +2428,7 @@
     "priceUsd": 0.0008572,
     "liquidity": 107071.69,
     "volumeUsd": 888.38,
-    "rank": 180
+    "rank": 174
   },
   {
     "id": "core",
@@ -2526,7 +2442,7 @@
     "priceUsd": 0.0007331,
     "liquidity": 119615.36,
     "volumeUsd": 18405.98,
-    "rank": 181
+    "rank": 175
   },
   {
     "id": "rnt",
@@ -2540,7 +2456,7 @@
     "priceUsd": 0.000718,
     "liquidity": 392825.44,
     "volumeUsd": 5702.43,
-    "rank": 182
+    "rank": 176
   },
   {
     "id": "kween-DEf9",
@@ -2554,7 +2470,7 @@
     "platform": "Pump.fun",
     "color": "#F38181",
     "volumeUsd": 0,
-    "rank": 183
+    "rank": 177
   },
   {
     "id": "italianrot",
@@ -2568,7 +2484,7 @@
     "priceUsd": 0.0007146,
     "liquidity": 251639.95,
     "volumeUsd": 35335.86,
-    "rank": 184
+    "rank": 178
   },
   {
     "id": "kns",
@@ -2582,7 +2498,7 @@
     "priceUsd": 0.0007657,
     "liquidity": 87076.45,
     "volumeUsd": 14141.96,
-    "rank": 185
+    "rank": 179
   },
   {
     "id": "md",
@@ -2596,7 +2512,7 @@
     "priceUsd": 0.001301,
     "liquidity": 147060.96,
     "volumeUsd": 10191.34,
-    "rank": 186
+    "rank": 180
   },
   {
     "id": "degenai",
@@ -2610,7 +2526,7 @@
     "priceUsd": 0.0007059,
     "liquidity": 306742.89,
     "volumeUsd": 30232.5,
-    "rank": 187
+    "rank": 181
   },
   {
     "id": "gyat",
@@ -2624,7 +2540,7 @@
     "priceUsd": 0.0007019,
     "liquidity": 198111.36,
     "volumeUsd": 6890.03,
-    "rank": 188
+    "rank": 182
   },
   {
     "id": "goldenwhale",
@@ -2638,7 +2554,7 @@
     "priceUsd": 0.0007916,
     "liquidity": 100527.05,
     "volumeUsd": 291298.19,
-    "rank": 189
+    "rank": 183
   },
   {
     "id": "rage",
@@ -2652,7 +2568,7 @@
     "priceUsd": 0.0007095,
     "liquidity": 97163.01,
     "volumeUsd": 2208.06,
-    "rank": 190
+    "rank": 184
   },
   {
     "id": "bluewhale",
@@ -2666,7 +2582,7 @@
     "priceUsd": 0.0007309,
     "liquidity": 114834.86,
     "volumeUsd": 5275900.04,
-    "rank": 191
+    "rank": 185
   },
   {
     "id": "qe",
@@ -2680,7 +2596,7 @@
     "priceUsd": 0.0006904,
     "liquidity": 86421.64,
     "volumeUsd": 11159.15,
-    "rank": 192
+    "rank": 186
   },
   {
     "id": "xeris",
@@ -2694,7 +2610,7 @@
     "priceUsd": 0.0006904,
     "liquidity": 99859.56,
     "volumeUsd": 34233.42,
-    "rank": 193
+    "rank": 187
   },
   {
     "id": "wntv",
@@ -2708,7 +2624,7 @@
     "priceUsd": 0.0006762,
     "liquidity": 87390.28,
     "volumeUsd": 557.85,
-    "rank": 194
+    "rank": 188
   },
   {
     "id": "niggawhale",
@@ -2721,7 +2637,7 @@
     "platform": "Pump.fun",
     "priceUsd": 0.0006702,
     "liquidity": 86589.07,
-    "rank": 195
+    "rank": 189
   },
   {
     "id": "oxe",
@@ -2735,7 +2651,7 @@
     "priceUsd": 0.0006853,
     "liquidity": 87482.03,
     "volumeUsd": 63943.22,
-    "rank": 196
+    "rank": 190
   },
   {
     "id": "aisi",
@@ -2749,7 +2665,7 @@
     "priceUsd": 0.0006655,
     "liquidity": 89303.45,
     "volumeUsd": 48056.09,
-    "rank": 197
+    "rank": 191
   },
   {
     "id": "print",
@@ -2763,7 +2679,7 @@
     "priceUsd": 0.0007777,
     "liquidity": 95293.07,
     "volumeUsd": 1533.74,
-    "rank": 198
+    "rank": 192
   },
   {
     "id": "whitepepe",
@@ -2776,7 +2692,7 @@
     "platform": "Pump.fun",
     "priceUsd": 0.0006605,
     "liquidity": 91791.45,
-    "rank": 199
+    "rank": 193
   },
   {
     "id": "blind",
@@ -2790,7 +2706,7 @@
     "priceUsd": 0.0006898,
     "liquidity": 104798.03,
     "volumeUsd": 321540.29,
-    "rank": 200
+    "rank": 194
   },
   {
     "id": "retail",
@@ -2804,7 +2720,7 @@
     "priceUsd": 0.0006363,
     "liquidity": 88135.61,
     "volumeUsd": 26674.72,
-    "rank": 201
+    "rank": 195
   },
   {
     "id": "nomnom",
@@ -2818,7 +2734,7 @@
     "priceUsd": 0.0006322,
     "liquidity": 207895.08,
     "volumeUsd": 19671.12,
-    "rank": 202
+    "rank": 196
   },
   {
     "id": "eai",
@@ -2832,7 +2748,7 @@
     "priceUsd": 0.000627,
     "liquidity": 89598.26,
     "volumeUsd": 684.93,
-    "rank": 203
+    "rank": 197
   },
   {
     "id": "cupsey",
@@ -2846,7 +2762,7 @@
     "priceUsd": 0.0006249,
     "liquidity": 256710.19,
     "volumeUsd": 38729.6,
-    "rank": 204
+    "rank": 198
   },
   {
     "id": "limitless",
@@ -2860,7 +2776,7 @@
     "priceUsd": 0.000615,
     "liquidity": 98639.57,
     "volumeUsd": 17.65,
-    "rank": 205
+    "rank": 199
   },
   {
     "id": "aqc",
@@ -2874,7 +2790,7 @@
     "priceUsd": 0.0006453,
     "liquidity": 110008.67,
     "volumeUsd": 19178.77,
-    "rank": 206
+    "rank": 200
   },
   {
     "id": "franklin",
@@ -2888,7 +2804,7 @@
     "priceUsd": 0.000611,
     "liquidity": 151376.19,
     "volumeUsd": 66947.25,
-    "rank": 207
+    "rank": 201
   },
   {
     "id": "twoboobs",
@@ -2901,7 +2817,7 @@
     "platform": "Pump.fun",
     "priceUsd": 0.0006068,
     "liquidity": 81803.73,
-    "rank": 208
+    "rank": 202
   },
   {
     "id": "tata",
@@ -2914,7 +2830,7 @@
     "platform": "Pump.fun",
     "priceUsd": 0.0006025,
     "liquidity": 90735.16,
-    "rank": 209
+    "rank": 203
   },
   {
     "id": "fxn",
@@ -2928,7 +2844,7 @@
     "priceUsd": 0.000663,
     "liquidity": 164027.2,
     "volumeUsd": 17980.31,
-    "rank": 210
+    "rank": 204
   },
   {
     "id": "pill",
@@ -2942,7 +2858,7 @@
     "priceUsd": 0.0005924,
     "liquidity": 182473.13,
     "volumeUsd": 94.62,
-    "rank": 211
+    "rank": 205
   },
   {
     "id": "dtv",
@@ -2955,7 +2871,7 @@
     "platform": "Pump.fun",
     "priceUsd": 0.0005916,
     "liquidity": 102487.47,
-    "rank": 212
+    "rank": 206
   },
   {
     "id": "moonpig",
@@ -2969,7 +2885,7 @@
     "priceUsd": 0.0005984,
     "liquidity": 239934.6,
     "volumeUsd": 2581.22,
-    "rank": 213
+    "rank": 207
   },
   {
     "id": "gm",
@@ -2983,7 +2899,7 @@
     "priceUsd": 0.0005861,
     "liquidity": 88640.22,
     "volumeUsd": 43530.26,
-    "rank": 214
+    "rank": 208
   },
   {
     "id": "dino",
@@ -2997,7 +2913,7 @@
     "priceUsd": 0.0006738,
     "liquidity": 169560.19,
     "volumeUsd": 2722567.25,
-    "rank": 215
+    "rank": 209
   },
   {
     "id": "val",
@@ -3011,7 +2927,7 @@
     "priceUsd": 0.000567,
     "liquidity": 89615.65,
     "volumeUsd": 1033.27,
-    "rank": 216
+    "rank": 210
   },
   {
     "id": "aka",
@@ -3025,7 +2941,7 @@
     "priceUsd": 0.0005648,
     "liquidity": 147825.65,
     "volumeUsd": 52.45,
-    "rank": 217
+    "rank": 211
   },
   {
     "id": "omegax",
@@ -3038,7 +2954,7 @@
     "platform": "Pump.fun",
     "priceUsd": 0.0005644,
     "liquidity": 130186.64,
-    "rank": 218
+    "rank": 212
   },
   {
     "id": "nailong",
@@ -3052,7 +2968,7 @@
     "priceUsd": 0.0005606,
     "liquidity": 219691.22,
     "volumeUsd": 6362.54,
-    "rank": 219
+    "rank": 213
   },
   {
     "id": "zard",
@@ -3066,7 +2982,7 @@
     "priceUsd": 0.000559,
     "liquidity": 103607.76,
     "volumeUsd": 8612.07,
-    "rank": 220
+    "rank": 214
   },
   {
     "id": "oobe",
@@ -3080,7 +2996,7 @@
     "priceUsd": 0.0005792,
     "liquidity": 100858.11,
     "volumeUsd": 1585.39,
-    "rank": 221
+    "rank": 215
   },
   {
     "id": "rwa-G8aV",
@@ -3094,7 +3010,7 @@
     "platform": "Pump.fun",
     "color": "#F38181",
     "volumeUsd": 0,
-    "rank": 222
+    "rank": 216
   },
   {
     "id": "ssr",
@@ -3108,7 +3024,7 @@
     "priceUsd": 0.0005488,
     "liquidity": 120884.05,
     "volumeUsd": 15416.25,
-    "rank": 223
+    "rank": 217
   },
   {
     "id": "buckazoids",
@@ -3122,7 +3038,7 @@
     "priceUsd": 0.0005405,
     "liquidity": 180724.62,
     "volumeUsd": 6264.42,
-    "rank": 224
+    "rank": 218
   },
   {
     "id": "kredo",
@@ -3136,7 +3052,7 @@
     "priceUsd": 0.0005371,
     "liquidity": 78735.16,
     "volumeUsd": 332202.23,
-    "rank": 225
+    "rank": 219
   },
   {
     "id": "whistle",
@@ -3150,7 +3066,7 @@
     "priceUsd": 0.0005322,
     "liquidity": 88770.95,
     "volumeUsd": 26039.61,
-    "rank": 226
+    "rank": 220
   },
   {
     "id": "oora",
@@ -3164,7 +3080,7 @@
     "priceUsd": 0.0005214,
     "liquidity": 86323.84,
     "volumeUsd": 735732.76,
-    "rank": 227
+    "rank": 221
   },
   {
     "id": "trisig",
@@ -3178,7 +3094,7 @@
     "priceUsd": 0.0005183,
     "liquidity": 168578.55,
     "volumeUsd": 2933.66,
-    "rank": 228
+    "rank": 222
   },
   {
     "id": "pax",
@@ -3191,7 +3107,7 @@
     "platform": "Pump.fun",
     "priceUsd": 0.0005169,
     "liquidity": 71568.06,
-    "rank": 229
+    "rank": 223
   },
   {
     "id": "purk",
@@ -3205,7 +3121,7 @@
     "priceUsd": 0.0005148,
     "liquidity": 83476.38,
     "volumeUsd": 235779.49,
-    "rank": 230
+    "rank": 224
   },
   {
     "id": "simd",
@@ -3219,7 +3135,7 @@
     "priceUsd": 0.0005109,
     "liquidity": 78557.06,
     "volumeUsd": 14853.96,
-    "rank": 231
+    "rank": 225
   },
   {
     "id": "basedd",
@@ -3233,7 +3149,7 @@
     "priceUsd": 0.0005062,
     "liquidity": 97078.97,
     "volumeUsd": 9870.56,
-    "rank": 232
+    "rank": 226
   },
   {
     "id": "threeairrowscapital",
@@ -3247,7 +3163,7 @@
     "priceUsd": 0.0005016,
     "liquidity": 72630.52,
     "volumeUsd": 1016.61,
-    "rank": 233
+    "rank": 227
   },
   {
     "id": "pino",
@@ -3261,7 +3177,7 @@
     "priceUsd": 0.0005031,
     "liquidity": 147042.82,
     "volumeUsd": 6212.05,
-    "rank": 234
+    "rank": 228
   },
   {
     "id": "tbc",
@@ -3275,7 +3191,7 @@
     "priceUsd": 0.0004954,
     "liquidity": 129942.07,
     "volumeUsd": 7482.15,
-    "rank": 235
+    "rank": 229
   },
   {
     "id": "lea",
@@ -3289,7 +3205,7 @@
     "priceUsd": 0.0004951,
     "liquidity": 158515.81,
     "volumeUsd": 5032.97,
-    "rank": 236
+    "rank": 230
   },
   {
     "id": "ram",
@@ -3303,7 +3219,7 @@
     "priceUsd": 0.0004901,
     "liquidity": 82950.37,
     "volumeUsd": 98624.77,
-    "rank": 237
+    "rank": 231
   },
   {
     "id": "buttcoin",
@@ -3317,7 +3233,7 @@
     "priceUsd": 0.0004615,
     "liquidity": 301089.01,
     "volumeUsd": 62735.98,
-    "rank": 238
+    "rank": 232
   },
   {
     "id": "amelia",
@@ -3330,7 +3246,7 @@
     "platform": "Pump.fun",
     "priceUsd": 0.0004579,
     "liquidity": 74956.3,
-    "rank": 239
+    "rank": 233
   },
   {
     "id": "cheese",
@@ -3344,7 +3260,7 @@
     "priceUsd": 0.0004565,
     "liquidity": 88133.61,
     "volumeUsd": 1869.25,
-    "rank": 240
+    "rank": 234
   },
   {
     "id": "zara",
@@ -3358,7 +3274,7 @@
     "priceUsd": 0.000721,
     "liquidity": 185805.92,
     "volumeUsd": 11075.73,
-    "rank": 241
+    "rank": 235
   },
   {
     "id": "asym",
@@ -3372,7 +3288,7 @@
     "priceUsd": 0.0004499,
     "liquidity": 123949.94,
     "volumeUsd": 448.24,
-    "rank": 242
+    "rank": 236
   },
   {
     "id": "limbo",
@@ -3386,7 +3302,7 @@
     "priceUsd": 0.0004468,
     "liquidity": 130645.68,
     "volumeUsd": 756.01,
-    "rank": 243
+    "rank": 237
   },
   {
     "id": "rel",
@@ -3400,7 +3316,7 @@
     "priceUsd": 0.0004422,
     "liquidity": 68899.37,
     "volumeUsd": 23231.9,
-    "rank": 244
+    "rank": 238
   },
   {
     "id": "tsotchke",
@@ -3414,7 +3330,7 @@
     "priceUsd": 0.0004599,
     "liquidity": 180840.7,
     "volumeUsd": 19203.58,
-    "rank": 245
+    "rank": 239
   },
   {
     "id": "whitefish",
@@ -3427,7 +3343,7 @@
     "platform": "Pump.fun",
     "priceUsd": 0.00043,
     "liquidity": 70803.76,
-    "rank": 246
+    "rank": 240
   },
   {
     "id": "whiteshiba",
@@ -3440,7 +3356,7 @@
     "platform": "Pump.fun",
     "priceUsd": 0.0004296,
     "liquidity": 70044.88,
-    "rank": 247
+    "rank": 241
   },
   {
     "id": "ftp",
@@ -3454,7 +3370,7 @@
     "priceUsd": 0.0004236,
     "liquidity": 93970.48,
     "volumeUsd": 12238.23,
-    "rank": 248
+    "rank": 242
   },
   {
     "id": "rif",
@@ -3468,7 +3384,7 @@
     "priceUsd": 0.0004234,
     "liquidity": 256802.62,
     "volumeUsd": 6022.03,
-    "rank": 249
+    "rank": 243
   },
   {
     "id": "daku",
@@ -3482,7 +3398,7 @@
     "priceUsd": 0.0004126,
     "liquidity": 76242.68,
     "volumeUsd": 792.65,
-    "rank": 250
+    "rank": 244
   },
   {
     "id": "edwin",
@@ -3496,7 +3412,7 @@
     "priceUsd": 0.0004151,
     "liquidity": 103121.89,
     "volumeUsd": 4731.35,
-    "rank": 251
+    "rank": 245
   },
   {
     "id": "kolin",
@@ -3510,7 +3426,7 @@
     "priceUsd": 0.0004107,
     "liquidity": 121970.29,
     "volumeUsd": 1246.85,
-    "rank": 252
+    "rank": 246
   },
   {
     "id": "wtfo",
@@ -3524,7 +3440,7 @@
     "priceUsd": 0.0004608,
     "liquidity": 82940.99,
     "volumeUsd": 1595.05,
-    "rank": 253
+    "rank": 247
   },
   {
     "id": "clippy",
@@ -3538,7 +3454,7 @@
     "priceUsd": 0.0004056,
     "liquidity": 137358.25,
     "volumeUsd": 45127.73,
-    "rank": 254
+    "rank": 248
   },
   {
     "id": "degen",
@@ -3552,7 +3468,7 @@
     "priceUsd": 0.000396,
     "liquidity": 63820.84,
     "volumeUsd": 53014.75,
-    "rank": 255
+    "rank": 249
   },
   {
     "id": "tgmetrics",
@@ -3566,7 +3482,7 @@
     "priceUsd": 0.0004409,
     "liquidity": 75582.92,
     "volumeUsd": 4501.18,
-    "rank": 256
+    "rank": 250
   },
   {
     "id": "comat",
@@ -3580,7 +3496,7 @@
     "priceUsd": 0.0005509,
     "liquidity": 74103.68,
     "volumeUsd": 2771.14,
-    "rank": 257
+    "rank": 251
   },
   {
     "id": "momo",
@@ -3594,7 +3510,7 @@
     "priceUsd": 0.0003924,
     "liquidity": 66677.95,
     "volumeUsd": 3619.07,
-    "rank": 258
+    "rank": 252
   },
   {
     "id": "store",
@@ -3608,7 +3524,7 @@
     "priceUsd": 0.0003941,
     "liquidity": 88103.11,
     "volumeUsd": 8610.79,
-    "rank": 259
+    "rank": 253
   },
   {
     "id": "baby",
@@ -3622,7 +3538,7 @@
     "priceUsd": 0.0003881,
     "liquidity": 96314.28,
     "volumeUsd": 71555.77,
-    "rank": 260
+    "rank": 254
   },
   {
     "id": "wurk",
@@ -3636,7 +3552,7 @@
     "priceUsd": 0.0003798,
     "liquidity": 87367.39,
     "volumeUsd": 3233.07,
-    "rank": 261
+    "rank": 255
   },
   {
     "id": "bis",
@@ -3650,7 +3566,7 @@
     "priceUsd": 0.0003783,
     "liquidity": 72208.72,
     "volumeUsd": 367303.77,
-    "rank": 262
+    "rank": 256
   },
   {
     "id": "kind",
@@ -3664,7 +3580,7 @@
     "priceUsd": 0.0003782,
     "liquidity": 108329.47,
     "volumeUsd": 15311.99,
-    "rank": 263
+    "rank": 257
   },
   {
     "id": "apex",
@@ -3678,7 +3594,7 @@
     "priceUsd": 0.0003911,
     "liquidity": 89239.64,
     "volumeUsd": 1884.16,
-    "rank": 264
+    "rank": 258
   },
   {
     "id": "shrimps",
@@ -3692,7 +3608,7 @@
     "priceUsd": 0.0003852,
     "liquidity": 81763.95,
     "volumeUsd": 357299.21,
-    "rank": 265
+    "rank": 259
   },
   {
     "id": "itmt",
@@ -3706,7 +3622,7 @@
     "priceUsd": 0.0003694,
     "liquidity": 67087.58,
     "volumeUsd": 900.49,
-    "rank": 266
+    "rank": 260
   },
   {
     "id": "shy",
@@ -3720,7 +3636,7 @@
     "priceUsd": 0.0007271,
     "liquidity": 129306.52,
     "volumeUsd": 8478.82,
-    "rank": 267
+    "rank": 261
   },
   {
     "id": "tutc",
@@ -3734,7 +3650,7 @@
     "priceUsd": 0.0003621,
     "liquidity": 67074.14,
     "volumeUsd": 2857.21,
-    "rank": 268
+    "rank": 262
   },
   {
     "id": "lsq",
@@ -3748,7 +3664,7 @@
     "priceUsd": 0.000361,
     "liquidity": 61451.53,
     "volumeUsd": 2337.03,
-    "rank": 269
+    "rank": 263
   },
   {
     "id": "ploi",
@@ -3762,7 +3678,7 @@
     "priceUsd": 0.0003119,
     "liquidity": 102933.72,
     "volumeUsd": 42228.3,
-    "rank": 270
+    "rank": 264
   },
   {
     "id": "grift",
@@ -3776,7 +3692,7 @@
     "priceUsd": 0.0004054,
     "liquidity": 237378.05,
     "volumeUsd": 4509.63,
-    "rank": 271
+    "rank": 265
   },
   {
     "id": "supercyclereal",
@@ -3790,7 +3706,7 @@
     "priceUsd": 0.0003556,
     "liquidity": 142251.71,
     "volumeUsd": 18107.54,
-    "rank": 272
+    "rank": 266
   },
   {
     "id": "yait",
@@ -3804,7 +3720,7 @@
     "priceUsd": 0.0003532,
     "liquidity": 62153.39,
     "volumeUsd": 66.56,
-    "rank": 273
+    "rank": 267
   },
   {
     "id": "steak",
@@ -3818,7 +3734,7 @@
     "priceUsd": 0.0003513,
     "liquidity": 75862.56,
     "volumeUsd": 141598.7,
-    "rank": 274
+    "rank": 268
   },
   {
     "id": "ovary",
@@ -3831,7 +3747,7 @@
     "platform": "Pump.fun",
     "priceUsd": 0.0003475,
     "liquidity": 67855.12,
-    "rank": 275
+    "rank": 269
   },
   {
     "id": "hodl",
@@ -3845,7 +3761,7 @@
     "priceUsd": 0.000357,
     "liquidity": 61086.89,
     "volumeUsd": 6547.76,
-    "rank": 276
+    "rank": 270
   },
   {
     "id": "neiro",
@@ -3859,7 +3775,7 @@
     "priceUsd": 0.0003476,
     "liquidity": 309035.61,
     "volumeUsd": 5518.46,
-    "rank": 277
+    "rank": 271
   },
   {
     "id": "wdog",
@@ -3873,7 +3789,7 @@
     "priceUsd": 0.0003404,
     "liquidity": 207851.4,
     "volumeUsd": 2971.8,
-    "rank": 278
+    "rank": 272
   },
   {
     "id": "expert",
@@ -3887,7 +3803,7 @@
     "priceUsd": 0.0004125,
     "liquidity": 86957.38,
     "volumeUsd": 3005.95,
-    "rank": 279
+    "rank": 273
   },
   {
     "id": "wave",
@@ -3901,7 +3817,7 @@
     "priceUsd": 0.0003383,
     "liquidity": 70697.46,
     "volumeUsd": 20764.01,
-    "rank": 280
+    "rank": 274
   },
   {
     "id": "listen",
@@ -3915,7 +3831,7 @@
     "priceUsd": 0.000335,
     "liquidity": 139601.22,
     "volumeUsd": 1359.25,
-    "rank": 281
+    "rank": 275
   },
   {
     "id": "monke",
@@ -3929,7 +3845,7 @@
     "priceUsd": 0.000335,
     "liquidity": 106868.7,
     "volumeUsd": 3411.35,
-    "rank": 282
+    "rank": 276
   },
   {
     "id": "calvininthecabal",
@@ -3943,7 +3859,7 @@
     "priceUsd": 0.0003349,
     "liquidity": 62226.2,
     "volumeUsd": 8.24,
-    "rank": 283
+    "rank": 277
   },
   {
     "id": "cc",
@@ -3956,7 +3872,7 @@
     "platform": "Pump.fun",
     "priceUsd": 0.0003282,
     "liquidity": 61694.58,
-    "rank": 284
+    "rank": 278
   },
   {
     "id": "sse",
@@ -3970,7 +3886,7 @@
     "priceUsd": 0.0003242,
     "liquidity": 185354,
     "volumeUsd": 1266.46,
-    "rank": 285
+    "rank": 279
   },
   {
     "id": "wise",
@@ -3983,7 +3899,7 @@
     "platform": "Pump.fun",
     "priceUsd": 0.000324,
     "liquidity": 60378.2,
-    "rank": 286
+    "rank": 280
   },
   {
     "id": "wobbles",
@@ -3997,7 +3913,7 @@
     "priceUsd": 0.0003218,
     "liquidity": 77945.36,
     "volumeUsd": 9317.59,
-    "rank": 287
+    "rank": 281
   },
   {
     "id": "forest",
@@ -4011,7 +3927,7 @@
     "priceUsd": 0.0003145,
     "liquidity": 173639.26,
     "volumeUsd": 646.73,
-    "rank": 288
+    "rank": 282
   },
   {
     "id": "fight",
@@ -4025,7 +3941,7 @@
     "priceUsd": 0.0003127,
     "liquidity": 211401.52,
     "volumeUsd": 3644.37,
-    "rank": 289
+    "rank": 283
   },
   {
     "id": "cinet",
@@ -4039,7 +3955,7 @@
     "priceUsd": 0.0003082,
     "liquidity": 59151.18,
     "volumeUsd": 17219.92,
-    "rank": 290
+    "rank": 284
   },
   {
     "id": "opan",
@@ -4053,7 +3969,7 @@
     "priceUsd": 0.0003738,
     "liquidity": 77659.87,
     "volumeUsd": 18986.07,
-    "rank": 291
+    "rank": 285
   },
   {
     "id": "nulla",
@@ -4067,7 +3983,7 @@
     "priceUsd": 0.0003065,
     "liquidity": 62335.34,
     "volumeUsd": 12669.25,
-    "rank": 292
+    "rank": 286
   },
   {
     "id": "sitcom",
@@ -4081,7 +3997,7 @@
     "priceUsd": 0.0003047,
     "liquidity": 122773.73,
     "volumeUsd": 556.05,
-    "rank": 293
+    "rank": 287
   },
   {
     "id": "karma",
@@ -4095,7 +4011,7 @@
     "priceUsd": 0.0003039,
     "liquidity": 68249.08,
     "volumeUsd": 1212.89,
-    "rank": 294
+    "rank": 288
   },
   {
     "id": "meow",
@@ -4109,7 +4025,7 @@
     "priceUsd": 0.0003039,
     "liquidity": 72447.15,
     "volumeUsd": 3375.76,
-    "rank": 295
+    "rank": 289
   },
   {
     "id": "scanai",
@@ -4123,7 +4039,7 @@
     "priceUsd": 0.0003031,
     "liquidity": 58403.37,
     "volumeUsd": 909.18,
-    "rank": 296
+    "rank": 290
   },
   {
     "id": "jk",
@@ -4137,7 +4053,7 @@
     "priceUsd": 0.0003021,
     "liquidity": 58022.64,
     "volumeUsd": 1497.91,
-    "rank": 297
+    "rank": 291
   },
   {
     "id": "lester",
@@ -4151,7 +4067,7 @@
     "priceUsd": 0.0003016,
     "liquidity": 176422.85,
     "volumeUsd": 3338.21,
-    "rank": 298
+    "rank": 292
   },
   {
     "id": "llm",
@@ -4165,7 +4081,7 @@
     "priceUsd": 0.0003011,
     "liquidity": 213170.9,
     "volumeUsd": 15008.42,
-    "rank": 299
+    "rank": 293
   },
   {
     "id": "genzquant",
@@ -4179,7 +4095,7 @@
     "priceUsd": 0.0002998,
     "liquidity": 173463.56,
     "volumeUsd": 355.75,
-    "rank": 300
+    "rank": 294
   },
   {
     "id": "flork",
@@ -4193,7 +4109,7 @@
     "priceUsd": 0.000319,
     "liquidity": 115173.73,
     "volumeUsd": 308.78,
-    "rank": 301
+    "rank": 295
   },
   {
     "id": "juice",
@@ -4207,7 +4123,7 @@
     "priceUsd": 0.0003082,
     "liquidity": 74380.92,
     "volumeUsd": 46186.15,
-    "rank": 302
+    "rank": 296
   },
   {
     "id": "aria",
@@ -4221,7 +4137,7 @@
     "priceUsd": 0.0003325,
     "liquidity": 81722.81,
     "volumeUsd": 1709.63,
-    "rank": 303
+    "rank": 297
   },
   {
     "id": "xmoney",
@@ -4235,21 +4151,7 @@
     "priceUsd": 0.0002955,
     "liquidity": 75749.58,
     "volumeUsd": 12197.28,
-    "rank": 304
-  },
-  {
-    "id": "gemo",
-    "name": "Gemo",
-    "symbol": "Gemo",
-    "address": "9UEN2kKhHxnaK14ZYFvog2hezajxAke9xCiS2hnppump",
-    "marketCap": 294407,
-    "logo": "https://cdn.dexscreener.com/cms/images/446640e56df9f80e21ff83c05ad8fe4e4dec8142407edd9154cc157091a04d79?width=800&height=800&quality=90",
-    "color": "hsl(325, 70%, 80%)",
-    "platform": "Pump.fun",
-    "priceUsd": 0.0002944,
-    "liquidity": 90850.2,
-    "volumeUsd": 154.35,
-    "rank": 305
+    "rank": 298
   },
   {
     "id": "vcash",
@@ -4263,7 +4165,7 @@
     "priceUsd": 0.0002934,
     "liquidity": 59182.86,
     "volumeUsd": 272252.53,
-    "rank": 306
+    "rank": 299
   },
   {
     "id": "uro",
@@ -4277,7 +4179,7 @@
     "priceUsd": 0.0002892,
     "liquidity": 183056.21,
     "volumeUsd": 501.8,
-    "rank": 307
+    "rank": 300
   },
   {
     "id": "knot",
@@ -4291,7 +4193,7 @@
     "priceUsd": 0.0002843,
     "liquidity": 83136.29,
     "volumeUsd": 13287.23,
-    "rank": 308
+    "rank": 301
   },
   {
     "id": "psoq",
@@ -4305,7 +4207,7 @@
     "priceUsd": 0.0003218,
     "liquidity": 62890.95,
     "volumeUsd": 38703.88,
-    "rank": 309
+    "rank": 302
   },
   {
     "id": "bully",
@@ -4319,21 +4221,7 @@
     "priceUsd": 0.0002926,
     "liquidity": 183076.94,
     "volumeUsd": 10376.33,
-    "rank": 310
-  },
-  {
-    "id": "vcc",
-    "name": "VampCatCoin",
-    "symbol": "VCC",
-    "address": "9x5CLPb3SeYSBKvautqpJWPjX9TUCVcWTS12Xawapump",
-    "marketCap": 277967,
-    "logo": "https://cdn.dexscreener.com/cms/images/f2765d89f64bb8e75c870766b65253e575f6c7d81236e9026e9a851273abb1d1?width=800&height=800&quality=90",
-    "color": "#FF9F43",
-    "platform": "Pump.fun",
-    "priceUsd": 0.0002842,
-    "liquidity": 53215.19,
-    "volumeUsd": 577.77,
-    "rank": 311
+    "rank": 303
   },
   {
     "id": "elurc",
@@ -4347,7 +4235,7 @@
     "priceUsd": 0.0002724,
     "liquidity": 92917.01,
     "volumeUsd": 326.47,
-    "rank": 312
+    "rank": 304
   },
   {
     "id": "gabriel",
@@ -4361,7 +4249,7 @@
     "priceUsd": 0.0002764,
     "liquidity": 58828.88,
     "volumeUsd": 14450.82,
-    "rank": 313
+    "rank": 305
   },
   {
     "id": "100x",
@@ -4375,7 +4263,7 @@
     "priceUsd": 0.0002695,
     "liquidity": 54087.05,
     "volumeUsd": 1170.71,
-    "rank": 314
+    "rank": 306
   },
   {
     "id": "lion",
@@ -4389,7 +4277,7 @@
     "priceUsd": 0.0002683,
     "liquidity": 86643.58,
     "volumeUsd": 44948.72,
-    "rank": 315
+    "rank": 307
   },
   {
     "id": "trenches",
@@ -4402,7 +4290,7 @@
     "platform": "Pump.fun",
     "priceUsd": 0.0002674,
     "liquidity": 55174.77,
-    "rank": 316
+    "rank": 308
   },
   {
     "id": "pumpad",
@@ -4416,7 +4304,7 @@
     "priceUsd": 0.0002647,
     "liquidity": 54292.86,
     "volumeUsd": 89448.84,
-    "rank": 317
+    "rank": 309
   },
   {
     "id": "tos",
@@ -4430,7 +4318,7 @@
     "priceUsd": 0.0002616,
     "liquidity": 60785.84,
     "volumeUsd": 596.17,
-    "rank": 318
+    "rank": 310
   },
   {
     "id": "aislop",
@@ -4444,7 +4332,7 @@
     "priceUsd": 0.0002595,
     "liquidity": 104010.02,
     "volumeUsd": 7835.17,
-    "rank": 319
+    "rank": 311
   },
   {
     "id": "ratescape",
@@ -4458,7 +4346,7 @@
     "priceUsd": 0.0002589,
     "liquidity": 57023.89,
     "volumeUsd": 45.1,
-    "rank": 320
+    "rank": 312
   },
   {
     "id": "nyan",
@@ -4471,7 +4359,7 @@
     "platform": "Pump.fun",
     "priceUsd": 0.0002898,
     "liquidity": 71768.91,
-    "rank": 321
+    "rank": 313
   },
   {
     "id": "bunker",
@@ -4485,7 +4373,7 @@
     "priceUsd": 0.0002563,
     "liquidity": 76764.06,
     "volumeUsd": 1092.15,
-    "rank": 322
+    "rank": 314
   },
   {
     "id": "smol",
@@ -4499,7 +4387,7 @@
     "priceUsd": 0.0002675,
     "liquidity": 52925.45,
     "volumeUsd": 3066.33,
-    "rank": 323
+    "rank": 315
   },
   {
     "id": "biao",
@@ -4513,21 +4401,7 @@
     "priceUsd": 0.0002527,
     "liquidity": 111803.53,
     "volumeUsd": 4265.91,
-    "rank": 324
-  },
-  {
-    "id": "apy",
-    "name": "AgentiPy",
-    "symbol": "APY",
-    "address": "yLUD35WTiPLEY6DUqEj5W2JVXF2DfKB5arPkKJXpump",
-    "marketCap": 249908,
-    "logo": "https://cdn.dexscreener.com/cms/images/f50dc5f2b022ddb4dd037fa8a92f822914cec0d601ff73b63d0c259e8669acfe?width=800&height=800&quality=90",
-    "color": "hsl(239, 70%, 80%)",
-    "platform": "Pump.fun",
-    "priceUsd": 0.0002499,
-    "liquidity": 69774.52,
-    "volumeUsd": 29.34,
-    "rank": 325
+    "rank": 316
   },
   {
     "id": "oil",
@@ -4541,7 +4415,7 @@
     "priceUsd": 0.0002488,
     "liquidity": 141770.76,
     "volumeUsd": 71308.69,
-    "rank": 326
+    "rank": 317
   },
   {
     "id": "gnzystrm",
@@ -4554,7 +4428,7 @@
     "platform": "Pump.fun",
     "priceUsd": 0.0002655,
     "liquidity": 80602.56,
-    "rank": 327
+    "rank": 318
   },
   {
     "id": "adzilla",
@@ -4568,7 +4442,7 @@
     "priceUsd": 0.0002438,
     "liquidity": 79788.2,
     "volumeUsd": 2857.89,
-    "rank": 328
+    "rank": 319
   },
   {
     "id": "fckn",
@@ -4582,7 +4456,7 @@
     "priceUsd": 0.0002462,
     "liquidity": 48975.4,
     "volumeUsd": 606.16,
-    "rank": 329
+    "rank": 320
   },
   {
     "id": "grrr",
@@ -4596,7 +4470,7 @@
     "priceUsd": 0.000243,
     "liquidity": 79175,
     "volumeUsd": 2684.07,
-    "rank": 330
+    "rank": 321
   },
   {
     "id": "gdig",
@@ -4610,7 +4484,7 @@
     "priceUsd": 0.000244,
     "liquidity": 51560.33,
     "volumeUsd": 1673,
-    "rank": 331
+    "rank": 322
   },
   {
     "id": "neurvona",
@@ -4624,7 +4498,7 @@
     "priceUsd": 0.0002403,
     "liquidity": 57763.91,
     "volumeUsd": 61584.59,
-    "rank": 332
+    "rank": 323
   },
   {
     "id": "duna",
@@ -4638,7 +4512,7 @@
     "priceUsd": 0.0002391,
     "liquidity": 88918.31,
     "volumeUsd": 171.98,
-    "rank": 333
+    "rank": 324
   },
   {
     "id": "buidl",
@@ -4652,7 +4526,7 @@
     "priceUsd": 0.0002388,
     "liquidity": 126170.41,
     "volumeUsd": 10476.28,
-    "rank": 334
+    "rank": 325
   },
   {
     "id": "doggy",
@@ -4666,7 +4540,7 @@
     "priceUsd": 0.0002385,
     "liquidity": 73535.04,
     "volumeUsd": 20144.66,
-    "rank": 335
+    "rank": 326
   },
   {
     "id": "muskit",
@@ -4680,7 +4554,7 @@
     "priceUsd": 0.0002383,
     "liquidity": 91438.28,
     "volumeUsd": 74.37,
-    "rank": 336
+    "rank": 327
   },
   {
     "id": "agixt",
@@ -4694,7 +4568,7 @@
     "priceUsd": 0.0002558,
     "liquidity": 131087.62,
     "volumeUsd": 1148.68,
-    "rank": 337
+    "rank": 328
   },
   {
     "id": "psyopanime",
@@ -4707,7 +4581,7 @@
     "platform": "Pump.fun",
     "priceUsd": 0.0002369,
     "liquidity": 52210.23,
-    "rank": 338
+    "rank": 329
   },
   {
     "id": "looby",
@@ -4721,7 +4595,7 @@
     "priceUsd": 0.0002476,
     "liquidity": 70474.76,
     "volumeUsd": 318.97,
-    "rank": 339
+    "rank": 330
   },
   {
     "id": "darkhorse",
@@ -4735,7 +4609,7 @@
     "priceUsd": 0.0002336,
     "liquidity": 65796.72,
     "volumeUsd": 268668.09,
-    "rank": 340
+    "rank": 331
   },
   {
     "id": "barsik",
@@ -4749,7 +4623,7 @@
     "priceUsd": 0.000233,
     "liquidity": 112962.28,
     "volumeUsd": 5411.13,
-    "rank": 341
+    "rank": 332
   },
   {
     "id": "trust",
@@ -4763,7 +4637,7 @@
     "priceUsd": 0.0002302,
     "liquidity": 109057.1,
     "volumeUsd": 2415.68,
-    "rank": 342
+    "rank": 333
   },
   {
     "id": "concho",
@@ -4776,7 +4650,7 @@
     "platform": "Pump.fun",
     "priceUsd": 0.0002297,
     "liquidity": 118389.22,
-    "rank": 343
+    "rank": 334
   },
   {
     "id": "lolcoin",
@@ -4790,7 +4664,7 @@
     "priceUsd": 0.0002296,
     "liquidity": 87846.53,
     "volumeUsd": 15982.98,
-    "rank": 344
+    "rank": 335
   },
   {
     "id": "kilroy",
@@ -4804,7 +4678,7 @@
     "priceUsd": 0.0002269,
     "liquidity": 54973.5,
     "volumeUsd": 53658.15,
-    "rank": 345
+    "rank": 336
   },
   {
     "id": "glds",
@@ -4818,7 +4692,7 @@
     "priceUsd": 0.0002346,
     "liquidity": 59913.47,
     "volumeUsd": 2191.37,
-    "rank": 346
+    "rank": 337
   },
   {
     "id": "wealth",
@@ -4832,7 +4706,7 @@
     "priceUsd": 0.0002213,
     "liquidity": 70132.46,
     "volumeUsd": 3084.34,
-    "rank": 347
+    "rank": 338
   },
   {
     "id": "riptrump",
@@ -4846,7 +4720,7 @@
     "priceUsd": 0.0002203,
     "liquidity": 49699.1,
     "volumeUsd": 826.01,
-    "rank": 348
+    "rank": 339
   },
   {
     "id": "dusd",
@@ -4860,7 +4734,7 @@
     "priceUsd": 0.0003165,
     "liquidity": 70024.98,
     "volumeUsd": 27075.95,
-    "rank": 349
+    "rank": 340
   },
   {
     "id": "greenland",
@@ -4873,7 +4747,7 @@
     "platform": "Pump.fun",
     "priceUsd": 0.0002175,
     "liquidity": 55535.33,
-    "rank": 350
+    "rank": 341
   },
   {
     "id": "trash",
@@ -4887,7 +4761,7 @@
     "priceUsd": 0.0002154,
     "liquidity": 70170.52,
     "volumeUsd": 37487.4,
-    "rank": 351
+    "rank": 342
   },
   {
     "id": "x4pay",
@@ -4901,7 +4775,7 @@
     "priceUsd": 0.0002099,
     "liquidity": 61853.73,
     "volumeUsd": 18471.3,
-    "rank": 352
+    "rank": 343
   },
   {
     "id": "mindshare",
@@ -4915,7 +4789,7 @@
     "priceUsd": 0.0002094,
     "liquidity": 56001.67,
     "volumeUsd": 1380.33,
-    "rank": 353
+    "rank": 344
   },
   {
     "id": "qpay",
@@ -4929,7 +4803,7 @@
     "priceUsd": 0.000208,
     "liquidity": 58480.09,
     "volumeUsd": 33112.93,
-    "rank": 354
+    "rank": 345
   },
   {
     "id": "ez",
@@ -4943,7 +4817,7 @@
     "priceUsd": 0.0002067,
     "liquidity": 92668.78,
     "volumeUsd": 2279.69,
-    "rank": 355
+    "rank": 346
   },
   {
     "id": "nxr",
@@ -4957,7 +4831,7 @@
     "priceUsd": 0.0002115,
     "liquidity": 60935.57,
     "volumeUsd": 7879.48,
-    "rank": 356
+    "rank": 347
   },
   {
     "id": "kolscan",
@@ -4971,7 +4845,7 @@
     "priceUsd": 0.0002048,
     "liquidity": 88375.15,
     "volumeUsd": 2328.7,
-    "rank": 357
+    "rank": 348
   },
   {
     "id": "1dev",
@@ -4985,7 +4859,7 @@
     "priceUsd": 0.0002339,
     "liquidity": 52952.35,
     "volumeUsd": 5465.57,
-    "rank": 358
+    "rank": 349
   },
   {
     "id": "colla",
@@ -4999,7 +4873,7 @@
     "priceUsd": 0.0002106,
     "liquidity": 50040.98,
     "volumeUsd": 53559.1,
-    "rank": 359
+    "rank": 350
   },
   {
     "id": "dollo",
@@ -5013,35 +4887,7 @@
     "priceUsd": 0.0002229,
     "liquidity": 81753.54,
     "volumeUsd": 24116.93,
-    "rank": 360
-  },
-  {
-    "id": "dpcore",
-    "name": "DeepCore AI",
-    "symbol": "DPCORE",
-    "address": "3qVpCnqdaJtARzE2dYuCy5pm8X2NgF5hx9q9GosPpump",
-    "marketCap": 197285,
-    "logo": "https://cdn.dexscreener.com/cms/images/a2820c41cc4f70469bd90b63c7e01de2f02548d7110ec4272dbafae50a52f95d?width=800&height=800&quality=90",
-    "color": "hsl(181, 70%, 80%)",
-    "platform": "Pump.fun",
-    "priceUsd": 0.0001972,
-    "liquidity": 68046.97,
-    "volumeUsd": 5.69,
-    "rank": 361
-  },
-  {
-    "id": "rhub",
-    "name": "ROLLHUB",
-    "symbol": "RHUB",
-    "address": "4mTgtpb3sgo2gr3uWfa31n9WdG2esfrdgY3URdcApump",
-    "marketCap": 194962,
-    "logo": "https://cdn.dexscreener.com/cms/images/776f2fc78f4abd964121674a3a9f773bed4d67cc2846506f99c8de2b3fe8a94b?width=800&height=800&quality=90",
-    "color": "hsl(168, 70%, 80%)",
-    "platform": "Pump.fun",
-    "priceUsd": 0.0001949,
-    "liquidity": 44914.9,
-    "volumeUsd": 10.11,
-    "rank": 362
+    "rank": 351
   },
   {
     "id": "dobby",
@@ -5055,7 +4901,7 @@
     "priceUsd": 0.0001938,
     "liquidity": 47561.23,
     "volumeUsd": 2260.13,
-    "rank": 363
+    "rank": 352
   },
   {
     "id": "moss",
@@ -5069,7 +4915,7 @@
     "priceUsd": 0.0002126,
     "liquidity": 95733.17,
     "volumeUsd": 4501.58,
-    "rank": 364
+    "rank": 353
   },
   {
     "id": "dmaga",
@@ -5083,7 +4929,7 @@
     "priceUsd": 0.000193,
     "liquidity": 114772.48,
     "volumeUsd": 2081.63,
-    "rank": 365
+    "rank": 354
   },
   {
     "id": "ripbiden",
@@ -5096,7 +4942,7 @@
     "platform": "Pump.fun",
     "priceUsd": 0.0001945,
     "liquidity": 55873.13,
-    "rank": 366
+    "rank": 355
   },
   {
     "id": "vibe",
@@ -5110,7 +4956,7 @@
     "priceUsd": 0.000196,
     "liquidity": 91010.1,
     "volumeUsd": 313.51,
-    "rank": 367
+    "rank": 356
   },
   {
     "id": "alpha",
@@ -5124,7 +4970,7 @@
     "priceUsd": 0.0002424,
     "liquidity": 92677.43,
     "volumeUsd": 1369.34,
-    "rank": 368
+    "rank": 357
   },
   {
     "id": "wtf",
@@ -5138,7 +4984,7 @@
     "priceUsd": 0.0001934,
     "liquidity": 57598.15,
     "volumeUsd": 1645.15,
-    "rank": 369
+    "rank": 358
   },
   {
     "id": "gnon",
@@ -5152,7 +4998,7 @@
     "priceUsd": 0.000188,
     "liquidity": 186077.45,
     "volumeUsd": 424.87,
-    "rank": 370
+    "rank": 359
   },
   {
     "id": "peanut",
@@ -5166,7 +5012,7 @@
     "priceUsd": 0.0001847,
     "liquidity": 123592.14,
     "volumeUsd": 185.74,
-    "rank": 371
+    "rank": 360
   },
   {
     "id": "kinton",
@@ -5180,7 +5026,7 @@
     "priceUsd": 0.0001845,
     "liquidity": 54496.17,
     "volumeUsd": 312046.15,
-    "rank": 372
+    "rank": 361
   },
   {
     "id": "babyfwog",
@@ -5194,7 +5040,7 @@
     "priceUsd": 0.000183,
     "liquidity": 53952.74,
     "volumeUsd": 15.81,
-    "rank": 373
+    "rank": 362
   },
   {
     "id": "coins",
@@ -5208,7 +5054,7 @@
     "priceUsd": 0.000179,
     "liquidity": 43822.08,
     "volumeUsd": 77.48,
-    "rank": 374
+    "rank": 363
   },
   {
     "id": "rocky",
@@ -5222,7 +5068,7 @@
     "priceUsd": 0.0001784,
     "liquidity": 132241.68,
     "volumeUsd": 2529.89,
-    "rank": 375
+    "rank": 364
   },
   {
     "id": "src",
@@ -5236,7 +5082,7 @@
     "priceUsd": 0.0001806,
     "liquidity": 54872.32,
     "volumeUsd": 44866.18,
-    "rank": 376
+    "rank": 365
   },
   {
     "id": "crashout",
@@ -5250,7 +5096,7 @@
     "priceUsd": 0.0001754,
     "liquidity": 82529.26,
     "volumeUsd": 1541.41,
-    "rank": 377
+    "rank": 366
   },
   {
     "id": "mush",
@@ -5264,7 +5110,7 @@
     "priceUsd": 0.0001751,
     "liquidity": 48812.02,
     "volumeUsd": 1300899.41,
-    "rank": 378
+    "rank": 367
   },
   {
     "id": "tobi",
@@ -5278,7 +5124,7 @@
     "priceUsd": 0.0001746,
     "liquidity": 78969.73,
     "volumeUsd": 870.22,
-    "rank": 379
+    "rank": 368
   },
   {
     "id": "canelcorn",
@@ -5292,7 +5138,7 @@
     "priceUsd": 0.0001741,
     "liquidity": 52253.54,
     "volumeUsd": 13366.71,
-    "rank": 380
+    "rank": 369
   },
   {
     "id": "rww",
@@ -5306,7 +5152,7 @@
     "priceUsd": 0.0001732,
     "liquidity": 43580.81,
     "volumeUsd": 68.58,
-    "rank": 381
+    "rank": 370
   },
   {
     "id": "syra",
@@ -5320,7 +5166,7 @@
     "priceUsd": 0.000174,
     "liquidity": 48026.47,
     "volumeUsd": 18135.98,
-    "rank": 382
+    "rank": 371
   },
   {
     "id": "esim",
@@ -5334,7 +5180,7 @@
     "priceUsd": 0.0001723,
     "liquidity": 77370.19,
     "volumeUsd": 1162.83,
-    "rank": 383
+    "rank": 372
   },
   {
     "id": "dogshit2",
@@ -5348,7 +5194,7 @@
     "priceUsd": 0.0001695,
     "liquidity": 101948.05,
     "volumeUsd": 2123.53,
-    "rank": 384
+    "rank": 373
   },
   {
     "id": "ss",
@@ -5362,7 +5208,7 @@
     "priceUsd": 0.0001688,
     "liquidity": 49885.63,
     "volumeUsd": 14111.23,
-    "rank": 385
+    "rank": 374
   },
   {
     "id": "aurafarm",
@@ -5376,7 +5222,7 @@
     "priceUsd": 0.0001713,
     "liquidity": 93437.56,
     "volumeUsd": 3116.68,
-    "rank": 386
+    "rank": 375
   },
   {
     "id": "tuna",
@@ -5390,7 +5236,7 @@
     "priceUsd": 0.0001683,
     "liquidity": 56809.43,
     "volumeUsd": 181432.65,
-    "rank": 387
+    "rank": 376
   },
   {
     "id": "blackcoin",
@@ -5404,7 +5250,7 @@
     "priceUsd": 0.0001659,
     "liquidity": 62873.92,
     "volumeUsd": 1763.17,
-    "rank": 388
+    "rank": 377
   },
   {
     "id": "pesto",
@@ -5418,7 +5264,7 @@
     "priceUsd": 0.0001635,
     "liquidity": 153412.49,
     "volumeUsd": 62.85,
-    "rank": 389
+    "rank": 378
   },
   {
     "id": "aios",
@@ -5432,7 +5278,7 @@
     "priceUsd": 0.0004863,
     "liquidity": 146447.94,
     "volumeUsd": 7.22,
-    "rank": 390
+    "rank": 379
   },
   {
     "id": "trenchai",
@@ -5446,7 +5292,7 @@
     "priceUsd": 0.0001623,
     "liquidity": 80280.53,
     "volumeUsd": 745.24,
-    "rank": 391
+    "rank": 380
   },
   {
     "id": "lou",
@@ -5460,7 +5306,7 @@
     "priceUsd": 0.000162,
     "liquidity": 104155.47,
     "volumeUsd": 51.35,
-    "rank": 392
+    "rank": 381
   },
   {
     "id": "ethan",
@@ -5473,7 +5319,7 @@
     "platform": "Pump.fun",
     "priceUsd": 0.0001608,
     "liquidity": 41707.28,
-    "rank": 393
+    "rank": 382
   },
   {
     "id": "fireball",
@@ -5487,7 +5333,7 @@
     "priceUsd": 0.0001872,
     "liquidity": 54832.37,
     "volumeUsd": 473894.1,
-    "rank": 394
+    "rank": 383
   },
   {
     "id": "rome",
@@ -5501,7 +5347,7 @@
     "priceUsd": 0.0001594,
     "liquidity": 62883.32,
     "volumeUsd": 25300.78,
-    "rank": 395
+    "rank": 384
   },
   {
     "id": "memesai",
@@ -5515,7 +5361,7 @@
     "priceUsd": 0.0001588,
     "liquidity": 167262.8,
     "volumeUsd": 469.88,
-    "rank": 396
+    "rank": 385
   },
   {
     "id": "axi",
@@ -5529,7 +5375,7 @@
     "priceUsd": 0.0001578,
     "liquidity": 42135.32,
     "volumeUsd": 1847.82,
-    "rank": 397
+    "rank": 386
   },
   {
     "id": "kitkat",
@@ -5543,7 +5389,7 @@
     "priceUsd": 0.0001577,
     "liquidity": 63921.72,
     "volumeUsd": 5476.72,
-    "rank": 398
+    "rank": 387
   },
   {
     "id": "effectiveaccelerationism",
@@ -5557,7 +5403,7 @@
     "priceUsd": 0.0001574,
     "liquidity": 107565.53,
     "volumeUsd": 883.15,
-    "rank": 399
+    "rank": 388
   },
   {
     "id": "solfunmeme",
@@ -5571,7 +5417,7 @@
     "priceUsd": 0.0001665,
     "liquidity": 91775.63,
     "volumeUsd": 194.1,
-    "rank": 400
+    "rank": 389
   },
   {
     "id": "duckai",
@@ -5585,7 +5431,7 @@
     "priceUsd": 0.0001534,
     "liquidity": 63190.45,
     "volumeUsd": 173.18,
-    "rank": 401
+    "rank": 390
   },
   {
     "id": "weedcoin",
@@ -5599,7 +5445,7 @@
     "priceUsd": 0.0001514,
     "liquidity": 58182.98,
     "volumeUsd": 846.87,
-    "rank": 402
+    "rank": 391
   },
   {
     "id": "dank",
@@ -5613,7 +5459,7 @@
     "priceUsd": 0.0001507,
     "liquidity": 58424.49,
     "volumeUsd": 316.06,
-    "rank": 403
+    "rank": 392
   },
   {
     "id": "widi",
@@ -5627,7 +5473,7 @@
     "priceUsd": 0.0001507,
     "liquidity": 44976.68,
     "volumeUsd": 6287.55,
-    "rank": 404
+    "rank": 393
   },
   {
     "id": "manifest",
@@ -5641,7 +5487,7 @@
     "priceUsd": 0.0001496,
     "liquidity": 101911.47,
     "volumeUsd": 406.14,
-    "rank": 405
+    "rank": 394
   },
   {
     "id": "lumo",
@@ -5655,7 +5501,7 @@
     "priceUsd": 0.00015,
     "liquidity": 130512.52,
     "volumeUsd": 527.09,
-    "rank": 406
+    "rank": 395
   },
   {
     "id": "pos",
@@ -5669,7 +5515,7 @@
     "priceUsd": 0.0001512,
     "liquidity": 49453.1,
     "volumeUsd": 11254.8,
-    "rank": 407
+    "rank": 396
   },
   {
     "id": "quain",
@@ -5683,7 +5529,7 @@
     "priceUsd": 0.0001483,
     "liquidity": 76486.44,
     "volumeUsd": 578.5,
-    "rank": 408
+    "rank": 397
   },
   {
     "id": "rageguy",
@@ -5697,7 +5543,7 @@
     "priceUsd": 0.0001478,
     "liquidity": 49811.35,
     "volumeUsd": 2003.31,
-    "rank": 409
+    "rank": 398
   },
   {
     "id": "sully",
@@ -5711,7 +5557,7 @@
     "priceUsd": 0.0001734,
     "liquidity": 46279.91,
     "volumeUsd": 683.06,
-    "rank": 410
+    "rank": 399
   },
   {
     "id": "moonwhale",
@@ -5724,7 +5570,7 @@
     "platform": "Pump.fun",
     "priceUsd": 0.0001468,
     "liquidity": 37959.36,
-    "rank": 411
+    "rank": 400
   },
   {
     "id": "autism",
@@ -5738,7 +5584,7 @@
     "priceUsd": 0.0001544,
     "liquidity": 88020.7,
     "volumeUsd": 762.3,
-    "rank": 412
+    "rank": 401
   },
   {
     "id": "goated",
@@ -5751,7 +5597,7 @@
     "platform": "Pump.fun",
     "priceUsd": 0.0001461,
     "liquidity": 40532.1,
-    "rank": 413
+    "rank": 402
   },
   {
     "id": "maxxing",
@@ -5765,7 +5611,7 @@
     "priceUsd": 0.0001446,
     "liquidity": 43446.79,
     "volumeUsd": 116850.2,
-    "rank": 414
+    "rank": 403
   },
   {
     "id": "shift",
@@ -5779,21 +5625,7 @@
     "priceUsd": 0.0001443,
     "liquidity": 39065.36,
     "volumeUsd": 317.53,
-    "rank": 415
-  },
-  {
-    "id": "rasmr",
-    "name": "rasmr",
-    "symbol": "rasmr",
-    "address": "B1oEzGes1QxVZoxR3abiwAyL4jcPRF2s2ok5Yerrpump",
-    "marketCap": 142134,
-    "logo": "https://cdn.dexscreener.com/cms/images/02dfd81c0ab87ede627a0427e2b49ba8e3fa7fb67647f78ef20eceabd66db5d1?width=800&height=800&quality=90",
-    "color": "hsl(233, 70%, 80%)",
-    "platform": "Pump.fun",
-    "priceUsd": 0.0006801,
-    "liquidity": 96382.19,
-    "volumeUsd": 412.97,
-    "rank": 416
+    "rank": 404
   },
   {
     "id": "huahua",
@@ -5807,7 +5639,7 @@
     "priceUsd": 0.0001431,
     "liquidity": 84246.49,
     "volumeUsd": 2599.81,
-    "rank": 417
+    "rank": 405
   },
   {
     "id": "catana",
@@ -5821,7 +5653,7 @@
     "priceUsd": 0.0001413,
     "liquidity": 95774.01,
     "volumeUsd": 3727.15,
-    "rank": 418
+    "rank": 406
   },
   {
     "id": "bnty",
@@ -5835,7 +5667,7 @@
     "priceUsd": 0.0001408,
     "liquidity": 50040.16,
     "volumeUsd": 707.84,
-    "rank": 419
+    "rank": 407
   },
   {
     "id": "bangchain",
@@ -5849,7 +5681,7 @@
     "priceUsd": 0.0001407,
     "liquidity": 69370.53,
     "volumeUsd": 152.12,
-    "rank": 420
+    "rank": 408
   },
   {
     "id": "jam",
@@ -5863,7 +5695,7 @@
     "priceUsd": 0.0001386,
     "liquidity": 79979.05,
     "volumeUsd": 6670.48,
-    "rank": 421
+    "rank": 409
   },
   {
     "id": "urmom",
@@ -5877,7 +5709,7 @@
     "priceUsd": 0.0001377,
     "liquidity": 88181.84,
     "volumeUsd": 2629.88,
-    "rank": 422
+    "rank": 410
   },
   {
     "id": "yousim",
@@ -5891,7 +5723,7 @@
     "priceUsd": 0.0001365,
     "liquidity": 85052.11,
     "volumeUsd": 144.56,
-    "rank": 423
+    "rank": 411
   },
   {
     "id": "read",
@@ -5905,21 +5737,7 @@
     "priceUsd": 0.0001364,
     "liquidity": 37031.35,
     "volumeUsd": 12627.24,
-    "rank": 424
-  },
-  {
-    "id": "pork",
-    "name": "John Pork",
-    "symbol": "PORK",
-    "address": "CVGBG44dKpUFQBANot9jY9KQ68QCBXAwd4sf7BJxpump",
-    "marketCap": 136165,
-    "logo": "https://cdn.dexscreener.com/cms/images/44269b98657346b4fa9767d1b396dce9d133aa1bf3ca0b794ca72b7cf81dfd40?width=800&height=800&quality=90",
-    "color": "hsl(327, 70%, 80%)",
-    "platform": "Pump.fun",
-    "priceUsd": 0.0001353,
-    "liquidity": 61901.83,
-    "volumeUsd": 567.75,
-    "rank": 425
+    "rank": 412
   },
   {
     "id": "lotto",
@@ -5933,7 +5751,7 @@
     "priceUsd": 0.0001352,
     "liquidity": 43040.49,
     "volumeUsd": 153.16,
-    "rank": 426
+    "rank": 413
   },
   {
     "id": "lifeexplorationcommunity",
@@ -5946,7 +5764,7 @@
     "priceUsd": 0.0001348,
     "liquidity": 39009.12,
     "volumeUsd": 45.05,
-    "rank": 427
+    "rank": 414
   },
   {
     "id": "pep",
@@ -5960,7 +5778,7 @@
     "priceUsd": 0.000134,
     "liquidity": 105584.2,
     "volumeUsd": 1995.36,
-    "rank": 428
+    "rank": 415
   },
   {
     "id": "murad",
@@ -5974,7 +5792,7 @@
     "priceUsd": 0.0001336,
     "liquidity": 74690.18,
     "volumeUsd": 4489.77,
-    "rank": 429
+    "rank": 416
   },
   {
     "id": "bearco",
@@ -5987,7 +5805,7 @@
     "platform": "Pump.fun",
     "priceUsd": 0.0001332,
     "liquidity": 40373.48,
-    "rank": 430
+    "rank": 417
   },
   {
     "id": "choctopus",
@@ -6001,7 +5819,7 @@
     "priceUsd": 0.00019,
     "liquidity": 48352.14,
     "volumeUsd": 18.93,
-    "rank": 431
+    "rank": 418
   },
   {
     "id": "nsai",
@@ -6015,7 +5833,7 @@
     "priceUsd": 0.0001319,
     "liquidity": 56621.04,
     "volumeUsd": 1699.94,
-    "rank": 432
+    "rank": 419
   },
   {
     "id": "ai4",
@@ -6029,7 +5847,7 @@
     "priceUsd": 0.0001311,
     "liquidity": 58371.93,
     "volumeUsd": 358.45,
-    "rank": 433
+    "rank": 420
   },
   {
     "id": "swarm",
@@ -6043,7 +5861,7 @@
     "priceUsd": 0.0001306,
     "liquidity": 80166.16,
     "volumeUsd": 1,
-    "rank": 434
+    "rank": 421
   },
   {
     "id": "goldcoin",
@@ -6057,7 +5875,7 @@
     "priceUsd": 0.0001786,
     "liquidity": 62497.99,
     "volumeUsd": 7093.84,
-    "rank": 435
+    "rank": 422
   },
   {
     "id": "horny",
@@ -6071,7 +5889,7 @@
     "priceUsd": 0.0001293,
     "liquidity": 80695.17,
     "volumeUsd": 4762.67,
-    "rank": 436
+    "rank": 423
   },
   {
     "id": "metal",
@@ -6085,7 +5903,7 @@
     "priceUsd": 0.0001289,
     "liquidity": 36346.01,
     "volumeUsd": 2163.12,
-    "rank": 437
+    "rank": 424
   },
   {
     "id": "aiko",
@@ -6099,7 +5917,7 @@
     "priceUsd": 0.0001327,
     "liquidity": 42409.06,
     "volumeUsd": 80433.18,
-    "rank": 438
+    "rank": 425
   },
   {
     "id": "officialbarron",
@@ -6113,7 +5931,7 @@
     "priceUsd": 0.0001276,
     "liquidity": 92970.94,
     "volumeUsd": 122.01,
-    "rank": 439
+    "rank": 426
   },
   {
     "id": "bwt",
@@ -6126,7 +5944,7 @@
     "platform": "Pump.fun",
     "priceUsd": 0.0001273,
     "liquidity": 100831.29,
-    "rank": 440
+    "rank": 427
   },
   {
     "id": "feetcoin",
@@ -6140,7 +5958,7 @@
     "priceUsd": 0.0001265,
     "liquidity": 50595.8,
     "volumeUsd": 19.56,
-    "rank": 441
+    "rank": 428
   },
   {
     "id": "memecoinmillionaire",
@@ -6154,7 +5972,7 @@
     "priceUsd": 0.0001261,
     "liquidity": 78675.05,
     "volumeUsd": 393.47,
-    "rank": 442
+    "rank": 429
   },
   {
     "id": "engrave",
@@ -6168,35 +5986,7 @@
     "priceUsd": 0.0001257,
     "liquidity": 44200.92,
     "volumeUsd": 10974.42,
-    "rank": 443
-  },
-  {
-    "id": "omni",
-    "name": "omni",
-    "symbol": "omni",
-    "address": "A8vJzs6ygbZQyYLf9FKund8j3pDfUzxBeje8rJiypump",
-    "marketCap": 124569,
-    "logo": "https://cdn.dexscreener.com/cms/images/849047d20e1d258094b9fc740193e6bb6ad26e1b7e252817f6a767406617a987?width=800&height=800&quality=90",
-    "color": "hsl(339, 70%, 80%)",
-    "platform": "Pump.fun",
-    "priceUsd": 0.0001245,
-    "liquidity": 80532.14,
-    "volumeUsd": 325.88,
-    "rank": 444
-  },
-  {
-    "id": "evan",
-    "name": "Evan",
-    "symbol": "EVAN",
-    "address": "GFUgXbMeDnLkhZaJS3nYFqunqkFNMRo9ukhyajeXpump",
-    "marketCap": 123376,
-    "logo": "https://cdn.dexscreener.com/cms/images/d2ce58b2d418b7d203f1d774c60cdd9d4c5cb3ea79dbaf0317a590781841d785?width=800&height=800&quality=90",
-    "color": "hsl(332, 70%, 80%)",
-    "platform": "Pump.fun",
-    "priceUsd": "0.0001233",
-    "liquidity": 65021.91,
-    "volumeUsd": 0.14,
-    "rank": 445
+    "rank": 430
   },
   {
     "id": "gary",
@@ -6210,7 +6000,7 @@
     "priceUsd": 0.0001222,
     "liquidity": 56654.59,
     "volumeUsd": 3963.68,
-    "rank": 446
+    "rank": 431
   },
   {
     "id": "skr",
@@ -6223,7 +6013,7 @@
     "platform": "Pump.fun",
     "priceUsd": 0.0001219,
     "liquidity": 39774.64,
-    "rank": 447
+    "rank": 432
   },
   {
     "id": "neur",
@@ -6237,7 +6027,7 @@
     "priceUsd": 0.000131,
     "liquidity": 114110.07,
     "volumeUsd": 105.71,
-    "rank": 448
+    "rank": 433
   },
   {
     "id": "based",
@@ -6251,7 +6041,7 @@
     "priceUsd": 0.0001226,
     "liquidity": 71764.34,
     "volumeUsd": 1334.32,
-    "rank": 449
+    "rank": 434
   },
   {
     "id": "ily",
@@ -6265,7 +6055,7 @@
     "priceUsd": 0.0001237,
     "liquidity": 85116.86,
     "volumeUsd": 29.51,
-    "rank": 450
+    "rank": 435
   },
   {
     "id": "froge",
@@ -6278,7 +6068,7 @@
     "platform": "Pump.fun",
     "priceUsd": 0.0001189,
     "liquidity": 44996.55,
-    "rank": 451
+    "rank": 436
   },
   {
     "id": "poop",
@@ -6292,7 +6082,7 @@
     "priceUsd": 0.0001186,
     "liquidity": 59850,
     "volumeUsd": 2454.44,
-    "rank": 452
+    "rank": 437
   },
   {
     "id": "dtf",
@@ -6306,7 +6096,7 @@
     "priceUsd": 0.0001183,
     "liquidity": 66348.09,
     "volumeUsd": 5492.07,
-    "rank": 453
+    "rank": 438
   },
   {
     "id": "bitcat",
@@ -6320,21 +6110,7 @@
     "priceUsd": 0.0001181,
     "liquidity": 86912.38,
     "volumeUsd": 285.24,
-    "rank": 454
-  },
-  {
-    "id": "ttg",
-    "name": "Taitiko",
-    "symbol": "TTG",
-    "address": "4ELGifwr2jHtEaFZUXXvQLAYiE6W5bvpWYZbJTRSpump",
-    "marketCap": 116764,
-    "logo": "https://cdn.dexscreener.com/cms/images/a30cd684ebc3af348eb38c08003261bc12a09b107edd3988a03d6eed50a04303?width=800&height=800&quality=90",
-    "color": "hsl(233, 70%, 80%)",
-    "platform": "Pump.fun",
-    "priceUsd": 0.0001167,
-    "liquidity": 45158.68,
-    "volumeUsd": 1245.42,
-    "rank": 455
+    "rank": 439
   },
   {
     "id": "elontrumpfart",
@@ -6348,7 +6124,7 @@
     "priceUsd": 0.0001166,
     "liquidity": 82180.35,
     "volumeUsd": 382.03,
-    "rank": 456
+    "rank": 440
   },
   {
     "id": "salary",
@@ -6362,7 +6138,7 @@
     "priceUsd": 0.0001156,
     "liquidity": 54475.11,
     "volumeUsd": 2854.03,
-    "rank": 457
+    "rank": 441
   },
   {
     "id": "bhole",
@@ -6376,7 +6152,7 @@
     "priceUsd": 0.0001121,
     "liquidity": 57854.34,
     "volumeUsd": 84719.45,
-    "rank": 458
+    "rank": 442
   },
   {
     "id": "recon",
@@ -6390,7 +6166,7 @@
     "priceUsd": 0.0001028,
     "liquidity": 36991.97,
     "volumeUsd": 17959.39,
-    "rank": 459
+    "rank": 443
   },
   {
     "id": "stockcoin",
@@ -6404,7 +6180,7 @@
     "priceUsd": 0.0001017,
     "liquidity": 65053.02,
     "volumeUsd": 304.64,
-    "rank": 460
+    "rank": 444
   },
   {
     "id": "",
@@ -6417,7 +6193,7 @@
     "platform": "Pump.fun",
     "priceUsd": 0.00009316,
     "liquidity": 31329.76,
-    "rank": 461
+    "rank": 445
   },
   {
     "id": "babywhale",
@@ -6430,7 +6206,7 @@
     "platform": "Pump.fun",
     "priceUsd": 0.0000835,
     "liquidity": 29843.71,
-    "rank": 462
+    "rank": 446
   },
   {
     "id": "testiwhale",
@@ -6443,6 +6219,6 @@
     "platform": "Pump.fun",
     "priceUsd": 0.0000759,
     "liquidity": 28627.22,
-    "rank": 463
+    "rank": 447
   }
 ]
