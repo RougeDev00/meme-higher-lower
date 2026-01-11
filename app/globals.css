@@ -164,6 +164,31 @@ select,
   color: var(--text-muted);
 }
 
+.early-access-label {
+  font-size: 0.8rem;
+  color: var(--pump-orange);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+  opacity: 0.9;
+  text-align: center;
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
+  animation: pulse-subtle 2s infinite;
+}
+
+@keyframes pulse-subtle {
+
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
 .start-button-image-container {
   background: none;
   border: none;
@@ -1150,6 +1175,7 @@ select,
     font-size: 1.4rem;
   }
 }
+
 /* Info Button */
 .info-button {
   margin-top: 1.5rem;
