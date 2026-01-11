@@ -244,65 +244,35 @@ export default function GamePage() {
             });
     }, [router]);
 
-    // Timer Logic - Uses wall-clock time to prevent cheating when switching tabs
-    const timerStartRef = React.useRef(null);
-    const timerRemainingRef = React.useRef(10000);
+    // Timer Logic - Uses requestAnimationFrame + wall-clock time
+    const timerEndTimeRef = React.useRef(null);
+    const animationFrameRef = React.useRef(null);
 
-    // Handle visibility change to update timer immediately when returning to tab
     useEffect(() => {
-        const handleVisibilityChange = () => {
-            if (document.visibilityState === 'visible' && timerStartRef.current !== null) {
-                const elapsed = Date.now() - timerStartRef.current;
-                const remaining = timerRemainingRef.current - elapsed;
-
-                if (remaining <= 0) {
-                    setTimeLeft(0);
-                    setGameOver(true);
-                    setResultState({ left: 'wrong', right: 'wrong' });
-
-                    if (userId && userId !== 'GUEST') {
-                        fetch('/api/leaderboard', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({ username, score: currentScore, walletAddress: userId })
-                        }).then(() => {
-                            fetch('/api/leaderboard').then(res => res.json()).then(data => setLeaderboard(data.leaderboard || []));
-                        });
-                    }
-                } else {
-                    setTimeLeft(remaining);
-                }
+        // Cleanup function
+        const cleanup = () => {
+            if (animationFrameRef.current) {
+                cancelAnimationFrame(animationFrameRef.current);
+                animationFrameRef.current = null;
             }
         };
 
-        document.addEventListener('visibilitychange', handleVisibilityChange);
-        return () => document.removeEventListener('visibilitychange', handleVisibilityChange);
-    }, [userId, username, currentScore]);
-
-    useEffect(() => {
-        if (gameOver || showLeaderboard || isPaused || showSpeedModeOverlay) {
+        if (gameOver || showLeaderboard || isPaused || showSpeedModeOverlay || isAnimating) {
+            cleanup();
             return;
         }
 
-        // Don't run timer during animation
-        if (isAnimating) {
-            return;
+        // Set end time when timer starts
+        if (timerEndTimeRef.current === null) {
+            timerEndTimeRef.current = Date.now() + timeLeft;
         }
 
-        // Initialize start time only if not already set
-        if (timerStartRef.current === null) {
-            timerStartRef.current = Date.now();
-            timerRemainingRef.current = timeLeft;
-        }
-
-        const updateTimer = () => {
-            if (timerStartRef.current === null) return;
-
-            const elapsed = Date.now() - timerStartRef.current;
-            const remaining = timerRemainingRef.current - elapsed;
+        const tick = () => {
+            const now = Date.now();
+            const remaining = timerEndTimeRef.current - now;
 
             if (remaining <= 0) {
-                timerStartRef.current = null;
+                timerEndTimeRef.current = null;
                 setTimeLeft(0);
                 setGameOver(true);
                 setResultState({ left: 'wrong', right: 'wrong' });
@@ -316,15 +286,24 @@ export default function GamePage() {
                         fetch('/api/leaderboard').then(res => res.json()).then(data => setLeaderboard(data.leaderboard || []));
                     });
                 }
-            } else {
-                setTimeLeft(remaining);
+                return;
             }
+
+            setTimeLeft(remaining);
+            animationFrameRef.current = requestAnimationFrame(tick);
         };
 
-        const interval = setInterval(updateTimer, 50);
+        animationFrameRef.current = requestAnimationFrame(tick);
 
-        return () => clearInterval(interval);
-    }, [gameOver, isAnimating, showLeaderboard, currentScore, username, userId, isPaused, showSpeedModeOverlay]);
+        return cleanup;
+    }, [gameOver, isAnimating, showLeaderboard, isPaused, showSpeedModeOverlay, userId, username, currentScore]);
+
+    // Reset timer end time when a new round starts (timeLeft resets to 10000)
+    useEffect(() => {
+        if (timeLeft >= 9900 && !gameOver && !isAnimating) {
+            timerEndTimeRef.current = Date.now() + timeLeft;
+        }
+    }, [timeLeft, gameOver, isAnimating]);
 
     // Format time as SS:MS 
     const formatTime = (ms) => {
