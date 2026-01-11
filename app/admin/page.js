@@ -13,7 +13,7 @@ export default function AdminPage() {
     const handleLogin = (e) => {
         e.preventDefault();
         // Simple client-side check. In production, use real auth.
-        if (password === 'admin123') {
+        if (password === 'JodyMerda10.') {
             setIsAuthenticated(true);
             fetchData();
         } else {
