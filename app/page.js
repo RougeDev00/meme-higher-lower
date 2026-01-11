@@ -12,6 +12,7 @@ export default function Home() {
   const [username, setUsername] = useState('');
   const [walletAddress, setWalletAddress] = useState('');
   const [walletError, setWalletError] = useState('');
+  const [isWalletConnecting, setIsWalletConnecting] = useState(false);
   const [leaderboard, setLeaderboard] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showInfo, setShowInfo] = useState(false);
@@ -40,41 +41,11 @@ export default function Home() {
     }
   }, []);
 
-  const validateWallet = (address) => {
-    if (!address) return true;
-    try {
-      new PublicKey(address);
-      return true;
-    } catch (e) {
-      return false;
-    }
-  };
-
   const handleStart = async () => {
     if (username.trim()) {
-      const finalId = walletAddress.trim();
-
-      if (finalId && !validateWallet(finalId)) {
-        setWalletError('Invalid Wallet Address');
-        return;
-      }
-
-      if (finalId) {
-        // Check for conflict
-        try {
-          const res = await fetch(`/api/user/check?walletAddress=${finalId}`);
-          const data = await res.json();
-          if (data.exists && data.username !== username.trim()) {
-            setWalletError('Wallet already taken');
-            return;
-          }
-        } catch (e) {
-          console.error('Error checking user:', e);
-        }
-      }
-
-      // Proceed if no conflict
-      proceedToStart(username.trim(), finalId);
+      // Wallet is already validated when connected via Phantom
+      // Conflict check also happens during wallet connection
+      proceedToStart(username.trim(), walletAddress);
     }
   };
 
@@ -112,6 +83,67 @@ export default function Home() {
     return '';
   };
 
+  const connectPhantom = async () => {
+    setIsWalletConnecting(true);
+    setWalletError('');
+
+    try {
+      // Check if Phantom is installed
+      const { solana } = window;
+
+      if (!solana?.isPhantom) {
+        setWalletError('Phantom wallet not found. Please install it.');
+        setIsWalletConnecting(false);
+        return;
+      }
+
+      // Connect to Phantom (read-only, just gets public key)
+      const response = await solana.connect();
+      const address = response.publicKey.toString();
+
+      // Check if wallet is already taken by another user
+      try {
+        const res = await fetch(`/api/user/check?walletAddress=${address}`);
+        const data = await res.json();
+        if (data.exists && data.username !== username.trim()) {
+          setWalletError('Wallet already taken');
+          setIsWalletConnecting(false);
+          return;
+        }
+      } catch (e) {
+        console.error('Error checking user:', e);
+      }
+
+      setWalletAddress(address);
+      localStorage.setItem('meme-game-wallet', address);
+    } catch (error) {
+      console.error('Error connecting to Phantom:', error);
+      if (error.code === 4001) {
+        setWalletError('Connection rejected by user');
+      } else {
+        setWalletError('Failed to connect wallet');
+      }
+    }
+
+    setIsWalletConnecting(false);
+  };
+
+  const disconnectWallet = () => {
+    setWalletAddress('');
+    setWalletError('');
+    localStorage.removeItem('meme-game-wallet');
+
+    // Disconnect from Phantom if connected
+    try {
+      const { solana } = window;
+      if (solana?.isPhantom) {
+        solana.disconnect();
+      }
+    } catch (e) {
+      console.error('Error disconnecting:', e);
+    }
+  };
+
   return (
     <div className="username-screen">
       {/* Background */}
@@ -147,17 +179,29 @@ export default function Home() {
             maxLength={20}
             autoFocus
           />
-          <input
-            type="text"
-            className="username-input wallet-input"
-            placeholder="Insert Wallet to join Leaderboard"
-            value={walletAddress}
-            onChange={(e) => {
-              setWalletAddress(e.target.value);
-              setWalletError('');
-            }}
-            style={{ marginTop: '10px', fontSize: '0.9rem', width: '100%', maxWidth: '300px', borderColor: walletError ? '#ef4444' : '' }}
-          />
+          {/* Wallet Connect Button */}
+          {!walletAddress ? (
+            <button
+              className="wallet-connect-btn"
+              onClick={connectPhantom}
+              disabled={isWalletConnecting}
+            >
+              <div className="wallet-logos">
+                <img src="/phantom-logo.svg" alt="Phantom" className="wallet-logo" />
+                <img src="/metamask-logo.svg" alt="MetaMask" className="wallet-logo wallet-logo-disabled" title="Coming soon" />
+              </div>
+              <span>{isWalletConnecting ? 'Connecting...' : 'Connect Wallet'}</span>
+            </button>
+          ) : (
+            <div className="wallet-connected">
+              <span className="wallet-address-display">
+                🟢 {walletAddress.slice(0, 4)}...{walletAddress.slice(-4)}
+              </span>
+              <button className="wallet-disconnect-btn" onClick={disconnectWallet}>
+                ✕
+              </button>
+            </div>
+          )}
           {walletError && (
             <div style={{ color: '#ef4444', fontSize: '0.8rem', marginTop: '5px', fontWeight: 'bold' }}>
               {walletError}
