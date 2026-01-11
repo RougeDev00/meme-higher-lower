@@ -59,6 +59,13 @@ export default function Home() {
       localStorage.setItem('meme-game-active-id', 'GUEST');
     }
 
+    // Track play session (fire and forget)
+    fetch('/api/track-session', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username: finalUsername, walletAddress: finalWallet })
+    }).catch(e => console.error('Failed to track session:', e));
+
     setIsPlaying(true);
     setTimeout(() => setIsTransitioned(true), 850);
   };
