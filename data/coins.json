@@ -6181,44 +6181,5 @@
     "liquidity": 65053.02,
     "volumeUsd": 304.64,
     "rank": 444
-  },
-  {
-    "id": "",
-    "name": " ",
-    "symbol": " ",
-    "address": "2RQaN8MZyiN84cCmBVqX3ibXeCXWs8UN24ajmdvkpump",
-    "marketCap": 93151,
-    "logo": "https://cdn.dexscreener.com/cms/images/791a260574e473f58182e9ffcef29d9fe8600c71890456072ee9c5aedb673b3d?width=800&height=800&quality=90",
-    "color": "#4ECDC4",
-    "platform": "Pump.fun",
-    "priceUsd": 0.00009316,
-    "liquidity": 31329.76,
-    "rank": 445
-  },
-  {
-    "id": "babywhale",
-    "name": "The Baby Whale",
-    "symbol": "BABYWHALE",
-    "address": "6BrfUn9HRJhaEtZhg9MvHeyLkcRLtb33tshA16okpump",
-    "marketCap": 83501,
-    "logo": "https://cdn.dexscreener.com/cms/images/4ccd55c541408c0127142b1dc2c3f57991ae455a4f6f6737322c2cf36495ba5e?width=800&height=800&quality=90",
-    "color": "#0652DD",
-    "platform": "Pump.fun",
-    "priceUsd": 0.0000835,
-    "liquidity": 29843.71,
-    "rank": 446
-  },
-  {
-    "id": "testiwhale",
-    "name": "testicle + whale",
-    "symbol": "TESTIWHALE",
-    "address": "HiiVv9eNhGqMjn5m2PDyMSyiahRo1MDAjj7k1MGxpump",
-    "marketCap": 75901,
-    "logo": "https://cdn.dexscreener.com/cms/images/b1866a7470ac595e9f4ad868d70c831e5a0959ea47f3464ea6ae69265e4f6f94?width=800&height=800&quality=90",
-    "color": "#FF9F43",
-    "platform": "Pump.fun",
-    "priceUsd": 0.0000759,
-    "liquidity": 28627.22,
-    "rank": 447
   }
 ]
