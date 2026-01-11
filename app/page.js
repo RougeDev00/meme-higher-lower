@@ -218,7 +218,7 @@ export default function Home() {
               <p style={{ marginBottom: '0.8rem', color: '#ccc' }}>We prioritize accuracy. All coin data and Market Caps are fetched directly from the <strong>Dexscreener API</strong> and updated hourly in real-time.</p>
 
               <h4 style={{ color: '#fff', marginBottom: '0.2rem', fontSize: '0.9rem' }}>🚀 Our Mission</h4>
-              <p style={{ marginBottom: '0.8rem', color: '#ccc' }}>PUMP or DUMP was born to last. In a chaotic market, we are building a project that is unique, engaging, and genuinely fun to use.</p>
+              <p style={{ marginBottom: '0.8rem', color: '#ccc' }}>PUMP or DUMP? was born to last. In a chaotic market, we are building a project that is unique, engaging, and genuinely fun to use.</p>
 
               <h4 style={{ color: '#fff', marginBottom: '0.2rem', fontSize: '0.9rem' }}>🪙 Token Launch</h4>
               <p style={{ marginBottom: '0.8rem', color: '#ccc' }}>The official project token is launching soon on <strong>pump.fun</strong>. <br />
