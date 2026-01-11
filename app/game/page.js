@@ -601,14 +601,14 @@ pumpordumpgame.fun`;
                     <div
                         className="coin-background"
                         style={{
-                            backgroundImage: leftCoin.logo?.startsWith('http')
+                            backgroundImage: (leftCoin.logo?.startsWith('http') || leftCoin.logo?.startsWith('/'))
                                 ? `url(${leftCoin.logo})`
                                 : undefined,
                             backgroundColor: leftCoin.color || '#1a1a2e'
                         }}
                     />
                     <div className="coin-info-container">
-                        {leftCoin.logo?.startsWith('http') ? (
+                        {(leftCoin.logo?.startsWith('http') || leftCoin.logo?.startsWith('/')) ? (
                             <img
                                 key={leftCoin.id}
                                 src={leftCoin.logo}
@@ -622,7 +622,7 @@ pumpordumpgame.fun`;
                         ) : null}
                         <div
                             className="coin-logo-placeholder"
-                            style={{ display: leftCoin.logo?.startsWith('http') ? 'none' : 'flex' }}
+                            style={{ display: (leftCoin.logo?.startsWith('http') || leftCoin.logo?.startsWith('/')) ? 'none' : 'flex' }}
                         >
                             {leftCoin.symbol?.[0] || '?'}
                         </div>
@@ -667,14 +667,14 @@ pumpordumpgame.fun`;
                     <div
                         className="coin-background"
                         style={{
-                            backgroundImage: rightCoin.logo?.startsWith('http')
+                            backgroundImage: (rightCoin.logo?.startsWith('http') || rightCoin.logo?.startsWith('/'))
                                 ? `url(${rightCoin.logo})`
                                 : undefined,
                             backgroundColor: rightCoin.color || '#16213e'
                         }}
                     />
                     <div className="coin-info-container">
-                        {rightCoin.logo?.startsWith('http') ? (
+                        {(rightCoin.logo?.startsWith('http') || rightCoin.logo?.startsWith('/')) ? (
                             <img
                                 key={rightCoin.id}
                                 src={rightCoin.logo}
@@ -688,7 +688,7 @@ pumpordumpgame.fun`;
                         ) : null}
                         <div
                             className="coin-logo-placeholder"
-                            style={{ display: rightCoin.logo?.startsWith('http') ? 'none' : 'flex' }}
+                            style={{ display: (rightCoin.logo?.startsWith('http') || rightCoin.logo?.startsWith('/')) ? 'none' : 'flex' }}
                         >
                             {rightCoin.symbol?.[0] || '?'}
                         </div>
