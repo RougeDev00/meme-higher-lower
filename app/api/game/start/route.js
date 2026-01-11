@@ -71,8 +71,8 @@ export async function POST() {
                 symbol: session.currentLeft.symbol,
                 logo: session.currentLeft.logo,
                 color: session.currentLeft.color,
-                platform: session.currentLeft.platform
-                // Note: marketCap is NOT sent to client
+                platform: session.currentLeft.platform,
+                marketCap: session.currentLeft.marketCap  // Needed for UI display
             },
             rightCoin: {
                 id: session.currentRight.id,
@@ -81,6 +81,7 @@ export async function POST() {
                 logo: session.currentRight.logo,
                 color: session.currentRight.color,
                 platform: session.currentRight.platform
+                // Note: marketCap is NOT sent to client for security
             }
         });
     } catch (error) {

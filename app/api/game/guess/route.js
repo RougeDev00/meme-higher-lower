@@ -101,7 +101,17 @@ export async function POST(request) {
                 }
             }
 
-            // Prepare coin data for client (without marketCap)
+            // Prepare coin data for client (left has marketCap for display, right doesn't for security)
+            const sanitizeCoinWithMarketCap = (coin) => ({
+                id: coin.id,
+                name: coin.name,
+                symbol: coin.symbol,
+                logo: coin.logo,
+                color: coin.color,
+                platform: coin.platform,
+                marketCap: coin.marketCap
+            });
+
             const sanitizeCoin = (coin) => ({
                 id: coin.id,
                 name: coin.name,
@@ -117,7 +127,7 @@ export async function POST(request) {
                 gameOver: false,
                 leftMarketCap: leftMC,
                 rightMarketCap: rightMC,
-                nextLeftCoin: sanitizeCoin(session.currentLeft),
+                nextLeftCoin: sanitizeCoinWithMarketCap(session.currentLeft),
                 nextRightCoin: sanitizeCoin(session.currentRight)
             });
 
