@@ -380,6 +380,18 @@ export default function AdminPage() {
                     </button>
                 </div>
             </div>
+
+            <div style={{
+                position: 'fixed',
+                bottom: '20px',
+                right: '20px',
+                color: 'rgba(255, 255, 255, 0.3)',
+                fontSize: '0.8rem',
+                fontFamily: 'monospace',
+                pointerEvents: 'none'
+            }}>
+                admin v 1.0.0
+            </div>
         </div>
     );
 }
