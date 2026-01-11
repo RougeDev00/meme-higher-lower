@@ -42,6 +42,11 @@ export default function AnimatedMarketCap({ value, show }) {
         };
     }, [show, value]);
 
+    // Don't render anything if we don't have a valid value yet
+    if (value == null) {
+        return <div className="coin-marketcap" style={{ visibility: 'hidden' }}>&nbsp;</div>;
+    }
+
     return (
         <div className="coin-marketcap" style={{ visibility: show ? 'visible' : 'hidden' }}>
             {formatMarketCap(show ? displayValue : value)}
