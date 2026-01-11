@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useRouter } from 'next/navigation';
+import InfoModal from '../components/InfoModal';
 import confetti from 'canvas-confetti';
 import Image from 'next/image';
 
@@ -36,6 +37,7 @@ export default function GamePage({ onGoHome }) {
     const [resultState, setResultState] = useState({ left: null, right: null });
     const [showLeaderboard, setShowLeaderboard] = useState(false);
     const [leaderboard, setLeaderboard] = useState([]);
+    const [showInfo, setShowInfo] = useState(false);
     const [isAnimating, setIsAnimating] = useState(false);
     const [exitingSide, setExitingSide] = useState(null);
     const [enteringSide, setEnteringSide] = useState(null);
@@ -611,7 +613,18 @@ export default function GamePage({ onGoHome }) {
                                 <img src="/btn-home.png" alt="Home" />
                             </button>
                         </div>
+
+                        {/* Info Button Top Right */}
+                        <button
+                            className="info-button"
+                            onClick={() => setShowInfo(true)}
+                            style={{ position: 'absolute', top: '20px', right: '20px', marginTop: 0 }}
+                        >
+                            INFO
+                        </button>
                     </div>
+                    {/* Info Modal */}
+                    {showInfo && <InfoModal onClose={() => setShowInfo(false)} />}
                     <div className="version-label" style={{ position: 'absolute', bottom: '10px', right: '10px', fontSize: '0.8rem', opacity: 0.7, color: 'rgba(255,255,255,0.5)', pointerEvents: 'none' }}>
                         {GAME_CONFIG.GAME_VERSION}
                     </div>
