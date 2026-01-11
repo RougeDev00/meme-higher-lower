@@ -11,6 +11,8 @@ export default function GameCard({ coin, side, resultState, selectedSide, isAnim
         return url && (url.startsWith('http') || url.startsWith('/'));
     };
 
+    if (!coin) return null;
+
     return (
         <div
             className={`coin-side ${resultState || ''} ${selectedSide === side ? 'selected' : ''} ${isAnimating ? 'disabled' : ''} ${exitingSide === side ? 'slide-up' : ''} ${enteringSide === side ? 'slide-in' : ''}`}
