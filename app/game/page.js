@@ -614,15 +614,16 @@ export default function GamePage({ onGoHome }) {
                             </button>
                         </div>
 
-                        {/* Info Button Top Right */}
-                        <button
-                            className="info-button"
-                            onClick={() => setShowInfo(true)}
-                            style={{ position: 'absolute', top: '2rem', right: '2rem', marginTop: 0, zIndex: 300 }}
-                        >
-                            INFO
-                        </button>
                     </div>
+
+                    {/* Info Button Top Right */}
+                    <button
+                        className="info-button"
+                        onClick={() => setShowInfo(true)}
+                        style={{ position: 'absolute', top: '2rem', right: '2rem', marginTop: 0, zIndex: 300 }}
+                    >
+                        INFO
+                    </button>
                     {/* Info Modal */}
                     {showInfo && <InfoModal onClose={() => setShowInfo(false)} />}
                     <div className="version-label" style={{ position: 'absolute', bottom: '10px', right: '10px', fontSize: '0.8rem', opacity: 0.7, color: 'rgba(255,255,255,0.5)', pointerEvents: 'none' }}>
