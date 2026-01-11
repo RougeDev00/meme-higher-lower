@@ -24,9 +24,105 @@ export default function GamePage({ onGoHome }) {
     const router = useRouter();
     const [username, setUsername] = useState('');
     const [userId, setUserId] = useState('');
-    // ... states ...
+    const [currentScore, setCurrentScore] = useState(0);
+    const [highScore, setHighScore] = useState(0);
+    const [leftCoin, setLeftCoin] = useState(null);
+    const [rightCoin, setRightCoin] = useState(null);
+    const [showLeftValue, setShowLeftValue] = useState(false);
+    const [showRightValue, setShowRightValue] = useState(false);
+    const [gameOver, setGameOver] = useState(false);
+    const [showScorePopup, setShowScorePopup] = useState(false);
+    const [popupScore, setPopupScore] = useState(0);
+    const [resultState, setResultState] = useState({ left: null, right: null });
+    const [showLeaderboard, setShowLeaderboard] = useState(false);
+    const [leaderboard, setLeaderboard] = useState([]);
+    const [isAnimating, setIsAnimating] = useState(false);
+    const [exitingSide, setExitingSide] = useState(null);
+    const [enteringSide, setEnteringSide] = useState(null);
+    const [leftCoinTurns, setLeftCoinTurns] = useState(0);
+    const [rightCoinTurns, setRightCoinTurns] = useState(0);
+    const [selectedSide, setSelectedSide] = useState(null);
+    const [timeLeft, setTimeLeft] = useState(GAME_CONFIG.INITIAL_TIME);
+    const [gameOverImage, setGameOverImage] = useState('/crying-kid.gif');
 
-    // ... (lines 27-127 unchanged in this context, assumed handled by diff) ...
+    // Dynamic Data State
+    const [coins, setCoins] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+
+    // Speed Mode States
+    const [showSpeedModeOverlay, setShowSpeedModeOverlay] = useState(false);
+    const [isSpeedMode, setIsSpeedMode] = useState(false);
+    const [isPaused, setIsPaused] = useState(false);
+
+    // Dragging State
+    const [dragPosition, setDragPosition] = useState({ x: 0, y: 0 });
+    const [isDragging, setIsDragging] = useState(false);
+    const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
+
+    const handleMouseDown = (e) => {
+        setIsDragging(true);
+        setDragOffset({
+            x: e.clientX - dragPosition.x,
+            y: e.clientY - dragPosition.y
+        });
+    };
+
+    const handleMouseMove = useCallback((e) => {
+        if (!isDragging) return;
+        const newX = e.clientX - dragOffset.x;
+        const newY = e.clientY - dragOffset.y;
+        const boxHalfWidth = 200;
+        const boxHalfHeight = 150;
+        const maxX = (window.innerWidth / 2) - boxHalfWidth;
+        const maxY = (window.innerHeight / 2) - boxHalfHeight;
+
+        setDragPosition({
+            x: Math.max(Math.min(newX, maxX), -maxX),
+            y: Math.max(Math.min(newY, maxY), -maxY)
+        });
+    }, [isDragging, dragOffset]);
+
+    const handleMouseUp = useCallback(() => {
+        setIsDragging(false);
+    }, []);
+
+    useEffect(() => {
+        if (isDragging) {
+            window.addEventListener('mousemove', handleMouseMove);
+            window.addEventListener('mouseup', handleMouseUp);
+        } else {
+            window.removeEventListener('mousemove', handleMouseMove);
+            window.removeEventListener('mouseup', handleMouseUp);
+        }
+        return () => {
+            window.removeEventListener('mousemove', handleMouseMove);
+            window.removeEventListener('mouseup', handleMouseUp);
+        };
+    }, [isDragging, handleMouseMove, handleMouseUp]);
+
+    // Preload Images on Mount
+    useEffect(() => {
+        try {
+            if (typeof window !== 'undefined') {
+                GAME_OVER_IMAGES.forEach((src) => {
+                    const img = new Image();
+                    img.src = src;
+                });
+            }
+        } catch (e) {
+            console.warn("Failed to preload images", e);
+        }
+    }, []);
+
+    useEffect(() => {
+        if (gameOver) {
+            setGameOverImage(GAME_OVER_IMAGES[Math.floor(Math.random() * GAME_OVER_IMAGES.length)]);
+            setDragPosition({ x: 0, y: 0 });
+        }
+    }, [gameOver]);
+
+    const usedCoinsRef = useRef(new Set());
+    const availableCoinsRef = useRef([]);
 
     // Initialize game
     useEffect(() => {
