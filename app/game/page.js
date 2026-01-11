@@ -564,7 +564,25 @@ export default function GamePage() {
                         {GAME_CONFIG.GAME_VERSION}
                     </div>
                 </div>
-            )}
+                </div >
+            )
+}
+
+{/* Social Link */ }
+            <a
+                href="https://x.com/pumpordumpgame"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-link-container"
+            >
+                <img src="/x-logo.svg" alt="X (Twitter)" className="social-icon" />
+            </a>
+
+            <div className="ca-label">
+                CA: <span>Coming Soon..</span>
+            </div>
+
+            <CursorTrail />
         </>
     );
 }
