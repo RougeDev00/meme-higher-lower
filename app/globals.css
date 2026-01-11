@@ -329,15 +329,12 @@ select,
 }
 
 .coin-side:hover .coin-background {
-  filter: brightness(0.4) blur(4px);
-  /* Darken significantly and blur slightly more */
-  transform: scale(1.1);
-  /* Subtle zoom on background */
+  filter: brightness(0.6) blur(3px);
+  transform: scale(1.05);
 }
 
 .coin-side:hover .coin-info-container {
-  transform: scale(1.05);
-  /* Pop content forward */
+  transform: scale(1.02);
 }
 
 .coin-background {
