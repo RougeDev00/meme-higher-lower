@@ -281,6 +281,85 @@ select,
   transform: scale(1.1);
 }
 
+/* Username Prompt Modal */
+.username-prompt-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10001;
+  background: rgba(20, 20, 20, 0.98);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 380px;
+  width: 90%;
+  text-align: center;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.username-prompt-modal h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.4rem;
+  color: var(--text-white);
+}
+
+.username-prompt-modal p {
+  margin: 0.5rem 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.existing-username-display {
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, rgba(171, 159, 242, 0.2) 0%, rgba(130, 100, 220, 0.15) 100%);
+  border: 2px solid rgba(171, 159, 242, 0.4);
+  border-radius: 12px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-white);
+  margin: 1rem 0;
+}
+
+.username-prompt-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.prompt-btn {
+  padding: 0.85rem 1.5rem;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.prompt-btn-primary {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.8) 0%, rgba(20, 150, 70, 0.8) 100%);
+  color: white;
+}
+
+.prompt-btn-primary:hover {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 1) 0%, rgba(20, 150, 70, 1) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+}
+
+.prompt-btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-white);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.prompt-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
 .early-access-label {
   font-size: 1rem;
   color: var(--pump-orange);
