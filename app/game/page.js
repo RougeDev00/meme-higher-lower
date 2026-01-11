@@ -69,15 +69,15 @@ export default function GamePage({ onGoHome }) {
             y: e.clientY - dragPosition.y
         });
     };
-
     const handleMouseMove = useCallback((e) => {
         if (!isDragging) return;
         const newX = e.clientX - dragOffset.x;
         const newY = e.clientY - dragOffset.y;
         const boxHalfWidth = 200;
         const boxHalfHeight = 150;
-        const maxX = (window.innerWidth / 2) - boxHalfWidth;
-        const maxY = (window.innerHeight / 2) - boxHalfHeight;
+        // Ensure non-negative bounds for mobile
+        const maxX = Math.max(0, (window.innerWidth / 2) - boxHalfWidth);
+        const maxY = Math.max(0, (window.innerHeight / 2) - boxHalfHeight);
 
         setDragPosition({
             x: Math.max(Math.min(newX, maxX), -maxX),
