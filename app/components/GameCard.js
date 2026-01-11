@@ -32,8 +32,8 @@ export default function GameCard({ coin, side, resultState, selectedSide, isAnim
                         src={coin.logo}
                         alt=""
                         fill
-                        className="coin-bg-image" // Add this class to CSS if needed for blur/opacity
-                        style={{ objectFit: 'cover', opacity: 0.5, filter: 'blur(5px)' }}
+                        className="coin-bg-image"
+                        style={{ objectFit: 'cover', opacity: 0.6 }}
                         onError={() => setImageError(true)}
                         unoptimized={true} // Allow external images initially to avoid next/image whitelist issues if config missed some
                     />

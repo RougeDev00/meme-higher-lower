@@ -415,10 +415,12 @@ select,
   /* Circular Frame Styles */
   border-radius: 50%;
   overflow: hidden;
-  background-color: #fff;
-  border: 4px solid #fff;
-  /* Default white border */
-  box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+  background-color: transparent;
+  /* Fixed: Removed white background */
+  border: 4px solid transparent;
+  /* Fixed: Removed white border */
+  /* box-shadow: 0 0 25px rgba(0, 0, 0, 0.5); */
+  /* Removed shadow to clean up */
   transition: border-color 0.3s ease;
 }
 
