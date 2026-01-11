@@ -435,7 +435,7 @@ export default function GamePage({ onGoHome }) {
     };
 
     if (isLoading || !leftCoin || !rightCoin) {
-        return <div className="game-container center-content"><p>Loading Game Data...</p></div>;
+        return null;
     }
 
     return (
