@@ -461,6 +461,9 @@ export default function GamePage({ onGoHome }) {
                         {formatTime(timeLeft)}
                     </div>
                 </div>
+
+                <div className="in-game-label">EARLY ACCESS - DEMO VERSION</div>
+
                 <div className="leaderboard-toggle">
                     <button className="toggle-button" onClick={() => {
                         fetch('/api/leaderboard').then(res => res.json()).then(data => setLeaderboard(data.leaderboard || []));
@@ -614,7 +617,10 @@ export default function GamePage({ onGoHome }) {
                             </button>
                         </div>
 
+
+
                     </div>
+                    <div className="early-access-label" style={{ marginTop: '1rem', position: 'relative', zIndex: 201 }}>EARLY ACCESS - DEMO VERSION</div>
 
                     {/* Info Button Top Right */}
                     <button

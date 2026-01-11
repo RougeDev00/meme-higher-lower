@@ -165,26 +165,62 @@ select,
 }
 
 .early-access-label {
-  font-size: 0.8rem;
+  font-size: 1rem;
   color: var(--pump-orange);
   text-transform: uppercase;
   letter-spacing: 2px;
   margin-bottom: 0.5rem;
   opacity: 0.9;
   text-align: center;
-  font-weight: 700;
+  font-weight: 900;
   text-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
-  animation: pulse-subtle 2s infinite;
+  white-space: nowrap;
+  animation: pulse-zoom 2s infinite ease-in-out;
 }
 
-@keyframes pulse-subtle {
+@keyframes pulse-zoom {
 
   0%,
   100% {
-    opacity: 0.7;
+    transform: scale(1);
+    opacity: 0.8;
   }
 
   50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+.in-game-label {
+  position: absolute;
+  top: calc(50% - 110px);
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.9rem;
+  color: var(--pump-orange);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 900;
+  opacity: 0.8;
+  text-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
+  z-index: 15;
+  pointer-events: none;
+  width: 100%;
+  text-align: center;
+  animation: pulse-zoom-translate 2s infinite ease-in-out;
+}
+
+@keyframes pulse-zoom-translate {
+
+  0%,
+  100% {
+    transform: translateX(-50%) scale(1);
+    opacity: 0.8;
+  }
+
+  50% {
+    transform: translateX(-50%) scale(1.05);
     opacity: 1;
   }
 }
@@ -431,6 +467,7 @@ select,
   line-height: 1.4;
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-align: center;
