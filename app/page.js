@@ -181,29 +181,33 @@ export default function Home() {
           />
           {/* Wallet Connect Button */}
           {!walletAddress ? (
-            <button
-              className="wallet-connect-btn"
-              onClick={connectPhantom}
-              disabled={isWalletConnecting}
-            >
-              <div className="wallet-logos">
-                <img src="/phantom-logo.svg" alt="Phantom" className="wallet-logo" />
-                <img src="/metamask-logo.svg" alt="MetaMask" className="wallet-logo wallet-logo-disabled" title="Coming soon" />
-              </div>
-              <span>{isWalletConnecting ? 'Connecting...' : 'Connect Wallet'}</span>
-            </button>
-          ) : (
-            <div className="wallet-connected">
-              <span className="wallet-address-display">
-                🟢 {walletAddress.slice(0, 4)}...{walletAddress.slice(-4)}
-              </span>
-              <button className="wallet-disconnect-btn" onClick={disconnectWallet}>
-                ✕
+            <div className="wallet-connect-wrapper">
+              <button
+                className="wallet-connect-btn"
+                onClick={connectPhantom}
+                disabled={isWalletConnecting}
+              >
+                <img src="/phantom-logo.png" alt="Phantom" className="wallet-logo-round" />
+                <span>{isWalletConnecting ? 'Connecting...' : 'Connect Wallet'}</span>
               </button>
+              <p className="wallet-optional-text">Connect wallet to join leaderboard (Optional)</p>
+            </div>
+          ) : (
+            <div className="wallet-connect-wrapper">
+              <div className="wallet-connected">
+                <img src="/phantom-logo.png" alt="Phantom" className="wallet-logo-round wallet-logo-small" />
+                <span className="wallet-address-display">
+                  {walletAddress.slice(0, 4)}...{walletAddress.slice(-4)}
+                </span>
+                <button className="wallet-disconnect-btn" onClick={disconnectWallet}>
+                  ✕
+                </button>
+              </div>
+              <p className="wallet-optional-text wallet-connected-text">✓ Connected to leaderboard</p>
             </div>
           )}
           {walletError && (
-            <div style={{ color: '#ef4444', fontSize: '0.8rem', marginTop: '5px', fontWeight: 'bold' }}>
+            <div style={{ color: '#ef4444', fontSize: '0.8rem', marginTop: '5px', fontWeight: 'bold', textAlign: 'center' }}>
               {walletError}
             </div>
           )}
