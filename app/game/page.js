@@ -517,7 +517,7 @@ export default function GamePage() {
             {/* Game Over Modal */}
             {gameOver && (
                 <div className="game-over-overlay">
-                    <div className="game-over-modal">
+                    <div className="game-over-content">
                         <img src={gameOverImage} alt="Game Over" className="game-over-image" />
                         <h2 className="game-over-title">GAME OVER</h2>
                         <p className="game-over-score">{currentScore}</p>
