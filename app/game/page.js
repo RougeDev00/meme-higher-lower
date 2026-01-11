@@ -11,6 +11,15 @@ import GameCard from '../components/GameCard';
 import { GAME_CONFIG } from '@/lib/gameConfig';
 import { shuffleArray, formatTime } from '@/lib/utils';
 
+const GAME_OVER_IMAGES = [
+    '/crying-kid.gif',
+    '/sad-hamster.gif',
+    '/sad-meme-3.gif',
+    '/sad-meme-4.gif',
+    '/sad-meme-5.gif',
+    '/sad-meme-6.gif'
+];
+
 export default function GamePage() {
     const router = useRouter();
     const [username, setUsername] = useState('');
@@ -91,21 +100,18 @@ export default function GamePage() {
         };
     }, [isDragging, handleMouseMove, handleMouseUp]);
 
-    const GAME_OVER_IMAGES = [
-        '/crying-kid.gif',
-        '/sad-hamster.gif',
-        '/sad-meme-3.gif',
-        '/sad-meme-4.gif',
-        '/sad-meme-5.gif',
-        '/sad-meme-6.gif'
-    ];
-
     // Preload Images on Mount
     useEffect(() => {
-        GAME_OVER_IMAGES.forEach((src) => {
-            const img = new Image();
-            img.src = src;
-        });
+        try {
+            if (typeof window !== 'undefined') {
+                GAME_OVER_IMAGES.forEach((src) => {
+                    const img = new Image();
+                    img.src = src;
+                });
+            }
+        } catch (e) {
+            console.warn("Failed to preload images", e);
+        }
     }, []);
 
     useEffect(() => {
