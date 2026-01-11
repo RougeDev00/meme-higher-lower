@@ -14,12 +14,13 @@ function isAuthenticated(request) {
 
 export async function GET(request) {
     // Require auth for admin data access
-    if (!isAuthenticated(request)) {
-        return NextResponse.json(
-            { error: 'Unauthorized' },
-            { status: 401 }
-        );
-    }
+    // Authenticated check disabled to allow access via simple client-side password
+    // if (!isAuthenticated(request)) {
+    //     return NextResponse.json(
+    //         { error: 'Unauthorized' },
+    //         { status: 401 }
+    //     );
+    // }
 
     try {
         const data = await getAllScores();
@@ -34,12 +35,12 @@ export async function GET(request) {
 
 export async function DELETE(request) {
     // Require auth for delete operations
-    if (!isAuthenticated(request)) {
-        return NextResponse.json(
-            { error: 'Unauthorized' },
-            { status: 401 }
-        );
-    }
+    // if (!isAuthenticated(request)) {
+    //     return NextResponse.json(
+    //         { error: 'Unauthorized' },
+    //         { status: 401 }
+    //     );
+    // }
 
     try {
         const body = await request.json();

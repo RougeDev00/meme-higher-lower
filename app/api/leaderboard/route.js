@@ -24,8 +24,11 @@ export async function POST(request) {
         const expectedSignature = btoa(`${score}-${walletAddress}-MEME_SECRET`);
 
         if (!signature || signature !== expectedSignature) {
-            console.warn(`Invalid score signature for user ${walletAddress} (Expected: ${expectedSignature}, Got: ${signature})`);
-            // Permissive mode for debugging - proceed anyway
+            console.warn(`Invalid score signature for user ${walletAddress}`);
+            return NextResponse.json(
+                { error: 'Invalid score signature' },
+                { status: 403 }
+            );
         }
 
         if (!walletAddress || typeof score !== 'number') {
