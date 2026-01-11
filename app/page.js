@@ -130,12 +130,8 @@ export default function Home() {
               className="start-button-image"
             />
           </button>
-          <button
-            className="info-button"
-            onClick={() => setShowInfo(true)}
-            style={{ marginTop: '1.5rem', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.3)', padding: '8px 20px', color: 'rgba(255,255,255,0.8)', borderRadius: '20px', fontSize: '0.9rem', cursor: 'pointer', transition: 'all 0.3s' }}
-          >
-            ℹ️ INFO
+          <button className="info-button" onClick={() => setShowInfo(true)}>
+            INFO
           </button>
         </div>
 
