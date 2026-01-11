@@ -591,17 +591,18 @@ export default function GamePage({ onGoHome }) {
                         {GAME_CONFIG.GAME_VERSION}
                     </div>
 
-                    {/* Social Link - Only visible in Game Over */}
+                    {/* Social Link - Scaled same as Home */}
                     <a
                         href="https://x.com/pumpordumpgame"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="social-link-container"
+                        style={{ position: 'absolute', bottom: '2rem', left: '2rem', zIndex: 300 }}
                     >
                         <img src="/x-logo.svg" alt="X (Twitter)" className="social-icon" />
                     </a>
 
-                    <div className="ca-label">
+                    <div className="ca-label" style={{ position: 'absolute', top: '2rem', left: '2rem', zIndex: 300 }}>
                         CA: <span>Coming Soon..</span>
                     </div>
                 </div>
