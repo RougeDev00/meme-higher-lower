@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { useRouter } from 'next/navigation';
-import coins from '@/data/coins.json';
 import confetti from 'canvas-confetti';
 import CursorTrail from '../components/CursorTrail';
 
@@ -119,6 +118,10 @@ export default function GamePage() {
     const [timeLeft, setTimeLeft] = useState(10000); // 10 seconds in ms
     const [gameOverImage, setGameOverImage] = useState('/crying-kid.gif');
 
+    // Dynamic Data State
+    const [coins, setCoins] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+
     // Speed Mode States
     const [showSpeedModeOverlay, setShowSpeedModeOverlay] = useState(false);
     const [isSpeedMode, setIsSpeedMode] = useState(false);
@@ -212,20 +215,33 @@ export default function GamePage() {
                 .catch(() => { });
         }
 
-        // Initialize coins - filter for coins with valid data
-        const validCoins = coins.filter(c =>
-            c.marketCap >= 15000 &&
-            c.symbol &&
-            c.name
-        );
-        const shuffled = shuffleArray(validCoins);
-        availableCoinsRef.current = shuffled.slice(2);
-        usedCoinsRef.current = new Set([shuffled[0]?.id, shuffled[1]?.id].filter(Boolean));
-        setLeftCoin(shuffled[0]);
-        setRightCoin(shuffled[1]);
-        setLeftCoinTurns(0);
-        setRightCoinTurns(0);
-        setTimeLeft(10000);
+        // Fetch coins dynamically
+        fetch('/api/coins')
+            .then(res => res.json())
+            .then(data => {
+                if (!Array.isArray(data)) return;
+                setCoins(data);
+
+                // Initialize game with fetched data
+                const validCoins = data.filter(c =>
+                    c.marketCap >= 15000 &&
+                    c.symbol &&
+                    c.name
+                );
+                const shuffled = shuffleArray(validCoins);
+                availableCoinsRef.current = shuffled.slice(2);
+                usedCoinsRef.current = new Set([shuffled[0]?.id, shuffled[1]?.id].filter(Boolean));
+                setLeftCoin(shuffled[0]);
+                setRightCoin(shuffled[1]);
+                setLeftCoinTurns(0);
+                setRightCoinTurns(0);
+                setTimeLeft(10000);
+                setIsLoading(false);
+            })
+            .catch(err => {
+                console.error("Failed to load coins:", err);
+                setIsLoading(false);
+            });
     }, [router]);
 
     // Timer Logic
@@ -532,10 +548,10 @@ pumpordumpgame.fun`;
         router.push('/');
     };
 
-    if (!leftCoin || !rightCoin) {
+    if (isLoading || !leftCoin || !rightCoin) {
         return (
             <div className="game-container" style={{ justifyContent: 'center', alignItems: 'center' }}>
-                <p>Loading...</p>
+                <p>Loading Game Data...</p>
             </div>
         );
     }
