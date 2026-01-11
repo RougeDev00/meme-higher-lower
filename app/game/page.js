@@ -532,7 +532,16 @@ export default function GamePage({ onGoHome }) {
                                     <span className="username">
                                         {entry.username}
                                         {entry.wallet_address && (
-                                            <span style={{ fontSize: '0.75rem', color: '#666', marginLeft: '0.5rem', fontWeight: 300 }}>
+                                            <span
+                                                style={{ fontSize: '0.75rem', color: '#666', marginLeft: '0.5rem', fontWeight: 300, cursor: 'pointer', textDecoration: 'underline dotted' }}
+                                                title="Click to copy full address"
+                                                onClick={(e) => {
+                                                    navigator.clipboard.writeText(entry.wallet_address);
+                                                    const originalText = e.target.innerText;
+                                                    e.target.innerText = 'Copied!';
+                                                    setTimeout(() => { e.target.innerText = originalText; }, 1000);
+                                                }}
+                                            >
                                                 {entry.wallet_address.slice(0, 4)}...{entry.wallet_address.slice(-4)}
                                             </span>
                                         )}
