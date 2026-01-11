@@ -65,3 +65,26 @@ export async function deleteAllAdminUsers() {
 
     return res.json();
 }
+
+export async function getPlaySessionsStats() {
+    const adminSecret = process.env.ADMIN_SECRET;
+
+    if (!adminSecret) {
+        throw new Error('ADMIN_SECRET not configured');
+    }
+
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://pumpordumpgame.fun';
+
+    const res = await fetch(`${baseUrl}/api/admin/sessions`, {
+        headers: {
+            'x-admin-secret': adminSecret
+        },
+        cache: 'no-store'
+    });
+
+    if (!res.ok) {
+        return { stats: { total: 0, withWallet: 0, withoutWallet: 0 }, recentSessions: [] };
+    }
+
+    return res.json();
+}

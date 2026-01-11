@@ -2,13 +2,14 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { getAdminData, deleteAdminUser, deleteAllAdminUsers } from './actions';
+import { getAdminData, deleteAdminUser, deleteAllAdminUsers, getPlaySessionsStats } from './actions';
 
 export default function AdminPage() {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [password, setPassword] = useState('');
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [sessionStats, setSessionStats] = useState({ stats: { total: 0, withWallet: 0, withoutWallet: 0 }, recentSessions: [] });
     const router = useRouter();
 
     const [lockoutTime, setLockoutTime] = useState(null);
@@ -84,8 +85,12 @@ export default function AdminPage() {
     const fetchData = async () => {
         setLoading(true);
         try {
-            const json = await getAdminData();
-            setData(json.data || []);
+            const [adminData, sessionsData] = await Promise.all([
+                getAdminData(),
+                getPlaySessionsStats()
+            ]);
+            setData(adminData.data || []);
+            setSessionStats(sessionsData);
         } catch (error) {
             console.error('Failed to fetch data', error);
         } finally {
@@ -271,6 +276,45 @@ export default function AdminPage() {
                     </button>
                 </div>
             </div>
+
+            {/* Play Sessions Stats */}
+            <div style={{ marginBottom: '30px' }}>
+                <h2 style={{ marginBottom: '15px', fontSize: '1.2rem', color: '#888' }}>📊 Play Sessions</h2>
+                <div style={{ display: 'flex', gap: '15px', flexWrap: 'wrap' }}>
+                    <div style={{
+                        padding: '20px 30px',
+                        background: 'linear-gradient(135deg, rgba(0, 255, 136, 0.1) 0%, rgba(0, 200, 100, 0.05) 100%)',
+                        border: '1px solid rgba(0, 255, 136, 0.3)',
+                        borderRadius: '12px',
+                        textAlign: 'center'
+                    }}>
+                        <div style={{ fontSize: '2rem', fontWeight: 'bold', color: '#00ff88' }}>{sessionStats.stats?.total || 0}</div>
+                        <div style={{ fontSize: '0.85rem', color: '#888', marginTop: '5px' }}>Total Sessions</div>
+                    </div>
+                    <div style={{
+                        padding: '20px 30px',
+                        background: 'linear-gradient(135deg, rgba(171, 159, 242, 0.1) 0%, rgba(130, 100, 220, 0.05) 100%)',
+                        border: '1px solid rgba(171, 159, 242, 0.3)',
+                        borderRadius: '12px',
+                        textAlign: 'center'
+                    }}>
+                        <div style={{ fontSize: '2rem', fontWeight: 'bold', color: '#ab9ff2' }}>{sessionStats.stats?.withWallet || 0}</div>
+                        <div style={{ fontSize: '0.85rem', color: '#888', marginTop: '5px' }}>With Wallet</div>
+                    </div>
+                    <div style={{
+                        padding: '20px 30px',
+                        background: 'linear-gradient(135deg, rgba(255, 170, 0, 0.1) 0%, rgba(200, 130, 0, 0.05) 100%)',
+                        border: '1px solid rgba(255, 170, 0, 0.3)',
+                        borderRadius: '12px',
+                        textAlign: 'center'
+                    }}>
+                        <div style={{ fontSize: '2rem', fontWeight: 'bold', color: '#ffaa00' }}>{sessionStats.stats?.withoutWallet || 0}</div>
+                        <div style={{ fontSize: '0.85rem', color: '#888', marginTop: '5px' }}>Without Wallet</div>
+                    </div>
+                </div>
+            </div>
+
+            <h2 style={{ marginBottom: '15px', fontSize: '1.2rem', color: '#888' }}>🏆 Leaderboard</h2>
 
             {loading ? (
                 <p>Loading data...</p>
