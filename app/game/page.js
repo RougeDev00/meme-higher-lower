@@ -48,6 +48,7 @@ export default function GamePage({ onGoHome }) {
     // Dynamic Data State
     const [coins, setCoins] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [sessionId, setSessionId] = useState(null);
 
     // Speed Mode States
     const [showSpeedModeOverlay, setShowSpeedModeOverlay] = useState(false);
@@ -121,9 +122,6 @@ export default function GamePage({ onGoHome }) {
         }
     }, [gameOver]);
 
-    const usedCoinsRef = useRef(new Set());
-    const availableCoinsRef = useRef([]);
-
     // Initialize game
     useEffect(() => {
         const savedUsername = localStorage.getItem('meme-game-username');
@@ -147,50 +145,37 @@ export default function GamePage({ onGoHome }) {
                 .catch(() => { });
         }
 
-        fetch('/api/coins')
+        // Start game session on server
+        fetch('/api/game/start', { method: 'POST' })
             .then(res => res.json())
             .then(data => {
-                if (!Array.isArray(data)) return;
-                setCoins(data);
-
-                const validCoins = data.filter(c => c.marketCap >= 15000 && c.symbol && c.name);
-                const shuffled = shuffleArray(validCoins);
-                availableCoinsRef.current = shuffled.slice(2);
-                usedCoinsRef.current = new Set([shuffled[0]?.id, shuffled[1]?.id].filter(Boolean));
-                setLeftCoin(shuffled[0]);
-                setRightCoin(shuffled[1]);
+                if (data.error) {
+                    console.error('Failed to start game:', data.error);
+                    setIsLoading(false);
+                    return;
+                }
+                setSessionId(data.sessionId);
+                setLeftCoin(data.leftCoin);
+                setRightCoin(data.rightCoin);
                 setLeftCoinTurns(0);
                 setRightCoinTurns(0);
                 setTimeLeft(GAME_CONFIG.INITIAL_TIME);
                 setIsLoading(false);
             })
             .catch(err => {
-                console.error("Failed to load coins:", err);
+                console.error('Failed to start game:', err);
                 setIsLoading(false);
             });
     }, [router]);
 
-    // Secure Score Submission
-    const submitScoreSecurely = async (finalScore) => {
-        if (!userId || userId === 'GUEST') return;
-
-        // Simple obfuscation via signature
-        const signature = btoa(`${finalScore}-${userId}-MEME_SECRET`);
-
+    // Score submission is now handled server-side in /api/game/guess
+    const refreshLeaderboard = async () => {
         try {
-            await fetch('/api/leaderboard', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'x-score-signature': signature
-                },
-                body: JSON.stringify({ username, score: finalScore, walletAddress: userId })
-            });
             const res = await fetch('/api/leaderboard');
             const data = await res.json();
             setLeaderboard(data.leaderboard || []);
         } catch (e) {
-            console.error("Score submission failed", e);
+            console.error('Failed to refresh leaderboard', e);
         }
     };
 
@@ -225,7 +210,14 @@ export default function GamePage({ onGoHome }) {
                 setTimeLeft(0);
                 setGameOver(true);
                 setResultState({ left: 'wrong', right: 'wrong' });
-                submitScoreSecurely(currentScore);
+                // Submit score via timeout API
+                if (sessionId) {
+                    fetch('/api/game/timeout', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ sessionId, username, walletAddress: userId })
+                    }).then(() => refreshLeaderboard()).catch(console.error);
+                }
                 return;
             }
 
@@ -235,7 +227,7 @@ export default function GamePage({ onGoHome }) {
 
         animationFrameRef.current = requestAnimationFrame(tick);
         return cleanup;
-    }, [gameOver, isAnimating, showLeaderboard, isPaused, showSpeedModeOverlay, userId, username, currentScore]);
+    }, [gameOver, isAnimating, showLeaderboard, isPaused, showSpeedModeOverlay, userId, username, currentScore, sessionId]);
 
     useEffect(() => {
         const handleVisibilityChange = () => {
@@ -247,7 +239,13 @@ export default function GamePage({ onGoHome }) {
                     setTimeLeft(0);
                     setGameOver(true);
                     setResultState({ left: 'wrong', right: 'wrong' });
-                    submitScoreSecurely(currentScore);
+                    if (sessionId) {
+                        fetch('/api/game/timeout', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ sessionId, username, walletAddress: userId })
+                        }).then(() => refreshLeaderboard()).catch(console.error);
+                    }
                 } else {
                     setTimeLeft(remaining); // Correctly resume visual timer
                 }
@@ -255,7 +253,7 @@ export default function GamePage({ onGoHome }) {
         };
         document.addEventListener('visibilitychange', handleVisibilityChange);
         return () => document.removeEventListener('visibilitychange', handleVisibilityChange);
-    }, [userId, username, currentScore]);
+    }, [userId, username, currentScore, sessionId]);
 
     useEffect(() => {
         if (timeLeft >= (GAME_CONFIG.INITIAL_TIME - 100) && !gameOver && !isAnimating) {
@@ -264,174 +262,152 @@ export default function GamePage({ onGoHome }) {
     }, [timeLeft, gameOver, isAnimating]);
 
 
-    const getNextCoin = useCallback((excludeCoins = []) => {
-        const excludeSet = new Set([
-            ...excludeCoins.map(c => c?.id).filter(Boolean),
-            leftCoin?.id,
-            rightCoin?.id,
-            ...usedCoinsRef.current
-        ].filter(Boolean));
-
-        let nextCoin = null;
-        while (availableCoinsRef.current.length > 0) {
-            const candidate = availableCoinsRef.current.shift();
-            if (candidate && !excludeSet.has(candidate.id)) {
-                nextCoin = candidate;
-                break;
-            }
-        }
-
-        if (!nextCoin) {
-            const validCoins = coins.filter(c => c.marketCap >= 15000 && c.symbol && c.name && !excludeSet.has(c.id));
-            const shuffled = shuffleArray(validCoins);
-            availableCoinsRef.current = shuffled.slice(1);
-            nextCoin = shuffled[0];
-            usedCoinsRef.current.clear();
-        }
-
-        if (nextCoin) usedCoinsRef.current.add(nextCoin.id);
-        return nextCoin;
-    }, [leftCoin, rightCoin, coins]);
-
-
     const handleCoinClick = async (clickedSide) => {
-        if (!leftCoin || !rightCoin || isAnimating || gameOver || isPaused) return;
+        if (!leftCoin || !rightCoin || isAnimating || gameOver || isPaused || !sessionId) return;
 
         setIsAnimating(true);
         setSelectedSide(clickedSide);
 
-        const clickedCoin = clickedSide === 'left' ? leftCoin : rightCoin;
-        const otherCoin = clickedSide === 'left' ? rightCoin : leftCoin;
-        const isCorrect = Number(clickedCoin.marketCap) >= Number(otherCoin.marketCap);
-
+        // Show animations before server call
         if (clickedSide === 'left') setShowLeftValue(true);
         else setShowRightValue(true);
 
         await new Promise(resolve => setTimeout(resolve, GAME_CONFIG.ANIMATION_DURATION));
 
-        if (clickedSide === 'left') setShowRightValue(true);
-        else setShowLeftValue(true);
-
-        await new Promise(resolve => setTimeout(resolve, GAME_CONFIG.ANIMATION_DURATION));
-
-        if (isCorrect) {
-            const newScore = currentScore + 1;
-            setCurrentScore(newScore);
-            setResultState({
-                left: clickedSide === 'left' ? 'correct' : null,
-                right: clickedSide === 'right' ? 'correct' : null
+        // Call server to validate guess
+        try {
+            const res = await fetch('/api/game/guess', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    sessionId,
+                    guess: clickedSide,
+                    username,
+                    walletAddress: userId
+                })
             });
-            setPopupScore(newScore);
+            const data = await res.json();
 
-            setTimeout(() => {
-                setShowScorePopup(true);
-            }, GAME_CONFIG.BOUNCE_DELAY);
-
-            if (newScore > highScore) setHighScore(newScore);
-
-            // SPEED MODE
-            if (newScore === GAME_CONFIG.SPEED_MODE_THRESHOLD) {
-                setTimeout(() => {
-                    setIsPaused(true);
-                    setShowSpeedModeOverlay(true);
-                    setIsSpeedMode(true);
-                    confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 }, colors: ['#FFD700', '#FF6B35', '#ffffff'] });
-                    setTimeout(() => {
-                        setShowSpeedModeOverlay(false);
-                        setIsPaused(false);
-                    }, 4000);
-                }, 2000);
-                await new Promise(resolve => setTimeout(resolve, 6000));
+            if (data.error) {
+                console.error('Guess error:', data.error);
+                setIsAnimating(false);
+                return;
             }
 
-            setTimeout(async () => {
-                setShowScorePopup(false);
-                setResultState({ left: null, right: null });
-                setSelectedSide(null);
-                setTimeLeft(newScore >= GAME_CONFIG.SPEED_MODE_THRESHOLD ? GAME_CONFIG.SPEED_MODE_TIME : GAME_CONFIG.INITIAL_TIME);
+            // Update coins with revealed market caps for display
+            setLeftCoin(prev => ({ ...prev, marketCap: data.leftMarketCap }));
+            setRightCoin(prev => ({ ...prev, marketCap: data.rightMarketCap }));
 
-                const winnerTurns = clickedSide === 'left' ? leftCoinTurns : rightCoinTurns;
-                const loserCoin = clickedSide === 'left' ? rightCoin : leftCoin;
+            // Show both values after reveal
+            setShowLeftValue(true);
+            setShowRightValue(true);
 
-                // Logic for winner staying/leaving based on turns
-                setExitingSide(winnerTurns >= GAME_CONFIG.MAX_WINNER_TURNS ? clickedSide : (clickedSide === 'left' ? 'right' : 'left'));
+            await new Promise(resolve => setTimeout(resolve, GAME_CONFIG.ANIMATION_DURATION));
 
-                await new Promise(resolve => setTimeout(resolve, 500));
+            if (data.correct) {
+                const newScore = data.score;
+                setCurrentScore(newScore);
+                setResultState({
+                    left: clickedSide === 'left' ? 'correct' : null,
+                    right: clickedSide === 'right' ? 'correct' : null
+                });
+                setPopupScore(newScore);
 
-                if (winnerTurns >= GAME_CONFIG.MAX_WINNER_TURNS) {
-                    // Winner leaves (replaced), loser stays
-                    const newCoin = getNextCoin([loserCoin]);
-                    if (clickedSide === 'left') {
-                        setLeftCoin(newCoin);
-                        setLeftCoinTurns(0);
-                        setRightCoinTurns(0);
-                        setEnteringSide('left');
-                        setShowLeftValue(false);
-                        setShowRightValue(true);
-                    } else {
-                        setRightCoin(newCoin);
-                        setRightCoinTurns(0);
-                        setLeftCoinTurns(0);
-                        setEnteringSide('right');
-                        setShowLeftValue(true);
-                        setShowRightValue(false);
-                    }
-                } else {
-                    // Winner stays, loser leaves (replaced)
-                    if (clickedSide === 'left') {
-                        setRightCoin(getNextCoin([leftCoin]));
-                        setLeftCoinTurns(leftCoinTurns + 1);
-                        setRightCoinTurns(0);
-                        setEnteringSide('right');
-                        setShowLeftValue(true);
-                        setShowRightValue(false);
-                    } else {
-                        setLeftCoin(getNextCoin([rightCoin]));
-                        setRightCoinTurns(rightCoinTurns + 1);
-                        setLeftCoinTurns(0);
-                        setEnteringSide('left');
-                        setShowRightValue(true);
-                        setShowLeftValue(false);
-                    }
+                setTimeout(() => {
+                    setShowScorePopup(true);
+                }, GAME_CONFIG.BOUNCE_DELAY);
+
+                if (newScore > highScore) setHighScore(newScore);
+
+                // SPEED MODE
+                if (newScore === GAME_CONFIG.SPEED_MODE_THRESHOLD) {
+                    setTimeout(() => {
+                        setIsPaused(true);
+                        setShowSpeedModeOverlay(true);
+                        setIsSpeedMode(true);
+                        confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 }, colors: ['#FFD700', '#FF6B35', '#ffffff'] });
+                        setTimeout(() => {
+                            setShowSpeedModeOverlay(false);
+                            setIsPaused(false);
+                        }, 4000);
+                    }, 2000);
+                    await new Promise(resolve => setTimeout(resolve, 6000));
                 }
 
-                setExitingSide(null);
-                setIsAnimating(false);
-                setTimeout(() => setEnteringSide(null), 500);
+                setTimeout(async () => {
+                    setShowScorePopup(false);
+                    setResultState({ left: null, right: null });
+                    setSelectedSide(null);
+                    setTimeLeft(newScore >= GAME_CONFIG.SPEED_MODE_THRESHOLD ? GAME_CONFIG.SPEED_MODE_TIME : GAME_CONFIG.INITIAL_TIME);
 
-            }, newScore === GAME_CONFIG.SPEED_MODE_THRESHOLD ? 500 : GAME_CONFIG.NEXT_ROUND_DELAY_NORMAL);
+                    // Animate coin transition
+                    setExitingSide(clickedSide === 'left' ? 'right' : 'left');
 
-        } else {
-            setResultState({
-                left: clickedSide === 'left' ? 'wrong' : null,
-                right: clickedSide === 'right' ? 'wrong' : null
-            });
-            submitScoreSecurely(currentScore);
-            setTimeout(() => {
-                setGameOver(true);
-                setIsAnimating(false);
-            }, 1500);
+                    await new Promise(resolve => setTimeout(resolve, 500));
+
+                    // Update with next coins from server
+                    if (data.nextLeftCoin) setLeftCoin(data.nextLeftCoin);
+                    if (data.nextRightCoin) setRightCoin(data.nextRightCoin);
+
+                    setLeftCoinTurns(0);
+                    setRightCoinTurns(0);
+                    setEnteringSide(clickedSide === 'left' ? 'right' : 'left');
+                    setShowLeftValue(clickedSide === 'left');
+                    setShowRightValue(clickedSide === 'right');
+
+                    setExitingSide(null);
+                    setIsAnimating(false);
+                    setTimeout(() => setEnteringSide(null), 500);
+
+                }, newScore === GAME_CONFIG.SPEED_MODE_THRESHOLD ? 500 : GAME_CONFIG.NEXT_ROUND_DELAY_NORMAL);
+
+            } else {
+                // Wrong guess - game over
+                setResultState({
+                    left: clickedSide === 'left' ? 'wrong' : null,
+                    right: clickedSide === 'right' ? 'wrong' : null
+                });
+                refreshLeaderboard();
+                setTimeout(() => {
+                    setGameOver(true);
+                    setIsAnimating(false);
+                }, 1500);
+            }
+        } catch (error) {
+            console.error('Failed to submit guess:', error);
+            setIsAnimating(false);
         }
     };
 
-    const restartGame = () => {
-        const validCoins = coins.filter(c => c.marketCap >= 15000 && c.symbol && c.name);
-        const shuffled = shuffleArray(validCoins);
-        availableCoinsRef.current = shuffled.slice(2);
-        usedCoinsRef.current = new Set([shuffled[0]?.id, shuffled[1]?.id].filter(Boolean));
-        setLeftCoin(shuffled[0]);
-        setRightCoin(shuffled[1]);
-        setCurrentScore(0);
-        setShowLeftValue(false);
-        setShowRightValue(false);
-        setGameOver(false);
-        setResultState({ left: null, right: null });
-        setSelectedSide(null);
-        setLeftCoinTurns(0);
-        setRightCoinTurns(0);
-        setTimeLeft(GAME_CONFIG.INITIAL_TIME);
-        setIsSpeedMode(false);
-        setShowSpeedModeOverlay(false);
+    const restartGame = async () => {
+        setIsLoading(true);
+        try {
+            const res = await fetch('/api/game/start', { method: 'POST' });
+            const data = await res.json();
+            if (data.error) {
+                console.error('Failed to restart game:', data.error);
+                setIsLoading(false);
+                return;
+            }
+            setSessionId(data.sessionId);
+            setLeftCoin(data.leftCoin);
+            setRightCoin(data.rightCoin);
+            setCurrentScore(0);
+            setShowLeftValue(false);
+            setShowRightValue(false);
+            setGameOver(false);
+            setResultState({ left: null, right: null });
+            setSelectedSide(null);
+            setLeftCoinTurns(0);
+            setRightCoinTurns(0);
+            setTimeLeft(GAME_CONFIG.INITIAL_TIME);
+            setIsSpeedMode(false);
+            setShowSpeedModeOverlay(false);
+            setIsLoading(false);
+        } catch (err) {
+            console.error('Failed to restart game:', err);
+            setIsLoading(false);
+        }
     };
 
     if (isLoading || !leftCoin || !rightCoin) {
