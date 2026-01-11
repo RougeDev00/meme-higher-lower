@@ -597,12 +597,12 @@ export default function GamePage({ onGoHome }) {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="social-link-container"
-                        style={{ position: 'absolute', bottom: '2rem', left: '2rem', zIndex: 300 }}
+                        style={{ position: 'absolute', bottom: '2rem', left: '2rem', zIndex: 300, display: 'flex' }}
                     >
                         <img src="/x-logo.svg" alt="X (Twitter)" className="social-icon" />
                     </a>
 
-                    <div className="ca-label" style={{ position: 'absolute', top: '2rem', left: '2rem', zIndex: 300 }}>
+                    <div className="ca-label" style={{ position: 'absolute', top: '2rem', left: '2rem', zIndex: 300, display: 'block' }}>
                         CA: <span>Coming Soon..</span>
                     </div>
                 </div>
