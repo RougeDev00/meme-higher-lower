@@ -436,7 +436,7 @@ export default function GamePage() {
 
     return (
         <>
-            <div className="game-container">
+            <div className="game-container slide-enter">
                 <div className="score-display high-score">
                     <div className="score-label">High Score</div>
                     <div className="score-value">{highScore}</div>
