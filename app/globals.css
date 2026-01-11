@@ -417,8 +417,8 @@ select,
   border-radius: 50%;
   overflow: hidden;
   background-color: #fff;
-  border: 4px solid #fff;
-  /* Default white border */
+  border: none;
+  /* No border at all to avoid white ring artifacts */
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
   backface-visibility: hidden;
   /* Fix for rendering artifacts */
@@ -428,18 +428,16 @@ select,
 /* Continuous Border Effect */
 .pill-container.left-correct,
 .pill-container.right-correct {
-  /* Solid green border on all sides to eliminate white artifacts */
-  border-color: var(--pump-green) !important;
-  border-width: 6px !important;
+  /* Solid green background, no border */
+  border: none !important;
   transform: translate(-50%, -50%) scale(1.1);
   background-color: var(--success-green) !important;
 }
 
 .pill-container.left-wrong,
 .pill-container.right-wrong {
-  /* Solid red border on all sides */
-  border-color: var(--pump-red) !important;
-  border-width: 6px !important;
+  /* Solid red background, no border */
+  border: none !important;
   animation: shake 0.5s cubic-bezier(.36, .07, .19, .97) both;
   background-color: var(--error-red) !important;
 }
