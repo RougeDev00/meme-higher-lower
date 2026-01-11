@@ -566,10 +566,45 @@ a,
   box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.2);
 }
 
+/* Embracing Border Extension - This extends towards the center pill */
+.coin-side.selected::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 70px;
+  height: 140px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  z-index: 15;
+  opacity: 0;
+  transition: opacity 0.3s ease, border-color 0.3s ease;
+}
+
+/* Left side - embrace extends to the right */
+.coin-side:first-of-type.selected::before {
+  right: -70px;
+  border: 4px solid transparent;
+  border-left: none;
+  border-radius: 0 70px 70px 0;
+}
+
+/* Right side - embrace extends to the left */
+.coin-side:last-of-type.selected::before {
+  left: -70px;
+  border: 4px solid transparent;
+  border-right: none;
+  border-radius: 70px 0 0 70px;
+}
+
 /* Result States - Only applied to the selected coin via logical combination */
 .coin-side.correct.selected::after {
   border-color: var(--success-green);
   box-shadow: inset 0 0 30px rgba(34, 197, 94, 0.2);
+}
+
+.coin-side.correct.selected::before {
+  opacity: 1;
+  border-color: var(--success-green);
 }
 
 .coin-side.correct.selected {
@@ -581,12 +616,18 @@ a,
   box-shadow: inset 0 0 30px rgba(239, 68, 68, 0.2);
 }
 
+.coin-side.wrong.selected::before {
+  opacity: 1;
+  border-color: var(--error-red);
+}
+
 .coin-side.wrong.selected {
   background: linear-gradient(135deg, rgba(239, 68, 68, 0.3) 0%, rgba(239, 68, 68, 0.1) 100%);
 }
 
 /* Ensure no border for unselected items, even if they have 'correct' class (if implied) */
-.coin-side:not(.selected)::after {
+.coin-side:not(.selected)::after,
+.coin-side:not(.selected)::before {
   display: none;
 }
 
