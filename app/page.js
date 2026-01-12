@@ -6,6 +6,8 @@ import { PublicKey } from '@solana/web3.js';
 import CursorTrail from './components/CursorTrail';
 import GamePage from './game/page';
 import InfoModal from './components/InfoModal';
+import ProfileButton from './components/ProfileButton';
+import ProfileModal from './components/ProfileModal';
 import { GAME_CONFIG } from '@/lib/gameConfig';
 
 export default function Home() {
@@ -18,6 +20,11 @@ export default function Home() {
   const [showInfo, setShowInfo] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isTransitioned, setIsTransitioned] = useState(false);
+
+  // Profile state
+  const [showProfile, setShowProfile] = useState(false);
+  const [userProfile, setUserProfile] = useState(null);
+
   const router = useRouter();
 
   useEffect(() => {
@@ -149,6 +156,51 @@ export default function Home() {
     } catch (e) {
       console.error('Error disconnecting:', e);
     }
+  };
+
+  const handleOpenProfile = async () => {
+    if (!walletAddress) return;
+
+    // Fetch latest profile data
+    try {
+      const res = await fetch(`/api/user/profile?walletAddress=${walletAddress}`);
+      const data = await res.json();
+
+      if (data.error) {
+        console.error(data.error);
+        return;
+      }
+
+      setUserProfile(data);
+      setShowProfile(true);
+    } catch (e) {
+      console.error('Error fetching profile:', e);
+    }
+  };
+
+  const handleUpdateUsername = async (newUsername) => {
+    if (!walletAddress) return;
+
+    const res = await fetch('/api/user/profile', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ walletAddress, username: newUsername })
+    });
+
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'Failed to update');
+
+    // Update local state
+    setUsername(newUsername);
+    localStorage.setItem('meme-game-username', newUsername);
+
+    // Refresh leaderboard
+    fetch('/api/leaderboard')
+      .then(res => res.json())
+      .then(data => {
+        setLeaderboard(data.leaderboard || []);
+      })
+      .catch(console.error);
   };
 
   return (
@@ -296,6 +348,20 @@ export default function Home() {
 
       {/* Info Modal */}
       {showInfo && <InfoModal onClose={() => setShowInfo(false)} />}
+
+      {/* Profile Modal */}
+      {showProfile && userProfile && (
+        <ProfileModal
+          user={userProfile}
+          onClose={() => setShowProfile(false)}
+          onUpdateUsername={handleUpdateUsername}
+        />
+      )}
+
+      {/* Profile Button (Only when wallet is connected) */}
+      {walletAddress && !isPlaying && (
+        <ProfileButton onClick={handleOpenProfile} />
+      )}
 
       <CursorTrail />
 
