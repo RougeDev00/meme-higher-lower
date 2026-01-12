@@ -1,7 +1,19 @@
 'use server';
 
+import { getSession } from '@/lib/auth';
+
+// Helper to enforce auth
+async function requireAuth() {
+    const session = await getSession();
+    if (!session || session.role !== 'admin') {
+        throw new Error('Unauthorized');
+    }
+}
+
 // Server action to fetch admin data with server-side authentication
 export async function getAdminData() {
+    await requireAuth();
+
     const adminSecret = process.env.ADMIN_SECRET;
 
     if (!adminSecret) {
@@ -25,6 +37,8 @@ export async function getAdminData() {
 }
 
 export async function deleteAdminUser(walletAddress) {
+    await requireAuth();
+
     const adminSecret = process.env.ADMIN_SECRET;
 
     if (!adminSecret) {
@@ -46,6 +60,8 @@ export async function deleteAdminUser(walletAddress) {
 }
 
 export async function deleteAllAdminUsers() {
+    await requireAuth();
+
     const adminSecret = process.env.ADMIN_SECRET;
 
     if (!adminSecret) {
@@ -67,6 +83,8 @@ export async function deleteAllAdminUsers() {
 }
 
 export async function getPlaySessionsStats() {
+    await requireAuth();
+
     const adminSecret = process.env.ADMIN_SECRET;
 
     if (!adminSecret) {

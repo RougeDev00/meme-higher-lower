@@ -5,83 +5,19 @@ import { useRouter } from 'next/navigation';
 import { getAdminData, deleteAdminUser, deleteAllAdminUsers, getPlaySessionsStats } from './actions';
 
 export default function AdminPage() {
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [password, setPassword] = useState('');
+    // Authentication is now handled by Middleware.
+    // If we are here, we are logged in.
+
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
     const [sessionStats, setSessionStats] = useState({ stats: { total: 0, withWallet: 0, withoutWallet: 0 }, sessions: [] });
     const [sessionFilter, setSessionFilter] = useState('total'); // 'total', 'withWallet', 'withoutWallet'
     const router = useRouter();
 
-    const [lockoutTime, setLockoutTime] = useState(null);
-    const [timeLeft, setTimeLeft] = useState(0);
-
+    // Fetch data on mount
     useEffect(() => {
-        const storedLockout = localStorage.getItem('admin_lockout_until');
-        if (storedLockout) {
-            const lockoutUntil = parseInt(storedLockout);
-            if (Date.now() < lockoutUntil) {
-                setLockoutTime(lockoutUntil);
-            } else {
-                localStorage.removeItem('admin_lockout_until');
-                localStorage.removeItem('admin_failed_attempts');
-            }
-        }
+        fetchData();
     }, []);
-
-    useEffect(() => {
-        if (!lockoutTime) return;
-
-        const interval = setInterval(() => {
-            const remaining = Math.ceil((lockoutTime - Date.now()) / 1000);
-            if (remaining <= 0) {
-                setLockoutTime(null);
-                setTimeLeft(0);
-                localStorage.removeItem('admin_lockout_until');
-                localStorage.removeItem('admin_failed_attempts');
-            } else {
-                setTimeLeft(remaining);
-            }
-        }, 1000);
-
-        return () => clearInterval(interval);
-    }, [lockoutTime]);
-
-    const handleLogin = (e) => {
-        e.preventDefault();
-
-        if (lockoutTime) return;
-
-        // Simple client-side check. In production, use real auth.
-        if (password === 'JodyMerda10.') {
-            setIsAuthenticated(true);
-            fetchData();
-            // Reset attempts on success
-            localStorage.removeItem('admin_failed_attempts');
-            localStorage.removeItem('admin_lockout_until');
-        } else {
-            // Increment failed attempts
-            const currentFailed = parseInt(localStorage.getItem('admin_failed_attempts') || '0') + 1;
-            localStorage.setItem('admin_failed_attempts', currentFailed.toString());
-
-            let newLockoutTime = null;
-            if (currentFailed >= 3) {
-                if (currentFailed === 3) {
-                    newLockoutTime = Date.now() + 60 * 1000; // 1 minute
-                } else if (currentFailed === 4) {
-                    newLockoutTime = Date.now() + 5 * 60 * 1000; // 5 minutes
-                } else {
-                    newLockoutTime = Date.now() + 10 * 60 * 1000; // 10 minutes
-                }
-
-                localStorage.setItem('admin_lockout_until', newLockoutTime.toString());
-                setLockoutTime(newLockoutTime);
-                alert(`Too many failed attempts. Locked out for ${Math.ceil((newLockoutTime - Date.now()) / 1000 / 60)} minutes.`);
-            } else {
-                alert(`Invalid password. ${3 - currentFailed} attempts remaining before lockout.`);
-            }
-        }
-    };
 
     const fetchData = async () => {
         setLoading(true);
@@ -90,13 +26,30 @@ export default function AdminPage() {
                 getAdminData(),
                 getPlaySessionsStats()
             ]);
+
+            // Check for auth errors in response
+            if (adminData.error === 'Unauthorized' || sessionsData.error === 'Unauthorized') {
+                router.push('/admin/login');
+                return;
+            }
+
             setData(adminData.data || []);
             setSessionStats(sessionsData);
         } catch (error) {
             console.error('Failed to fetch data', error);
+            // If server action throws due to auth, redirect
+            if (error.message.includes('Unauthorized')) {
+                router.push('/admin/login');
+            }
         } finally {
             setLoading(false);
         }
+    };
+
+    const handleLogout = async () => {
+        await fetch('/api/auth/logout', { method: 'POST' });
+        router.push('/admin/login');
+        router.refresh();
     };
 
     const downloadCSV = () => {
@@ -141,7 +94,7 @@ export default function AdminPage() {
             }
         } catch (error) {
             console.error('Delete error:', error);
-            alert('Error deleting user');
+            alert('Error deleting user: ' + error.message);
         }
     };
 
@@ -159,53 +112,6 @@ export default function AdminPage() {
     };
 
     const filteredSessions = getFilteredSessions();
-
-    if (!isAuthenticated) {
-        return (
-            <div style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-                height: '100vh',
-                backgroundColor: '#1a1a2e',
-                color: 'white',
-                fontFamily: 'Inter, sans-serif'
-            }}>
-                <h1 style={{ marginBottom: '20px' }}>Admin Login</h1>
-                <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                    <input
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        placeholder="Enter Password"
-                        style={{
-                            padding: '10px',
-                            borderRadius: '5px',
-                            border: '1px solid #333',
-                            backgroundColor: '#16213e',
-                            color: 'white'
-                        }}
-                    />
-                    <button
-                        type="submit"
-                        disabled={!!lockoutTime}
-                        style={{
-                            padding: '10px',
-                            borderRadius: '5px',
-                            border: 'none',
-                            backgroundColor: lockoutTime ? '#666' : '#00ff88',
-                            color: lockoutTime ? '#ccc' : '#000',
-                            cursor: lockoutTime ? 'not-allowed' : 'pointer',
-                            fontWeight: 'bold'
-                        }}
-                    >
-                        {lockoutTime ? `Locked (${Math.floor(timeLeft / 60)}:${(timeLeft % 60).toString().padStart(2, '0')})` : 'Login'}
-                    </button>
-                </form>
-            </div >
-        );
-    }
 
     return (
         <div style={{
@@ -276,6 +182,19 @@ export default function AdminPage() {
                         }}
                     >
                         Export CSV
+                    </button>
+                    <button
+                        onClick={handleLogout}
+                        style={{
+                            padding: '10px 20px',
+                            borderRadius: '5px',
+                            border: '1px solid #333',
+                            backgroundColor: 'transparent',
+                            color: '#ccc',
+                            cursor: 'pointer'
+                        }}
+                    >
+                        Logout
                     </button>
                     <button
                         onClick={() => router.push('/')}
@@ -501,8 +420,9 @@ export default function AdminPage() {
                 fontFamily: 'monospace',
                 pointerEvents: 'none'
             }}>
-                admin v 1.0.0
+                admin v 1.0.1 (secured)
             </div>
         </div>
     );
 }
+
