@@ -25,6 +25,7 @@ export async function POST(request) {
         }
 
         // Load and Filter Coins (Needed to reconstruct state)
+        // Load and Filter Coins (Needed to reconstruct state)
         const filePath = path.join(process.cwd(), 'data', 'coins.json');
         const fileContents = await readFile(filePath, 'utf8');
         const allCoins = JSON.parse(fileContents);

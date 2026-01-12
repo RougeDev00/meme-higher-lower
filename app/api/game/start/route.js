@@ -7,6 +7,7 @@ import { encryptSession, deterministicShuffle } from '@/lib/gameState';
 export async function POST() {
     try {
         // Load coins
+        // Load coins
         const filePath = path.join(process.cwd(), 'data', 'coins.json');
         const fileContents = await readFile(filePath, 'utf8');
         const allCoins = JSON.parse(fileContents);
