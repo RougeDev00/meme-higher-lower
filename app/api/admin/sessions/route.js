@@ -23,12 +23,30 @@ export async function GET(request) {
             .select('*', { count: 'exact', head: true })
             .eq('has_wallet', true);
 
-        // Get recent sessions (last 50)
-        const { data: recentSessions } = await supabase
+        // Get all sessions ordered by most recent first
+        const { data: allSessions } = await supabase
             .from('play_sessions')
             .select('*')
-            .order('created_at', { ascending: false })
-            .limit(50);
+            .order('created_at', { ascending: false });
+
+        // Get all leaderboard scores to map to sessions
+        const { data: leaderboardData } = await supabase
+            .from('leaderboard')
+            .select('wallet_address, score');
+
+        // Create a map of wallet_address -> score
+        const scoreMap = {};
+        if (leaderboardData) {
+            leaderboardData.forEach(entry => {
+                scoreMap[entry.wallet_address] = entry.score;
+            });
+        }
+
+        // Enrich sessions with scores
+        const sessionsWithScores = (allSessions || []).map(session => ({
+            ...session,
+            score: session.wallet_address ? (scoreMap[session.wallet_address] || null) : null
+        }));
 
         return Response.json({
             stats: {
@@ -36,7 +54,7 @@ export async function GET(request) {
                 withWallet: withWallet || 0,
                 withoutWallet: (total || 0) - (withWallet || 0)
             },
-            recentSessions: recentSessions || []
+            sessions: sessionsWithScores
         });
     } catch (error) {
         console.error('Error fetching session stats:', error);

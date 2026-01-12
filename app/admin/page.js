@@ -9,7 +9,8 @@ export default function AdminPage() {
     const [password, setPassword] = useState('');
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [sessionStats, setSessionStats] = useState({ stats: { total: 0, withWallet: 0, withoutWallet: 0 }, recentSessions: [] });
+    const [sessionStats, setSessionStats] = useState({ stats: { total: 0, withWallet: 0, withoutWallet: 0 }, sessions: [] });
+    const [sessionFilter, setSessionFilter] = useState('total'); // 'total', 'withWallet', 'withoutWallet'
     const router = useRouter();
 
     const [lockoutTime, setLockoutTime] = useState(null);
@@ -144,6 +145,21 @@ export default function AdminPage() {
         }
     };
 
+    // Filter sessions based on selected filter
+    const getFilteredSessions = () => {
+        const sessions = sessionStats.sessions || [];
+        switch (sessionFilter) {
+            case 'withWallet':
+                return sessions.filter(s => s.has_wallet);
+            case 'withoutWallet':
+                return sessions.filter(s => !s.has_wallet);
+            default:
+                return sessions;
+        }
+    };
+
+    const filteredSessions = getFilteredSessions();
+
     if (!isAuthenticated) {
         return (
             <div style={{
@@ -193,8 +209,8 @@ export default function AdminPage() {
 
     return (
         <div style={{
-            height: '100vh', /* Changed from minHeight to height */
-            overflowY: 'auto', /* Enable scrolling */
+            height: '100vh',
+            overflowY: 'auto',
             backgroundColor: '#1a1a2e',
             color: 'white',
             padding: '40px',
@@ -277,43 +293,110 @@ export default function AdminPage() {
                 </div>
             </div>
 
-            {/* Play Sessions Stats */}
-            <div style={{ marginBottom: '30px' }}>
+            {/* Play Sessions Section */}
+            <div style={{ marginBottom: '40px' }}>
                 <h2 style={{ marginBottom: '15px', fontSize: '1.2rem', color: '#888' }}>📊 Play Sessions</h2>
-                <div style={{ display: 'flex', gap: '15px', flexWrap: 'wrap' }}>
-                    <div style={{
-                        padding: '20px 30px',
-                        background: 'linear-gradient(135deg, rgba(0, 255, 136, 0.1) 0%, rgba(0, 200, 100, 0.05) 100%)',
-                        border: '1px solid rgba(0, 255, 136, 0.3)',
-                        borderRadius: '12px',
-                        textAlign: 'center'
-                    }}>
+
+                {/* Filter Buttons */}
+                <div style={{ display: 'flex', gap: '15px', flexWrap: 'wrap', marginBottom: '20px' }}>
+                    <button
+                        onClick={() => setSessionFilter('total')}
+                        style={{
+                            padding: '20px 30px',
+                            background: sessionFilter === 'total'
+                                ? 'linear-gradient(135deg, rgba(0, 255, 136, 0.3) 0%, rgba(0, 200, 100, 0.15) 100%)'
+                                : 'linear-gradient(135deg, rgba(0, 255, 136, 0.1) 0%, rgba(0, 200, 100, 0.05) 100%)',
+                            border: sessionFilter === 'total'
+                                ? '2px solid rgba(0, 255, 136, 0.8)'
+                                : '1px solid rgba(0, 255, 136, 0.3)',
+                            borderRadius: '12px',
+                            textAlign: 'center',
+                            cursor: 'pointer',
+                            transition: 'all 0.2s ease'
+                        }}
+                    >
                         <div style={{ fontSize: '2rem', fontWeight: 'bold', color: '#00ff88' }}>{sessionStats.stats?.total || 0}</div>
                         <div style={{ fontSize: '0.85rem', color: '#888', marginTop: '5px' }}>Total Sessions</div>
-                    </div>
-                    <div style={{
-                        padding: '20px 30px',
-                        background: 'linear-gradient(135deg, rgba(171, 159, 242, 0.1) 0%, rgba(130, 100, 220, 0.05) 100%)',
-                        border: '1px solid rgba(171, 159, 242, 0.3)',
-                        borderRadius: '12px',
-                        textAlign: 'center'
-                    }}>
+                    </button>
+                    <button
+                        onClick={() => setSessionFilter('withWallet')}
+                        style={{
+                            padding: '20px 30px',
+                            background: sessionFilter === 'withWallet'
+                                ? 'linear-gradient(135deg, rgba(171, 159, 242, 0.3) 0%, rgba(130, 100, 220, 0.15) 100%)'
+                                : 'linear-gradient(135deg, rgba(171, 159, 242, 0.1) 0%, rgba(130, 100, 220, 0.05) 100%)',
+                            border: sessionFilter === 'withWallet'
+                                ? '2px solid rgba(171, 159, 242, 0.8)'
+                                : '1px solid rgba(171, 159, 242, 0.3)',
+                            borderRadius: '12px',
+                            textAlign: 'center',
+                            cursor: 'pointer',
+                            transition: 'all 0.2s ease'
+                        }}
+                    >
                         <div style={{ fontSize: '2rem', fontWeight: 'bold', color: '#ab9ff2' }}>{sessionStats.stats?.withWallet || 0}</div>
                         <div style={{ fontSize: '0.85rem', color: '#888', marginTop: '5px' }}>With Wallet</div>
-                    </div>
-                    <div style={{
-                        padding: '20px 30px',
-                        background: 'linear-gradient(135deg, rgba(255, 170, 0, 0.1) 0%, rgba(200, 130, 0, 0.05) 100%)',
-                        border: '1px solid rgba(255, 170, 0, 0.3)',
-                        borderRadius: '12px',
-                        textAlign: 'center'
-                    }}>
+                    </button>
+                    <button
+                        onClick={() => setSessionFilter('withoutWallet')}
+                        style={{
+                            padding: '20px 30px',
+                            background: sessionFilter === 'withoutWallet'
+                                ? 'linear-gradient(135deg, rgba(255, 170, 0, 0.3) 0%, rgba(200, 130, 0, 0.15) 100%)'
+                                : 'linear-gradient(135deg, rgba(255, 170, 0, 0.1) 0%, rgba(200, 130, 0, 0.05) 100%)',
+                            border: sessionFilter === 'withoutWallet'
+                                ? '2px solid rgba(255, 170, 0, 0.8)'
+                                : '1px solid rgba(255, 170, 0, 0.3)',
+                            borderRadius: '12px',
+                            textAlign: 'center',
+                            cursor: 'pointer',
+                            transition: 'all 0.2s ease'
+                        }}
+                    >
                         <div style={{ fontSize: '2rem', fontWeight: 'bold', color: '#ffaa00' }}>{sessionStats.stats?.withoutWallet || 0}</div>
                         <div style={{ fontSize: '0.85rem', color: '#888', marginTop: '5px' }}>Without Wallet</div>
-                    </div>
+                    </button>
                 </div>
+
+                {/* Sessions Table */}
+                {loading ? (
+                    <p>Loading data...</p>
+                ) : (
+                    <div style={{ overflowX: 'auto', maxHeight: '400px', overflowY: 'auto' }}>
+                        <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
+                            <thead style={{ position: 'sticky', top: 0, backgroundColor: '#1a1a2e' }}>
+                                <tr style={{ borderBottom: '1px solid #333', color: '#888' }}>
+                                    <th style={{ padding: '15px' }}>Username</th>
+                                    <th style={{ padding: '15px' }}>Wallet</th>
+                                    <th style={{ padding: '15px' }}>Score</th>
+                                    <th style={{ padding: '15px' }}>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {filteredSessions.map((session, index) => (
+                                    <tr key={session.id || index} style={{ borderBottom: '1px solid #233', backgroundColor: index % 2 === 0 ? 'transparent' : 'rgba(255,255,255,0.02)' }}>
+                                        <td style={{ padding: '15px', fontWeight: 'bold' }}>{session.username}</td>
+                                        <td style={{ padding: '15px', fontFamily: 'monospace', color: session.wallet_address ? '#aaa' : '#555' }}>
+                                            {session.wallet_address || '—'}
+                                        </td>
+                                        <td style={{ padding: '15px', color: session.score ? '#00ff88' : '#555' }}>
+                                            {session.score !== null ? session.score : '—'}
+                                        </td>
+                                        <td style={{ padding: '15px', color: '#666' }}>
+                                            {session.created_at ? new Date(session.created_at).toLocaleString() : 'N/A'}
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                        {filteredSessions.length === 0 && (
+                            <p style={{ textAlign: 'center', padding: '40px', color: '#666' }}>No sessions found.</p>
+                        )}
+                    </div>
+                )}
             </div>
 
+            {/* Leaderboard Section */}
             <h2 style={{ marginBottom: '15px', fontSize: '1.2rem', color: '#888' }}>🏆 Leaderboard</h2>
 
             {loading ? (

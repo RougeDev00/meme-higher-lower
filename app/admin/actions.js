@@ -83,7 +83,7 @@ export async function getPlaySessionsStats() {
     });
 
     if (!res.ok) {
-        return { stats: { total: 0, withWallet: 0, withoutWallet: 0 }, recentSessions: [] };
+        return { stats: { total: 0, withWallet: 0, withoutWallet: 0 }, sessions: [] };
     }
 
     return res.json();
