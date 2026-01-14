@@ -9,6 +9,7 @@ import InfoModal from './components/InfoModal';
 import ProfileButton from './components/ProfileButton';
 import ProfileModal from './components/ProfileModal';
 import { GAME_CONFIG } from '@/lib/gameConfig';
+import PodChat from './components/PodChat';
 
 export default function Home() {
   const [username, setUsername] = useState('');
@@ -285,6 +286,7 @@ export default function Home() {
               className="start-button-image"
             />
           </button>
+
           <button className="info-button" onClick={() => setShowInfo(true)}>
             INFO
           </button>
@@ -364,6 +366,9 @@ export default function Home() {
       )}
 
       <CursorTrail />
+
+      {/* POD Chatbot (Only on home page) */}
+      {!isPlaying && <PodChat />}
 
       {isPlaying && (
         <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', zIndex: 100 }}>

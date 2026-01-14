@@ -10,6 +10,7 @@ import Image from 'next/image';
 import CursorTrail from '../components/CursorTrail';
 import GameCard from '../components/GameCard';
 import { GAME_CONFIG } from '@/lib/gameConfig';
+import PodChat from '../components/PodChat';
 import { shuffleArray, formatTime } from '@/lib/utils';
 
 const GAME_OVER_IMAGES = [
@@ -615,16 +616,21 @@ export default function GamePage({ onGoHome }) {
                     </div>
                     <div className="early-access-label" style={{ marginTop: '1rem', position: 'relative', zIndex: 201 }}>EARLY ACCESS - DEMO VERSION</div>
 
-                    {/* Info Button Top Right */}
+                    {/* Info Button below Early Access */}
                     <button
                         className="info-button"
                         onClick={() => setShowInfo(true)}
-                        style={{ position: 'absolute', top: '2rem', right: '2rem', marginTop: 0, zIndex: 300 }}
+                        style={{ position: 'relative', marginTop: '0.5rem', zIndex: 300 }}
                     >
                         INFO
                     </button>
+
                     {/* Info Modal */}
                     {showInfo && <InfoModal onClose={() => setShowInfo(false)} />}
+
+                    {/* POD Chatbot */}
+                    <PodChat />
+
                     <div className="version-label" style={{ position: 'absolute', bottom: '10px', right: '10px', fontSize: '0.8rem', opacity: 0.7, color: 'rgba(255,255,255,0.5)', pointerEvents: 'none' }}>
                         {GAME_CONFIG.GAME_VERSION}
                     </div>
