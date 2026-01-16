@@ -173,6 +173,7 @@ export default function PodChat() {
                                 <span className="pod-status-dot"></span>
                                 Online
                             </span>
+                            <span className="pod-powered-by">Powered by Claude</span>
                         </div>
                     </div>
                     <button className="pod-close-btn" onClick={handleToggle}>
