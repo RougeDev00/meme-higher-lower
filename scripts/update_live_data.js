@@ -89,7 +89,13 @@ async function main() {
     }
 
     // Sort by Market Cap Desc
-    const updatedCoins = Array.from(coinsMap.values());
+    const allCoins = Array.from(coinsMap.values());
+
+    // Filter out coins under 100k market cap
+    const MIN_MARKET_CAP = 100000;
+    const removedCoins = allCoins.filter(c => (c.marketCap || 0) < MIN_MARKET_CAP);
+    const updatedCoins = allCoins.filter(c => (c.marketCap || 0) >= MIN_MARKET_CAP);
+
     updatedCoins.sort((a, b) => b.marketCap - a.marketCap);
 
     // Re-rank
@@ -99,6 +105,11 @@ async function main() {
 
     console.log(`\n--- UPDATE COMPLETE ---`);
     console.log(`Successfully updated ${updatedCount}/${total} coins.`);
+    console.log(`Removed ${removedCoins.length} coins under $100k market cap.`);
+    if (removedCoins.length > 0) {
+        console.log(`Removed coins: ${removedCoins.map(c => c.symbol).join(', ')}`);
+    }
+    console.log(`Final count: ${updatedCoins.length} coins.`);
     console.log(`Data saved to ${DB_PATH}`);
 }
 

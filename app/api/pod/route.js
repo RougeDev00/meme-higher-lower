@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { checkRateLimit, getClientIP, RATE_LIMITS } from '@/lib/rateLimit';
 
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 
@@ -38,6 +39,23 @@ KEEP IT SHORT, FUNNY, AND REAL! 🫛💚`;
 
 export async function POST(request) {
     try {
+        // Rate limit check
+        const clientIP = getClientIP(request);
+        const rateLimit = checkRateLimit(clientIP, 'pod', RATE_LIMITS.POD.maxRequests, RATE_LIMITS.POD.windowMs);
+
+        if (!rateLimit.allowed) {
+            return NextResponse.json(
+                { error: `Too many requests. Try again in ${rateLimit.resetIn} seconds.` },
+                {
+                    status: 429,
+                    headers: {
+                        'X-RateLimit-Remaining': '0',
+                        'X-RateLimit-Reset': rateLimit.resetIn.toString()
+                    }
+                }
+            );
+        }
+
         const { messages } = await request.json();
 
         if (!messages || !Array.isArray(messages)) {

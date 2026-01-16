@@ -1,0 +1,232 @@
+[
+  {
+    "name": "Claude Memory Cmem",
+    "symbol": "Claude",
+    "address": "7QfoW2umqn46Hej1jFe1xFpZ2aCV4oFefJwt7Jqjpump",
+    "marketCap": 1368013179,
+    "logo": null,
+    "liquidity": 25981.18,
+    "priceUsd": 0.01368,
+    "volume24h": 11098361.37
+  },
+  {
+    "name": "Minecraft Grandma Coin",
+    "symbol": "coin",
+    "address": "9NsorJj6wp18Cy4gjnzcS3ZwdMcopk9PcBhmFTcLpump",
+    "marketCap": 370837915,
+    "logo": null,
+    "liquidity": 15238.78,
+    "priceUsd": 0.003708,
+    "volume24h": 29166432.49
+  },
+  {
+    "name": "1 Bag Can Change Your Life",
+    "symbol": "1BAG",
+    "address": "B2GnMgatUqYFEYpbm2gwgAaiuFmuYtrn1rbrvv6Npump",
+    "marketCap": 37586084,
+    "logo": null,
+    "liquidity": 16972.18,
+    "priceUsd": 0.0003758,
+    "volume24h": 11085722.75
+  },
+  {
+    "name": "brainrot",
+    "symbol": "brainrot",
+    "address": "6Q1cvsGC6wjcWFbbXaWApWyyXQEbae5ZALGV2oVHpump",
+    "marketCap": 24455784,
+    "logo": null,
+    "liquidity": 14775.42,
+    "priceUsd": 0.0002445,
+    "volume24h": 11089523.62
+  },
+  {
+    "name": "FRANKENSTEIN",
+    "symbol": "FRANK",
+    "address": "GMsrWzho67UMuaRFELEVX9x8W2HSzMfCGCDnLfgHpump",
+    "marketCap": 24417685,
+    "logo": null,
+    "liquidity": 13463.88,
+    "priceUsd": 0.0002441,
+    "volume24h": 11069339.37
+  },
+  {
+    "name": "gork",
+    "symbol": "GORK",
+    "address": "FzMkhGgbfDgKwrniiRKTq1f8hwySfrnG5HHv5pSQpump",
+    "marketCap": 18408632,
+    "logo": null,
+    "liquidity": 16843.03,
+    "priceUsd": 0.000184,
+    "volume24h": 11097924.92
+  },
+  {
+    "name": "Minecraft Grandma Fund",
+    "symbol": "Grandma",
+    "address": "axUxN2q4AWzHaU6LXmjqQh7KEjaXDPKScjmzwEBpump",
+    "marketCap": 1999768,
+    "logo": "https://cdn.dexscreener.com/cms/images/9ef0f9d837c156161a1ac244e0d65e1e08f503e61f673c61f393fd1dad562934?width=800&height=800&quality=90",
+    "liquidity": 182255.5,
+    "priceUsd": 0.001999,
+    "volume24h": 7349447.17
+  },
+  {
+    "name": "make no mistakes",
+    "symbol": "CLAUDE",
+    "address": "jkAWzPumRhJE2KyqVy4kB7m9KwXBeSEXnFAGoWtpump",
+    "marketCap": 1064591,
+    "logo": "https://cdn.dexscreener.com/cms/images/f250a879ccf253c53a5d060c4a3c9c13f699d9c7c29a66296c290ad6aa7df995?width=800&height=800&quality=90",
+    "liquidity": 117137.32,
+    "priceUsd": 0.001064,
+    "volume24h": 1163890.52
+  },
+  {
+    "name": "Redemption Arc",
+    "symbol": "ARC",
+    "address": "DCgZjb2LN5r9Ck5VZAATh8x3sTUHyTzEguThGqh1pump",
+    "marketCap": 666250,
+    "logo": "https://cdn.dexscreener.com/cms/images/14fce60cc70f892376747a41f4a3e6ba25068f4c2d6a81c6ab8c4969e15e4c99?width=800&height=800&quality=90",
+    "liquidity": 83761.34,
+    "priceUsd": 0.0006662,
+    "volume24h": 382971.98
+  },
+  {
+    "name": "horsetwting",
+    "symbol": "HORSE",
+    "address": "EqquikmAsy62SHadHzHnVXWusLRnWtP2vgseAthdpump",
+    "marketCap": 426636,
+    "logo": "https://cdn.dexscreener.com/cms/images/23a52a8188dfe9690edb019b2f469d7ca3e7108c5e71a7903e33bb63567a44bf?width=800&height=800&quality=90",
+    "liquidity": 79859.15,
+    "priceUsd": 0.0004266,
+    "volume24h": 4318273.77
+  },
+  {
+    "name": "Privacy USD",
+    "symbol": "USDP",
+    "address": "7HcZz4segTW8rLM6m5bR7ZQ8KamTm1MJ3jhdDNirpump",
+    "marketCap": 305486,
+    "logo": "https://cdn.dexscreener.com/cms/images/9808c2b6bc0839bf4b82da09b7957317a9682e94c420897574e3b6e9944360aa?width=800&height=800&quality=90",
+    "liquidity": 60905.1,
+    "priceUsd": 0.0003054,
+    "volume24h": 1295751.13
+  },
+  {
+    "name": "PSYOP SAGA",
+    "symbol": "PSYOPSAGA",
+    "address": "Eevkzw3D7stq3gbLHQfuWT9FNzpWR9WxUUNBrCrWpump",
+    "marketCap": 287047,
+    "logo": "https://cdn.dexscreener.com/cms/images/8d6f8aae23dac53d48a57385310438dd0c02e5ae04c6306886d54bd5b3825f1d?width=800&height=800&quality=90",
+    "liquidity": 170705.57,
+    "priceUsd": 0.000287,
+    "volume24h": 1153567.99
+  },
+  {
+    "name": "なんＪコイン",
+    "symbol": "NANJ",
+    "address": "CzNMjTW6kQQNMSYksrc1reqEseey3ReQm8yro6jCpump",
+    "marketCap": 280848,
+    "logo": "https://cdn.dexscreener.com/cms/images/dcd58aaf27df4008df9898fc734c937725c21b74137cc26b0351da4138516cc2?width=800&height=800&quality=90",
+    "liquidity": 72638.32,
+    "priceUsd": 0.0002808,
+    "volume24h": 675670.95
+  },
+  {
+    "name": "PsyopCartoon",
+    "symbol": "PsyCartoon",
+    "address": "DAAXmRU9KUEuyqF8VuddbcL5X4QhQ3tTDMYxDbNgpump",
+    "marketCap": 239692,
+    "logo": "https://cdn.dexscreener.com/cms/images/713076b85dce91ef0d1a6c102be4b681b7853c3f5f168f20a5efaa5d067b7f6e?width=800&height=800&quality=90",
+    "liquidity": 55980.53,
+    "priceUsd": 0.0002396,
+    "volume24h": 1317946.09
+  },
+  {
+    "name": "Lost At Sea",
+    "symbol": "CROWLEY",
+    "address": "G3saPBJUq3wFjZ1c3z6RCjPwUBJi4nguQ7AgrC2Lpump",
+    "marketCap": 230410,
+    "logo": "https://cdn.dexscreener.com/cms/images/ba8ebdfc3d79a1939a0eb1db50f4679bb89eff83e5753d59d086887ca60e9fa7?width=800&height=800&quality=90",
+    "liquidity": 49176.13,
+    "priceUsd": 0.0002304,
+    "volume24h": 397045.44
+  },
+  {
+    "name": "GalianoTiramani",
+    "symbol": "GALI",
+    "address": "9FyERA7vjSDXVEGDskjYjTfymQ7XTqJt6dbVDCWmpump",
+    "marketCap": 204361,
+    "logo": "https://cdn.dexscreener.com/cms/images/d45d8e3412e73802ab68cd5ff5f6b1523a3627c34a3bb9e87537ab5fb1e4014d?width=800&height=800&quality=90",
+    "liquidity": 42749.64,
+    "priceUsd": 0.0001731,
+    "volume24h": 104970.28
+  },
+  {
+    "name": "learing",
+    "symbol": "learing",
+    "address": "3kC6gheQ5fxK8iKWWDHeomHU5Z6U2dUWfqEK6dpLpump",
+    "marketCap": 202701,
+    "logo": "https://cdn.dexscreener.com/cms/images/3679a79220fe1d0da3e4f6e2c725c6b4fca72be42c8d8ef294ce599473697c1d?width=800&height=800&quality=90",
+    "liquidity": 67385.79,
+    "priceUsd": 0.0002029,
+    "volume24h": 339374.92
+  },
+  {
+    "name": "pu ̶m̶p",
+    "symbol": "pup",
+    "address": "BGBvUYKU4QFiCvASdeQ6wcdzWQd8piyZLc75DFPEpump",
+    "marketCap": 195476,
+    "logo": "https://cdn.dexscreener.com/cms/images/4419405aac5a077ae11c348665266bea1bd6a5f8c9f1fbc15d19a570fb21230e?width=800&height=800&quality=90",
+    "liquidity": 45973.46,
+    "priceUsd": 0.0001977,
+    "volume24h": 671877.54
+  },
+  {
+    "name": "HAMURA",
+    "symbol": "HAMURA",
+    "address": "FcnrZ2WB6ZdNxD4RMvJKGiG5SJmSUZH8DQDQbChwpump",
+    "marketCap": 177125,
+    "logo": "https://cdn.dexscreener.com/cms/images/f69095e0f33308f40c674a66c52673bf13d4d4eb8ec59eb5f8e23969052f114b?width=800&height=800&quality=90",
+    "liquidity": 44703.31,
+    "priceUsd": 0.0001771,
+    "volume24h": 1368070.57
+  },
+  {
+    "name": "Claude the Anthropic Alligator",
+    "symbol": "Claude",
+    "address": "FqfV4VA9okRt5PvG2XLuVfsfaKbA92STFMfqNyq8pump",
+    "marketCap": 151475,
+    "logo": "https://cdn.dexscreener.com/cms/images/881d6c1b7e34e13b5fb8dedeb46a0063350c03e6be9615d6efdf67b76a1d3908?width=800&height=800&quality=90",
+    "liquidity": 49867.21,
+    "priceUsd": 0.0001517,
+    "volume24h": 437760.55
+  },
+  {
+    "name": "Pussycoin",
+    "symbol": "Pussycoin",
+    "address": "4b38wiCG2hWBKKhPfVj8Y5HHwuVvRVZLaQixWooapump",
+    "marketCap": 120581,
+    "logo": "https://cdn.dexscreener.com/cms/images/8e18c3fd314598211ee5b2686648494cf09653d0e4abb20ee3fe628b80d59492?width=800&height=800&quality=90",
+    "liquidity": 38363.7,
+    "priceUsd": 0.0001313,
+    "volume24h": 1243792
+  },
+  {
+    "name": "bǐngwǔ",
+    "symbol": "丙午",
+    "address": "DMYNp65mub3i7LRpBdB66CgBAceLcQnv4gsWeCi6pump",
+    "marketCap": 116466,
+    "logo": "https://cdn.dexscreener.com/cms/images/0ce2f3685975ec99983b0858f972a2732912af3d6f17c0bb2cd209560de8087b?width=800&height=800&quality=90",
+    "liquidity": 34586.36,
+    "priceUsd": 0.0001164,
+    "volume24h": 127938.67
+  },
+  {
+    "name": "jeetabet",
+    "symbol": "jeetabet",
+    "address": "5v9DVb2Wa3otuoQaUKNrpRUnUXhDMyA9V439veLtpump",
+    "marketCap": 112175,
+    "logo": "https://cdn.dexscreener.com/cms/images/e393bb26261581c600a3a79c819aeb8909fea4fe4305e8714a125d2a69560cfa?width=800&height=800&quality=90",
+    "liquidity": 38269.33,
+    "priceUsd": 0.0001425,
+    "volume24h": 206845.34
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "address": "jk1T35eWK41MBMM8AWoYVaNbjHEEQzMDetTsfnqpump",
+    "name": "Sol The Trophy Tomato",
+    "symbol": "SOL",
+    "marketCap": 20314637,
+    "liquidity": 694004.02,
+    "logo": "https://cdn.dexscreener.com/cms/images/40d648e377f555e2aff6821ea9b9161d16de10b036224674b9a88e3d640409bd?width=800&height=800&quality=90",
+    "volume24h": 6126710.27,
+    "dexUrl": "https://dexscreener.com/solana/ccybxbmhr2o9vyz2wmjcrvi59wh42xkxf6qrzchbhpn5"
+  },
+  {
+    "address": "axUxN2q4AWzHaU6LXmjqQh7KEjaXDPKScjmzwEBpump",
+    "name": "Minecraft Grandma Fund",
+    "symbol": "Grandma",
+    "marketCap": 2082277,
+    "liquidity": 185970.8,
+    "logo": "https://cdn.dexscreener.com/cms/images/9ef0f9d837c156161a1ac244e0d65e1e08f503e61f673c61f393fd1dad562934?width=800&height=800&quality=90",
+    "volume24h": 7344996.12,
+    "dexUrl": "https://dexscreener.com/solana/8vgsczewcxwmurtrfvsxungxhnvoeymmkh4hyqowgobc"
+  }
+]

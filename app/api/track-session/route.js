@@ -1,7 +1,16 @@
 import { trackPlaySession } from '@/lib/storage';
+import { checkRateLimit, getClientIP, RATE_LIMITS } from '@/lib/rateLimit';
 
 export async function POST(request) {
     try {
+        // Rate limit check
+        const clientIP = getClientIP(request);
+        const rateLimit = checkRateLimit(clientIP, 'track_session', RATE_LIMITS.TRACK_SESSION.maxRequests, RATE_LIMITS.TRACK_SESSION.windowMs);
+
+        if (!rateLimit.allowed) {
+            return Response.json({ error: 'Too many requests' }, { status: 429 });
+        }
+
         const { username, walletAddress } = await request.json();
 
         if (!username) {

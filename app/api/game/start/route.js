@@ -3,10 +3,21 @@ import { readFile } from 'fs/promises';
 import path from 'path';
 import { randomUUID } from 'crypto';
 import { encryptSession, deterministicShuffle } from '@/lib/gameState';
+import { checkRateLimit, getClientIP, RATE_LIMITS } from '@/lib/rateLimit';
 
-export async function POST() {
+export async function POST(request) {
     try {
-        // Load coins
+        // Rate limit check
+        const clientIP = getClientIP(request);
+        const rateLimit = checkRateLimit(clientIP, 'game_start', RATE_LIMITS.GAME_START.maxRequests, RATE_LIMITS.GAME_START.windowMs);
+
+        if (!rateLimit.allowed) {
+            return NextResponse.json(
+                { error: `Too many game starts. Try again in ${rateLimit.resetIn} seconds.` },
+                { status: 429 }
+            );
+        }
+
         // Load coins
         const filePath = path.join(process.cwd(), 'data', 'coins.json');
         const fileContents = await readFile(filePath, 'utf8');
