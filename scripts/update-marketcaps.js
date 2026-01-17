@@ -1,8 +1,8 @@
 /**
- * Update Market Caps and Remove Coins under 100k
+ * Update Market Caps and Remove Coins under 100k using DexScreener
  * 
- * Uses Birdeye API to fetch latest market cap data for all coins
- * and removes coins with market cap under $100,000
+ * Uses DexScreener API to fetch latest market cap data for all coins
+ * and removes coins with market cap under $100,000.
  * 
  * Run with: node scripts/update-marketcaps.js
  */
@@ -10,140 +10,138 @@
 const fs = require('fs');
 const path = require('path');
 
-// API Keys
-const BIRDEYE_API_KEY = 'b69bb3c2b1a14c11be2c011d2ddc1614';
-const BIRDEYE_API = 'https://public-api.birdeye.so';
+// DexScreener API
+const DEXSCREENER_API = 'https://api.dexscreener.com/latest/dex/tokens';
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 // Minimum market cap threshold
 const MIN_MARKET_CAP = 100000; // $100k
 
-async function getTokenPrice(address) {
+async function getTokensData(addresses) {
     try {
-        const url = `${BIRDEYE_API}/defi/price?address=${address}`;
-        const response = await fetch(url, {
-            headers: {
-                'X-API-KEY': BIRDEYE_API_KEY,
-                'x-chain': 'solana'
-            }
-        });
+        // DexScreener accepts up to 30 addresses comma-separated
+        const addressesString = addresses.join(',');
+        const url = `${DEXSCREENER_API}/${addressesString}`;
+
+        const response = await fetch(url);
 
         if (!response.ok) {
+            console.error(`Error fetching data: ${response.status} ${response.statusText}`);
             return null;
         }
 
         const data = await response.json();
-        if (data.success && data.data) {
-            return data.data;
+
+        // Create a map for easier lookup
+        const pairsMap = {};
+
+        if (data.pairs && Array.isArray(data.pairs)) {
+            data.pairs.forEach(pair => {
+                // We want the pair with the highest liquidity/volume usually
+                // DexScreener returns pairs, checking baseToken address
+                const baseTokenAddress = pair.baseToken.address;
+
+                // If we already have a pair for this token, check if this one is better (higher liquidity)
+                if (pairsMap[baseTokenAddress]) {
+                    if (pair.liquidity && pair.liquidity.usd > pairsMap[baseTokenAddress].liquidity.usd) {
+                        pairsMap[baseTokenAddress] = pair;
+                    }
+                } else {
+                    pairsMap[baseTokenAddress] = pair;
+                }
+            });
         }
-        return null;
+
+        return pairsMap;
     } catch (error) {
-        return null;
-    }
-}
-
-async function getTokenOverview(address) {
-    try {
-        const url = `${BIRDEYE_API}/defi/token_overview?address=${address}`;
-        const response = await fetch(url, {
-            headers: {
-                'X-API-KEY': BIRDEYE_API_KEY,
-                'x-chain': 'solana'
-            }
-        });
-
-        if (!response.ok) {
-            return null;
-        }
-
-        const data = await response.json();
-        if (data.success && data.data) {
-            return data.data;
-        }
-        return null;
-    } catch (error) {
+        console.error('Error in getTokensData:', error.message);
         return null;
     }
 }
 
 async function main() {
-    console.log('🚀 Market Cap Updater\n');
+    console.log('🚀 Market Cap Updater (DexScreener)\n');
     console.log(`Threshold: Remove coins under $${MIN_MARKET_CAP.toLocaleString()}\n`);
 
     // Load existing coins
     const coinsPath = path.join(__dirname, '..', 'data', 'coins.json');
+
+    if (!fs.existsSync(coinsPath)) {
+        console.error('❌ coins.json not found!');
+        process.exit(1);
+    }
+
     const coins = JSON.parse(fs.readFileSync(coinsPath, 'utf8'));
 
     console.log(`📂 Loaded ${coins.length} coins\n`);
 
     const updatedCoins = [];
     const removedCoins = [];
-    const failedUpdates = [];
 
-    // Process in batches to respect rate limits
-    const batchSize = 1;
-    const delayMs = 500; // 500ms between requests
+    // Chunk size for DexScreener (max 30 addresses)
+    const CHUNK_SIZE = 30;
+    const chunks = [];
 
-    for (let i = 0; i < coins.length; i++) {
-        const coin = coins[i];
+    for (let i = 0; i < coins.length; i += CHUNK_SIZE) {
+        chunks.push(coins.slice(i, i + CHUNK_SIZE));
+    }
 
-        try {
-            // Get token overview (includes market cap)
-            const overview = await getTokenOverview(coin.address);
+    console.log(`Processing ${chunks.length} batches...\n`);
 
-            if (overview) {
-                const newMarketCap = overview.mc || overview.marketCap || 0;
-                const newPrice = overview.price || coin.priceUsd || 0;
-                const newLiquidity = overview.liquidity || coin.liquidity || 0;
+    for (let i = 0; i < chunks.length; i++) {
+        const chunk = chunks[i];
+        const addresses = chunk.map(c => c.ca || c.address); // Support both 'ca' and 'address' keys
 
-                // Check if market cap is above threshold
-                if (newMarketCap >= MIN_MARKET_CAP) {
-                    coin.marketCap = newMarketCap;
-                    coin.priceUsd = newPrice;
-                    coin.liquidity = newLiquidity;
-                    updatedCoins.push(coin);
-                    console.log(`✅ ${i + 1}/${coins.length} ${coin.symbol}: $${(newMarketCap / 1e6).toFixed(2)}M`);
-                } else {
-                    removedCoins.push({ ...coin, newMarketCap });
-                    console.log(`❌ ${i + 1}/${coins.length} ${coin.symbol}: $${newMarketCap.toLocaleString()} (REMOVED - under 100k)`);
-                }
-            } else {
-                // If we can't get data, try price endpoint
-                const priceData = await getTokenPrice(coin.address);
-                if (priceData && priceData.value) {
-                    // Keep coin but mark as needing review
-                    if (coin.marketCap >= MIN_MARKET_CAP) {
-                        coin.priceUsd = priceData.value;
+        console.log(`Processing batch ${i + 1}/${chunks.length}...`);
+
+        const tokensData = await getTokensData(addresses);
+
+        if (tokensData) {
+            chunk.forEach(coin => {
+                const address = coin.ca || coin.address;
+                const pairData = tokensData[address];
+
+                if (pairData) {
+                    const marketCap = pairData.fdv || pairData.marketCap || 0;
+                    const priceUsd = pairData.priceUsd;
+                    const liquidity = pairData.liquidity ? pairData.liquidity.usd : 0;
+
+                    if (marketCap >= MIN_MARKET_CAP) {
+                        // Update coin data
+                        coin.marketCap = marketCap;
+                        if (priceUsd) coin.priceUsd = parseFloat(priceUsd);
+                        coin.liquidity = liquidity;
+
                         updatedCoins.push(coin);
-                        console.log(`⚠️ ${i + 1}/${coins.length} ${coin.symbol}: Price only update - $${priceData.value}`);
                     } else {
-                        removedCoins.push(coin);
-                        console.log(`❌ ${i + 1}/${coins.length} ${coin.symbol}: $${coin.marketCap?.toLocaleString() || 0} (REMOVED - under 100k)`);
+                        // Mark for removal
+                        removedCoins.push({ ...coin, currentMarketCap: marketCap });
+                        console.log(`  ❌ ${coin.symbol || coin.name}: $${marketCap.toLocaleString()} (Under ${MIN_MARKET_CAP / 1000}k)`);
                     }
                 } else {
-                    // Keep existing market cap, check threshold
+                    // Start of fallback logic if DexScreener returned no data for this specific token
+                    // We keep it if existing MC is high enough, otherwise remove or flag
+                    // usage decision: if we can't find it on main dexes, it might be dead or very new.
+                    // For safety, let's keep it if existing MC > 100k, but warn.
+
                     if (coin.marketCap >= MIN_MARKET_CAP) {
+                        console.log(`  ⚠️ ${coin.symbol || coin.name}: No data found, keeping existing MC: $${coin.marketCap?.toLocaleString()}`);
                         updatedCoins.push(coin);
-                        failedUpdates.push(coin.symbol);
-                        console.log(`⚠️ ${i + 1}/${coins.length} ${coin.symbol}: Kept existing MC $${(coin.marketCap / 1e6).toFixed(2)}M`);
                     } else {
+                        console.log(`  ❌ ${coin.symbol || coin.name}: No data found & existing MC LOW/NULL. Removing.`);
                         removedCoins.push(coin);
-                        console.log(`❌ ${i + 1}/${coins.length} ${coin.symbol}: $${coin.marketCap?.toLocaleString() || 0} (REMOVED - under 100k)`);
                     }
                 }
-            }
-        } catch (error) {
-            console.log(`⚠️ ${i + 1}/${coins.length} ${coin.symbol}: Error - ${error.message}`);
-            if (coin.marketCap >= MIN_MARKET_CAP) {
-                updatedCoins.push(coin);
-            } else {
-                removedCoins.push(coin);
-            }
+            });
+        } else {
+            // If whole batch fails (API error), keep all coins in that batch to avoid accidental deletion
+            console.log(`  ⚠️ Batch failed, keeping existing data for ${chunk.length} coins`);
+            updatedCoins.push(...chunk);
         }
 
         // Rate limiting
-        await delay(delayMs);
+        await delay(300);
     }
 
     // Sort by market cap (highest first)
@@ -160,19 +158,17 @@ async function main() {
     // Summary
     console.log('\n' + '='.repeat(50));
     console.log('📊 SUMMARY\n');
-    console.log(`✅ Updated and kept: ${updatedCoins.length} coins`);
-    console.log(`❌ Removed (under $100k): ${removedCoins.length} coins`);
-    console.log(`⚠️ Failed to update (kept existing): ${failedUpdates.length} coins`);
+    console.log(`✅ Total Coins Remaining: ${updatedCoins.length}`);
+    console.log(`❌ Removed Coins (Under $100k): ${removedCoins.length}`);
 
     if (removedCoins.length > 0) {
-        console.log('\n🗑️ Removed coins:');
-        removedCoins.forEach(c => {
-            const mc = c.newMarketCap !== undefined ? c.newMarketCap : c.marketCap;
-            console.log(`   - ${c.symbol}: $${mc?.toLocaleString() || 0}`);
+        console.log('\nExamples of removed coins:');
+        removedCoins.slice(0, 5).forEach(c => {
+            console.log(`   - ${c.symbol}: $${c.currentMarketCap?.toLocaleString() || c.marketCap?.toLocaleString() || 0}`);
         });
     }
 
-    console.log('\n✅ Done! Saved to', coinsPath);
+    console.log(`\n✅ Database updated: ${coinsPath}`);
 }
 
 main().catch(console.error);

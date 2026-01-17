@@ -83,7 +83,7 @@ select,
   height: 150px;
   margin-bottom: -1rem;
   animation: float 3s ease-in-out infinite;
-  filter: drop-shadow(0 0 20px rgba(255, 107, 53, 0.5));
+  filter: drop-shadow(0 0 25px rgba(0, 255, 136, 0.6));
 }
 
 @keyframes float {
@@ -102,7 +102,7 @@ select,
   height: 120px;
   width: auto;
   margin-bottom: 0.5rem;
-  filter: drop-shadow(0 0 20px rgba(255, 107, 53, 0.3));
+  filter: drop-shadow(0 0 25px rgba(0, 255, 136, 0.5));
 }
 
 .game-subtitle {
@@ -1351,14 +1351,152 @@ select,
   backdrop-filter: blur(20px);
 }
 
+/* Info Modal Specific Styles */
+/* Info Modal Specific Styles */
+.info-modal-content {
+  background: rgba(20, 20, 25, 0.95);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  padding: 2.5rem;
+  max-width: 650px;
+  width: 90%;
+  text-align: left;
+  line-height: 1.6;
+  font-size: 0.95rem;
+  /* Removed position: relative to allow fixed positioning from .leaderboard-modal to work */
+  box-shadow: var(--shadow-lg), 0 0 50px rgba(139, 92, 246, 0.1);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  /* Use new centered animation */
+  animation: scaleInCentered 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  max-height: 85vh;
+  overflow-y: auto;
+}
+
+.info-modal-header {
+  margin-bottom: 2rem;
+  text-align: center;
+  position: relative;
+}
+
+.info-modal-logo {
+  max-width: 450px;
+  width: 100%;
+  height: auto;
+  margin-bottom: 0.5rem;
+  filter: drop-shadow(0 0 15px rgba(0, 255, 136, 0.4));
+  transition: transform 0.3s ease;
+}
+
+.info-modal-logo:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 20px rgba(0, 255, 136, 0.6));
+}
+
+.info-modal-subtitle {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.info-section {
+  margin-bottom: 1.8rem;
+  padding-bottom: 1.8rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.info-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.info-section-title {
+  color: var(--text-white);
+  margin-bottom: 0.75rem;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.info-section-text {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+.info-section-text strong {
+  color: var(--neon-green);
+  font-weight: 600;
+}
+
+.info-footer {
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.info-good-game {
+  font-weight: 800;
+  font-size: 1.4rem;
+  color: var(--text-white);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background: linear-gradient(135deg, #fff 0%, #aaa 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.info-warning-text {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  color: #fca5a5 !important;
+  font-style: normal;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  display: block;
+}
+
+/* Scrollbar for modal */
+.info-modal-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.info-modal-content::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.info-modal-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.info-modal-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
 .leaderboard-modal-backdrop {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   z-index: 299;
+  animation: fadeIn 0.3s ease;
 }
 
 .modal-close {
@@ -2107,6 +2245,18 @@ select,
 
   to {
     transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleInCentered {
+  from {
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0;
+  }
+
+  to {
+    transform: translate(-50%, -50%) scale(1);
     opacity: 1;
   }
 }
