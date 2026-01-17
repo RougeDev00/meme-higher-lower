@@ -106,3 +106,65 @@ export async function getPlaySessionsStats() {
 
     return res.json();
 }
+
+export async function rewardAdminUser(walletAddress, username, score, solAmount) {
+    await requireAuth();
+
+    const adminSecret = process.env.ADMIN_SECRET;
+
+    if (!adminSecret) {
+        throw new Error('ADMIN_SECRET not configured');
+    }
+
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://pumpordumpgame.fun';
+
+    const res = await fetch(`${baseUrl}/api/admin/data`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'x-admin-secret': adminSecret
+        },
+        body: JSON.stringify({ action: 'reward', walletAddress, username, score, solAmount })
+    });
+
+    return res.json();
+}
+
+export async function unrewardAdminUser(walletAddress) {
+    await requireAuth();
+
+    const adminSecret = process.env.ADMIN_SECRET;
+
+    if (!adminSecret) {
+        throw new Error('ADMIN_SECRET not configured');
+    }
+
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://pumpordumpgame.fun';
+
+    const res = await fetch(`${baseUrl}/api/admin/data`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'x-admin-secret': adminSecret
+        },
+        body: JSON.stringify({ action: 'unreward', walletAddress })
+    });
+
+    return res.json();
+}
+
+export async function getRewardedAdminUsers() {
+    await requireAuth();
+
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://pumpordumpgame.fun';
+
+    const res = await fetch(`${baseUrl}/api/rewarded`, {
+        cache: 'no-store'
+    });
+
+    if (!res.ok) {
+        return { rewarded: [] };
+    }
+
+    return res.json();
+}

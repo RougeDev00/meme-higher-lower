@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { getAdminData, deleteAdminUser, deleteAllAdminUsers, getPlaySessionsStats } from './actions';
+import { getAdminData, deleteAdminUser, deleteAllAdminUsers, getPlaySessionsStats, rewardAdminUser, unrewardAdminUser, getRewardedAdminUsers } from './actions';
 
 export default function AdminPage() {
     // Authentication is now handled by Middleware.
@@ -12,6 +12,7 @@ export default function AdminPage() {
     const [loading, setLoading] = useState(false);
     const [sessionStats, setSessionStats] = useState({ stats: { total: 0, withWallet: 0, withoutWallet: 0 }, sessions: [] });
     const [sessionFilter, setSessionFilter] = useState('total'); // 'total', 'withWallet', 'withoutWallet'
+    const [rewardedUsers, setRewardedUsers] = useState([]);
     const router = useRouter();
 
     // Fetch data on mount
@@ -22,9 +23,10 @@ export default function AdminPage() {
     const fetchData = async () => {
         setLoading(true);
         try {
-            const [adminData, sessionsData] = await Promise.all([
+            const [adminData, sessionsData, rewardedData] = await Promise.all([
                 getAdminData(),
-                getPlaySessionsStats()
+                getPlaySessionsStats(),
+                getRewardedAdminUsers()
             ]);
 
             // Check for auth errors in response
@@ -35,6 +37,7 @@ export default function AdminPage() {
 
             setData(adminData.data || []);
             setSessionStats(sessionsData);
+            setRewardedUsers(rewardedData.rewarded || []);
         } catch (error) {
             console.error('Failed to fetch data', error);
             // If server action throws due to auth, redirect
@@ -95,6 +98,45 @@ export default function AdminPage() {
         } catch (error) {
             console.error('Delete error:', error);
             alert('Error deleting user: ' + error.message);
+        }
+    };
+
+    const handleReward = async (walletAddress, username, score) => {
+        const solAmount = prompt('How much SOL?');
+        if (!solAmount || isNaN(parseFloat(solAmount))) {
+            return;
+        }
+
+        try {
+            const json = await rewardAdminUser(walletAddress, username, score, parseFloat(solAmount));
+            if (json.success) {
+                alert(`User "${username}" rewarded with ${solAmount} SOL!`);
+                fetchData();
+            } else {
+                alert('Failed to reward user: ' + (json.error || 'Unknown error'));
+            }
+        } catch (error) {
+            console.error('Reward error:', error);
+            alert('Error rewarding user: ' + error.message);
+        }
+    };
+
+    const handleUnreward = async (walletAddress, username) => {
+        if (!confirm(`Return "${username}" to leaderboard?`)) {
+            return;
+        }
+
+        try {
+            const json = await unrewardAdminUser(walletAddress);
+            if (json.success) {
+                alert(`User "${username}" returned to leaderboard!`);
+                fetchData();
+            } else {
+                alert('Failed to unreward user: ' + (json.error || 'Unknown error'));
+            }
+        } catch (error) {
+            console.error('Unreward error:', error);
+            alert('Error unrewarding user: ' + error.message);
         }
     };
 
@@ -343,7 +385,22 @@ export default function AdminPage() {
                                     <td style={{ padding: '15px', color: '#666' }}>
                                         {item.created_at ? new Date(item.created_at).toLocaleString() : 'N/A'}
                                     </td>
-                                    <td style={{ padding: '15px' }}>
+                                    <td style={{ padding: '15px', display: 'flex', gap: '8px' }}>
+                                        <button
+                                            onClick={() => handleReward(item.wallet_address, item.username, item.score)}
+                                            style={{
+                                                padding: '5px 10px',
+                                                borderRadius: '3px',
+                                                border: '1px solid #00ff88',
+                                                backgroundColor: 'rgba(0, 255, 136, 0.1)',
+                                                color: '#00ff88',
+                                                cursor: 'pointer',
+                                                fontSize: '0.8rem',
+                                                fontWeight: 'bold'
+                                            }}
+                                        >
+                                            💸 Reward
+                                        </button>
                                         <button
                                             onClick={() => handleDelete(item.wallet_address, item.username)}
                                             style={{
@@ -368,6 +425,62 @@ export default function AdminPage() {
                     )}
                 </div>
             )}
+
+            {/* Rewarded Users Section */}
+            <div style={{ marginTop: '40px' }}>
+                <h2 style={{ marginBottom: '15px', fontSize: '1.2rem', color: '#00ff88' }}>💰 Rewarded Users</h2>
+
+                {loading ? (
+                    <p>Loading data...</p>
+                ) : (
+                    <div style={{ overflowX: 'auto' }}>
+                        <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
+                            <thead>
+                                <tr style={{ borderBottom: '1px solid #333', color: '#888' }}>
+                                    <th style={{ padding: '15px' }}>Username</th>
+                                    <th style={{ padding: '15px' }}>Wallet</th>
+                                    <th style={{ padding: '15px' }}>Original Score</th>
+                                    <th style={{ padding: '15px' }}>SOL Rewarded</th>
+                                    <th style={{ padding: '15px' }}>Date</th>
+                                    <th style={{ padding: '15px' }}>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {rewardedUsers.map((item, index) => (
+                                    <tr key={item.id || index} style={{ borderBottom: '1px solid #233', backgroundColor: index % 2 === 0 ? 'transparent' : 'rgba(0,255,136,0.02)' }}>
+                                        <td style={{ padding: '15px', fontWeight: 'bold' }}>{item.username}</td>
+                                        <td style={{ padding: '15px', fontFamily: 'monospace', color: '#aaa' }}>{item.wallet_address}</td>
+                                        <td style={{ padding: '15px', color: '#888' }}>{item.original_score}</td>
+                                        <td style={{ padding: '15px', color: '#00ff88', fontWeight: 'bold' }}>{item.sol_amount} SOL</td>
+                                        <td style={{ padding: '15px', color: '#666' }}>
+                                            {item.rewarded_at ? new Date(item.rewarded_at).toLocaleString() : 'N/A'}
+                                        </td>
+                                        <td style={{ padding: '15px' }}>
+                                            <button
+                                                onClick={() => handleUnreward(item.wallet_address, item.username)}
+                                                style={{
+                                                    padding: '5px 10px',
+                                                    borderRadius: '3px',
+                                                    border: '1px solid #ffaa00',
+                                                    backgroundColor: 'rgba(255, 170, 0, 0.1)',
+                                                    color: '#ffaa00',
+                                                    cursor: 'pointer',
+                                                    fontSize: '0.8rem'
+                                                }}
+                                            >
+                                                ↩️ Return
+                                            </button>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                        {rewardedUsers.length === 0 && (
+                            <p style={{ textAlign: 'center', padding: '40px', color: '#666' }}>No rewarded users yet.</p>
+                        )}
+                    </div>
+                )}
+            </div>
 
             <div style={{ marginTop: '60px', borderTop: '1px solid #333', paddingTop: '40px' }}>
                 <h2 style={{ color: '#ff4444', marginBottom: '20px' }}>⚠️ Danger Zone</h2>

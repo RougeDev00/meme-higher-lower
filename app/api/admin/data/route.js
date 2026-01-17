@@ -87,3 +87,58 @@ export async function DELETE(request) {
         );
     }
 }
+
+export async function POST(request) {
+    // Require auth for reward operations
+    if (!isAuthenticated(request)) {
+        return NextResponse.json(
+            { error: 'Unauthorized' },
+            { status: 401 }
+        );
+    }
+
+    try {
+        const body = await request.json();
+        const { action, walletAddress, username, score, solAmount } = body;
+
+        if (action === 'reward') {
+            const { rewardUser } = await import('@/lib/storage');
+            const result = await rewardUser(walletAddress, username, score, solAmount);
+
+            if (result.success) {
+                return NextResponse.json({ success: true, message: 'User rewarded successfully' });
+            } else {
+                return NextResponse.json(
+                    { error: result.error || 'Failed to reward user' },
+                    { status: 500 }
+                );
+            }
+        }
+
+        if (action === 'unreward') {
+            const { unrewardUser } = await import('@/lib/storage');
+            const result = await unrewardUser(walletAddress);
+
+            if (result.success) {
+                return NextResponse.json({ success: true, message: 'User returned to leaderboard' });
+            } else {
+                return NextResponse.json(
+                    { error: result.error || 'Failed to unreward user' },
+                    { status: 500 }
+                );
+            }
+        }
+
+        return NextResponse.json(
+            { error: 'Invalid action. Use "reward" or "unreward"' },
+            { status: 400 }
+        );
+
+    } catch (error) {
+        console.error('Reward operation error:', error);
+        return NextResponse.json(
+            { error: 'Failed to process reward request' },
+            { status: 500 }
+        );
+    }
+}

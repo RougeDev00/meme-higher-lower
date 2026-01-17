@@ -17,6 +17,7 @@ export default function Home() {
   const [walletError, setWalletError] = useState('');
   const [isWalletConnecting, setIsWalletConnecting] = useState(false);
   const [leaderboard, setLeaderboard] = useState([]);
+  const [rewardedUsers, setRewardedUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showInfo, setShowInfo] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -29,11 +30,14 @@ export default function Home() {
   const router = useRouter();
 
   useEffect(() => {
-    // Load leaderboard
-    fetch('/api/leaderboard')
-      .then(res => res.json())
-      .then(data => {
-        setLeaderboard(data.leaderboard || []);
+    // Load leaderboard and rewarded users
+    Promise.all([
+      fetch('/api/leaderboard').then(res => res.json()),
+      fetch('/api/rewarded').then(res => res.json())
+    ])
+      .then(([leaderboardData, rewardedData]) => {
+        setLeaderboard(leaderboardData.leaderboard || []);
+        setRewardedUsers(rewardedData.rewarded || []);
         setLoading(false);
       })
       .catch(() => setLoading(false));
@@ -292,34 +296,77 @@ export default function Home() {
           </button>
         </div>
 
-        <div className="leaderboard-preview">
-          <h3 className="leaderboard-title">🏆 Top Players</h3>
-          {loading ? (
-            <p style={{ textAlign: 'center', color: '#888', padding: '1rem 0' }}>Loading...</p>
-          ) : leaderboard.length > 0 ? (
-            leaderboard.map((entry, index) => (
-              <div key={index} className="leaderboard-entry">
-                <span className={`leaderboard-rank ${getRankClass(index)}`}>
-                  #{index + 1}
-                </span>
-                <span className="leaderboard-name">
-                  {entry.username}
-                  {entry.wallet_address && (
-                    <span
-                      style={{ fontSize: '0.8rem', color: '#888', marginLeft: '0.5rem', fontWeight: 400, opacity: 0.5 }}
-                    >
-                      {entry.wallet_address.slice(0, 4)}...{entry.wallet_address.slice(-4)}
-                    </span>
-                  )}
-                </span>
-                <span className="leaderboard-score">{entry.score}</span>
-              </div>
-            ))
-          ) : (
-            <p style={{ textAlign: 'center', color: '#888', padding: '1rem 0' }}>
-              No scores yet. Be the first!
-            </p>
-          )}
+        <div className="leaderboard-panels-container">
+          <div className="leaderboard-preview">
+            <h3 className="leaderboard-title">🏆 Top Players</h3>
+            {loading ? (
+              <p style={{ textAlign: 'center', color: '#888', padding: '1rem 0' }}>Loading...</p>
+            ) : leaderboard.length > 0 ? (
+              leaderboard.map((entry, index) => (
+                <div key={index} className="leaderboard-entry">
+                  <span className={`leaderboard-rank ${getRankClass(index)}`}>
+                    #{index + 1}
+                  </span>
+                  <span className="leaderboard-name">
+                    {entry.username}
+                    {entry.wallet_address && (
+                      <span
+                        style={{ fontSize: '0.8rem', color: '#888', marginLeft: '0.5rem', fontWeight: 400, opacity: 0.5 }}
+                      >
+                        {entry.wallet_address.slice(0, 4)}...{entry.wallet_address.slice(-4)}
+                      </span>
+                    )}
+                  </span>
+                  <span className="leaderboard-score">{entry.score}</span>
+                </div>
+              ))
+            ) : (
+              <p style={{ textAlign: 'center', color: '#888', padding: '1rem 0' }}>
+                No scores yet. Be the first!
+              </p>
+            )}
+          </div>
+
+          <div className="leaderboard-preview rewarded-panel">
+            <h3 className="leaderboard-title rewarded-title">💰 Rewarded</h3>
+            {loading ? (
+              <p style={{ textAlign: 'center', color: '#888', padding: '1rem 0' }}>Loading...</p>
+            ) : rewardedUsers.length > 0 ? (
+              rewardedUsers.map((entry, index) => (
+                <div key={index} className="leaderboard-entry rewarded-entry">
+                  <span className="leaderboard-name">
+                    {entry.username}
+                    {entry.wallet_address && (
+                      <span
+                        className="wallet-copy-btn"
+                        title="Click to copy wallet address"
+                        onClick={() => {
+                          navigator.clipboard.writeText(entry.wallet_address);
+                          alert('Wallet address copied!');
+                        }}
+                        style={{
+                          fontSize: '0.8rem',
+                          color: '#888',
+                          marginLeft: '0.5rem',
+                          fontWeight: 400,
+                          opacity: 0.7,
+                          cursor: 'pointer',
+                          transition: 'opacity 0.2s, color 0.2s'
+                        }}
+                      >
+                        {entry.wallet_address.slice(0, 4)}...{entry.wallet_address.slice(-4)}
+                      </span>
+                    )}
+                  </span>
+                  <span className="rewarded-sol">{entry.sol_amount} SOL</span>
+                </div>
+              ))
+            ) : (
+              <p style={{ textAlign: 'center', color: '#888', padding: '1rem 0' }}>
+                No rewards yet.
+              </p>
+            )}
+          </div>
         </div>
       </div>
 

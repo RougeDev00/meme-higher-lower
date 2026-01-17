@@ -559,6 +559,51 @@ select,
   color: var(--primary-green);
 }
 
+/* Two-Panel Leaderboard Layout */
+.leaderboard-panels-container {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  width: 100%;
+  max-width: 700px;
+  padding: 0 1rem;
+}
+
+.leaderboard-panels-container .leaderboard-preview {
+  flex: 1;
+  margin-top: 0;
+  min-width: 0;
+}
+
+/* Rewarded Panel Styles */
+.rewarded-panel {
+  border-color: rgba(0, 255, 136, 0.2) !important;
+  background: rgba(0, 255, 136, 0.05) !important;
+}
+
+.rewarded-title {
+  color: var(--primary-green) !important;
+}
+
+.rewarded-entry .leaderboard-name {
+  margin-left: 0;
+}
+
+.rewarded-sol {
+  font-weight: 700;
+  color: var(--primary-green);
+  background: rgba(0, 255, 136, 0.1);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+.wallet-copy-btn:hover {
+  opacity: 1 !important;
+  color: var(--primary-green) !important;
+  text-decoration: underline;
+}
+
 /* ===== GAME SCREEN ===== */
 .game-container {
   width: 100vw;
@@ -1487,10 +1532,18 @@ select,
     font-size: 0.7rem;
   }
 
+  /* Two-Panel Layout Mobile */
+  .leaderboard-panels-container {
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+    padding: 0;
+  }
+
   .leaderboard-preview {
     width: 100%;
     min-width: unset;
-    margin-top: 1.25rem;
+    margin-top: 0;
     padding: 1rem;
   }
 
@@ -1845,7 +1898,7 @@ select,
 /* Profile Button */
 .profile-btn {
   position: absolute;
-  top: 1.5rem;
+  top: 36px;
   right: 180px;
   display: flex;
   align-items: center;

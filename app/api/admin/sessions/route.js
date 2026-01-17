@@ -42,11 +42,27 @@ export async function GET(request) {
             });
         }
 
-        // Enrich sessions with scores
-        const sessionsWithScores = (allSessions || []).map(session => ({
-            ...session,
-            score: session.wallet_address ? (scoreMap[session.wallet_address] || null) : null
-        }));
+        // Track which wallets we've seen (to show score only for newest session)
+        const seenWallets = new Set();
+
+        // Enrich sessions with scores - only show actual score for the most recent session
+        // For older sessions, show "< Record" to indicate they didn't beat their best
+        const sessionsWithScores = (allSessions || []).map(session => {
+            if (!session.wallet_address) {
+                return { ...session, score: null };
+            }
+
+            const walletScore = scoreMap[session.wallet_address];
+
+            if (!seenWallets.has(session.wallet_address)) {
+                // First (most recent) session for this wallet - show actual score
+                seenWallets.add(session.wallet_address);
+                return { ...session, score: walletScore || null };
+            } else {
+                // Older session - we don't know the exact score, mark as "less than record"
+                return { ...session, score: '< Record' };
+            }
+        });
 
         return Response.json({
             stats: {
