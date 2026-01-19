@@ -498,7 +498,7 @@ export default function GamePage({ onGoHome }) {
                     onMouseDown={handleMouseDown}
                 >
                     <img src="/vs-pill-v2.png" alt="VS" className={`pill-image ${showScorePopup || resultState.left === 'wrong' || resultState.right === 'wrong' ? 'hidden' : ''}`} draggable="false" />
-                    <img src="/pill-broken.jpg" alt="Defeat" className={`pill-image-broken ${resultState.left === 'wrong' || resultState.right === 'wrong' ? 'visible' : ''}`} draggable="false" />
+                    <img src="/pill-broken.png" alt="Defeat" className={`pill-image-broken ${resultState.left === 'wrong' || resultState.right === 'wrong' ? 'visible' : ''}`} draggable="false" />
                     <div className={`pill-score ${showScorePopup ? 'visible' : ''}`}>{popupScore}</div>
                 </div>
 

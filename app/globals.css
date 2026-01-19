@@ -797,11 +797,11 @@ select,
 
 .pill-image-broken {
   position: absolute;
-  top: 45%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 80%;
-  height: 80%;
+  width: 70%;
+  height: 70%;
   object-fit: contain;
   opacity: 0;
   transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -812,8 +812,20 @@ select,
 
 .pill-image-broken.visible {
   opacity: 1;
-  transform: translate(-50%, -35%) rotate(-5deg);
-  /* Slide down + slight rotation for effect */
+  transform: translate(-50%, -50%);
+  animation: sad-sway 2.5s ease-in-out infinite;
+}
+
+@keyframes sad-sway {
+
+  0%,
+  100% {
+    transform: translate(-50%, -50%);
+  }
+
+  50% {
+    transform: translate(-48%, -47%);
+  }
 }
 
 .pill-image.hidden {
