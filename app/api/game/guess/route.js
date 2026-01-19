@@ -4,9 +4,21 @@ import path from 'path';
 import { decryptSession, encryptSession, deterministicShuffle, MAX_WINNER_TURNS } from '@/lib/gameState';
 import { submitScore } from '@/lib/storage';
 import { getSessionCoins } from '@/lib/utils';
+import { checkRateLimit, getClientIP, RATE_LIMITS } from '@/lib/rateLimit';
 
 export async function POST(request) {
     try {
+        // Rate limit check
+        const clientIP = getClientIP(request);
+        const rateLimit = checkRateLimit(clientIP, 'game_guess', RATE_LIMITS.GAME_GUESS.maxRequests, RATE_LIMITS.GAME_GUESS.windowMs);
+
+        if (!rateLimit.allowed) {
+            return NextResponse.json(
+                { error: `Too many guesses. Try again in ${rateLimit.resetIn} seconds.` },
+                { status: 429 }
+            );
+        }
+
         const { sessionId, guess, username, walletAddress } = await request.json();
 
         if (!sessionId || !guess) {
