@@ -31,8 +31,21 @@ export async function GET(request) {
     }
 }
 
+import { checkRateLimit, getClientIP, RATE_LIMITS } from '@/lib/rateLimit';
+
 export async function POST(request) {
     try {
+        // Rate limit check
+        const clientIP = getClientIP(request);
+        const rateLimit = checkRateLimit(clientIP, 'user_update', RATE_LIMITS.USER_UPDATE.maxRequests, RATE_LIMITS.USER_UPDATE.windowMs);
+
+        if (!rateLimit.allowed) {
+            return NextResponse.json(
+                { error: `Too many updates. Try again in ${rateLimit.resetIn} seconds.` },
+                { status: 429 }
+            );
+        }
+
         const body = await request.json();
         const { walletAddress, username } = body;
 
