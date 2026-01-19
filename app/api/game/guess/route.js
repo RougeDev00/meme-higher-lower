@@ -3,6 +3,7 @@ import { readFile } from 'fs/promises';
 import path from 'path';
 import { decryptSession, encryptSession, deterministicShuffle, MAX_WINNER_TURNS } from '@/lib/gameState';
 import { submitScore } from '@/lib/storage';
+import { getSessionCoins } from '@/lib/utils';
 
 export async function POST(request) {
     try {
@@ -29,10 +30,9 @@ export async function POST(request) {
         const filePath = path.join(process.cwd(), 'data', 'coins.json');
         const fileContents = await readFile(filePath, 'utf8');
         const allCoins = JSON.parse(fileContents);
-        const validCoins = allCoins.filter(c => c.marketCap >= 15000 && c.symbol && c.name);
 
-        // Reconstruct Game State
-        const shuffled = deterministicShuffle(validCoins, session.seed);
+        // Reconstruct Game State with UNIQUE coins
+        const shuffled = getSessionCoins(allCoins, session.seed);
 
         // Find current coins by ID
         const currentLeft = shuffled.find(c => c.id === session.currentLeftId);
@@ -57,39 +57,27 @@ export async function POST(request) {
             // Determine which coin stays and which gets replaced
             const winnerTurns = guess === 'left' ? session.leftTurns : session.rightTurns;
 
-            // Get next coin
+            // Get next coin with duplicate check
             let nextCoin = null;
             let nextCoinIndex = session.nextCoinIndex;
+            let attempts = 0;
+            const maxAttempts = shuffled.length; // Safety
 
-            // Reconstruct used indices set? 
-            // We just need to find the next coin from shuffled that is NOT currentLeft or currentRight.
-            // Since shuffled is deterministic, we can just pick shuffled[nextCoinIndex].
-            // But we need to check collision (unlikely given shuffle, but possible if index wraps? No logic before handled it).
-            // Logic before: checked usedIndices.
-            // With deterministic shuffle, index 0, 1 are used. Index 2 is next.
-            // We can just TRUST nextCoinIndex.
+            while (!nextCoin && attempts < maxAttempts) {
+                if (nextCoinIndex >= shuffled.length) {
+                    nextCoinIndex = 0; // Wrap around
+                }
 
-            // Check if we ran out
-            if (nextCoinIndex >= shuffled.length) {
-                // Reshuffle logic?
-                // Original logic: "If we ran out of coins, reshuffle" using random-ish filter.
-                // Here, we can just increment seed?
-                // Or wrap around?
-                // Let's wrap around for simplicity, filtering current ones.
-                nextCoinIndex = 0;
-                // Simple wrap: find first coin that is not currentLeft or currentRight
-                while (nextCoinIndex < shuffled.length) {
-                    const candidate = shuffled[nextCoinIndex];
-                    if (candidate.id !== currentLeft.id && candidate.id !== currentRight.id) {
-                        nextCoin = candidate;
-                        session.nextCoinIndex = nextCoinIndex + 1; // Update index to next
-                        break;
-                    }
+                const candidate = shuffled[nextCoinIndex];
+
+                // Ensure unique ID on screen
+                if (candidate.id !== currentLeft.id && candidate.id !== currentRight.id) {
+                    nextCoin = candidate;
+                    session.nextCoinIndex = nextCoinIndex + 1;
+                } else {
                     nextCoinIndex++;
                 }
-            } else {
-                nextCoin = shuffled[nextCoinIndex];
-                session.nextCoinIndex++;
+                attempts++;
             }
 
             if (!nextCoin) {

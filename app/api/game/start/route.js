@@ -4,6 +4,7 @@ import path from 'path';
 import { randomUUID } from 'crypto';
 import { encryptSession, deterministicShuffle } from '@/lib/gameState';
 import { checkRateLimit, getClientIP, RATE_LIMITS } from '@/lib/rateLimit';
+import { getSessionCoins } from '@/lib/utils';
 
 export async function POST(request) {
     try {
@@ -23,15 +24,12 @@ export async function POST(request) {
         const fileContents = await readFile(filePath, 'utf8');
         const allCoins = JSON.parse(fileContents);
 
-        // Filter valid coins
-        const validCoins = allCoins.filter(c => c.marketCap >= 15000 && c.symbol && c.name);
-
-        // Generate seed and shuffle
+        // Generate seed and shuffle unique
         // We use a numeric seed for PRNG derived from random bytes or UUID
         const seedStr = randomUUID().replace(/-/g, '');
         const seed = parseInt(seedStr.slice(0, 8), 16);
 
-        const shuffled = deterministicShuffle(validCoins, seed);
+        const shuffled = getSessionCoins(allCoins, seed);
 
         // Initial State
         const currentLeft = shuffled[0];

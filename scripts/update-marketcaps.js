@@ -120,18 +120,9 @@ async function main() {
                         console.log(`  ❌ ${coin.symbol || coin.name}: $${marketCap.toLocaleString()} (Under ${MIN_MARKET_CAP / 1000}k)`);
                     }
                 } else {
-                    // Start of fallback logic if DexScreener returned no data for this specific token
-                    // We keep it if existing MC is high enough, otherwise remove or flag
-                    // usage decision: if we can't find it on main dexes, it might be dead or very new.
-                    // For safety, let's keep it if existing MC > 100k, but warn.
-
-                    if (coin.marketCap >= MIN_MARKET_CAP) {
-                        console.log(`  ⚠️ ${coin.symbol || coin.name}: No data found, keeping existing MC: $${coin.marketCap?.toLocaleString()}`);
-                        updatedCoins.push(coin);
-                    } else {
-                        console.log(`  ❌ ${coin.symbol || coin.name}: No data found & existing MC LOW/NULL. Removing.`);
-                        removedCoins.push(coin);
-                    }
+                    // Fallback logic: if DexScreener returns no data, we REMOVE the coin as requested.
+                    console.log(`  ❌ ${coin.symbol || coin.name}: No data found on DexScreener. Removing.`);
+                    removedCoins.push({ ...coin, reason: 'No data found' });
                 }
             });
         } else {

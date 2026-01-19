@@ -1,0 +1,523 @@
+/* POD Chat Container */
+.pod-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* POD Button */
+.pod-button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #1a472a 0%, #2d5a3d 100%);
+    border: 2px solid rgba(74, 222, 128, 0.4);
+    border-radius: 50px;
+    padding: 8px 16px 8px 8px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 20px rgba(74, 222, 128, 0.3), 0 0 40px rgba(74, 222, 128, 0.1);
+}
+
+.pod-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 30px rgba(74, 222, 128, 0.5), 0 0 60px rgba(74, 222, 128, 0.2);
+    border-color: rgba(74, 222, 128, 0.6);
+}
+
+.pod-button-open {
+    padding: 8px;
+    border-radius: 50%;
+}
+
+.pod-logo-wrapper {
+    position: relative;
+    width: 44px;
+    height: 44px;
+}
+
+.pod-logo {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    animation: podBounce 2s ease-in-out infinite;
+}
+
+.pod-pulse {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid rgba(74, 222, 128, 0.6);
+    animation: podPulse 2s ease-out infinite;
+}
+
+@keyframes podBounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-4px);
+    }
+}
+
+@keyframes podPulse {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(1.5);
+        opacity: 0;
+    }
+}
+
+.pod-label {
+    color: #4ade80;
+    font-weight: 600;
+    font-size: 14px;
+    white-space: nowrap;
+    text-shadow: 0 0 10px rgba(74, 222, 128, 0.5);
+}
+
+/* Chat Panel */
+.pod-chat-panel {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 380px;
+    height: 0;
+    background: linear-gradient(180deg, rgba(15, 23, 15, 0.98) 0%, rgba(10, 15, 10, 0.98) 100%);
+    border-radius: 20px;
+    border: 1px solid rgba(74, 222, 128, 0.3);
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 60px rgba(74, 222, 128, 0.1);
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(20px);
+}
+
+.pod-chat-open {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.pod-resizing {
+    transition: none !important;
+}
+
+/* Resize Handles */
+.pod-resize-handle {
+    position: absolute;
+    background: transparent;
+    z-index: 10;
+}
+
+.pod-resize-left {
+    left: 0;
+    top: 60px;
+    bottom: 60px;
+    width: 8px;
+    cursor: ew-resize;
+}
+
+.pod-resize-left:hover,
+.pod-resize-left:active {
+    background: linear-gradient(90deg, rgba(74, 222, 128, 0.3), transparent);
+}
+
+.pod-resize-bottom {
+    left: 20px;
+    right: 20px;
+    bottom: 0;
+    height: 8px;
+    cursor: ns-resize;
+}
+
+.pod-resize-bottom:hover,
+.pod-resize-bottom:active {
+    background: linear-gradient(0deg, rgba(74, 222, 128, 0.3), transparent);
+}
+
+.pod-resize-corner {
+    left: 0;
+    bottom: 0;
+    width: 16px;
+    height: 16px;
+    cursor: nwse-resize;
+    border-radius: 0 0 0 20px;
+}
+
+.pod-resize-corner:hover,
+.pod-resize-corner:active {
+    background: radial-gradient(circle at bottom left, rgba(74, 222, 128, 0.4), transparent);
+}
+
+.pod-resize-corner::after {
+    content: '';
+    position: absolute;
+    left: 4px;
+    bottom: 4px;
+    width: 6px;
+    height: 6px;
+    border-left: 2px solid rgba(74, 222, 128, 0.5);
+    border-bottom: 2px solid rgba(74, 222, 128, 0.5);
+}
+
+/* Header */
+.pod-chat-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    background: linear-gradient(90deg, rgba(74, 222, 128, 0.1) 0%, transparent 100%);
+    border-bottom: 1px solid rgba(74, 222, 128, 0.2);
+}
+
+.pod-header-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.pod-header-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(74, 222, 128, 0.4);
+}
+
+.pod-header-info h3 {
+    margin: 0;
+    color: #4ade80;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.pod-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.pod-status-dot {
+    width: 8px;
+    height: 8px;
+    background: #4ade80;
+    border-radius: 50%;
+    animation: statusPulse 2s ease-in-out infinite;
+}
+
+@keyframes statusPulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.pod-powered-by {
+    display: block;
+    font-size: 9px;
+    color: rgba(255, 255, 255, 0.35);
+    margin-top: 2px;
+    font-style: italic;
+}
+
+.pod-close-btn {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 50%;
+    color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.pod-close-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+/* Messages */
+.pod-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.pod-messages::-webkit-scrollbar {
+    width: 4px;
+}
+
+.pod-messages::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.pod-messages::-webkit-scrollbar-thumb {
+    background: rgba(74, 222, 128, 0.3);
+    border-radius: 2px;
+}
+
+/* Welcome */
+.pod-welcome {
+    text-align: center;
+    padding: 20px;
+}
+
+.pod-welcome-logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 16px;
+    animation: podBounce 2s ease-in-out infinite;
+    border: 3px solid rgba(74, 222, 128, 0.4);
+}
+
+.pod-welcome h4 {
+    margin: 0 0 8px;
+    color: #4ade80;
+    font-size: 18px;
+}
+
+.pod-welcome p {
+    margin: 0 0 16px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.pod-suggestions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.pod-suggestions button {
+    background: rgba(74, 222, 128, 0.1);
+    border: 1px solid rgba(74, 222, 128, 0.3);
+    border-radius: 12px;
+    padding: 10px 16px;
+    color: #4ade80;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.pod-suggestions button:hover {
+    background: rgba(74, 222, 128, 0.2);
+    border-color: rgba(74, 222, 128, 0.5);
+    transform: translateX(4px);
+}
+
+/* Message Bubbles */
+.pod-message {
+    display: flex;
+    gap: 10px;
+    max-width: 100%;
+    animation: messageSlide 0.3s ease-out;
+}
+
+@keyframes messageSlide {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.pod-message.user {
+    flex-direction: row-reverse;
+}
+
+.pod-message-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.pod-message-content {
+    padding: 12px 16px;
+    border-radius: 16px;
+    font-size: 13px;
+    line-height: 1.5;
+    max-width: 260px;
+    word-wrap: break-word;
+}
+
+.pod-message.assistant .pod-message-content {
+    background: rgba(74, 222, 128, 0.15);
+    color: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(74, 222, 128, 0.2);
+    border-bottom-left-radius: 4px;
+}
+
+.pod-message.user .pod-message-content {
+    background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+    color: #0a0f0a;
+    font-weight: 500;
+    border-bottom-right-radius: 4px;
+}
+
+/* Typing Indicator */
+.pod-typing {
+    display: flex;
+    gap: 4px;
+    padding: 16px 20px !important;
+}
+
+.pod-typing span {
+    width: 8px;
+    height: 8px;
+    background: #4ade80;
+    border-radius: 50%;
+    animation: typingDot 1.4s ease-in-out infinite;
+}
+
+.pod-typing span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.pod-typing span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes typingDot {
+
+    0%,
+    60%,
+    100% {
+        transform: translateY(0);
+        opacity: 0.4;
+    }
+
+    30% {
+        transform: translateY(-8px);
+        opacity: 1;
+    }
+}
+
+/* Input */
+.pod-input-container {
+    display: flex;
+    gap: 10px;
+    padding: 16px;
+    background: rgba(0, 0, 0, 0.3);
+    border-top: 1px solid rgba(74, 222, 128, 0.2);
+}
+
+.pod-input {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(74, 222, 128, 0.3);
+    border-radius: 12px;
+    padding: 12px 16px;
+    color: white;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.2s;
+}
+
+.pod-input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.pod-input:focus {
+    border-color: rgba(74, 222, 128, 0.6);
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 0 20px rgba(74, 222, 128, 0.15);
+}
+
+.pod-send-btn {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+    border: none;
+    border-radius: 12px;
+    color: #0a0f0a;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.pod-send-btn:hover:not(:disabled) {
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(74, 222, 128, 0.4);
+}
+
+.pod-send-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Mobile Responsive */
+@media (max-width: 480px) {
+    .pod-container {
+        top: 10px;
+        right: 10px;
+    }
+
+    .pod-chat-panel {
+        width: calc(100vw - 20px);
+        right: -10px;
+        height: 0;
+    }
+
+    .pod-chat-open {
+        height: 70vh;
+    }
+
+    .pod-button {
+        padding: 6px 12px 6px 6px;
+    }
+
+    .pod-logo-wrapper {
+        width: 36px;
+        height: 36px;
+    }
+
+    .pod-logo {
+        width: 36px;
+        height: 36px;
+    }
+
+    .pod-label {
+        font-size: 12px;
+    }
+}
