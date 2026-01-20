@@ -647,7 +647,7 @@ export default function GamePage({ onGoHome }) {
                     </a>
 
                     <div className="ca-label" style={{ position: 'absolute', top: '2rem', left: '2rem', zIndex: 300, display: 'block' }}>
-                        CA: <span>Coming Soon..</span>
+                        CA: <span>UPDATING..</span>
                     </div>
                 </div>
             )}

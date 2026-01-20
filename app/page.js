@@ -381,7 +381,7 @@ export default function Home() {
       </a>
 
       <div className="ca-label">
-        CA: <span>Coming Soon..</span>
+        CA: <span>UPDATING..</span>
       </div>
 
       <div className="version-label" style={{ position: 'absolute', bottom: '10px', right: '10px', fontSize: '0.8rem', opacity: 0.7, color: 'rgba(255,255,255,0.5)', pointerEvents: 'none' }}>
