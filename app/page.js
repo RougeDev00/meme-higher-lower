@@ -277,8 +277,6 @@ export default function Home() {
             </div>
           )}
 
-          <div className="early-access-label">EARLY ACCESS - DEMO VERSION</div>
-
           <button
             className="start-button-image-container"
             onClick={handleStart}
