@@ -643,7 +643,7 @@ export default function GamePage({ onGoHome }) {
                     </a>
 
                     <div className="ca-label" style={{ position: 'absolute', top: '2rem', left: '2rem', zIndex: 300, display: 'block' }}>
-                        CA: <span>5Jk56WHEy9tYDDmdUPhD4fTQSjNxiuAgTtde6mFapump</span>
+                        CA: <span>UPDATING..</span>
                     </div>
                 </div>
             )}
